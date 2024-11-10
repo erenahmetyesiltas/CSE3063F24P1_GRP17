@@ -1,5 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -10,6 +11,9 @@ public class CourseRegistrationSystem {
     private List<CourseSection> allCourseSections = new ArrayList<>();
     private List<Department> allDepartments = new ArrayList<>();
     private final DataHandler dataHandler = new DataHandler();
+
+    public CourseRegistrationSystem() throws IOException {
+    }
 
     public List<Student> getAllStudents() {
         return allStudents;
@@ -52,7 +56,7 @@ public class CourseRegistrationSystem {
         List<SystemData> allDatas = dataHandler.getAllDatas();
         ObjectMapper mapper = dataHandler.getObjectMapper();
 
-        while (i != (allDatas.indexOf(allDatas.getLast()) + 1)) {
+        while (i != (allDatas.size())) {
             Class objectClass = allDatas.get(i).getObjectClass();
             Object object = allDatas.get(i).getObject();
 

@@ -3,16 +3,11 @@ import java.util.NoSuchElementException;
 
 public class Main {
     public static void main(String[] args) {
-        CourseRegistrationSystem system = new CourseRegistrationSystem();
-        try{
+        try {
+            CourseRegistrationSystem system = new CourseRegistrationSystem();
             system.restoreSystem();
-        } catch (NoSuchElementException e) {
-            e.printStackTrace();
-        }
-
-        DataHandler dataHandler = system.getDataHandler();
-
-        /*try {
+            DataHandler dataHandler = system.getDataHandler();
+            /*try {
             Student student1 = new Student();
             student1.setYear(2019);
             dataHandler.storeObject(student1);
@@ -25,11 +20,18 @@ public class Main {
             student3.setYear(2021);
             dataHandler.storeObject(student3);
 
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+            System.out.println(system.getAllStudents());
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
 
 
-        System.out.println(system.getAllStudents());
+
+
     }
 }

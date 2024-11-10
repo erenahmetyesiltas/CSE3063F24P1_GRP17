@@ -26,12 +26,14 @@ public class DataHandler {
     private ObjectMapper objectMapper = new ObjectMapper();
 
 
-    DataHandler() {
+    DataHandler() throws IOException {
         //gson = new GsonBuilder().registerTypeAdapter(Class.class, new ClassAdapter()).create();
         try {
             allDatas = retrieveData("allDatas.json");
         } catch (Exception e) {
             allDatas = new ArrayList<SystemData>();
+            File file = new File("allDatas.json");
+            file.createNewFile();
             e.printStackTrace();
         }
     }
