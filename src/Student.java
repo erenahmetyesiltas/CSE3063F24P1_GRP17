@@ -1,7 +1,7 @@
 import java.util.Date;
 import java.util.List;
 
-public class Student {
+public class Student extends Person {
 
     private ID id;
     private Grade grade;

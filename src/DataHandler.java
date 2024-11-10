@@ -42,28 +42,46 @@ public class DataHandler {
         fileNumber++;
         SystemData data = new SystemData(studentObject, studentObject.getClass(), "object" + fileNumber + ".json");
         allDatas.add(data);
-        objectMapper.writeValue(new File("object" + fileNumber + ".json"), studentObject);
+        this.removeDuplicateData();
+        //objectMapper.writeValue(new File("object" + fileNumber + ".json"), studentObject);
         File file = new File("allDatas.json");
+        file.delete();
+        file.createNewFile();
         objectMapper.writeValue(file, allDatas);
     }
 
-    public void storeObject(Advisor advisorObject) throws IOException {
-        fileNumber++;
-        SystemData data = new SystemData(advisorObject, advisorObject.getClass(), "object" + fileNumber + ".json");
-        allDatas.add(data);
-        objectMapper.writeValue(new File("object" + fileNumber + ".json"), advisorObject);
-        File file = new File("allDatas.json");
-        objectMapper.writeValue(file, allDatas);
 
-    }
 
     public void storeObject(CourseSection courseSectionObject) throws IOException {
         fileNumber++;
         SystemData data = new SystemData(courseSectionObject, courseSectionObject.getClass(), "object" + fileNumber + ".json");
         allDatas.add(data);
-        objectMapper.writeValue(new File("object" + fileNumber + ".json"), courseSectionObject);
+        //objectMapper.writeValue(new File("object" + fileNumber + ".json"), courseSectionObject);
         File file = new File("allDatas.json");
+        file.delete();
+        file.createNewFile();
         objectMapper.writeValue(file, allDatas);
+    }
+
+    public void removeDuplicateData(){
+        for (SystemData data : allDatas) {
+            for (int i = 0; i < allDatas.size(); i++) {
+                if (i == allDatas.indexOf(data)) {
+                    continue;
+                }
+                else {
+                    if (allDatas.get(i).getObjectClass() == Student.class && data.getObjectClass() == Student.class) {
+                        ID id1 = ((Student) objectMapper.convertValue(data.getObject(), Student.class)).getId();
+                        ID id2 = ((Student) objectMapper.convertValue(allDatas.get(i).getObject(), Student.class)).getId();
+
+                        if (id1.getFullId(new Student()).equals(id2.getFullId(new Student())) ) {
+                            allDatas.remove(i);
+                        }
+                    }
+                    // Here will be filled for CourseSection
+                }
+            }
+        }
     }
 
     public List<SystemData> retrieveData(String fileName) throws JsonProcessingException {
