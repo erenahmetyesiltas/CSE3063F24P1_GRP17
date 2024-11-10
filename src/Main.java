@@ -7,7 +7,7 @@ public class Main {
             CourseRegistrationSystem system = new CourseRegistrationSystem();
             system.restoreSystem();
             DataHandler dataHandler = system.getDataHandler();
-            /*try {
+            try {
             Student student1 = new Student();
             student1.setYear(2019);
             dataHandler.storeObject(student1);
@@ -22,7 +22,7 @@ public class Main {
 
             } catch (IOException e) {
                 e.printStackTrace();
-            }*/
+            }
             System.out.println(system.getAllStudents());
         } catch (IOException e) {
             e.printStackTrace();
