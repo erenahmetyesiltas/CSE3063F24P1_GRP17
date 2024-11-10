@@ -1,6 +1,14 @@
 [
   {
     "object": {
+      "id": "545454",
+      "password" : "advisor"
+    },
+    "objectClass": "Advisor",
+    "jsonFile": "object1.json"
+  },
+  {
+    "object": {
       "id": "150122011",
       "password" : "melisa",
       "grade": null,

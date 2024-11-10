@@ -72,6 +72,11 @@ public class CourseRegistrationSystem {
                 this.getAllCourseSections().add(course);
             }
 
+            if (objectClass == Advisor.class) {
+                Advisor advisor = mapper.convertValue(object, Advisor.class);
+                this.getAllAdvisors().add(advisor);
+            }
+
             i++;
         }
     }
