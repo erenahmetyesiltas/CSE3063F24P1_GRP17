@@ -1,0 +1,67 @@
+import java.util.Date;
+import java.util.List;
+
+public class Student {
+
+    private ID id;
+    private Grade grade;
+    private List<Course> courses;
+    private Advisor advisor;
+    private List<Department> departments;
+    private Date startYear ;
+    private int year;
+    private Registration registration;
+
+    public Student() {
+
+    }
+
+    public ID getId() {
+        return id;
+    }
+    public void setId(ID id) {
+        this.id = id;
+    }
+    public Grade getGrade() {
+        return grade;
+    }
+    public void setGrade(Grade grade) {
+        this.grade = grade;
+    }
+    public List<Course> getCourses() {
+        return courses;
+    }
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+    public Advisor getAdvisor() {
+        return advisor;
+    }
+    public void setAdvisor(Advisor advisor) {
+        this.advisor = advisor;
+    }
+    public List<Department> getDepartments() {
+        return departments;
+    }
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
+    }
+    public Date getStartYear() {
+        return startYear;
+    }
+    public void setStartYear(Date startYear) {
+        this.startYear = startYear;
+    }
+    public int getYear() {
+        return year;
+    }
+    public void setYear(int year) {
+        this.year = year;
+    }
+    public Registration getRegistration() {
+        return registration;
+    }
+    public void setRegistration(Registration registration) {
+        this.registration = registration;
+    }
+}
