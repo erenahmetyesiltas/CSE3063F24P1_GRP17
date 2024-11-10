@@ -73,10 +73,10 @@ public class DataHandler {
                 }
                 else {
                     if (allDatas.get(i).getObjectClass() == Student.class && data.getObjectClass() == Student.class) {
-                        ID id1 = ((Student) objectMapper.convertValue(data.getObject(), Student.class)).getId();
-                        ID id2 = ((Student) objectMapper.convertValue(allDatas.get(i).getObject(), Student.class)).getId();
+                        String id1 = ((Student) objectMapper.convertValue(data.getObject(), Student.class)).getId();
+                        String id2 = ((Student) objectMapper.convertValue(allDatas.get(i).getObject(), Student.class)).getId();
 
-                        if (id1.getFullId(new Student()).equals(id2.getFullId(new Student())) ) {
+                        if (id1.equals(id2)) {
                             allDatas.remove(i);
                         }
                     }

@@ -1,1 +1,50 @@
-[{"object":{"id":{"departmentId":150,"entranceYearId":122,"entrancePlaceId":507,"staffId":0},"grade":null,"courses":null,"advisor":null,"departments":null,"startYear":null,"year":2019,"registration":{"registrationStatus":2,"courseSectionList":null}},"objectClass":"Student","jsonFile":"object1.json"},{"object":{"id":{"departmentId":150,"entranceYearId":122,"entrancePlaceId":11,"staffId":0},"grade":null,"courses":null,"advisor":null,"departments":null,"startYear":null,"year":2020,"registration":null},"objectClass":"Student","jsonFile":"object2.json"},{"object":{"id":{"departmentId":150,"entranceYearId":121,"entrancePlaceId":17,"staffId":0},"grade":null,"courses":null,"advisor":null,"departments":null,"startYear":null,"year":2021,"registration":null},"objectClass":"Student","jsonFile":"object3.json"}]
+[
+  {
+    "object": {
+      "id": "150122011",
+      "password" : "melisa",
+      "grade": null,
+      "courses": null,
+      "advisor": null,
+      "departments": null,
+      "startYear": null,
+      "year": 2019,
+      "registration": {
+        "registrationStatus": 1,
+        "courseSectionList": null
+      }
+    },
+    "objectClass": "Student",
+    "jsonFile": "object1.json"
+  },
+  {
+    "object": {
+      "id": "150121017",
+      "password" : "eren",
+      "grade": null,
+      "courses": null,
+      "advisor": null,
+      "departments": null,
+      "startYear": null,
+      "year": 2020,
+      "registration": null
+    },
+    "objectClass": "Student",
+    "jsonFile": "object2.json"
+  },
+  {
+    "object": {
+      "id": "150122507",
+      "password" : "enes",
+      "grade": null,
+      "courses": null,
+      "advisor": null,
+      "departments": null,
+      "startYear": null,
+      "year": 2021,
+      "registration": null
+    },
+    "objectClass": "Student",
+    "jsonFile": "object3.json"
+  }
+]

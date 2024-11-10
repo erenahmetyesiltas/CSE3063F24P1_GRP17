@@ -1,9 +1,11 @@
+
+
 import java.util.Date;
 import java.util.List;
 
 public class Student extends Person {
 
-    private ID id;
+    private String id;
     private Grade grade;
     private List<Course> courses;
     private Advisor advisor;
@@ -16,9 +18,14 @@ public class Student extends Person {
 
     }
 
-    public Student(ID id, Date startYear, int year,Grade grade, List<Department> departments, Advisor advisor) {
-
+    public String getId() {
+        return id;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 
     public void prerequisiteFail(List <CourseSection> courseSectionList){
         System.out.println("Prerequisite is fail");
@@ -30,14 +37,6 @@ public class Student extends Person {
 
     public void printAdvisorDisapproval(){
         System.out.println("Advisor disapproval");
-    }
-
-    public ID getId() {
-        return id;
-    }
-
-    public void setId(ID id) {
-        this.id = id;
     }
 
     public Grade getGrade() {

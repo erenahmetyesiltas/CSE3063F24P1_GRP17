@@ -49,16 +49,6 @@ public class Course {
         this.prerequisiteCourses = prerequisiteCourses;
     }
 
-
-
-    public ID getId() {
-        return id;
-    }
-
-    public void setId(ID id) {
-        this.id = id;
-    }
-
     public List<CourseSection> getCourseSection() {
         return courseSection;
     }
@@ -68,3 +58,5 @@ public class Course {
     }
 
 }
+
+
