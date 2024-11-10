@@ -28,6 +28,10 @@ public class Student {
         System.out.println("This section is full");
     }
 
+    public void printAdvisorDisapproval(){
+        System.out.println("Advisor disapproval");
+    }
+
     public ID getId() {
         return id;
     }
