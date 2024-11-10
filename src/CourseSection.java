@@ -5,10 +5,13 @@ public class CourseSection {
     private Time scheduledTime;
     private int sectionNumber;
     private Course course;
+    private int capacity;
 
-    public CourseSection() {
 
-    }
+
+    private int currentParticipantNumber;
+
+    public CourseSection() {}
 
     public Time getScheduledTime() {
         return scheduledTime;
@@ -49,6 +52,14 @@ public class CourseSection {
     public void setClassroom(String classroom) {
         Classroom = classroom;
     }
+
+    public int getCurrentParticipantNumber() {return currentParticipantNumber;}
+
+    public void setCurrentParticipantNumber(int currentParticipantNumber) {this.currentParticipantNumber = currentParticipantNumber;}
+
+    public int getCapacity() {return capacity;}
+
+    public void setCapacity(int capacity) {this.capacity = capacity;}
 
     private List<Student> studentEnrolled ;
     private String Classroom;
