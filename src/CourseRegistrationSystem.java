@@ -74,5 +74,11 @@ public class CourseRegistrationSystem {
         }
     }
 
+    public void updateData(Object object) {
+        SystemData data = new SystemData(object, object.getClass(), "object" + dataHandler.getFileNumber() + ".json");
+        dataHandler.getAllDatas().add(data);
+        dataHandler.removeDuplicateData();
+    }
+
 
 }

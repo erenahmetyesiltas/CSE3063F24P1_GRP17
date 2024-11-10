@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataHandler {
+
+
     //private Gson gson;
     private int fileNumber = 0;
     private List<SystemData> allDatas = new ArrayList<SystemData>();
@@ -146,6 +148,10 @@ public class DataHandler {
 
     public List<SystemData> getAllDatas() {
         return allDatas;
+    }
+    public int getFileNumber() {
+        fileNumber++;
+        return fileNumber;
     }
 
 }
