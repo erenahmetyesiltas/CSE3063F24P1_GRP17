@@ -8,7 +8,7 @@ public class Student {
     private List<Course> courses;
     private Advisor advisor;
     private List<Department> departments;
-    private Date startYear ;
+    private Date startYear;
     private int year;
     private Registration registration;
 
@@ -16,51 +16,78 @@ public class Student {
 
     }
 
+    public Student(ID id, Date startYear, int year,Grade grade, List<Department> departments, Advisor advisor) {
+
+    }
+
+    public void prerequisiteFail(List <CourseSection> courseSectionList){
+        System.out.println("Prerequisite is fail");
+    }
+
+    public void sectionFullFailFail(List <CourseSection> courseSectionList){
+        System.out.println("This section is full");
+    }
+
     public ID getId() {
         return id;
     }
+
     public void setId(ID id) {
         this.id = id;
     }
+
     public Grade getGrade() {
         return grade;
     }
+
     public void setGrade(Grade grade) {
         this.grade = grade;
     }
+
     public List<Course> getCourses() {
         return courses;
     }
+
     public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
+
     public Advisor getAdvisor() {
         return advisor;
     }
+
     public void setAdvisor(Advisor advisor) {
         this.advisor = advisor;
     }
+
     public List<Department> getDepartments() {
         return departments;
     }
+
     public void setDepartments(List<Department> departments) {
         this.departments = departments;
     }
+
     public Date getStartYear() {
         return startYear;
     }
+
     public void setStartYear(Date startYear) {
         this.startYear = startYear;
     }
+
     public int getYear() {
         return year;
     }
+
     public void setYear(int year) {
         this.year = year;
     }
+
     public Registration getRegistration() {
         return registration;
     }
+
     public void setRegistration(Registration registration) {
         this.registration = registration;
     }
