@@ -1,0 +1,37 @@
+{
+  "id": "12345",
+  "password": "123",
+  "grade": "A",
+  "courses": [
+    {
+      "courseName": "Mathematics",
+      "courseCode": "MATH101",
+      "credits": 3
+    },
+    {
+      "courseName": "Physics",
+      "courseCode": "PHYS101",
+      "credits": 4
+    }
+  ],
+  "advisor": {
+    "name": "Dr. John Smith",
+    "email": "john.smith@university.edu"
+  },
+  "departments": [
+    {
+      "name": "Computer Science",
+      "code": "CS"
+    },
+    {
+      "name": "Mathematics",
+      "code": "MATH"
+    }
+  ],
+  "startYear": "2020-09-01",
+  "year": 4,
+  "registration": {
+    "status": "Active",
+    "date": "2024-10-01"
+  }
+}

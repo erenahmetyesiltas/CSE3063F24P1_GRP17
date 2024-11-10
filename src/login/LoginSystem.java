@@ -7,21 +7,26 @@ import java.util.Scanner;
 
 public class LoginSystem {
     private static final String USERS_DIRECTORY = "src/login/users";
+    Student student;
 
-    // CALL CONSTRUCTOR WITH PERSON. LoginSystem(Person), and create an instance of person to use in Object Mapper.
-    public boolean authenticateUser(String nickname, String password) throws IOException {
+    public boolean authenticateStudent(String nickname, String password) throws IOException {
         File userFile = new File(USERS_DIRECTORY + "/" + nickname + ".json");
         if (!userFile.exists()) {
-            System.out.println("ASOPJDPSA");
+            System.out.println("FILE DOESN'T EXIST");
             return false;
         }
 
         ObjectMapper mapper = new ObjectMapper();
-        Person person = mapper.readValue(userFile, Person.class);
-        System.out.println("Name: " + person.getFirstName());
-        System.out.println("Age: " + person.getId());
+        Student jsonStudent = mapper.readValue(userFile, Student.class);
 
-        return person.getPassword().equals(password);
+        if(jsonStudent.getPassword().equals(password)){
+            this.student = jsonStudent;
+            return true;
+        }
+        return false;
+    }
+    public Student getStudent(){
+    return this.student;
     }
 }
 

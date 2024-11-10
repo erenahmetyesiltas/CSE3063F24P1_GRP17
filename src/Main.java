@@ -1,5 +1,8 @@
+import login.LoginSystem;
+
 import java.io.IOException;
 import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,7 +10,7 @@ public class Main {
             CourseRegistrationSystem system = new CourseRegistrationSystem();
             system.restoreSystem();
             DataHandler dataHandler = system.getDataHandler();
-            /*try {
+            try {
             Student student1 = new Student();
             student1.setYear(2019);
 
@@ -36,9 +39,22 @@ public class Main {
 
             dataHandler.storeObject(student3);
 
+            LoginSystem loginSystem = new LoginSystem();
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("Enter your nickname: ");
+            String nickname = scanner.nextLine();
+
+            System.out.print("Enter your password: ");
+            String password = scanner.nextLine();
+
+            if(loginSystem.authenticateStudent("150121017","asdasd")){
+                System.out.println("USER ONLIME31!!!");
+            }
+
             } catch (IOException e) {
                 e.printStackTrace();
-            }*/
+            }
             Student student = system.getAllStudents().get(0);
             System.out.println(student.getRegistration().getRegistrationStatus());
         } catch (IOException e) {
@@ -46,9 +62,6 @@ public class Main {
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
-
-
-
 
     }
 }
