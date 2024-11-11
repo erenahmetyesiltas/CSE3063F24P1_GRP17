@@ -48,8 +48,8 @@ public class CourseSection {
         return studentEnrolled;
     }
 
-    public void setStudentEnrolled(Student studentEnrolled) {
-        this.getStudentEnrolled() = studentEnrolled;
+    public void setStudentEnrolled(List<Student> studentEnrolled) {
+        this.studentEnrolled = studentEnrolled;
     }
 
     public String getClassroom() {
