@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Registration {
-    private List<CourseSection> courseSections;
+    private List<CourseSection> courseSections = new ArrayList<>();
     private int registrationStatus;
 
     public Registration() {
@@ -13,15 +13,21 @@ public class Registration {
         if (coursesection != null) {
             for (CourseSection courseSection : courseSections) {
                 if (coursesection.getCourse().getId().equals(courseSection.getCourse().getId()) && coursesection.getSectionNumber() == courseSection.getSectionNumber()) {
+                    System.out.println("WARNING ! : (Same course and section exists in your registration) " + coursesection.getCourse().getId() + " - " + coursesection.getSectionNumber() + " cannot added to registration");
+                    return false;
+                }
+                if (coursesection.getCourse().getId().equals(courseSection.getCourse().getId())) {
+                    System.out.println("WARNING ! : (You try to select a second section for the same course) " + coursesection.getCourse().getId() + " - " + coursesection.getSectionNumber() + " cannot added to registration");
                     return false;
                 }
             }
+
             courseSections.add(coursesection);
-            System.out.println(coursesection.getCourse().getId() + " - " + coursesection.getId() + " added to registration");
+            System.out.println(coursesection.getCourse().getId() + " - " + coursesection.getSectionNumber() + " added to registration");
             return true;
         }
        else {
-            System.out.println("WARNING ! : " + coursesection.getCourse().getId() + " - " + coursesection.getId() + " cannot added to registration");
+            System.out.println("WARNING ! : " + coursesection.getCourse().getId() + " - " + coursesection.getSectionNumber() + " cannot added to registration");
             return false;
         }
 

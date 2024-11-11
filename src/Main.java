@@ -33,7 +33,7 @@ public class Main {
                             // Öğrenci sisteme istediği dersleri girer,ileride bu kısmı sistemden
                             // alınabilecek ders sayısı ile sınırlayacağız
 
-                            System.out.print("Do you want to add courses? (y/n): ");
+                            System.out.println("\nDo you want to add courses? (y/n): ");
                             String addCourse = scanner.next();
                             if (addCourse.equalsIgnoreCase("y")) {
                                 system.readCourses(student);
@@ -41,9 +41,17 @@ public class Main {
                             else if (addCourse.equalsIgnoreCase("n")) {
                                 break;
                             }
-
-
                         }
+
+                        System.out.println("The courses inside your registration are :");
+                        for (CourseSection courseSection : student.getRegistration().getCourseSectionList()) {
+                            System.out.println(courseSection.getCourse().getId() + " - " + courseSection.getSectionNumber());
+                        }
+
+                        System.out.println("\n----------System is checking eligibility----------\n");
+
+                        // Buraya checkEligibility() gelecek daha implement edilmedi
+
 
 
                     }

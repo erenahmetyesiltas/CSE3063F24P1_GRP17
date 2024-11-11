@@ -113,7 +113,7 @@ public class CourseRegistrationSystem {
        Scanner scanner = new Scanner(System.in);
        System.out.println("Enter the course");
        String course = scanner.next();
-       System.out.println("Enter the course");
+       System.out.println("Enter the section");
        String courseSection =scanner.next();
 
        if (findCourseSection(course,courseSection) != null) {
