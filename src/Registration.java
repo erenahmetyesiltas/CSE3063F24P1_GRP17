@@ -24,6 +24,7 @@ public class Registration {
             System.out.println("WARNING ! : " + coursesection.getCourse().getId() + " - " + coursesection.getId() + " cannot added to registration");
             return false;
         }
+
     }
 
     public List<CourseSection> getCourseSectionList() {

@@ -26,6 +26,26 @@ public class Main {
                     System.out.println("Login successful!");
                     if (loginSystem.getStudent() != null) {
                         student = loginSystem.getStudent();
+                        //Şimdilik sadece registration yaptık,başka işlem olursa if else eklenecek
+                        system.printSuitableCourses();
+
+                        while (true){
+                            // Öğrenci sisteme istediği dersleri girer,ileride bu kısmı sistemden
+                            // alınabilecek ders sayısı ile sınırlayacağız
+
+                            System.out.print("Do you want to add courses? (y/n): ");
+                            String addCourse = scanner.next();
+                            if (addCourse.equalsIgnoreCase("y")) {
+                                system.readCourses(student);
+                            }
+                            else if (addCourse.equalsIgnoreCase("n")) {
+                                break;
+                            }
+
+
+                        }
+
+
                     }
                     else {
                         advisor = loginSystem.getAdvisor();
@@ -33,15 +53,15 @@ public class Main {
                 } else {
                     System.out.println("Invalid nickname or password.");
                 }
+
+
             } catch (IOException e) {
                 System.out.println("An error occurred: " + e.getMessage());
             } catch (Exception e) {
             e.printStackTrace();
             }
 
-            system.printSuitableCourses();
 
-            //  Buraya yazacağın kodun sıra sıra course alacak şekilde olması lazım readCourse kullanarak
 
         } catch (Exception e) {
             e.printStackTrace();
