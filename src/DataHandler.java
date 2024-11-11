@@ -65,6 +65,17 @@ public class DataHandler {
         objectMapper.writeValue(file, allDatas);
     }
 
+    public void storeObject(Advisor advisorObject) throws IOException {
+        fileNumber++;
+        SystemData data = new SystemData(advisorObject, advisorObject.getClass(), "object" + fileNumber + ".json");
+        allDatas.add(data);
+        //objectMapper.writeValue(new File("object" + fileNumber + ".json"), courseSectionObject);
+        File file = new File("allDatas.json");
+        file.delete();
+        file.createNewFile();
+        objectMapper.writeValue(file, allDatas);
+    }
+
     public void removeDuplicateData(){
         for (SystemData data : allDatas) {
             for (int i = 0; i < allDatas.size(); i++) {
@@ -80,7 +91,21 @@ public class DataHandler {
                             allDatas.remove(i);
                         }
                     }
-                    // Here will be filled for CourseSection
+                    if (allDatas.get(i).getObjectClass() == CourseSection.class && data.getObjectClass() == CourseSection.class) {
+                        String id1 = ((CourseSection) objectMapper.convertValue(data.getObject(), CourseSection.class)).getId();
+                        String id2 = ((CourseSection) objectMapper.convertValue(data.getObject(), CourseSection.class)).getId();
+
+                        if (id1.equals(id2)) {
+                            allDatas.remove(i);
+                        }
+                    }
+                    if (allDatas.get(i).getObjectClass() == Advisor.class && data.getObjectClass() == Advisor.class) {
+                        String id1 = ((Advisor) objectMapper.convertValue(data.getObject(), Advisor.class)).getId();
+                        String id2 = ((Advisor) objectMapper.convertValue(data.getObject(), Advisor.class)).getId();
+                        if (id1.equals(id2)) {
+                            allDatas.remove(i);
+                        }
+                    }
                 }
             }
         }

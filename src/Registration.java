@@ -2,13 +2,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Registration {
+    private String id;
     private List<CourseSection> courseSections = new ArrayList<>();
     private int registrationStatus;
 
-    private Student student = new Student();
-
     public Registration() {
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public boolean addCourseSection(CourseSection coursesection) {

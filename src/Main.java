@@ -86,6 +86,7 @@ public class Main {
                             }
                             else if (continueChoice.equalsIgnoreCase("n")) {
                                 // En son state'i json'a kaydetme yazılacak yetiştiremedim
+                                system.saveLastState();
                                 System.out.println("\nLogged out successfully! ");
                                 break;
                             }
@@ -145,6 +146,7 @@ public class Main {
                                      */
                                 }
                                 case 3 -> {
+                                    system.saveLastState();
                                     System.out.println("Logging out...");
                                     return; // Exit the advisor actions loop
                                 }

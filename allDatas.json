@@ -1,34 +1,62 @@
 [
   {
     "object": {
-      "id": "545454",
-      "password" : "advisor"
+      "id": "A12345",
+      "password": "StrongPassword@123"
     },
     "objectClass": "Advisor",
-    "jsonFile": "object1.json"
+    "jsonFile": "advisorData.json"
   },
   {
     "object": {
+      "id": "B67890",
+      "password": "SecurePass456!"
+    },
+    "objectClass": "Advisor",
+    "jsonFile": "advisorData.json"
+  },
+
+  {
+    "object": {
       "id": "150122011",
-      "password" : "melisa",
+      "password": "melisa123",
       "grade": null,
-      "courses": null,
+      "courses": [
+        {"id": "ATA121"},
+        {"id": "MBG1201"},
+        {"id": "CSE1200"},
+        {"id": "CSE1241"},
+        {"id": "MATH1001"},
+        {"id": "PHYS1101"},
+        {"id": "PHYS1103"},
+        {"id": "TRD121"},
+        {"id": "ATA122"},
+        {"id": "CSE1242"},
+        {"id": "MATH1002"},
+        {"id": "MATH2256"},
+        {"id": "PHYS1102"},
+        {"id": "PHYS1104"},
+        {"id": "TRD122"},
+        {"id": "CSE2023"},
+        {"id": "CSE2225"},
+        {"id": "ECON2004"},
+        {"id": "EE2031"},
+        {"id": "MATH2055"},
+        {"id": "MATH2059"},
+        {"id": "CSE2246"},
+        {"id": "CSE2138"},
+        {"id": "CSE2260"},
+        {"id": "EE2032"},
+        {"id": "STAT2253"}
+      ],
       "advisor": {
-        "id" : "545454",
-        "password" : "advisor"
+        "id": "A12345",
+        "password": "StrongPassword@123"
       },
       "departments": null,
       "startYear": null,
-      "year": 2019,
+      "year": 2020,
       "registration": {
-        "courseSections" : [
-          {
-            "id": "IE4010-2",
-            "sectionNumber" : 2,
-            "course" : {
-              "id" : "IE4010"
-            }
-        ],
         "registrationStatus": 0
       }
     },
@@ -38,10 +66,40 @@
   {
     "object": {
       "id": "150121017",
-      "password" : "eren",
+      "password": "eren456",
       "grade": null,
-      "courses": null,
-      "advisor": null,
+      "courses": [
+        {"id": "ATA121"},
+        {"id": "MBG1201"},
+        {"id": "CSE1200"},
+        {"id": "CSE1241"},
+        {"id": "MATH1001"},
+        {"id": "PHYS1101"},
+        {"id": "PHYS1103"},
+        {"id": "TRD121"},
+        {"id": "ATA122"},
+        {"id": "CSE1242"},
+        {"id": "MATH1002"},
+        {"id": "MATH2256"},
+        {"id": "PHYS1102"},
+        {"id": "PHYS1104"},
+        {"id": "TRD122"},
+        {"id": "CSE2023"},
+        {"id": "CSE2225"},
+        {"id": "ECON2004"},
+        {"id": "EE2031"},
+        {"id": "MATH2055"},
+        {"id": "MATH2059"},
+        {"id": "CSE2246"},
+        {"id": "CSE2138"},
+        {"id": "CSE2260"},
+        {"id": "EE2032"},
+        {"id": "STAT2253"}
+      ],
+      "advisor": {
+        "id": "A12345",
+        "password": "StrongPassword@123"
+      },
       "departments": null,
       "startYear": null,
       "year": 2020,
@@ -53,13 +111,43 @@
   {
     "object": {
       "id": "150122507",
-      "password" : "enes",
+      "password": "enes789",
       "grade": null,
-      "courses": null,
-      "advisor": null,
+      "courses": [
+        {"id": "ATA121"},
+        {"id": "MBG1201"},
+        {"id": "CSE1200"},
+        {"id": "CSE1241"},
+        {"id": "MATH1001"},
+        {"id": "PHYS1101"},
+        {"id": "PHYS1103"},
+        {"id": "TRD121"},
+        {"id": "ATA122"},
+        {"id": "CSE1242"},
+        {"id": "MATH1002"},
+        {"id": "MATH2256"},
+        {"id": "PHYS1102"},
+        {"id": "PHYS1104"},
+        {"id": "TRD122"},
+        {"id": "CSE2023"},
+        {"id": "CSE2225"},
+        {"id": "ECON2004"},
+        {"id": "EE2031"},
+        {"id": "MATH2055"},
+        {"id": "MATH2059"},
+        {"id": "CSE2246"},
+        {"id": "CSE2138"},
+        {"id": "CSE2260"},
+        {"id": "EE2032"},
+        {"id": "STAT2253"}
+      ],
+      "advisor": {
+        "id": "A12345",
+        "password": "StrongPassword@123"
+      },
       "departments": null,
       "startYear": null,
-      "year": 2021,
+      "year": 2020,
       "registration": null
     },
     "objectClass": "Student",
@@ -67,57 +155,458 @@
   },
   {
     "object": {
-      "id": "CSE3055-1",
-      "sectionNumber" : 1,
-      "course" : {
-        "id" : "CSE3055"
+      "id": "150120001",
+      "password": "ayse123",
+      "grade": null,
+      "courses": [
+        {"id": "ATA121"},
+        {"id": "MBG1201"},
+        {"id": "CSE1200"},
+        {"id": "CSE1241"},
+        {"id": "MATH1001"},
+        {"id": "PHYS1101"},
+        {"id": "PHYS1103"},
+        {"id": "TRD121"},
+        {"id": "ATA122"},
+        {"id": "CSE1242"},
+        {"id": "MATH1002"},
+        {"id": "MATH2256"},
+        {"id": "PHYS1102"},
+        {"id": "PHYS1104"},
+        {"id": "TRD122"},
+        {"id": "CSE2023"},
+        {"id": "CSE2225"},
+        {"id": "ECON2004"},
+        {"id": "EE2031"},
+        {"id": "MATH2055"},
+        {"id": "MATH2059"},
+        {"id": "CSE2246"},
+        {"id": "CSE2138"},
+        {"id": "CSE2260"},
+        {"id": "EE2032"},
+        {"id": "STAT2253"}
+      ],
+      "advisor": {
+        "id": "A12345",
+        "password": "StrongPassword@123"
+      },
+      "departments": null,
+      "startYear": null,
+      "year": 2020,
+      "registration": null
+    },
+    "objectClass": "Student",
+    "jsonFile": "object4.json"
+  },
+  {
+    "object": {
+      "id": "150123014",
+      "password": "ahmet456",
+      "grade": null,
+      "courses": [
+        {"id": "ATA121"},
+        {"id": "MBG1201"},
+        {"id": "CSE1200"},
+        {"id": "CSE1241"},
+        {"id": "MATH1001"},
+        {"id": "PHYS1101"},
+        {"id": "PHYS1103"},
+        {"id": "TRD121"},
+        {"id": "ATA122"},
+        {"id": "CSE1242"},
+        {"id": "MATH1002"},
+        {"id": "MATH2256"},
+        {"id": "PHYS1102"},
+        {"id": "PHYS1104"},
+        {"id": "TRD122"},
+        {"id": "CSE2023"},
+        {"id": "CSE2225"},
+        {"id": "ECON2004"},
+        {"id": "EE2031"},
+        {"id": "MATH2055"},
+        {"id": "MATH2059"},
+        {"id": "CSE2246"},
+        {"id": "CSE2138"},
+        {"id": "CSE2260"},
+        {"id": "EE2032"},
+        {"id": "STAT2253"}
+      ],
+      "advisor": {
+        "id": "A12345",
+        "password": "StrongPassword@123"
+      },
+      "departments": null,
+      "startYear": null,
+      "year": 2020,
+      "registration": {
+        "registrationStatus": 1
       }
+    },
+    "objectClass": "Student",
+    "jsonFile": "object5.json"
+  },
+  {
+    "object": {
+      "id": "150124032",
+      "password": "meryem789",
+      "grade": null,
+      "courses": [
+        {"id": "ATA121"},
+        {"id": "MBG1201"},
+        {"id": "CSE1200"},
+        {"id": "CSE1241"},
+        {"id": "MATH1001"},
+        {"id": "PHYS1101"},
+        {"id": "PHYS1103"},
+        {"id": "TRD121"},
+        {"id": "ATA122"},
+        {"id": "CSE1242"},
+        {"id": "MATH1002"},
+        {"id": "MATH2256"},
+        {"id": "PHYS1102"},
+        {"id": "PHYS1104"},
+        {"id": "TRD122"},
+        {"id": "CSE2023"},
+        {"id": "CSE2225"},
+        {"id": "ECON2004"},
+        {"id": "EE2031"},
+        {"id": "MATH2055"},
+        {"id": "MATH2059"},
+        {"id": "CSE2246"},
+        {"id": "CSE2138"},
+        {"id": "CSE2260"},
+        {"id": "EE2032"},
+        {"id": "STAT2253"}
+      ],
+      "advisor": {
+        "id": "A12345",
+        "password": "StrongPassword@123"
+      },
+      "departments": null,
+      "startYear": null,
+      "year": 2020,
+      "registration": null
+    },
+    "objectClass": "Student",
+    "jsonFile": "object6.json"
+  },
+  {
+    "object": {
+      "id": "150125098",
+      "password": "omer123",
+      "grade": null,
+      "courses": [
+        {"id": "ATA121"},
+        {"id": "MBG1201"},
+        {"id": "CSE1200"},
+        {"id": "CSE1241"},
+        {"id": "MATH1001"},
+        {"id": "PHYS1101"},
+        {"id": "PHYS1103"},
+        {"id": "TRD121"},
+        {"id": "ATA122"},
+        {"id": "CSE1242"},
+        {"id": "MATH1002"},
+        {"id": "MATH2256"},
+        {"id": "PHYS1102"},
+        {"id": "PHYS1104"},
+        {"id": "TRD122"},
+        {"id": "CSE2023"},
+        {"id": "CSE2225"},
+        {"id": "ECON2004"},
+        {"id": "EE2031"},
+        {"id": "MATH2055"},
+        {"id": "MATH2059"},
+        {"id": "CSE2246"},
+        {"id": "CSE2138"},
+        {"id": "CSE2260"},
+        {"id": "EE2032"},
+        {"id": "STAT2253"}
+      ],
+      "advisor": {
+        "id": "B67890",
+        "password": "SecurePass456!"
+      },
+      "departments": null,
+      "startYear": null,
+      "year": 2020,
+      "registration": null
+    },
+    "objectClass": "Student",
+    "jsonFile": "object7.json"
+  },
+  {
+    "object": {
+      "id": "150126007",
+      "password": "selin456",
+      "grade": null,
+      "courses": [
+        {"id": "ATA121"},
+        {"id": "MBG1201"},
+        {"id": "CSE1200"},
+        {"id": "CSE1241"},
+        {"id": "MATH1001"},
+        {"id": "PHYS1101"},
+        {"id": "PHYS1103"},
+        {"id": "TRD121"},
+        {"id": "ATA122"},
+        {"id": "CSE1242"},
+        {"id": "MATH1002"},
+        {"id": "MATH2256"},
+        {"id": "PHYS1102"},
+        {"id": "PHYS1104"},
+        {"id": "TRD122"},
+        {"id": "CSE2023"},
+        {"id": "CSE2225"},
+        {"id": "ECON2004"},
+        {"id": "EE2031"},
+        {"id": "MATH2055"},
+        {"id": "MATH2059"},
+        {"id": "CSE2246"},
+        {"id": "CSE2138"},
+        {"id": "CSE2260"},
+        {"id": "EE2032"},
+        {"id": "STAT2253"}
+      ],
+      "advisor": {
+        "id": "B67890",
+        "password": "SecurePass456!"
+      },
+      "departments": null,
+      "startYear": null,
+      "year": 2020,
+      "registration": {
+        "registrationStatus": 1
+      }
+    },
+    "objectClass": "Student",
+    "jsonFile": "object8.json"
+  },
+  {
+    "object": {
+      "id": "150127015",
+      "password": "fatih789",
+      "grade": null,
+      "courses": [
+        {"id": "ATA121"},
+        {"id": "MBG1201"},
+        {"id": "CSE1200"},
+        {"id": "CSE1241"},
+        {"id": "MATH1001"},
+        {"id": "PHYS1101"},
+        {"id": "PHYS1103"},
+        {"id": "TRD121"},
+        {"id": "ATA122"},
+        {"id": "CSE1242"},
+        {"id": "MATH1002"},
+        {"id": "MATH2256"},
+        {"id": "PHYS1102"},
+        {"id": "PHYS1104"},
+        {"id": "TRD122"},
+        {"id": "CSE2023"},
+        {"id": "CSE2225"},
+        {"id": "ECON2004"},
+        {"id": "EE2031"},
+        {"id": "MATH2055"},
+        {"id": "MATH2059"},
+        {"id": "CSE2246"},
+        {"id": "CSE2138"},
+        {"id": "CSE2260"},
+        {"id": "EE2032"},
+        {"id": "STAT2253"}
+      ],
+      "advisor": {
+        "id": "B67890",
+        "password": "SecurePass456!"
+      },
+      "departments": null,
+      "startYear": null,
+      "year": 2020,
+      "registration": null
+    },
+    "objectClass": "Student",
+    "jsonFile": "object9.json"
+  },
+  {
+    "object": {
+      "id": "150128022",
+      "password": "elif123",
+      "grade": null,
+      "courses": [
+        {"id": "ATA121"},
+        {"id": "MBG1201"},
+        {"id": "CSE1200"},
+        {"id": "CSE1241"},
+        {"id": "MATH1001"},
+        {"id": "PHYS1101"},
+        {"id": "PHYS1103"},
+        {"id": "TRD121"},
+        {"id": "ATA122"},
+        {"id": "CSE1242"},
+        {"id": "MATH1002"},
+        {"id": "MATH2256"},
+        {"id": "PHYS1102"},
+        {"id": "PHYS1104"},
+        {"id": "TRD122"},
+        {"id": "CSE2023"},
+        {"id": "CSE2225"},
+        {"id": "ECON2004"},
+        {"id": "EE2031"},
+        {"id": "MATH2055"},
+        {"id": "MATH2059"},
+        {"id": "CSE2246"},
+        {"id": "CSE2138"},
+        {"id": "CSE2260"},
+        {"id": "EE2032"},
+        {"id": "STAT2253"}
+      ],
+      "advisor": {
+        "id": "B67890",
+        "password": "SecurePass456!"
+      },
+      "departments": null,
+      "startYear": null,
+      "year": 2020,
+      "registration": null
+    },
+    "objectClass": "Student",
+    "jsonFile": "object10.json"
+  },
+
+  {
+    "object": {
+      "id": "CSE3215-1",
+      "sectionNumber": 1,
+      "course": {
+        "id": "CSE3215"
+      },
+      "prerequisiteCourses": []
+    },
+    "objectClass": "CourseSection",
+    "jsonFile": "object1.json"
+  },
+  {
+    "object": {
+      "id": "CSE3215-2",
+      "sectionNumber": 2,
+      "course": {
+        "id": "CSE3215"
+      },
+      "prerequisiteCourses": []
+    },
+    "objectClass": "CourseSection",
+    "jsonFile": "object2.json"
+  },
+  {
+    "object": {
+      "id": "CSE3033-1",
+      "sectionNumber": 1,
+      "course": {
+        "id": "CSE3033"
+      },
+      "prerequisiteCourses": [
+        {"id": "CSE2225"}
+      ]
     },
     "objectClass": "CourseSection",
     "jsonFile": "object3.json"
+  },
+  {
+    "object": {
+      "id": "CSE3033-2",
+      "sectionNumber": 2,
+      "course": {
+        "id": "CSE3033"
+      },
+      "prerequisiteCourses": [
+        {"id": "CSE2225"}
+      ]
+    },
+    "objectClass": "CourseSection",
+    "jsonFile": "object4.json"
+  },
+  {
+    "object": {
+      "id": "CSE3055-1",
+      "sectionNumber": 1,
+      "course": {
+        "id": "CSE3055"
+      },
+      "prerequisiteCourses": [
+        {"id": "CSE2225"}
+      ]
+    },
+    "objectClass": "CourseSection",
+    "jsonFile": "object5.json"
   },
   {
     "object": {
       "id": "CSE3055-2",
-      "sectionNumber" : 2,
-      "course" : {
-        "id" : "CSE3055"
-      }
+      "sectionNumber": 2,
+      "course": {
+        "id": "CSE3055"
+      },
+      "prerequisiteCourses": [
+        {"id": "CSE2225"}
+      ]
     },
     "objectClass": "CourseSection",
-    "jsonFile": "object3.json"
+    "jsonFile": "object6.json"
   },
   {
     "object": {
-      "id": "CSE3055-3",
-      "sectionNumber" : 3,
-      "course" : {
-        "id" : "CSE3055"
-      }
+      "id": "CSE3063-1",
+      "sectionNumber": 1,
+      "course": {
+        "id": "CSE3063"
+      },
+      "prerequisiteCourses": [
+        {"id": "CSE1242"}
+      ]
     },
     "objectClass": "CourseSection",
-    "jsonFile": "object3.json"
+    "jsonFile": "object7.json"
   },
   {
     "object": {
-      "id": "IE4010-1",
-      "sectionNumber" : 1,
-      "course" : {
-        "id" : "IE4010"
-      }
+      "id": "CSE3063-2",
+      "sectionNumber": 2,
+      "course": {
+        "id": "CSE3063"
+      },
+      "prerequisiteCourses": [
+        {"id": "CSE1242"}
+      ]
     },
     "objectClass": "CourseSection",
-    "jsonFile": "object3.json"
+    "jsonFile": "object8.json"
   },
   {
     "object": {
-      "id": "IE4010-2",
-      "sectionNumber" : 2,
-      "course" : {
-        "id" : "IE4010"
-      }
+      "id": "IE3081-1",
+      "sectionNumber": 1,
+      "course": {
+        "id": "IE3081"
+      },
+      "prerequisiteCourses": [
+        {"id": "STAT2253"}
+      ]
     },
     "objectClass": "CourseSection",
-    "jsonFile": "object3.json"
+    "jsonFile": "object9.json"
+  },
+  {
+    "object": {
+      "id": "IE3081-2",
+      "sectionNumber": 2,
+      "course": {
+        "id": "IE3081"
+      },
+      "prerequisiteCourses": [
+        {"id": "STAT2253"}
+      ]
+    },
+    "objectClass": "CourseSection",
+    "jsonFile": "object10.json"
   }
 ]

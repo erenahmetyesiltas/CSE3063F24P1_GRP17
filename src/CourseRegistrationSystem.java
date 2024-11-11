@@ -173,6 +173,21 @@ public class CourseRegistrationSystem {
         }
     }
 
+    public void saveLastState() throws IOException {
+        for (Student student : this.getAllStudents()) {
+            dataHandler.storeObject(student);
+            dataHandler.removeDuplicateData();
+        }
+        for (CourseSection courseSection : this.getAllCourseSections()) {
+            dataHandler.storeObject(courseSection);
+            dataHandler.removeDuplicateData();
+        }
+        for (Advisor advisor : this.getAllAdvisors()) {
+            dataHandler.storeObject(advisor);
+            dataHandler.removeDuplicateData();
+        }
+    }
+
     // public void answerRegistrationRequests(Advisor advisor)
     // Advisor girişi için gelen registration requestlerini istediği zaman konsola basacak bir fonksiyon, sıra sıra requestleri basacak ve advisora soracak onay mı ret mi beklet mi diye
     // Main'de system.answerRegistrationRequests(advisor) olarak call olacak

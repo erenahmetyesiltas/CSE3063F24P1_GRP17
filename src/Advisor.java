@@ -28,5 +28,14 @@ public class Advisor extends Person {
         return registrations;
     }
 
+    public void setStatus(Registration registration, int status) {
+        registration.setRegistrationStatus(status);
+        for (Registration reg : registrations) {
+            if (reg.getId().equals(registration.getId())) {
+                reg.setRegistrationStatus(status);
+            }
+        }
+    }
+
 
 }
