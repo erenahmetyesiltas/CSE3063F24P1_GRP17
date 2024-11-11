@@ -98,7 +98,7 @@ public class CourseRegistrationSystem {
             System.out.println();
         }
     }
-
+    // addCourseSection is added to Student, change it in DSD and SSD
     public CourseSection findCourseSection(String course, String section) {
         int sectionNumber = Integer.parseInt(section);
         for (CourseSection courseSection : this.getAllCourseSections()) {
@@ -116,7 +116,7 @@ public class CourseRegistrationSystem {
        System.out.println("Enter the course");
        String courseSection =scanner.next();
 
-       if ( findCourseSection(course,courseSection) != null) {
+       if (findCourseSection(course,courseSection) != null) {
            return student.getRegistration().addCourseSection((findCourseSection(course,courseSection)));
        }
        else {
