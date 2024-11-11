@@ -12,6 +12,11 @@ public class Registration {
     }
 
     public boolean addCourseSection(CourseSection coursesection) {
+        if (courseSections.size() >= 5) {
+            System.out.println("WARNING ! : (Total course number exceeds 5) " + coursesection.getCourse().getId() + " - " + coursesection.getSectionNumber() + " cannot added to registration");
+            return false;
+        }
+        // Alınabilecek max course sayısı 5 ile limitlenecek
         if (coursesection != null) {
             for (CourseSection courseSection : courseSections) {
                 if (coursesection.getCourse().getId().equals(courseSection.getCourse().getId()) && coursesection.getSectionNumber() == courseSection.getSectionNumber()) {

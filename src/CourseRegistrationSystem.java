@@ -131,55 +131,41 @@ public class CourseRegistrationSystem {
         // an advisor is needs
         Advisor advisor = student.getAdvisor();
         advisor.addRegistration(registration);
+
+        for (Advisor advisor1 : this.getAllAdvisors()) {
+            if (advisor1.getId().equals(advisor.getId())) {
+                advisor1.addRegistration(registration);
+            }
+        }
     }
 
-    public void studentEnrollRequest(Student student, String courseCode, int courseSectionId){
+    public void studentEnrollRequest(Student student){
 
         // Regist. and Adv. got from Student
         Registration registration = student.getRegistration();
-        Advisor advisor = student.getAdvisor();
 
-
-        CourseSection courseSection = new CourseSection();
-
-        // to understand is matching operation exist
-        boolean isItMatchedAnyCourseSection = false;
-
-        for (int i = 0; i < allCourseSections.size(); i++) {
-            if(allCourseSections.get(i).getId().equals(courseCode + "-" + courseSectionId)){
-                courseSection = allCourseSections.get(i);
-
-                // matching operation is done.
-                isItMatchedAnyCourseSection = true;
+        switch (registration.getRegistrationStatus()) {
+            case 0 :
+                System.out.println("WARNING : Your advisor has disapproved your registration, you have to change and send it again");
                 break;
-            }
+            case 1:
+                System.out.println("WARNING : Your advisor has not yet checked your registration");
+                break;
+            case 2 :
+                System.out.println("SUCCESS : Your advisor has approved your registration, you will be enrolled to the courses you want");
+                enrollStudent(registration.getCourseSectionList(), student);
         }
-
-        if(isItMatchedAnyCourseSection){
-
-            // registration of the selected course section
-            registration.addCourseSection(courseSection);
-
-            // after that, the allow of advisor will specify the status of the registration
-            advisor.addRegistration(registration);
-
-            enrollStudent(registration);
-
-
-        }else{
-            System.out.println("Please enter valid value to choose a course section.");
-        }
-
 
     }
 
-    public void enrollStudent(Registration registration){
-        if(registration.getRegistrationStatus() == 2){
-            System.out.println("The course section was added successfully.");
-        }else if(registration.getRegistrationStatus() == 1){
-            System.out.println("The course section you selected is waited.");
-        }else if(registration.getRegistrationStatus() == 0){
-            System.out.println("You are not allowed to choose your selected course section.");
+    public void enrollStudent(List<CourseSection> enrollCourseSections, Student student){
+        for (CourseSection courseSection : allCourseSections) {
+            for (CourseSection enrollCourseSection : enrollCourseSections) {
+                if (enrollCourseSection.getCourse().getId().equals(courseSection.getCourse().getId())) {
+                    courseSection.getStudentEnrolled().add(student);
+                    enrollCourseSection.getStudentEnrolled().add(student);
+                }
+            }
         }
     }
 
