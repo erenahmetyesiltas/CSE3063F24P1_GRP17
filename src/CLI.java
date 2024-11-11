@@ -14,22 +14,23 @@ class CLI {
 
     public void run() throws IOException {
         try {
-            System.out.println("Please enter 1 for Advisor, enter 2 for Student, 3 for Log Out");
-            System.out.println("1- Advisor Login");
-            System.out.println("2- Student Login");
-            System.out.println("3- Log Out");
-
             while (true) {
-                int choice = scanner.nextInt();
+                System.out.println("Please select an option:");
+                System.out.println("1- Advisor Login");
+                System.out.println("2- Student Login");
+                System.out.println("3- Log Out");
 
-                switch (choice) {
+                System.out.print("Enter your choice: ");
+                int userChoice = scanner.nextInt();
+                scanner.nextLine(); // Consume newline left-over
+
+                switch (userChoice) {
                     case 1 -> loginStudent();
                     case 2 -> loginAdvisor();
                     case 3 -> logout();
                     default -> System.out.println("Invalid choice.");
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,10 +38,10 @@ class CLI {
 
     private void loginStudent() {
         try {
-            System.out.print("Enter your nickname: ");
+            System.out.println("Enter your nickname: ");
             String nickname = scanner.nextLine();
 
-            System.out.print("Enter your password: ");
+            System.out.println("Enter your password: ");
             String password = scanner.nextLine();
 
             if (loginSystem.authenticateUser(nickname, password, courseRegSystem)) {
@@ -63,7 +64,7 @@ class CLI {
             System.out.println("----------ACTIONS----------");
             System.out.println("1- Create a registration");
             System.out.println("2- Check current registration status");
-            System.out.print("Please choose an action: ");
+            System.out.println("Please choose an action: ");
 
             int choice = scanner.nextInt();
 
@@ -73,7 +74,7 @@ class CLI {
                 default -> System.out.println("Invalid choice.");
             }
 
-            System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
+            System.out.println("Do you want to continue? (If not you will logout) (y/n): ");
             String continueChoice = scanner.next();
             if (continueChoice.equalsIgnoreCase("n")) {
                 logout();
@@ -84,10 +85,10 @@ class CLI {
 
     private void loginAdvisor() {
         try {
-            System.out.print("Enter your nickname: ");
+            System.out.println("Enter your nickname: ");
             String nickname = scanner.nextLine();
 
-            System.out.print("Enter your password: ");
+            System.out.println("Enter your password: ");
             String password = scanner.nextLine();
 
             if (loginSystem.authenticateUser(nickname, password, courseRegSystem)) {
@@ -108,7 +109,7 @@ class CLI {
             System.out.println("----------ACTIONS----------");
             System.out.println("1- Check students");
             System.out.println("2- Approve/Reject student registration requests");
-            System.out.print("Please choose an action: ");
+            System.out.println("Please choose an action: ");
 
             int choice = scanner.nextInt();
 
