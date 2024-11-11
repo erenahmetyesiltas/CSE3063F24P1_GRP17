@@ -5,6 +5,8 @@ public class Registration {
     private List<CourseSection> courseSections = new ArrayList<>();
     private int registrationStatus;
 
+    private Student student = new Student();
+
     public Registration() {
 
     }

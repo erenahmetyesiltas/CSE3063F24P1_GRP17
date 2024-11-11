@@ -36,7 +36,11 @@ public class Student extends Person {
     }
 
     public void printAdvisorDisapproval(){
-        System.out.println("Advisor disapproval");
+
+        if(registration.getRegistrationStatus() == 0){
+            System.out.println("Advisor disapproval");
+        }
+
     }
 
     public Grade getGrade() {

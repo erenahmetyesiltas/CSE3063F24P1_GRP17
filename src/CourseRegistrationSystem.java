@@ -109,7 +109,7 @@ public class CourseRegistrationSystem {
         return null;
     }
 
-   public boolean readCourses(Student student){
+    public boolean readCourses(Student student){
        Scanner scanner = new Scanner(System.in);
        System.out.println("Enter the course");
        String course = scanner.next();
@@ -127,6 +127,60 @@ public class CourseRegistrationSystem {
 
    }
 
+    public void sendRegistrationToAdvisor(Registration registration, Student student){
+        // an advisor is needs
+        Advisor advisor = student.getAdvisor();
+        advisor.addRegistration(registration);
+    }
 
+    public void studentEnrollRequest(Student student, String courseCode, int courseSectionId){
+
+        // Regist. and Adv. got from Student
+        Registration registration = student.getRegistration();
+        Advisor advisor = student.getAdvisor();
+
+
+        CourseSection courseSection = new CourseSection();
+
+        // to understand is matching operation exist
+        boolean isItMatchedAnyCourseSection = false;
+
+        for (int i = 0; i < allCourseSections.size(); i++) {
+            if(allCourseSections.get(i).getId().equals(courseCode + "-" + courseSectionId)){
+                courseSection = allCourseSections.get(i);
+
+                // matching operation is done.
+                isItMatchedAnyCourseSection = true;
+                break;
+            }
+        }
+
+        if(isItMatchedAnyCourseSection){
+
+            // registration of the selected course section
+            registration.addCourseSection(courseSection);
+
+            // after that, the allow of advisor will specify the status of the registration
+            advisor.addRegistration(registration);
+
+            enrollStudent(registration);
+
+
+        }else{
+            System.out.println("Please enter valid value to choose a course section.");
+        }
+
+
+    }
+
+    public void enrollStudent(Registration registration){
+        if(registration.getRegistrationStatus() == 2){
+            System.out.println("The course section was added successfully.");
+        }else if(registration.getRegistrationStatus() == 1){
+            System.out.println("The course section you selected is waited.");
+        }else if(registration.getRegistrationStatus() == 0){
+            System.out.println("You are not allowed to choose your selected course section.");
+        }
+    }
 
 }
