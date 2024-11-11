@@ -41,6 +41,8 @@ public class Main {
 
             system.printSuitableCourses();
 
+            //  Buraya yazacağın kodun sıra sıra course alacak şekilde olması lazım readCourse kullanarak
+
         } catch (Exception e) {
             e.printStackTrace();
         }

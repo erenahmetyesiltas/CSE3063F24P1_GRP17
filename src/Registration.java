@@ -9,8 +9,19 @@ public class Registration {
 
     }
 
-    public void addCourseSection(CourseSection coursesection) {
-        courseSections.add(coursesection);
+    public boolean addCourseSection(CourseSection coursesection) {
+        if (coursesection != null) {
+            courseSections.add(coursesection);
+            System.out.println(coursesection.getCourse().getId() + " - " + coursesection.getId() + " added to registration");
+            return true;
+        }
+       else {
+            System.out.println("WARNING ! : " + coursesection.getCourse().getId() + " - " + coursesection.getId() + " cannot added to registration");
+            return false;
+        }
+
+
+
     }
 
     public List<CourseSection> getCourseSectionList() {

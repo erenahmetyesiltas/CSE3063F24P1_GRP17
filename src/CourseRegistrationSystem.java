@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class CourseRegistrationSystem {
     private List<Student> allStudents = new ArrayList<Student>();
@@ -107,6 +108,25 @@ public class CourseRegistrationSystem {
         }
         return null;
     }
+
+   public boolean readCourses(Student student){
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter the course");
+       String course = scanner.next();
+       System.out.println("Enter the course");
+       String courseSection =scanner.next();
+
+       if ( findCourseSection(course,courseSection) != null) {
+           return student.getRegistration().addCourseSection((findCourseSection(course,courseSection)));
+       }
+       else {
+           System.out.println("WARNING: Course cannot find in available courses");
+           return false;
+       }
+
+
+   }
+
 
 
 }
