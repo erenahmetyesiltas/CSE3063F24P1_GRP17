@@ -11,6 +11,11 @@ public class Registration {
 
     public boolean addCourseSection(CourseSection coursesection) {
         if (coursesection != null) {
+            for (CourseSection courseSection : courseSections) {
+                if (coursesection.getCourse().getId().equals(courseSection.getCourse().getId()) && coursesection.getSectionNumber() == courseSection.getSectionNumber()) {
+                    return false;
+                }
+            }
             courseSections.add(coursesection);
             System.out.println(coursesection.getCourse().getId() + " - " + coursesection.getId() + " added to registration");
             return true;
