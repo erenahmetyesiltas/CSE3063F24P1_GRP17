@@ -20,17 +20,7 @@ public class Advisor extends Person {
     }
 
     public void addRegistration (Registration registration) {
-
-        int sizeOfRegistrations = registrations.size();
-        registration = new Registration();
         registrations.add(registration);
-
-        if(sizeOfRegistrations + 1 == registrations.size()){
-           registration.setRegistrationStatus(2);
-        }else if(sizeOfRegistrations == registrations.size()){
-           registration.setRegistrationStatus(0);
-           // or registration.setRegistrationStatus(1);
-        }
 
     }
 
