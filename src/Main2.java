@@ -114,7 +114,10 @@ public class Main2 {
                                     // Implement the logic for listing students
                                 }
                                 case 2 -> {
-                                    System.out.println("Approve/Reject registration requests - Not implemented yet.");
+                                    System.out.println("Approve/Reject registration requests - Not implemented yet.Will be in iteration 2");
+                                    // Due to JSON problems..
+                                    //Will be in iteration 2
+                                    //system.answerRegistrationRequests(advisor);
                                 }
                                 case 3 -> {
                                     system.saveLastState();
