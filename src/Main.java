@@ -87,6 +87,7 @@ public class Main {
                                 continue;
                             }
                             else if (continueChoice.equalsIgnoreCase("n")) {
+                                // En son state'i json'a kaydetme yazılacak yetiştiremedim
                                 System.out.println("\nLogged out successfully! ");
                                 break;
                             }
