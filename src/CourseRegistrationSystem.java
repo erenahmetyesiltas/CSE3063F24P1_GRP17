@@ -98,5 +98,15 @@ public class CourseRegistrationSystem {
         }
     }
 
+    public CourseSection findCourseSection(String course, String section) {
+        int sectionNumber = Integer.parseInt(section);
+        for (CourseSection courseSection : this.getAllCourseSections()) {
+            if (courseSection.getCourse().getId().equals(course) && courseSection.getSectionNumber() == sectionNumber) {
+                return courseSection;
+            }
+        }
+        return null;
+    }
+
 
 }
