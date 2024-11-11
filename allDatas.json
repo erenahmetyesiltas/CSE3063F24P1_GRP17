@@ -478,9 +478,9 @@
       "id": "CSE3215-1",
       "sectionNumber": 1,
       "course": {
-        "id": "CSE3215"
-      },
-      "prerequisiteCourses": []
+        "id": "CSE3215",
+        "prerequisiteCourses": []
+      }
     },
     "objectClass": "CourseSection",
     "jsonFile": "object1.json"
@@ -490,9 +490,9 @@
       "id": "CSE3215-2",
       "sectionNumber": 2,
       "course": {
-        "id": "CSE3215"
-      },
-      "prerequisiteCourses": []
+        "id": "CSE3215",
+        "prerequisiteCourses": []
+      }
     },
     "objectClass": "CourseSection",
     "jsonFile": "object2.json"
@@ -502,11 +502,11 @@
       "id": "CSE3033-1",
       "sectionNumber": 1,
       "course": {
-        "id": "CSE3033"
-      },
-      "prerequisiteCourses": [
-        {"id": "CSE2225"}
-      ]
+        "id": "CSE3033",
+        "prerequisiteCourses": [
+          {"id": "CSE2225"}
+        ]
+      }
     },
     "objectClass": "CourseSection",
     "jsonFile": "object3.json"
@@ -516,11 +516,11 @@
       "id": "CSE3033-2",
       "sectionNumber": 2,
       "course": {
-        "id": "CSE3033"
-      },
-      "prerequisiteCourses": [
-        {"id": "CSE2225"}
-      ]
+        "id": "CSE3033",
+        "prerequisiteCourses": [
+          {"id": "CSE2225"}
+        ]
+      }
     },
     "objectClass": "CourseSection",
     "jsonFile": "object4.json"
@@ -530,11 +530,11 @@
       "id": "CSE3055-1",
       "sectionNumber": 1,
       "course": {
-        "id": "CSE3055"
-      },
-      "prerequisiteCourses": [
-        {"id": "CSE2225"}
-      ]
+        "id": "CSE3055",
+        "prerequisiteCourses": [
+          {"id": "CSE2225"}
+        ]
+      }
     },
     "objectClass": "CourseSection",
     "jsonFile": "object5.json"
@@ -544,11 +544,11 @@
       "id": "CSE3055-2",
       "sectionNumber": 2,
       "course": {
-        "id": "CSE3055"
-      },
-      "prerequisiteCourses": [
-        {"id": "CSE2225"}
-      ]
+        "id": "CSE3055",
+        "prerequisiteCourses": [
+          {"id": "CSE2225"}
+        ]
+      }
     },
     "objectClass": "CourseSection",
     "jsonFile": "object6.json"
@@ -558,11 +558,11 @@
       "id": "CSE3063-1",
       "sectionNumber": 1,
       "course": {
-        "id": "CSE3063"
-      },
-      "prerequisiteCourses": [
-        {"id": "CSE1242"}
-      ]
+        "id": "CSE3063",
+        "prerequisiteCourses": [
+          {"id": "CSE1242"}
+        ]
+      }
     },
     "objectClass": "CourseSection",
     "jsonFile": "object7.json"
@@ -572,11 +572,11 @@
       "id": "CSE3063-2",
       "sectionNumber": 2,
       "course": {
-        "id": "CSE3063"
-      },
-      "prerequisiteCourses": [
-        {"id": "CSE1242"}
-      ]
+        "id": "CSE3063",
+        "prerequisiteCourses": [
+          {"id": "CSE1242"}
+        ]
+      }
     },
     "objectClass": "CourseSection",
     "jsonFile": "object8.json"
@@ -586,11 +586,11 @@
       "id": "IE3081-1",
       "sectionNumber": 1,
       "course": {
-        "id": "IE3081"
-      },
-      "prerequisiteCourses": [
-        {"id": "STAT2253"}
-      ]
+        "id": "IE3081",
+        "prerequisiteCourses": [
+          {"id": "STAT2253"}
+        ]
+      }
     },
     "objectClass": "CourseSection",
     "jsonFile": "object9.json"
@@ -600,11 +600,11 @@
       "id": "IE3081-2",
       "sectionNumber": 2,
       "course": {
-        "id": "IE3081"
-      },
-      "prerequisiteCourses": [
-        {"id": "STAT2253"}
-      ]
+        "id": "IE3081",
+        "prerequisiteCourses": [
+          {"id": "STAT2253"}
+        ]
+      }
     },
     "objectClass": "CourseSection",
     "jsonFile": "object10.json"
