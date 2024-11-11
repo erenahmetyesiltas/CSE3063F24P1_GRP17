@@ -100,6 +100,7 @@ public class Main {
 
                     }
                     else {
+                        // Advisor işlemleri ve UI burada
                         advisor = loginSystem.getAdvisor();
                     }
                 } else {

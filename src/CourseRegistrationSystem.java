@@ -148,6 +148,7 @@ public class CourseRegistrationSystem {
             case 0 :
                 System.out.println("WARNING : Your advisor has disapproved your registration, you have to create a new one and send it again\n");
                 student.getAdvisor().getRegistrations().remove(student.getRegistration());
+                // allAdvisorstan da remove et
                 student.setRegistration(null);
                 break;
             case 1:

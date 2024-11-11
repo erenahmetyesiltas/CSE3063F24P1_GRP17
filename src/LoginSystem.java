@@ -23,8 +23,11 @@ public class LoginSystem {
         if (student != null) {
             return student.getPassword().equals(password);
         }
-        else {
+        else if (advisor != null) {
             return advisor.getPassword().equals(password);
+        }
+        else {
+            return false;
         }
 
 

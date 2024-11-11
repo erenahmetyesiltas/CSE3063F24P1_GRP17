@@ -2,6 +2,7 @@ import java.sql.Time;
 import java.util.List;
 
 public class CourseSection {
+    private List<Student> enrolledStudents;
     private String id;
     private Time scheduledTime;
     private int sectionNumber;
@@ -47,8 +48,8 @@ public class CourseSection {
         return studentEnrolled;
     }
 
-    public void setStudentEnrolled(List<Student> studentEnrolled) {
-        this.studentEnrolled = studentEnrolled;
+    public void setStudentEnrolled(Student studentEnrolled) {
+        this.getStudentEnrolled() = studentEnrolled;
     }
 
     public String getClassroom() {

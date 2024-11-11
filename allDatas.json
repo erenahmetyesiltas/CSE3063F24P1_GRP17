@@ -13,11 +13,22 @@
       "password" : "melisa",
       "grade": null,
       "courses": null,
-      "advisor": null,
+      "advisor": {
+        "id" : "545454",
+        "password" : "advisor"
+      },
       "departments": null,
       "startYear": null,
       "year": 2019,
       "registration": {
+        "courseSections" : [
+          {
+            "id": "IE4010-2",
+            "sectionNumber" : 2,
+            "course" : {
+              "id" : "IE4010"
+            }
+        ],
         "registrationStatus": 0
       }
     },
