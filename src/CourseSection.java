@@ -1,14 +1,25 @@
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CourseSection {
-    private List<Student> enrolledStudents;
+
+    private List<Student> enrolledStudents = new ArrayList<Student>();
+    private String Classroom;
     private String id;
     private Time scheduledTime;
     private int sectionNumber;
     private Course course;
     private int capacity;
     private int currentParticipantNumber;
+
+    public List<Student> getEnrolledStudents() {
+        return enrolledStudents;
+    }
+
+    public void setEnrolledStudents(List<Student> enrolledStudents) {
+        this.enrolledStudents = enrolledStudents;
+    }
 
     public String getId() {
         return id;
@@ -18,7 +29,9 @@ public class CourseSection {
         this.id = id;
     }
 
-    public CourseSection() {}
+    public CourseSection() {
+
+    }
 
     public Time getScheduledTime() {
         return scheduledTime;
@@ -44,14 +57,6 @@ public class CourseSection {
         this.course = course;
     }
 
-    public List<Student> getStudentEnrolled() {
-        return studentEnrolled;
-    }
-
-    public void setStudentEnrolled(List<Student> studentEnrolled) {
-        this.studentEnrolled = studentEnrolled;
-    }
-
     public String getClassroom() {
         return Classroom;
     }
@@ -60,14 +65,8 @@ public class CourseSection {
         Classroom = classroom;
     }
 
-    public int getCurrentParticipantNumber() {return currentParticipantNumber;}
-
-    public void setCurrentParticipantNumber(int currentParticipantNumber) {this.currentParticipantNumber = currentParticipantNumber;}
-
     public int getCapacity() {return capacity;}
 
     public void setCapacity(int capacity) {this.capacity = capacity;}
 
-    private List<Student> studentEnrolled ;
-    private String Classroom;
 }

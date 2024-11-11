@@ -166,8 +166,8 @@ public class CourseRegistrationSystem {
         for (CourseSection courseSection : allCourseSections) {
             for (CourseSection enrollCourseSection : enrollCourseSections) {
                 if (enrollCourseSection.getCourse().getId().equals(courseSection.getCourse().getId())) {
-                    courseSection.getStudentEnrolled().add(student);
-                    enrollCourseSection.getStudentEnrolled().add(student);
+                    courseSection.getEnrolledStudents().add(student);
+                    enrollCourseSection.getEnrolledStudents().add(student);
                 }
             }
         }
