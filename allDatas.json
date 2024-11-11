@@ -21,14 +21,6 @@
       "startYear": null,
       "year": 2019,
       "registration": {
-        "courseSections" : [
-          {
-            "id": "IE4010-2",
-            "sectionNumber" : 2,
-            "course" : {
-              "id" : "IE4010"
-            }
-        ],
         "registrationStatus": 0
       }
     },
