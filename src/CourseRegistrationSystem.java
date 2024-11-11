@@ -146,14 +146,17 @@ public class CourseRegistrationSystem {
 
         switch (registration.getRegistrationStatus()) {
             case 0 :
-                System.out.println("WARNING : Your advisor has disapproved your registration, you have to change and send it again");
+                System.out.println("WARNING : Your advisor has disapproved your registration, you have to create a new one and send it again\n");
+                student.getAdvisor().getRegistrations().remove(student.getRegistration());
+                student.setRegistration(null);
                 break;
             case 1:
-                System.out.println("WARNING : Your advisor has not yet checked your registration");
+                System.out.println("WARNING : Your advisor has not yet checked your registration\n");
                 break;
             case 2 :
-                System.out.println("SUCCESS : Your advisor has approved your registration, you will be enrolled to the courses you want");
+                System.out.println("SUCCESS : Your advisor has approved your registration, you will be enrolled to the courses you \n");
                 enrollStudent(registration.getCourseSectionList(), student);
+                break;
         }
 
     }
@@ -168,5 +171,9 @@ public class CourseRegistrationSystem {
             }
         }
     }
+
+    // public void answerRegistrationRequests(Advisor advisor)
+    // Advisor girişi için gelen registration requestlerini istediği zaman konsola basacak bir fonksiyon, sıra sıra requestleri basacak ve advisora soracak onay mı ret mi beklet mi diye
+    // Main'de system.answerRegistrationRequests(advisor) olarak call olacak
 
 }

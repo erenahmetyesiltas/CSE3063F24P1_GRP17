@@ -24,4 +24,9 @@ public class Advisor extends Person {
 
     }
 
+    public List<Registration> getRegistrations() {
+        return registrations;
+    }
+
+
 }
