@@ -188,7 +188,58 @@ public class CourseRegistrationSystem {
         }
     }
 
+    public boolean checkEligibility(Student student) {
+        if (checkPrerequisite(student) && checkCourseSectionFull(student)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
+    public boolean checkCourseSectionFull(Student student) {
+        List<CourseSection> regCourseSections = student.getRegistration().getCourseSectionList();
+        List<Course> prerequisiteCourses = new ArrayList<Course>();
+
+        for (int i = 0; i < regCourseSections.size(); i++) {
+            if (regCourseSections.get(i).getCapacity() <= regCourseSections.get(i).getEnrolledStudents().size()) { // checks if there are any full course sections
+                // if yes return false
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
+    public boolean checkPrerequisite(Student student) {
+        List<CourseSection> regCourseSections = student.getRegistration().getCourseSectionList();
+        List<Course> prerequisiteCourses = new ArrayList<Course>();
+
+        for (int i = 0; i < regCourseSections.size(); i++) {
+            for (int j = 0; j < regCourseSections.get(i).getCourse().getPrerequisiteCourses().size(); j++) {
+                prerequisiteCourses.add(regCourseSections.get(i).getCourse().getPrerequisiteCourses().get(j));
+            }
+        }
+
+        List<Course> takenCourses = student.getCourses();
+        boolean canTake = false;
+
+        int n = prerequisiteCourses.size();
+        int z = 0;
+
+        for (int i = 0; i < prerequisiteCourses.size(); i++) {
+            for (int j = 0; j < takenCourses.size(); j++) {
+                if (prerequisiteCourses.get(i).equals(takenCourses.get(j))) {
+                    z++;
+                    break;
+                }
+            }
+        }
+        if (n == z)
+            canTake = true;
+        return canTake;
+    }
 
     // public void answerRegistrationRequests(Advisor advisor)
     // Advisor girişi için gelen registration requestlerini istediği zaman konsola basacak bir fonksiyon, sıra sıra requestleri basacak ve advisora soracak onay mı ret mi beklet mi diye
