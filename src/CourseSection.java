@@ -2,14 +2,20 @@ import java.sql.Time;
 import java.util.List;
 
 public class CourseSection {
+    private String id;
     private Time scheduledTime;
     private int sectionNumber;
     private Course course;
     private int capacity;
-
-
-
     private int currentParticipantNumber;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public CourseSection() {}
 

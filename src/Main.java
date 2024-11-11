@@ -39,6 +39,8 @@ public class Main {
             e.printStackTrace();
             }
 
+            system.printSuitableCourses();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

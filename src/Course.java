@@ -2,15 +2,23 @@ import java.util.Date;
 import java.util.List;
 
 public class Course {
-    private List<CourseSection> courseSection;
+    private String id;
+    //private List<CourseSection> courseSections;
     private int credit;
     private List<Department> departments;
     private Date year;
-    private ID id;
     private List<Course> prerequisiteCourses;
 
     public Course() {
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public List<Department> getDepartments() {
@@ -49,13 +57,13 @@ public class Course {
         this.prerequisiteCourses = prerequisiteCourses;
     }
 
-    public List<CourseSection> getCourseSection() {
-        return courseSection;
-    }
+    //public List<CourseSection> getCourseSection() {
+        //return courseSections;
+    //}
 
-    public void setCourseSection(List<CourseSection> courseSection) {
-        this.courseSection = courseSection;
-    }
+    //public void setCourseSection(List<CourseSection> courseSection) {
+        //this.courseSections = courseSection;
+    //}
 
 }
 

@@ -54,5 +54,60 @@
     },
     "objectClass": "Student",
     "jsonFile": "object3.json"
+  },
+  {
+    "object": {
+      "id": "CSE3055-1",
+      "sectionNumber" : 1,
+      "course" : {
+        "id" : "CSE3055"
+      }
+    },
+    "objectClass": "CourseSection",
+    "jsonFile": "object3.json"
+  },
+  {
+    "object": {
+      "id": "CSE3055-2",
+      "sectionNumber" : 2,
+      "course" : {
+        "id" : "CSE3055"
+      }
+    },
+    "objectClass": "CourseSection",
+    "jsonFile": "object3.json"
+  },
+  {
+    "object": {
+      "id": "CSE3055-3",
+      "sectionNumber" : 3,
+      "course" : {
+        "id" : "CSE3055"
+      }
+    },
+    "objectClass": "CourseSection",
+    "jsonFile": "object3.json"
+  },
+  {
+    "object": {
+      "id": "IE4010-1",
+      "sectionNumber" : 1,
+      "course" : {
+        "id" : "IE4010"
+      }
+    },
+    "objectClass": "CourseSection",
+    "jsonFile": "object3.json"
+  },
+  {
+    "object": {
+      "id": "IE4010-2",
+      "sectionNumber" : 2,
+      "course" : {
+        "id" : "IE4010"
+      }
+    },
+    "objectClass": "CourseSection",
+    "jsonFile": "object3.json"
   }
 ]

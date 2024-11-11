@@ -87,5 +87,16 @@ public class CourseRegistrationSystem {
         dataHandler.removeDuplicateData();
     }
 
+    public void printSuitableCourses() {
+        System.out.println("\nThe available courses that you can register\n");
+        System.out.println("Course :               Section :");
+        for (CourseSection courseSection : this.getAllCourseSections()) {
+            Course currentCourse = courseSection.getCourse();
+
+            System.out.printf("%-21s%-10d", currentCourse.getId(), courseSection.getSectionNumber());
+            System.out.println();
+        }
+    }
+
 
 }
