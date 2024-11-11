@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -96,12 +94,63 @@ public class Main {
                         }
 
 
-
-
                     }
                     else {
                         // Advisor işlemleri ve UI burada
                         advisor = loginSystem.getAdvisor();
+                        while (true) {
+                            System.out.println("----------ADVISOR ACTIONS----------");
+                            System.out.println("1- View students");
+                            System.out.println("2- Approve/Reject registration requests");
+                            System.out.println("3- Log out");
+                            System.out.print("Please choose an action: ");
+
+                            int advisorChoice = scanner.nextInt();
+                            scanner.nextLine(); // Consume newline
+
+                            switch (advisorChoice) {
+                                case 1 -> {
+                                    System.out.println("Students under your supervision:");
+                                    /*
+                                    for (Student supervisedStudent : advisor.getStudents()) {
+                                        System.out.println("ID: " + supervisedStudent.getId() + " | Name: " + supervisedStudent.getName());
+                                    }
+
+                                     */
+                                }
+                                case 2 -> {
+                                    System.out.println("Supervised Students.");
+                                    /*
+                                    for (Student supervisedStudent : advisor.getStudents()) {
+                                        if (supervisedStudent.getRegistration() != null && supervisedStudent.getRegistration().isPending()) {
+                                            System.out.println("Student: " + supervisedStudent.getName());
+                                            System.out.println("Pending Registration:");
+                                            for (CourseSection courseSection : supervisedStudent.getRegistration().getCourseSectionList()) {
+                                                System.out.println(courseSection.getCourse().getId() + " - " + courseSection.getSectionNumber());
+                                            }
+
+                                            System.out.print("Approve this registration? (y/n): ");
+                                            String decision = scanner.next();
+                                            if (decision.equalsIgnoreCase("y")) {
+                                                supervisedStudent.getRegistration().approve();
+                                                System.out.println("Registration approved.");
+                                            } else {
+                                                supervisedStudent.getRegistration().reject();
+                                                System.out.println("Registration rejected.");
+                                            }
+                                        } else {
+                                            System.out.println("No pending registrations for student: " + supervisedStudent.getName());
+                                        }
+                                    }
+                                     */
+                                }
+                                case 3 -> {
+                                    System.out.println("Logging out...");
+                                    return; // Exit the advisor actions loop
+                                }
+                                default -> System.out.println("Invalid choice. Please try again.");
+                            }
+                        }
                     }
                 } else {
                     System.out.println("Invalid nickname or password.");
