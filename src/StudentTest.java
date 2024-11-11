@@ -57,7 +57,7 @@ public class StudentTest {
     @Test
     public void sectionFullFailFail() {
         // Simply test that the method runs without throwing an exception
-        student.sectionFullFailFail(null);
+        student.sectionFullFail(null);
     }
 
     @Test

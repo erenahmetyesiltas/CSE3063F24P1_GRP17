@@ -31,7 +31,7 @@ public class Student extends Person {
         System.out.println("Prerequisite is fail");
     }
 
-    public void sectionFullFailFail(List <CourseSection> courseSectionList){
+    public void sectionFullFail(List <CourseSection> courseSectionList){
         System.out.println("This section is full");
     }
 
