@@ -63,4 +63,11 @@ public class Registration {
         registrationStatus = status;
     }
 
+
+    /*Iteration 2
+    public Student getStudent() {
+        return student;
+    }
+
+     */
 }

@@ -120,30 +120,9 @@ public class Main {
                                      */
                                 }
                                 case 2 -> {
-                                    System.out.println("Supervised Students.");
-                                    /*
-                                    for (Student supervisedStudent : advisor.getStudents()) {
-                                        if (supervisedStudent.getRegistration() != null && supervisedStudent.getRegistration().isPending()) {
-                                            System.out.println("Student: " + supervisedStudent.getName());
-                                            System.out.println("Pending Registration:");
-                                            for (CourseSection courseSection : supervisedStudent.getRegistration().getCourseSectionList()) {
-                                                System.out.println(courseSection.getCourse().getId() + " - " + courseSection.getSectionNumber());
-                                            }
-
-                                            System.out.print("Approve this registration? (y/n): ");
-                                            String decision = scanner.next();
-                                            if (decision.equalsIgnoreCase("y")) {
-                                                supervisedStudent.getRegistration().approve();
-                                                System.out.println("Registration approved.");
-                                            } else {
-                                                supervisedStudent.getRegistration().reject();
-                                                System.out.println("Registration rejected.");
-                                            }
-                                        } else {
-                                            System.out.println("No pending registrations for student: " + supervisedStudent.getName());
-                                        }
-                                    }
-                                     */
+                                    System.out.println("IT'S NOT WORKING");
+                                    //Will be in iteration 2
+                                    //system.answerRegistrationRequests(advisor);
                                 }
                                 case 3 -> {
                                     system.saveLastState();

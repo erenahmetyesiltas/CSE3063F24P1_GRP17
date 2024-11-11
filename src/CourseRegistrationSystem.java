@@ -188,8 +188,58 @@ public class CourseRegistrationSystem {
         }
     }
 
+
+
     // public void answerRegistrationRequests(Advisor advisor)
     // Advisor girişi için gelen registration requestlerini istediği zaman konsola basacak bir fonksiyon, sıra sıra requestleri basacak ve advisora soracak onay mı ret mi beklet mi diye
     // Main'de system.answerRegistrationRequests(advisor) olarak call olacak
 
+    /*
+    DUE TO A BUG IN REGISTRATIONS, IT WILL BE IMPLEMENTED IN ITERATION 2
+    public void answerRegistrationRequests(Advisor advisor) {
+        Scanner scanner = new Scanner(System.in);
+        List<Registration> pendingRegistrations = advisor.getRegistrations();
+
+        if (pendingRegistrations.isEmpty()) {
+            System.out.println("No registration requests to review.");
+            return;
+        }
+
+        for (Registration registration : pendingRegistrations) {
+            System.out.println("Reviewing registration for student: " + registration.getStudent().getFirstName() + registration.getStudent().getFirstName());
+            System.out.println("Requested courses:");
+
+            for (CourseSection courseSection : registration.getCourseSectionList()) {
+                System.out.println("Course ID: " + courseSection.getCourse().getId() +
+                        ", Section: " + courseSection.getSectionNumber());
+            }
+
+            System.out.println("Enter your decision: ");
+            System.out.println("1: Approve");
+            System.out.println("2: Reject");
+            System.out.println("3: Hold");
+
+            int decision = scanner.nextInt();
+            switch (decision) {
+                case 1:
+                    registration.setRegistrationStatus(2); // Approved
+                    System.out.println("Registration approved.");
+                    break;
+                case 2:
+                    registration.setRegistrationStatus(0); // Rejected
+                    System.out.println("Registration rejected.");
+                    break;
+                case 3:
+                    registration.setRegistrationStatus(1); // On hold
+                    System.out.println("Registration put on hold.");
+                    break;
+                default:
+                    System.out.println("Invalid input. Registration left as pending.");
+                    break;
+            }
+        }
+
+        System.out.println("All pending registrations have been reviewed.");
+    }
+*/
 }
