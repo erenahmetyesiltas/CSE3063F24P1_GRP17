@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Advisor extends Person {
     private String id;
-    private List<Student> supervisedStudents;
-    private List<Registration> registrations;
+    private List<Student> supervisedStudents = new ArrayList<>();
+    private List<Registration> registrations = new ArrayList<>();
 
     // Getters and Setters
     public Advisor() {

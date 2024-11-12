@@ -59,7 +59,10 @@ public class Main {
 
                                     System.out.println("\n----------System is checking eligibility----------\n");
 
-                                    // Buraya checkEligibility() gelecek daha implement edilmedi
+                                    if (!system.checkEligibility(student)) {
+                                        student.setRegistration(null);
+                                        break;
+                                    }
 
                                     System.out.println("Are you sure want to send the registration request to your advisor? (y/n): ");
 
@@ -87,7 +90,6 @@ public class Main {
                                 continue;
                             }
                             else if (continueChoice.equalsIgnoreCase("n")) {
-                                // En son state'i json'a kaydetme yazılacak yetiştiremedim
                                 system.saveLastState();
                                 System.out.println("\nLogged out successfully! ");
                                 break;

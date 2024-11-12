@@ -55,7 +55,7 @@
       },
       "departments": null,
       "startYear": null,
-      "year": 2020,
+      "year": 3,
       "registration": {
         "registrationStatus": 0
       }
@@ -85,7 +85,6 @@
         {"id": "PHYS1104"},
         {"id": "TRD122"},
         {"id": "CSE2023"},
-        {"id": "CSE2225"},
         {"id": "ECON2004"},
         {"id": "EE2031"},
         {"id": "MATH2055"},
@@ -102,8 +101,10 @@
       },
       "departments": null,
       "startYear": null,
-      "year": 2020,
-      "registration": null
+      "year": 3,
+      "registration": {
+        "registrationStatus": 0
+      }
     },
     "objectClass": "Student",
     "jsonFile": "object2.json"
@@ -147,8 +148,10 @@
       },
       "departments": null,
       "startYear": null,
-      "year": 2020,
-      "registration": null
+      "year": 3,
+      "registration": {
+        "registrationStatus": 0
+      }
     },
     "objectClass": "Student",
     "jsonFile": "object3.json"
@@ -192,8 +195,10 @@
       },
       "departments": null,
       "startYear": null,
-      "year": 2020,
-      "registration": null
+      "year": 3,
+      "registration": {
+        "registrationStatus": 0
+      }
     },
     "objectClass": "Student",
     "jsonFile": "object4.json"
@@ -237,9 +242,9 @@
       },
       "departments": null,
       "startYear": null,
-      "year": 2020,
+      "year": 3,
       "registration": {
-        "registrationStatus": 1
+        "registrationStatus": 0
       }
     },
     "objectClass": "Student",
@@ -284,8 +289,10 @@
       },
       "departments": null,
       "startYear": null,
-      "year": 2020,
-      "registration": null
+      "year": 3,
+      "registration": {
+        "registrationStatus": 0
+      }
     },
     "objectClass": "Student",
     "jsonFile": "object6.json"
@@ -329,7 +336,7 @@
       },
       "departments": null,
       "startYear": null,
-      "year": 2020,
+      "year": 3,
       "registration": null
     },
     "objectClass": "Student",
@@ -374,9 +381,9 @@
       },
       "departments": null,
       "startYear": null,
-      "year": 2020,
+      "year": 3,
       "registration": {
-        "registrationStatus": 1
+        "registrationStatus": 0
       }
     },
     "objectClass": "Student",
@@ -421,8 +428,10 @@
       },
       "departments": null,
       "startYear": null,
-      "year": 2020,
-      "registration": null
+      "year": 3,
+      "registration": {
+        "registrationStatus": 0
+      }
     },
     "objectClass": "Student",
     "jsonFile": "object9.json"
@@ -466,8 +475,10 @@
       },
       "departments": null,
       "startYear": null,
-      "year": 2020,
-      "registration": null
+      "year": 3,
+      "registration": {
+        "registrationStatus": 0
+      }
     },
     "objectClass": "Student",
     "jsonFile": "object10.json"

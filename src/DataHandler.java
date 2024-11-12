@@ -77,6 +77,7 @@ public class DataHandler {
     }
 
     public void removeDuplicateData(){
+        List<SystemData> removed = new ArrayList<>();
         for (SystemData data : allDatas) {
             for (int i = 0; i < allDatas.size(); i++) {
                 if (i == allDatas.indexOf(data)) {
@@ -88,7 +89,7 @@ public class DataHandler {
                         String id2 = ((Student) objectMapper.convertValue(allDatas.get(i).getObject(), Student.class)).getId();
 
                         if (id1.equals(id2)) {
-                            allDatas.remove(i);
+                            removed.add(allDatas.get(i));
                         }
                     }
                     if (allDatas.get(i).getObjectClass() == CourseSection.class && data.getObjectClass() == CourseSection.class) {
@@ -96,19 +97,20 @@ public class DataHandler {
                         String id2 = ((CourseSection) objectMapper.convertValue(data.getObject(), CourseSection.class)).getId();
 
                         if (id1.equals(id2)) {
-                            allDatas.remove(i);
+                            removed.add(allDatas.get(i));
                         }
                     }
                     if (allDatas.get(i).getObjectClass() == Advisor.class && data.getObjectClass() == Advisor.class) {
                         String id1 = ((Advisor) objectMapper.convertValue(data.getObject(), Advisor.class)).getId();
                         String id2 = ((Advisor) objectMapper.convertValue(data.getObject(), Advisor.class)).getId();
                         if (id1.equals(id2)) {
-                            allDatas.remove(i);
+                            removed.add(allDatas.get(i));
                         }
                     }
                 }
             }
         }
+        allDatas.removeAll(removed);
     }
 
     public List<SystemData> retrieveData(String fileName) throws JsonProcessingException {

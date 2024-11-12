@@ -204,6 +204,7 @@ public class CourseRegistrationSystem {
         for (int i = 0; i < regCourseSections.size(); i++) {
             if (regCourseSections.get(i).getCapacity() <= regCourseSections.get(i).getEnrolledStudents().size()) { // checks if there are any full course sections
                 // if yes return false
+                System.out.println("WARNING : The " + regCourseSections.get(i).getId() + " course section is full, your registration will be discarded\n");
                 return false;
             }
         }
@@ -238,6 +239,7 @@ public class CourseRegistrationSystem {
         }
         if (n == z)
             canTake = true;
+        System.out.println("WARNING : There is a prerequisite conflict in your registration, your registration will be discarded\n");
         return canTake;
     }
 
