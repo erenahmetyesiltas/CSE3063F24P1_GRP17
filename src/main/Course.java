@@ -1,13 +1,15 @@
+package main;
+
 import java.util.Date;
 import java.util.List;
 
 public class Course {
     private String id;
-    //private List<CourseSection> courseSections;
     private int credit;
     private List<Department> departments;
     private Date year;
     private List<Course> prerequisiteCourses;
+    private String name;
 
     public Course() {
 
@@ -57,11 +59,15 @@ public class Course {
         this.prerequisiteCourses = prerequisiteCourses;
     }
 
-    //public List<CourseSection> getCourseSection() {
+    public String getName() {
+        return name;
+    }
+
+    //public List<main.CourseSection> getCourseSection() {
         //return courseSections;
     //}
 
-    //public void setCourseSection(List<CourseSection> courseSection) {
+    //public void setCourseSection(List<main.CourseSection> courseSection) {
         //this.courseSections = courseSection;
     //}
 

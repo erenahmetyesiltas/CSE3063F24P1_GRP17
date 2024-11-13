@@ -1,4 +1,4 @@
-/*import com.google.gson.*;
+package main;/*import com.google.gson.*;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -28,7 +28,7 @@ public class DataHandler {
     private ObjectMapper objectMapper = new ObjectMapper();
 
 
-    DataHandler() throws IOException {
+    public DataHandler() throws IOException {
         //gson = new GsonBuilder().registerTypeAdapter(Class.class, new ClassAdapter()).create();
         try {
             allDatas = retrieveData("allDatas.json");
@@ -130,9 +130,9 @@ public class DataHandler {
 
     }
 
-    /*public void storeObject(Student object){
+    /*public void storeObject(main.Student object){
         fileNumber++;
-        SystemData data = new SystemData(object, object.getClass(), "object" + fileNumber + ".json");
+        main.SystemData data = new main.SystemData(object, object.getClass(), "object" + fileNumber + ".json");
       //  allDatas.add(data);
 
         try(FileWriter fileWriter = new FileWriter(data.getJsonFile())) {
@@ -162,7 +162,7 @@ public class DataHandler {
         }
     }
 
-    public void deleteData(SystemData data){
+    public void deleteData(main.SystemData data){
         File file = new File(data.getJsonFile());
         file.delete();
 

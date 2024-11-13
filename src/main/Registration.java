@@ -1,3 +1,5 @@
+package main;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,7 +67,7 @@ public class Registration {
 
 
     /*Iteration 2
-    public Student getStudent() {
+    public main.Student getStudent() {
         return student;
     }
 

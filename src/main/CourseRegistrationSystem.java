@@ -1,4 +1,4 @@
-
+package main;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -90,7 +90,7 @@ public class CourseRegistrationSystem {
 
     public void printSuitableCourses() {
         System.out.println("\nThe available courses that you can register\n");
-        System.out.println("Course :               Section :");
+        System.out.println("main.Course :               Section :");
         for (CourseSection courseSection : this.getAllCourseSections()) {
             Course currentCourse = courseSection.getCourse();
 
@@ -98,7 +98,7 @@ public class CourseRegistrationSystem {
             System.out.println();
         }
     }
-    // addCourseSection is added to Student, change it in DSD and SSD
+    // addCourseSection is added to main.Student, change it in DSD and SSD
     public CourseSection findCourseSection(String course, String section) {
         int sectionNumber = Integer.parseInt(section);
         for (CourseSection courseSection : this.getAllCourseSections()) {
@@ -120,7 +120,7 @@ public class CourseRegistrationSystem {
            return student.getRegistration().addCourseSection((findCourseSection(course,courseSection)));
        }
        else {
-           System.out.println("WARNING: Course cannot find in available courses");
+           System.out.println("WARNING: main.Course cannot find in available courses");
            return false;
        }
 
@@ -141,7 +141,7 @@ public class CourseRegistrationSystem {
 
     public void studentEnrollRequest(Student student){
 
-        // Regist. and Adv. got from Student
+        // Regist. and Adv. got from main.Student
         Registration registration = student.getRegistration();
 
         switch (registration.getRegistrationStatus()) {
@@ -243,27 +243,27 @@ public class CourseRegistrationSystem {
         return canTake;
     }
 
-    // public void answerRegistrationRequests(Advisor advisor)
-    // Advisor girişi için gelen registration requestlerini istediği zaman konsola basacak bir fonksiyon, sıra sıra requestleri basacak ve advisora soracak onay mı ret mi beklet mi diye
-    // Main'de system.answerRegistrationRequests(advisor) olarak call olacak
+    // public void answerRegistrationRequests(main.Advisor advisor)
+    // main.Advisor girişi için gelen registration requestlerini istediği zaman konsola basacak bir fonksiyon, sıra sıra requestleri basacak ve advisora soracak onay mı ret mi beklet mi diye
+    // main.Main'de system.answerRegistrationRequests(advisor) olarak call olacak
 
     /*
     DUE TO A BUG IN REGISTRATIONS, IT WILL BE IMPLEMENTED IN ITERATION 2
-    public void answerRegistrationRequests(Advisor advisor) {
+    public void answerRegistrationRequests(main.Advisor advisor) {
         Scanner scanner = new Scanner(System.in);
-        List<Registration> pendingRegistrations = advisor.getRegistrations();
+        List<main.Registration> pendingRegistrations = advisor.getRegistrations();
 
         if (pendingRegistrations.isEmpty()) {
             System.out.println("No registration requests to review.");
             return;
         }
 
-        for (Registration registration : pendingRegistrations) {
+        for (main.Registration registration : pendingRegistrations) {
             System.out.println("Reviewing registration for student: " + registration.getStudent().getFirstName() + registration.getStudent().getFirstName());
             System.out.println("Requested courses:");
 
-            for (CourseSection courseSection : registration.getCourseSectionList()) {
-                System.out.println("Course ID: " + courseSection.getCourse().getId() +
+            for (main.CourseSection courseSection : registration.getCourseSectionList()) {
+                System.out.println("main.Course ID: " + courseSection.getCourse().getId() +
                         ", Section: " + courseSection.getSectionNumber());
             }
 
@@ -276,18 +276,18 @@ public class CourseRegistrationSystem {
             switch (decision) {
                 case 1:
                     registration.setRegistrationStatus(2); // Approved
-                    System.out.println("Registration approved.");
+                    System.out.println("main.Registration approved.");
                     break;
                 case 2:
                     registration.setRegistrationStatus(0); // Rejected
-                    System.out.println("Registration rejected.");
+                    System.out.println("main.Registration rejected.");
                     break;
                 case 3:
                     registration.setRegistrationStatus(1); // On hold
-                    System.out.println("Registration put on hold.");
+                    System.out.println("main.Registration put on hold.");
                     break;
                 default:
-                    System.out.println("Invalid input. Registration left as pending.");
+                    System.out.println("Invalid input. main.Registration left as pending.");
                     break;
             }
         }

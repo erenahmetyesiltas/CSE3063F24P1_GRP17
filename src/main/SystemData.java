@@ -1,3 +1,5 @@
+package main;
+
 public class SystemData {
     private Object object;
     private Class objectClass;

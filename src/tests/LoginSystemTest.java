@@ -1,3 +1,7 @@
+package tests;
+
+import main.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,12 +18,12 @@ public class LoginSystemTest {
 
     @Before
     public void setUp() throws IOException {
-        // Initialize LoginSystem and CourseRegistrationSystem
+        // Initialize main.LoginSystem and main.CourseRegistrationSystem
         loginSystem = new LoginSystem();
         system = new CourseRegistrationSystem();
         dataHandler = new DataHandler();
 
-        // Retrieve data from DataHandler and populate system
+        // Retrieve data from main.DataHandler and populate system
         List<SystemData> allData = dataHandler.getAllDatas();
 
         for (SystemData data : allData) {

@@ -1,18 +1,21 @@
+package main;
 
-
-import java.util.Date;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Student extends Person {
 
     private String id;
-    private Grade grade;
+    private float gpa;
     private List<Course> courses;
     private Advisor advisor;
+    private int advisorId; // Retrieving advisorId from database.
     private List<Department> departments;
-    private Date startYear;
+    private int startYear;
     private int year;
-    private Registration registration;
+    private Registration registration; // Used as composition/aggregation
+    private String registrationId; // Easier to connect with Database
 
     public Student() {
 
@@ -38,19 +41,12 @@ public class Student extends Person {
     public void printAdvisorDisapproval(){
 
         if(registration.getRegistrationStatus() == 0){
-            System.out.println("Advisor disapproval");
+            System.out.println("main.Advisor disapproval");
         }
 
     }
 
-    public Grade getGrade() {
-        return grade;
-    }
-
-    public void setGrade(Grade grade) {
-        this.grade = grade;
-    }
-
+    // getter and setter methods.
     public List<Course> getCourses() {
         return courses;
     }
@@ -75,11 +71,11 @@ public class Student extends Person {
         this.departments = departments;
     }
 
-    public Date getStartYear() {
+    public int getStartYear() {
         return startYear;
     }
 
-    public void setStartYear(Date startYear) {
+    public void setStartYear(int startYear) {
         this.startYear = startYear;
     }
 
@@ -97,5 +93,21 @@ public class Student extends Person {
 
     public void setRegistration(Registration registration) {
         this.registration = registration;
+    }
+
+    public float getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(float gpa) {
+        this.gpa = gpa;
+    }
+
+    public String getRegistrationId() {
+        return registrationId;
+    }
+
+    public int getAdvisorId() {
+        return advisorId;
     }
 }

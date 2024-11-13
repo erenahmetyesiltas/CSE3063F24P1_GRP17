@@ -1,3 +1,5 @@
+package main;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -12,7 +14,7 @@ public class Main {
             LoginSystem loginSystem = new LoginSystem();
             Scanner scanner = new Scanner(System.in);
 
-
+            //asfdasdf
 
             System.out.print("Enter your nickname: ");
             String nickname = scanner.nextLine();
@@ -21,7 +23,7 @@ public class Main {
             String password = scanner.nextLine();
 
             try {
-                //Authenticate the Student
+                //Authenticate the main.Student
                 if (loginSystem.authenticateUser(nickname, password, system)) {
                     System.out.println("Login successful!");
                     if (loginSystem.getStudent() != null) {
@@ -101,7 +103,7 @@ public class Main {
 
                     }
                     else {
-                        // Advisor işlemleri ve UI burada
+                        // main.Advisor işlemleri ve UI burada
                         advisor = loginSystem.getAdvisor();
                         while (true) {
                             System.out.println("----------ADVISOR ACTIONS----------");
@@ -117,7 +119,7 @@ public class Main {
                                 case 1 -> {
                                     System.out.println("Students under your supervision:");
                                     /*
-                                    for (Student supervisedStudent : advisor.getStudents()) {
+                                    for (main.Student supervisedStudent : advisor.getStudents()) {
                                         System.out.println("ID: " + supervisedStudent.getId() + " | Name: " + supervisedStudent.getName());
                                     }
 

@@ -1,7 +1,11 @@
+package tests;
+
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.List;
 import static org.junit.Assert.*;
+import main.*;
 
 public class RegistrationTest {
 
@@ -15,18 +19,18 @@ public class RegistrationTest {
     @Test
     public void getId() {
         registration.setId("12345");
-        assertEquals("12345", registration.getId());
+        Assert.assertEquals("12345", registration.getId());
     }
 
     @Test
     public void setId() {
         registration.setId("67890");
-        assertEquals("67890", registration.getId());
+        Assert.assertEquals("67890", registration.getId());
     }
 
     @Test
     public void addCourseSection() {
-        // Creating a Course and CourseSection object using the provided class structure
+        // Creating a main.Course and main.CourseSection object using the provided class structure
         Course course = new Course();
         course.setId("MATH101");
 
@@ -91,12 +95,12 @@ public class RegistrationTest {
     @Test
     public void getRegistrationStatus() {
         registration.setRegistrationStatus(1);
-        assertEquals(1, registration.getRegistrationStatus());
+        Assert.assertEquals(1, registration.getRegistrationStatus());
     }
 
     @Test
     public void setRegistrationStatus() {
         registration.setRegistrationStatus(2);
-        assertEquals(2, registration.getRegistrationStatus());
+        Assert.assertEquals(2, registration.getRegistrationStatus());
     }
 }

@@ -1,3 +1,6 @@
+package tests;
+
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -5,6 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import main.*;
 
 public class StudentTest {
 
@@ -13,10 +17,10 @@ public class StudentTest {
 
     @Before
     public void setUp() throws IOException {
-        // Initialize DataHandler to load data
+        // Initialize main.DataHandler to load data
         dataHandler = new DataHandler();
 
-        // Retrieve all data and find the first Student instance for testing
+        // Retrieve all data and find the first main.Student instance for testing
         List<SystemData> allData = dataHandler.getAllDatas();
         for (SystemData data : allData) {
             if (data.getObjectClass() == Student.class) {
@@ -25,13 +29,13 @@ public class StudentTest {
             }
         }
 
-        // Ensure a Student object was loaded for testing
-        assertNotNull("No Student object found in data", student);
+        // Ensure a main.Student object was loaded for testing
+        assertNotNull("No main.Student object found in data", student);
     }
 
     @Test
     public void getPassword() {
-        // Assuming password is inherited from Person
+        // Assuming password is inherited from main.Person
         // Note: If password is private and inaccessible, you'll need reflection to set it for the test
         assertNotNull("Expected non-null password", student.getPassword());
     }
@@ -45,7 +49,7 @@ public class StudentTest {
     public void setId() {
         String newId = "654321";
         student.setId(newId);
-        assertEquals(newId, student.getId());
+        Assert.assertEquals(newId, student.getId());
     }
 
     @Test
@@ -67,12 +71,7 @@ public class StudentTest {
         student.printAdvisorDisapproval();
     }
 
-    @Test
-    public void setGrade() {
-        Grade newGrade = new Grade();
-        student.setGrade(newGrade);
-        assertEquals(newGrade, student.getGrade());
-    }
+
 
     @Test
     public void getCourses() {
@@ -83,7 +82,7 @@ public class StudentTest {
     public void setCourses() {
         List<Course> courses = List.of(new Course());
         student.setCourses(courses);
-        assertEquals(courses, student.getCourses());
+        Assert.assertEquals(courses, student.getCourses());
     }
 
     @Test
@@ -95,7 +94,7 @@ public class StudentTest {
     public void setAdvisor() {
         Advisor newAdvisor = new Advisor();
         student.setAdvisor(newAdvisor);
-        assertEquals(newAdvisor, student.getAdvisor());
+        Assert.assertEquals(newAdvisor, student.getAdvisor());
     }
 
 
@@ -103,14 +102,14 @@ public class StudentTest {
     public void setDepartments() {
         List<Department> departments = List.of(new Department());
         student.setDepartments(departments);
-        assertEquals(departments, student.getDepartments());
+        Assert.assertEquals(departments, student.getDepartments());
     }
 
     @Test
     public void setStartYear() {
         int newStartYear = 2020;
         student.setYear(newStartYear);
-        assertEquals(newStartYear, student.getYear());
+        Assert.assertEquals(newStartYear, student.getYear());
     }
 
 
@@ -123,7 +122,7 @@ public class StudentTest {
     public void setYear() {
         int newYear = 2021;
         student.setYear(newYear);
-        assertEquals(newYear, student.getYear());
+        Assert.assertEquals(newYear, student.getYear());
     }
 
     @Test
@@ -135,6 +134,6 @@ public class StudentTest {
     public void setRegistration() {
         Registration newRegistration = new Registration();
         student.setRegistration(newRegistration);
-        assertEquals(newRegistration, student.getRegistration());
+        Assert.assertEquals(newRegistration, student.getRegistration());
     }
 }
