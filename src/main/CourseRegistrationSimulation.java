@@ -3,12 +3,12 @@ package main;
 import java.io.IOException;
 import java.util.Scanner;
 
-class CLI {
+class CourseRegistrationSimulation {
     private final CourseRegistrationSystem courseRegSystem;
     private final LoginSystem loginSystem;
     private final Scanner scanner;
 
-    public CLI(CourseRegistrationSystem courseRegSystem) {
+    public CourseRegistrationSimulation(CourseRegistrationSystem courseRegSystem) {
         this.courseRegSystem = courseRegSystem;
         this.loginSystem = new LoginSystem();
         this.scanner = new Scanner(System.in);
