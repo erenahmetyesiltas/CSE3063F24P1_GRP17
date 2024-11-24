@@ -22,6 +22,7 @@ In **Iteration 2**, we will introduce the **Department Scheduler** role and impl
 ## Iteration 2 Plans
 
 ### Objectives
+- Rearrange the Iteration 1. Rewrite database and write controller class for main.
 - Introduce and implement the **Department Scheduler** role.
 - Add **time slot and classroom assignment** for course sections.
 - Implement **conflict detection** for:
