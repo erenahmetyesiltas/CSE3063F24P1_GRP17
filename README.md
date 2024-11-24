@@ -66,7 +66,7 @@ To maintain code quality and consistency, the following standards will be follow
 ### General Principles
 1. **Follow SOLID Principles**
     - **Single Responsibility Principle:** Each class should have a single, clear purpose.
-    - **Open/Closed Principle:** Code should be open for extension but closed for modification.
+    - **Open/Closed Principle:** Code should be open for extension but closed for modification. i.e Do not change an attribute or method of a class but you can add an attribute or method.
     - **Liskov Substitution Principle:** Derived classes must be substitutable for their base classes.
     - **Interface Segregation Principle:** Interfaces should only include methods relevant to the specific implementing class.
     - **Dependency Inversion Principle:** High-level modules should not depend on low-level modules; both should depend on abstractions.
