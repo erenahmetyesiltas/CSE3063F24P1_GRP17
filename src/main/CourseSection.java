@@ -13,7 +13,15 @@ public class CourseSection {
     private int sectionNumber;
     private Course course;
     private int capacity;
-    private int currentParticipantNumber;
+    private String courseId;
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
 
     public List<Student> getEnrolledStudents() {
         return enrolledStudents;
