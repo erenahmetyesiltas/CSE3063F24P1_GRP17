@@ -1,3 +1,4 @@
+/*
 package main;
 
 import java.io.IOException;
@@ -124,6 +125,8 @@ public class _Main {
                                     }
 
                                      */
+
+                            /*
                                 }
                                 case 2 -> {
                                     System.out.println("IT'S NOT WORKING");
@@ -157,3 +160,4 @@ public class _Main {
         }
     }
 }
+*/

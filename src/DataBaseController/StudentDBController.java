@@ -5,40 +5,73 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
 import main.*;
+public class StudentDBController implements DatabaseController {
+    private static final String USERS_DIRECTORY = "CSE3063F24P1_GRP17/src/database/students"; // Kullanıcı dosyalarının olduğu dizin
 
-public class StudentDBController {
-
-        public static void main(String[] args) {
-            ObjectMapper objectMapper = new ObjectMapper();
-
-            try {
-                // Read JSON file and map to Student object
-                Student student = objectMapper.readValue(new File("src/database/students/150123823.json"), Student.class);
-
-                // Print student details to verify
-                System.out.println("Student ID: " + student.getId());
-                System.out.println("First Name: " + student.getFirstName());
-                System.out.println("Last Name: " + student.getLastName());
-                System.out.println("GPA: " + student.getGpa());
-                System.out.println("Advisor ID: " + student.getAdvisorId());
-                System.out.println("Start year : " + student.getStartYear());
-                System.out.println("Year : " + student.getYear());
-                System.out.println("Registration ID : " + student.getRegistrationId());
-
-                // List departments
-                for (Department department : student.getDepartments()) {
-                    System.out.println("Department: " + department.getDepartmentName());
-                }
-
-                // List courses
-                for (Course course : student.getCourses()) {
-                    System.out.println("Course: " + course.getName() + " (" + course.getCredit() + " credits)");
-                }
+    private Student student;
 
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public boolean loadStudent(String studentId) throws IOException{
+        // Belirtilen ID'ye ait dosyanın yolunu oluştur.
+        String filePath = USERS_DIRECTORY + File.separator + studentId + ".json";
+        File studentFile = new File(filePath);
+
+        // Dosya mevcut mu kontrol et.
+        if (!studentFile.exists()) {
+            return false; // Eğer dosya yoksa doğrulama başarısız.
         }
+
+        // Dosyayı oku ve JSON'dan Student nesnesine dönüştür.
+        ObjectMapper objectMapper = new ObjectMapper();
+        Student storedStudent = objectMapper.readValue(Files.readString(Paths.get(filePath)), Student.class);
+        this.student = storedStudent;
+        return true;
+
+    }
+
+    // Login sonrası Student nesnesini ayarlar
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    // Student nesnesini döner
+    public Student getStudent() {
+        return student;
+    }
+
+    // Öğrencinin kayıtlı derslerini döner
+    public List<Course> getStudentCourses() {
+        return getStudent() != null ? student.getCourses() : null;
+    }
+
+    // Öğrencinin GPA'sini döner
+    public double getStudentGPA() {
+        return getStudent() != null ? getStudent().getGpa() : 0.0;
+    }
+
+    // Öğrencinin danışman ID'sini döner
+    public int getAdvisorId() {
+        return getStudent() != null ? getStudent().getAdvisorId() : -1;
+    }
+
+    // Öğrencinin kayıt olduğu yılı döner
+    public int getStartYear() {
+        return getStudent() != null ? getStudent().getStartYear() : -1;
+    }
+
+    // Öğrencinin bulunduğu yılı döner
+    public int getYear() {
+        return getStudent() != null ? getStudent().getYear() : -1;
+    }
+
+    // Öğrencinin bölümlerini döner
+    public List<Department> getDepartments() {
+        return getStudent() != null ? getStudent().getDepartments() : null;
+    }
 }
+

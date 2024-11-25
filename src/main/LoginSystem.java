@@ -1,49 +1,54 @@
 package main;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import DataBaseController.StudentDBController;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class LoginSystem {
-    private static final String USERS_DIRECTORY = "src/login/users";
+    private static final String USERS_DIRECTORY = "CSE3063F24P1_GRP17/src/database/students"; // Kullanıcı dosyalarının olduğu dizin
 
     private Student student;
-    private Advisor advisor;
+    private StudentDBController studentDBController;
 
-    //
+    LoginSystem(StudentDBController studentDBController) {
+        this.studentDBController = studentDBController;
+    }
+
     /**
      * Authenticates a user (either a student or an advisor) based on their nickname and password.
      *
-     * @param nickname The user's nickname (ID).
+     * @param studentId The user's nickname (ID).
      * @param password The user's password.
-     * @param system   The course registration system containing all users.
      * @return true if authentication is successful, false otherwise.
      * @throws IOException if an I/O error occurs.
      */
-    public boolean authenticateUser(String nickname, String password, CourseRegistrationSystem system) throws IOException {
-        // Iterate over all students in the system and check for matching credentials.
-        for (Student student : system.getAllStudents()) {
-            if (student.getId().equals(nickname) && student.getPassword().equals(password)) {
-                this.student = student; // Assign authenticated student to the instance variable.
-                return true; // Credentials matched; return true immediately.
-            }
+    public boolean authenticateUser(String studentId, String password) throws IOException {
+        if(studentDBController.loadStudent(studentId)) {
+            this.student = studentDBController.getStudent();
+        }
+        else{
+            return false;
         }
 
-        // Iterate over all advisors in the system and check for matching credentials.
-        for (Advisor advisor : system.getAllAdvisors()) {
-            if (advisor.getId().equals(nickname) && advisor.getPassword().equals(password)) {
-                this.advisor = advisor; // Assign authenticated advisor to the instance variable.
-                return true; // Credentials matched; return true immediately.
-            }
+        // Student yüklendi, şifreyi karşılaştır.
+        if (student.getPassword().equals(password)) {
+            return true;
         }
-
-        // If no match found, return false.
-        return false;
+        // Şifre karşılaştırma başarısız, Student Database'ini sıfırla ve false döndür.
+        else{
+            this.student = null;
+            studentDBController.setStudent(null);
+            return false;
+        }
     }
-   // Getter methods
+
+    // Getter methodu
     public Student getStudent() {
         return student;
-    }
-    public Advisor getAdvisor() {
-        return advisor;
     }
 }
 

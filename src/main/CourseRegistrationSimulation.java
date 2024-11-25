@@ -1,16 +1,20 @@
 package main;
 
+import DataBaseController.StudentDBController;
+
 import java.io.IOException;
 import java.util.Scanner;
 
 class CourseRegistrationSimulation {
     private final CourseRegistrationSystem courseRegSystem;
     private final LoginSystem loginSystem;
+    private final StudentDBController studentDBController;
     private final Scanner scanner;
 
     public CourseRegistrationSimulation(CourseRegistrationSystem courseRegSystem) {
+        this.studentDBController = new StudentDBController();
         this.courseRegSystem = courseRegSystem;
-        this.loginSystem = new LoginSystem();
+        this.loginSystem = new LoginSystem(this.studentDBController);
         this.scanner = new Scanner(System.in);
     }
 
@@ -54,10 +58,13 @@ class CourseRegistrationSimulation {
             System.out.println("Enter your password: ");
             String password = scanner.nextLine();
 
-            if (loginSystem.authenticateUser(nickname, password, courseRegSystem)) {
-                System.out.println("Login successful!");
+            if (loginSystem.authenticateUser(nickname, password)) {
                 if (loginSystem.getStudent() != null) {
-                    handleStudentActions(loginSystem.getStudent());
+                    System.out.println("Login successful!");
+                    // Load student to studentDBController.
+                    studentDBController.setStudent(loginSystem.getStudent());
+                    // Student actions.
+                    handleStudentActions(studentDBController.getStudent());
                 }
             } else {
                 System.out.println("Invalid nickname or password.");
@@ -92,11 +99,10 @@ class CourseRegistrationSimulation {
             }
         }
     }
-
     private void loginAdvisor() {
         try {
-            System.out.println("Enter your nickname: ");
-            String nickname = scanner.nextLine();
+            System.out.println("CONSTRUCTION!!");
+            /*
 
             System.out.println("Enter your password: ");
             String password = scanner.nextLine();
@@ -106,9 +112,7 @@ class CourseRegistrationSimulation {
                 if (loginSystem.getAdvisor() != null) {
                     handleAdvisorActions(loginSystem.getAdvisor());
                 }
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred: " + e.getMessage());
+*/
         } catch (Exception e) {
             e.printStackTrace();
         }

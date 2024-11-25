@@ -1,4 +1,4 @@
 package DataBaseController;
 
-public class AdvisorDBController {
+public class AdvisorDBController implements DatabaseController {
 }

@@ -1,5 +1,5 @@
 package DataBaseController;
 
-public class DatabaseController {
+interface DatabaseController {
 
 }
