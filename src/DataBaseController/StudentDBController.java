@@ -11,14 +11,14 @@ import java.util.List;
 
 import main.*;
 public class StudentDBController implements DatabaseController {
-    private static final String USERS_DIRECTORY = "CSE3063F24P1_GRP17/src/database/students"; // Kullanıcı dosyalarının olduğu dizin
+    private static final String USERS_DIRECTORY = "CSE3063F24P1_GRP17/src/database/"; // Kullanıcı dosyalarının olduğu dizin
 
     private Student student;
 
 
     public boolean loadStudent(String studentId) throws IOException{
         // Belirtilen ID'ye ait dosyanın yolunu oluştur.
-        String filePath = USERS_DIRECTORY + File.separator + studentId + ".json";
+        String filePath = USERS_DIRECTORY +"students"+ File.separator + studentId + ".json";
         File studentFile = new File(filePath);
 
         // Dosya mevcut mu kontrol et.
@@ -30,9 +30,27 @@ public class StudentDBController implements DatabaseController {
         ObjectMapper objectMapper = new ObjectMapper();
         Student storedStudent = objectMapper.readValue(Files.readString(Paths.get(filePath)), Student.class);
         this.student = storedStudent;
+
+        // If registration exist, load it.
+        loadStudentRegistration(studentId);
         return true;
 
     }
+
+    public void loadStudentRegistration(String studentId) throws IOException{
+        String filePath = USERS_DIRECTORY +"registrations"+File.separator +"r"+studentId + ".json";
+        File studentFile = new File(filePath);
+
+        // Dosya mevcut mu kontrol et.
+        if (!studentFile.exists()) {
+            return; // Eğer dosya yoksa doğrulama başarısız.
+        }
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Registration registration = objectMapper.readValue(Files.readString(Paths.get(filePath)), Registration.class);
+        this.student.setRegistration(registration);
+    };
+
 
     // Login sonrası Student nesnesini ayarlar
     public void setStudent(Student student) {

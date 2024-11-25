@@ -1,0 +1,20 @@
+{
+  "id": "r150123823",
+  "courseSections": [
+    {
+      "course": {
+        "id": "CS101",
+        "name": "Introduction to Computer Science"
+      },
+      "sectionNumber": 1
+    },
+    {
+      "course": {
+        "id": "MATH201",
+        "name": "Calculus II"
+      },
+      "sectionNumber": 2
+    }
+  ],
+  "registrationStatus": 0
+}

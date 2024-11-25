@@ -18,7 +18,6 @@ public class Student extends Person {
     private String registrationId; // Easier to connect with Database
 
     public Student() {
-
     }
 
     public String getId() {

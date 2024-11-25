@@ -11,8 +11,8 @@ class CourseRegistrationSimulation {
     private final StudentDBController studentDBController;
     private final Scanner scanner;
 
-    public CourseRegistrationSimulation(CourseRegistrationSystem courseRegSystem) {
-        this.studentDBController = new StudentDBController();
+    public CourseRegistrationSimulation(CourseRegistrationSystem courseRegSystem, StudentDBController studentDBController) {
+        this.studentDBController = studentDBController;
         this.courseRegSystem = courseRegSystem;
         this.loginSystem = new LoginSystem(this.studentDBController);
         this.scanner = new Scanner(System.in);
@@ -61,8 +61,6 @@ class CourseRegistrationSimulation {
             if (loginSystem.authenticateUser(nickname, password)) {
                 if (loginSystem.getStudent() != null) {
                     System.out.println("Login successful!");
-                    // Load student to studentDBController.
-                    studentDBController.setStudent(loginSystem.getStudent());
                     // Student actions.
                     handleStudentActions(studentDBController.getStudent());
                 }
@@ -87,7 +85,7 @@ class CourseRegistrationSimulation {
 
             switch (choice) {
                 case 1 -> createRegistration(student);
-                case 2 -> courseRegSystem.studentEnrollRequest(student);
+                case 2 -> courseRegSystem.getStudentRegistrationStatus(student);
                 default -> System.out.println("Invalid choice.");
             }
 
@@ -167,7 +165,7 @@ class CourseRegistrationSimulation {
         }
 
         System.out.println("The courses inside your registration are:");
-        student.getRegistration().getCourseSectionList().forEach(courseSection ->
+        student.getRegistration().getCourseSections().forEach(courseSection ->
                 System.out.println(courseSection.getCourse().getId() + " - " + courseSection.getSectionNumber())
         );
 

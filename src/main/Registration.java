@@ -1,11 +1,22 @@
 package main;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Registration {
     private String id;
     private List<CourseSection> courseSections = new ArrayList<>();
+
+    /*
+    registrationStatus:
+    0, means advisor has not approved.
+    1, means advisor has not checked yet.
+    2, means advisor has approved.
+     */
     private int registrationStatus;
 
     public Registration() {
@@ -49,8 +60,16 @@ public class Registration {
 
     }
 
-    public List<CourseSection> getCourseSectionList() {
+    public List<CourseSection> getCourseSections() {
+        System.out.println("!TEST- THIS WILL BE REMOVEV ON PRODUCT");
+        for (CourseSection courseSection : courseSections) {
+            System.out.println(courseSection.getCourse().getId() + " - " + courseSection.getSectionNumber() + " added to registration");
+        }
         return courseSections;
+    }
+
+    public void setCourseSections(List<CourseSection> courseSections) {
+        this.courseSections = courseSections;
     }
 
     public void deleteCourseSectionList() {

@@ -1,5 +1,6 @@
 package main;
 
+import DataBaseController.StudentDBController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -15,7 +16,7 @@ public class CourseRegistrationSystem {
     private List<Department> allDepartments = new ArrayList<>();
     private final DataHandler dataHandler = new DataHandler();
 
-    public CourseRegistrationSystem() throws IOException {
+    public CourseRegistrationSystem(StudentDBController studentDBController) throws IOException {
     }
 
     public List<Student> getAllStudents() {
@@ -139,24 +140,25 @@ public class CourseRegistrationSystem {
         }
     }
 
-    public void studentEnrollRequest(Student student){
+    public void getStudentRegistrationStatus(Student student){
 
         // Regist. and Adv. got from main.Student
         Registration registration = student.getRegistration();
 
         switch (registration.getRegistrationStatus()) {
             case 0 :
+                System.out.println(registration.getCourseSections());
                 System.out.println("WARNING : Your advisor has disapproved your registration, you have to create a new one and send it again\n");
-                student.getAdvisor().getRegistrations().remove(student.getRegistration());
+                //student.getAdvisor().getRegistrations().remove(student.getRegistration());
                 // allAdvisorstan da remove et
-                student.setRegistration(null);
+                //student.setRegistration(null);
                 break;
             case 1:
                 System.out.println("WARNING : Your advisor has not yet checked your registration\n");
                 break;
             case 2 :
                 System.out.println("SUCCESS : Your advisor has approved your registration, you will be enrolled to the courses you \n");
-                enrollStudent(registration.getCourseSectionList(), student);
+                enrollStudent(registration.getCourseSections(), student);
                 break;
         }
 
@@ -198,7 +200,7 @@ public class CourseRegistrationSystem {
     }
 
     public boolean checkCourseSectionFull(Student student) {
-        List<CourseSection> regCourseSections = student.getRegistration().getCourseSectionList();
+        List<CourseSection> regCourseSections = student.getRegistration().getCourseSections();
         List<Course> prerequisiteCourses = new ArrayList<Course>();
 
         for (int i = 0; i < regCourseSections.size(); i++) {
@@ -214,7 +216,7 @@ public class CourseRegistrationSystem {
     }
 
     public boolean checkPrerequisite(Student student) {
-        List<CourseSection> regCourseSections = student.getRegistration().getCourseSectionList();
+        List<CourseSection> regCourseSections = student.getRegistration().getCourseSections();
         List<Course> prerequisiteCourses = new ArrayList<Course>();
 
         for (int i = 0; i < regCourseSections.size(); i++) {
