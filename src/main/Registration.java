@@ -31,30 +31,30 @@ public class Registration {
         this.id = id;
     }
 
-    public boolean addCourseSection(CourseSection coursesection) {
+    public boolean addCourseSection(CourseSection courseSectionAdded) {
         if (courseSections.size() >= 5) {
-            System.out.println("WARNING ! : (Total course number exceeds 5) " + coursesection.getCourseId() + " - " + coursesection.getSectionNumber() + " cannot added to registration");
+            System.out.println("WARNING ! : (Total course number exceeds 5) " + courseSectionAdded.getCourse().getId() + " - " + courseSectionAdded.getSectionNumber() + " cannot added to registration");
             return false;
         }
 
-        if (coursesection != null) {
+        if (courseSectionAdded != null) {
             for (CourseSection courseSection : courseSections) {
-                if (coursesection.getCourseId().equals(courseSection.getCourseId()) && coursesection.getSectionNumber() == courseSection.getSectionNumber()) {
-                    System.out.println("WARNING ! : (Same course and section exists in your registration) " + coursesection.getCourseId() + " - " + coursesection.getSectionNumber() + " cannot added to registration");
+                if (courseSectionAdded.getCourse().getId().equals(courseSection.getCourse().getId()) && courseSectionAdded.getSectionNumber() == courseSection.getSectionNumber()) {
+                    System.out.println("WARNING ! : (Same course and section exists in your registration) " + courseSectionAdded.getCourseId() + " - " + courseSectionAdded.getSectionNumber() + " cannot added to registration");
                     return false;
                 }
-                if (coursesection.getCourseId().equals(courseSection.getCourseId())) {
-                    System.out.println("WARNING ! : (You try to select a second section for the same course) " + coursesection.getCourseId() + " - " + coursesection.getSectionNumber() + " cannot added to registration");
+                else if (courseSectionAdded.getCourse().getId().equals(courseSection.getCourse().getId()) && courseSectionAdded.getSectionNumber() != courseSection.getSectionNumber()) {
+                    System.out.println("WARNING ! : (You try to select a second section for the same course) " + courseSectionAdded.getCourseId() + " - " + courseSectionAdded.getSectionNumber() + " cannot added to registration");
                     return false;
                 }
             }
 
-            courseSections.add(coursesection);
-            System.out.println(coursesection.getCourseId() + " - " + coursesection.getSectionNumber() + " added to registration");
+            courseSections.add(courseSectionAdded);
+            System.out.println(courseSectionAdded.getCourse().getId() + " - " + courseSectionAdded.getSectionNumber() + " added to registration");
             return true;
         }
-       else {
-            System.out.println("WARNING ! : " + coursesection.getCourseId() + " - " + coursesection.getSectionNumber() + " cannot added to registration");
+        else {
+            System.out.println("WARNING ! : " + courseSectionAdded.getCourseId() + " - " + courseSectionAdded.getSectionNumber() + " cannot added to registration");
             return false;
         }
 

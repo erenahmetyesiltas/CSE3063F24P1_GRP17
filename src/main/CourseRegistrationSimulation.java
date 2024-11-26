@@ -55,10 +55,11 @@ class CourseRegistrationSimulation {
 
     private void loginStudent() {
         try {
-            System.out.println("Enter your nickname: ");
+            System.out.println();
+            System.out.print("Enter your nickname: ");
             String nickname = scanner.nextLine();
 
-            System.out.println("Enter your password: ");
+            System.out.print("Enter your password: ");
             String password = scanner.nextLine();
 
             if (loginSystem.authenticateUser(nickname, password)) {
@@ -79,10 +80,11 @@ class CourseRegistrationSimulation {
 
     private void handleStudentActions(Student student) {
         while (true) {
+            System.out.println();
             System.out.println("----------ACTIONS----------");
             System.out.println("1- Create a registration");
             System.out.println("2- Check current registration status");
-            System.out.println("Please choose an action: ");
+            System.out.print("Please choose an action: ");
 
             int choice = scanner.nextInt();
 

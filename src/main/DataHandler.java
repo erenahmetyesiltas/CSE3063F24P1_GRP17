@@ -33,14 +33,14 @@ public class DataHandler {
 
     public DataHandler() throws IOException {
         //gson = new GsonBuilder().registerTypeAdapter(Class.class, new ClassAdapter()).create();
-        try {
-            allDatas = retrieveData("allDatas.json");
-        } catch (Exception e) {
-            allDatas = new ArrayList<SystemData>();
-            File file = new File("allDatas.json");
-            file.createNewFile();
-            e.printStackTrace();
-        }
+//        try {
+//            allDatas = retrieveData("allDatas.json");
+//        } catch (Exception e) {
+//            allDatas = new ArrayList<SystemData>();
+//            File file = new File("allDatas.json");
+//            file.createNewFile();
+//            e.printStackTrace();
+//        }
     }
 
     public List<Course> getCourseList(){
@@ -189,22 +189,22 @@ public class DataHandler {
         allDatas.removeAll(removed);
     }
 
-    public List<SystemData> retrieveData(String fileName) throws JsonProcessingException {
-        try {
-            File file = new File(fileName);
-            file.createNewFile();
-            List<SystemData> allDatalist = objectMapper.readValue(file, new TypeReference<List<SystemData>>() {
-            });
-            return allDatalist;
-        } catch (JsonParseException e) {
-            e.printStackTrace();
-            return new ArrayList<SystemData>();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<SystemData>();
-        }
-
-    }
+//    public List<SystemData> retrieveData(String fileName) throws JsonProcessingException {
+//        try {
+//            File file = new File(fileName);
+//            file.createNewFile();
+//            List<SystemData> allDatalist = objectMapper.readValue(file, new TypeReference<List<SystemData>>() {
+//            });
+//            return allDatalist;
+//        } catch (JsonParseException e) {
+//            e.printStackTrace();
+//            return new ArrayList<SystemData>();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return new ArrayList<SystemData>();
+//        }
+//
+//    }
 
     /*public void storeObject(main.Student object){
         fileNumber++;
