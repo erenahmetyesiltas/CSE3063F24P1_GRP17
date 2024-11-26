@@ -1,0 +1,20 @@
+{
+  "id": "r150123000",
+  "courseSections": [
+    {
+      "course": {
+        "id": "IE3081",
+        "name": "Modeling and Discrete Simulation"
+      },
+      "sectionNumber": 1
+    },
+    {
+      "course": {
+        "id": "MATH201",
+        "name": "Calculus II"
+      },
+      "sectionNumber": 2
+    }
+  ],
+  "registrationStatus": 1
+}
