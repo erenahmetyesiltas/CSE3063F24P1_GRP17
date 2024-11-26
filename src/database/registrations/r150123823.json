@@ -2,6 +2,7 @@
   "id": "r150123823",
   "courseSections": [
     {
+      "courseId": "CS101",
       "course": {
         "id": "CS101",
         "name": "Introduction to Computer Science"
@@ -9,6 +10,7 @@
       "sectionNumber": 1
     },
     {
+      "courseId": "MATH201",
       "course": {
         "id": "MATH201",
         "name": "Calculus II"
