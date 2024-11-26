@@ -61,10 +61,6 @@ public class Registration {
     }
 
     public List<CourseSection> getCourseSections() {
-        System.out.println("!TEST- THIS WILL BE REMOVED ON PRODUCT");
-        for (CourseSection courseSection : courseSections) {
-            System.out.println(courseSection.getCourseId() + " - " + courseSection.getSectionNumber() + " added to registration");
-        }
         return courseSections;
     }
 
