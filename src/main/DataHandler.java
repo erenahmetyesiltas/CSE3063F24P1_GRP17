@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,37 @@ public class DataHandler {
             e.printStackTrace();
         }
     }
+
+    public List<CourseSection> getCourseSectionList(){
+
+        // parent path of course section json files
+        URL mainPath = DataHandler.class.getClassLoader().getResource("database/courseSections");
+        File file = new File(mainPath.getFile());
+
+        // all the json files of course sections stored in the courseSectionJsons array.
+        File[] courseSectionJsons = file.listFiles();
+
+        // Create a course section array list to handle all the course sections from the json files.
+        List<CourseSection> courseSectionsList = new ArrayList<>();
+
+        for (File fileCourseSection: courseSectionJsons) {
+            CourseSection courseSection = new CourseSection();
+
+            try {
+                courseSection = objectMapper.readValue(fileCourseSection, CourseSection.class);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            // add the all course sections one by one
+            courseSectionsList.add(courseSection);
+        }
+
+        return courseSectionsList;
+
+    }
+
+
 
     public void storeObject(Student studentObject) throws IOException {
         fileNumber++;

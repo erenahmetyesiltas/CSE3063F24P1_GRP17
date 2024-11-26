@@ -16,7 +16,8 @@ public class CourseRegistrationSystem {
     private List<Department> allDepartments = new ArrayList<>();
     private final DataHandler dataHandler = new DataHandler();
 
-    public CourseRegistrationSystem(StudentDBController studentDBController) throws IOException {
+    public CourseRegistrationSystem() throws IOException {
+        setAllCourseSections(dataHandler.getCourseSectionList());
     }
 
     public List<Student> getAllStudents() {
@@ -91,14 +92,16 @@ public class CourseRegistrationSystem {
 
     public void printSuitableCourses() {
         System.out.println("\nThe available courses that you can register\n");
-        System.out.println("main.Course :               Section :");
-        for (CourseSection courseSection : this.getAllCourseSections()) {
-            Course currentCourse = courseSection.getCourse();
+        System.out.println("Course :               Section :");
+        dataHandler.getCourseSectionList();
 
-            System.out.printf("%-21s%-10d", currentCourse.getId(), courseSection.getSectionNumber());
-            System.out.println();
+        for (CourseSection courseSection : getAllCourseSections()) {
+            System.out.printf("%-23s%-1d\n",courseSection.getCourseId(),courseSection.getSectionNumber());
         }
+
     }
+
+
     // addCourseSection is added to main.Student, change it in DSD and SSD
     public CourseSection findCourseSection(String course, String section) {
         int sectionNumber = Integer.parseInt(section);

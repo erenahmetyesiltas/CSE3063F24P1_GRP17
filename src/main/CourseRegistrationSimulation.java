@@ -1,5 +1,6 @@
 package main;
 
+import DataBaseController.AdvisorDBController;
 import DataBaseController.StudentDBController;
 
 import java.io.IOException;
@@ -10,11 +11,13 @@ class CourseRegistrationSimulation {
     private final LoginSystem loginSystem;
     private final StudentDBController studentDBController;
     private final Scanner scanner;
+    private final AdvisorDBController advisorDBController;
 
-    public CourseRegistrationSimulation(CourseRegistrationSystem courseRegSystem, StudentDBController studentDBController) {
-        this.studentDBController = studentDBController;
+    public CourseRegistrationSimulation(CourseRegistrationSystem courseRegSystem) {
+        this.studentDBController = new StudentDBController();
+        this.advisorDBController = new AdvisorDBController();
         this.courseRegSystem = courseRegSystem;
-        this.loginSystem = new LoginSystem(this.studentDBController);
+        this.loginSystem = new LoginSystem(this.studentDBController, this.advisorDBController);
         this.scanner = new Scanner(System.in);
     }
 
@@ -61,6 +64,8 @@ class CourseRegistrationSimulation {
             if (loginSystem.authenticateUser(nickname, password)) {
                 if (loginSystem.getStudent() != null) {
                     System.out.println("Login successful!");
+                    // Load student to studentDBController.
+                    // studentDBController.setStudent(loginSystem.getStudent());
                     // Student actions.
                     handleStudentActions(studentDBController.getStudent());
                 }
@@ -97,20 +102,28 @@ class CourseRegistrationSimulation {
             }
         }
     }
+
     private void loginAdvisor() {
         try {
-            System.out.println("CONSTRUCTION!!");
-            /*
+            System.out.println("Enter your nickname: ");
+            String nickname = scanner.nextLine();
 
             System.out.println("Enter your password: ");
             String password = scanner.nextLine();
 
-            if (loginSystem.authenticateUser(nickname, password, courseRegSystem)) {
-                System.out.println("Login successful!");
+            if (loginSystem.authenticateAdvisorUser(nickname, password)) {
                 if (loginSystem.getAdvisor() != null) {
-                    handleAdvisorActions(loginSystem.getAdvisor());
+                    System.out.println("Login successful!");
+                    // Load student to studentDBController.
+                    // studentDBController.setStudent(loginSystem.getStudent());
+                    // Student actions.
+                    handleAdvisorActions(advisorDBController.getAdvisor());
                 }
-*/
+            } else {
+                System.out.println("Invalid nickname or password.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -153,7 +166,10 @@ class CourseRegistrationSimulation {
     ;
 
     private void createRegistration(Student student) {
+
         courseRegSystem.printSuitableCourses();
+
+
         while (true) {
             System.out.print("\nDo you want to add courses? (y/n): ");
             String addCourse = scanner.next();

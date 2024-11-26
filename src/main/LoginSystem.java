@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import DataBaseController.AdvisorDBController;
 import DataBaseController.StudentDBController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -14,9 +15,14 @@ public class LoginSystem {
     private Student student;
     private StudentDBController studentDBController;
 
-    LoginSystem(StudentDBController studentDBController) {
+    private Advisor advisor;
+    private AdvisorDBController advisorDBController;
+
+    LoginSystem(StudentDBController studentDBController,AdvisorDBController advisorDBController) {
         this.studentDBController = studentDBController;
+        this.advisorDBController = advisorDBController;
     }
+
 
     /**
      * Authenticates a user (either a student or an advisor) based on their nickname and password.
@@ -46,9 +52,30 @@ public class LoginSystem {
         }
     }
 
+    public boolean authenticateAdvisorUser(String advisorId, String password) throws IOException{
+        if(advisorDBController.loadAdvisor(advisorId)){
+            this.advisor = advisorDBController.getAdvisor();
+        }else{
+            return false;
+        }
+
+        if(advisor.getPassword().equals(password)){
+            return true;
+        }else{
+            this.advisor = null;
+            advisorDBController.setAdvisor(null);
+            return false;
+        }
+
+    }
+
     // Getter methodu
     public Student getStudent() {
         return student;
+    }
+
+    public Advisor getAdvisor() {
+        return advisor;
     }
 }
 
