@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DataHandler {
 
@@ -41,6 +43,35 @@ public class DataHandler {
         }
     }
 
+    public List<Course> getCourseList(){
+
+        // parent path of course section json files
+        URL mainPath = DataHandler.class.getClassLoader().getResource("database/courses");
+        File file = new File(mainPath.getFile());
+
+        // all the json files of course sections stored in the courseSectionJsons array.
+        File[] courseJsons = file.listFiles();
+
+        // Create a course section array list to handle all the course sections from the json files.
+        List<Course> courseList = new ArrayList<>();
+
+        for (File fileCourse: courseJsons) {
+            Course course = new Course();
+
+            try {
+                course = objectMapper.readValue(fileCourse, Course.class);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            // add the all course sections one by one
+            courseList.add(course);
+        }
+
+        return courseList;
+
+    }
+
     public List<CourseSection> getCourseSectionList(){
 
         // parent path of course section json files
@@ -66,10 +97,24 @@ public class DataHandler {
             courseSectionsList.add(courseSection);
         }
 
+        //associateCoursesWithSections(courseSectionsList, getCourseList()); // bunu ben ekledim / ilker
         return courseSectionsList;
 
     }
 
+    public void associateCoursesWithSections(List<CourseSection> courseSections, List<Course> courses) {
+        // Course nesnelerini bir Map'e dönüştür (id üzerinden erişim için)
+        Map<String, Course> courseMap = courses.stream()
+                .collect(Collectors.toMap(Course::getId, course -> course));
+
+        // CourseSection nesnelerindeki courseId ile Course'u eşleştir
+        for (CourseSection courseSection : courseSections) {
+            String courseId = courseSection.getCourseId();
+            if (courseId != null && courseMap.containsKey(courseId)) {
+                courseSection.setCourse(courseMap.get(courseId));
+            }
+        }
+    }
 
 
     public void storeObject(Student studentObject) throws IOException {

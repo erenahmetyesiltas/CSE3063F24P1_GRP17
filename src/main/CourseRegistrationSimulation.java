@@ -10,8 +10,8 @@ class CourseRegistrationSimulation {
     private final CourseRegistrationSystem courseRegSystem;
     private final LoginSystem loginSystem;
     private final StudentDBController studentDBController;
-    private final Scanner scanner;
     private final AdvisorDBController advisorDBController;
+    private final Scanner scanner;
 
     public CourseRegistrationSimulation(CourseRegistrationSystem courseRegSystem) {
         this.studentDBController = new StudentDBController();
@@ -72,10 +72,8 @@ class CourseRegistrationSimulation {
             } else {
                 System.out.println("Invalid nickname or password.");
             }
-        } catch (IOException e) {
-            System.out.println("An error occurred: " + e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("An error occurred: " + e.getMessage());
         }
     }
 
@@ -155,20 +153,16 @@ class CourseRegistrationSimulation {
 
     private void checkStudents(Advisor advisor) {
         System.out.println("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.");
-    }
-
-    ;
+    };
 
     private void handleRegistrationRequests(Advisor advisor) {
         System.out.println("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.");
-    }
-
-    ;
+    };
 
     private void createRegistration(Student student) {
 
-        courseRegSystem.printSuitableCourses();
 
+        courseRegSystem.printSuitableCourses();
 
         while (true) {
             System.out.print("\nDo you want to add courses? (y/n): ");

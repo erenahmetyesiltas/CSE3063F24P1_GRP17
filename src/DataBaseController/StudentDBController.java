@@ -28,8 +28,15 @@ public class StudentDBController implements DatabaseController {
 
         // Dosyayı oku ve JSON'dan Student nesnesine dönüştür.
         ObjectMapper objectMapper = new ObjectMapper();
-        Student storedStudent = objectMapper.readValue(Files.readString(Paths.get(filePath)), Student.class);
-        this.student = storedStudent;
+        Student storedStudent = null;
+
+        try {
+        storedStudent = objectMapper.readValue(Files.readString(Paths.get(filePath)), Student.class);
+
+        } catch (IOException e) {
+           throw new RuntimeException(e);
+        }
+        setStudent(storedStudent);
 
         // If registration exist, load it.
         loadStudentRegistration(studentId);

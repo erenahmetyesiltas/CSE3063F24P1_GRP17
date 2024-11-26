@@ -6,10 +6,9 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        StudentDBController studentDBController = new StudentDBController();
-        CourseRegistrationSystem courseRegSystem = new CourseRegistrationSystem(studentDBController);
+        CourseRegistrationSystem courseRegSystem = new CourseRegistrationSystem();
         courseRegSystem.restoreSystem();
-        CourseRegistrationSimulation CLI = new CourseRegistrationSimulation(courseRegSystem, studentDBController);
+        CourseRegistrationSimulation CLI = new CourseRegistrationSimulation(courseRegSystem);
         CLI.run();
     }
 }

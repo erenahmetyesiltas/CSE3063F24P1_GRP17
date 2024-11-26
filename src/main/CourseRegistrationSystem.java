@@ -1,6 +1,6 @@
 package main;
 
-import DataBaseController.StudentDBController;
+import DataBaseController.CourseDBController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -15,6 +15,7 @@ public class CourseRegistrationSystem {
     private List<CourseSection> allCourseSections = new ArrayList<>();
     private List<Department> allDepartments = new ArrayList<>();
     private final DataHandler dataHandler = new DataHandler();
+    private CourseDBController courseDBController = new CourseDBController();
 
     public CourseRegistrationSystem() throws IOException {
         setAllCourseSections(dataHandler.getCourseSectionList());
@@ -73,6 +74,7 @@ public class CourseRegistrationSystem {
             if (objectClass == CourseSection.class) {
                 CourseSection course = mapper.convertValue(object, CourseSection.class);
                 this.getAllCourseSections().add(course);
+
             }
 
             if (objectClass == Advisor.class) {
@@ -93,20 +95,21 @@ public class CourseRegistrationSystem {
     public void printSuitableCourses() {
         System.out.println("\nThe available courses that you can register\n");
         System.out.println("Course :               Section :");
+        //courseDBController.getCourseSectionList(); //Bunu alttakiyle değiştirdim, aynı fonksiyonu içeriyor./ilker
         dataHandler.getCourseSectionList();
 
         for (CourseSection courseSection : getAllCourseSections()) {
             System.out.printf("%-23s%-1d\n",courseSection.getCourseId(),courseSection.getSectionNumber());
         }
-
     }
-
 
     // addCourseSection is added to main.Student, change it in DSD and SSD
     public CourseSection findCourseSection(String course, String section) {
         int sectionNumber = Integer.parseInt(section);
         for (CourseSection courseSection : this.getAllCourseSections()) {
-            if (courseSection.getCourse().getId().equals(course) && courseSection.getSectionNumber() == sectionNumber) {
+            System.out.println("COURSE SECTION ID:" + (courseSection.getId()+ " Section Number:"+ courseSection.getSectionNumber()));
+            System.out.println("COURSE " + course);
+            if (courseSection.getId().equals(course) && courseSection.getSectionNumber() == sectionNumber) {
                 return courseSection;
             }
         }
