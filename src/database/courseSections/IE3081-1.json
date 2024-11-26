@@ -4,7 +4,14 @@
   "id": "IE3081-1",
   "scheduledTime": null,
   "sectionNumber": 1,
-  "course": null,
+  "course": {
+    "id": "CSE3081",
+    "name": "Modeling and Discrete Simulation",
+    "credit": "3",
+    "departments": [],
+    "term": 5,
+    "prerequisiteCourses": []
+  },
   "capacity": 123,
   "courseId": "IE3081"
 }

@@ -101,6 +101,7 @@ public class CourseRegistrationSystem {
 
         for (CourseSection courseSection : getAllCourseSections()) {
             System.out.printf("%-23s%-1d\n",courseSection.getCourseId(),courseSection.getSectionNumber());
+            //System.out.println(courseSection.getCourse().getName());
         }
     }
 

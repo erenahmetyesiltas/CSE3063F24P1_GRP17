@@ -4,7 +4,14 @@
   "id": "CSE3215-1",
   "scheduledTime": null,
   "sectionNumber": 1,
-  "course": null,
+  "course": {
+    "id": "CSE3215",
+    "name": "Digital Logic Design",
+    "credit": "3",
+    "departments": [],
+    "term": 5,
+    "prerequisiteCourses": []
+  },
   "capacity": 123,
   "courseId": "CSE3215"
 }
