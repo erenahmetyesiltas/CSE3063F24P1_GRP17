@@ -57,34 +57,35 @@ public class CourseRegistrationSystem {
         return dataHandler;
     }
 
-    public void restoreSystem() throws NoSuchElementException {
-        int i = 0;
-        List<SystemData> allDatas = dataHandler.getAllDatas();
-        ObjectMapper mapper = dataHandler.getObjectMapper();
 
-        while (i != (allDatas.size())) {
-            Class objectClass = allDatas.get(i).getObjectClass();
-            Object object = allDatas.get(i).getObject();
-
-            if (objectClass == Student.class) {
-                Student student = mapper.convertValue(object, Student.class);
-                this.getAllStudents().add(student);
-            }
-
-            if (objectClass == CourseSection.class) {
-                CourseSection course = mapper.convertValue(object, CourseSection.class);
-                this.getAllCourseSections().add(course);
-
-            }
-
-            if (objectClass == Advisor.class) {
-                Advisor advisor = mapper.convertValue(object, Advisor.class);
-                this.getAllAdvisors().add(advisor);
-            }
-
-            i++;
-        }
-    }
+//    public void restoreSystem() throws NoSuchElementException {
+//        int i = 0;
+//        List<SystemData> allDatas = dataHandler.getAllDatas();
+//        ObjectMapper mapper = dataHandler.getObjectMapper();
+//
+//        while (i != (allDatas.size())) {
+//            Class objectClass = allDatas.get(i).getObjectClass();
+//            Object object = allDatas.get(i).getObject();
+//
+//            if (objectClass == Student.class) {
+//                Student student = mapper.convertValue(object, Student.class);
+//                this.getAllStudents().add(student);
+//            }
+//
+//            if (objectClass == CourseSection.class) {
+//                CourseSection course = mapper.convertValue(object, CourseSection.class);
+//                this.getAllCourseSections().add(course);
+//
+//            }
+//
+//            if (objectClass == Advisor.class) {
+//                Advisor advisor = mapper.convertValue(object, Advisor.class);
+//                this.getAllAdvisors().add(advisor);
+//            }
+//
+//            i++;
+//        }
+//    }
 
     public void updateData(Object object) {
         SystemData data = new SystemData(object, object.getClass(), "object" + dataHandler.getFileNumber() + ".json");
@@ -107,9 +108,7 @@ public class CourseRegistrationSystem {
     public CourseSection findCourseSection(String course, String section) {
         int sectionNumber = Integer.parseInt(section);
         for (CourseSection courseSection : this.getAllCourseSections()) {
-            System.out.println("COURSE SECTION ID:" + (courseSection.getId()+ " Section Number:"+ courseSection.getSectionNumber()));
-            System.out.println("COURSE " + course);
-            if (courseSection.getId().equals(course) && courseSection.getSectionNumber() == sectionNumber) {
+            if (courseSection.getCourseId().equals(course) && courseSection.getSectionNumber() == sectionNumber) {
                 return courseSection;
             }
         }
@@ -130,8 +129,6 @@ public class CourseRegistrationSystem {
            System.out.println("WARNING: main.Course cannot find in available courses");
            return false;
        }
-
-
    }
 
     public void sendRegistrationToAdvisor(Registration registration, Student student){
@@ -173,7 +170,7 @@ public class CourseRegistrationSystem {
     public void enrollStudent(List<CourseSection> enrollCourseSections, Student student){
         for (CourseSection courseSection : allCourseSections) {
             for (CourseSection enrollCourseSection : enrollCourseSections) {
-                if (enrollCourseSection.getCourse().getId().equals(courseSection.getCourse().getId())) {
+                if (enrollCourseSection.getCourseId().equals(courseSection.getCourseId())) {
                     courseSection.getEnrolledStudents().add(student);
                     enrollCourseSection.getEnrolledStudents().add(student);
                 }

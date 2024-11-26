@@ -99,7 +99,6 @@ public class DataHandler {
 
         //associateCoursesWithSections(courseSectionsList, getCourseList()); // bunu ben ekledim / ilker
         return courseSectionsList;
-
     }
 
     public void associateCoursesWithSections(List<CourseSection> courseSections, List<Course> courses) {

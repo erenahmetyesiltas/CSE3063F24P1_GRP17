@@ -14,7 +14,7 @@ public class Student extends Person {
     private List<Department> departments;
     private int startYear;
     private int year;
-    private Registration registration; // Used as composition/aggregation
+    private Registration registration = new Registration(); // Used as composition/aggregation
     private String registrationId; // Easier to connect with Database
 
     public Student() {

@@ -57,7 +57,7 @@ public class _Main {
 
                                     System.out.println("The courses inside your registration are :");
                                     for (CourseSection courseSection : student.getRegistration().getCourseSectionList()) {
-                                        System.out.println(courseSection.getCourse().getId() + " - " + courseSection.getSectionNumber());
+                                        System.out.println(courseSection.getCourseId() + " - " + courseSection.getSectionNumber());
                                     }
 
                                     System.out.println("\n----------System is checking eligibility----------\n");
