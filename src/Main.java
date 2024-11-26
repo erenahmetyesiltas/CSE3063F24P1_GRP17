@@ -60,7 +60,7 @@ public class Main {
                                     System.out.println("\n----------System is checking eligibility----------\n");
 
                                     if (!system.checkEligibility(student)) {
-                                        student.setRegistration(null);
+                                        student.setRegistration(new Registration());
                                         break;
                                     }
 
@@ -74,7 +74,7 @@ public class Main {
                                         break;
                                     }
                                     else if (requestChoice.equalsIgnoreCase("n")) {
-                                        student.setRegistration(null);
+                                        student.setRegistration(new Registration());
                                         System.out.println("WARNING : The registration you have been created is deleted. Make a new one\n");
                                         break;
                                     }
