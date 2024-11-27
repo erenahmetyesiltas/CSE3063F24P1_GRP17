@@ -1,6 +1,8 @@
 package main;
 
+import DataBaseController.AdvisorDBController;
 import DataBaseController.CourseDBController;
+import DataBaseController.StudentDBController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -94,21 +96,24 @@ public class CourseRegistrationSystem {
     }
 
     public void printSuitableCourses() {
-        System.out.println("\nThe available courses that you can register\n");
+        System.out.println("\nThe available courses that you can register");
         System.out.println("Course :               Section :");
         //courseDBController.getCourseSectionList(); //Bunu alttakiyle değiştirdim, aynı fonksiyonu içeriyor./ilker
         dataHandler.getCourseSectionList();
 
         for (CourseSection courseSection : getAllCourseSections()) {
-            System.out.printf("%-23s%-1d\n",courseSection.getCourseId(),courseSection.getSectionNumber());
+            System.out.printf("%-23s%-1d\n",courseSection.getCourse().getId(),courseSection.getSectionNumber());
+            //System.out.println(courseSection.getCourse().getName());
         }
     }
 
     // addCourseSection is added to main.Student, change it in DSD and SSD
     public CourseSection findCourseSection(String course, String section) {
         int sectionNumber = Integer.parseInt(section);
+
         for (CourseSection courseSection : this.getAllCourseSections()) {
-            if (courseSection.getCourseId().equals(course) && courseSection.getSectionNumber() == sectionNumber) {
+
+            if (courseSection.getCourse().getId().equals(course) && courseSection.getSectionNumber() == sectionNumber) {
                 return courseSection;
             }
         }
@@ -117,31 +122,35 @@ public class CourseRegistrationSystem {
 
     public boolean readCourses(Student student){
        Scanner scanner = new Scanner(System.in);
-       System.out.println("Enter the course");
+       System.out.print("Enter the course: ");
        String course = scanner.next();
-       System.out.println("Enter the section");
+       System.out.print("Enter the section: ");
        String courseSection =scanner.next();
 
        if (findCourseSection(course,courseSection) != null) {
+
            return student.getRegistration().addCourseSection((findCourseSection(course,courseSection)));
        }
        else {
-           System.out.println("WARNING: main.Course cannot find in available courses");
+           System.out.println("WARNING: The course section entered cannot find in available courses.");
            return false;
        }
    }
 
-    public void sendRegistrationToAdvisor(Registration registration, Student student){
-        // an advisor is needs
-        Advisor advisor = student.getAdvisor();
-        advisor.addRegistration(registration);
+    public void sendRegistrationToAdvisor(Registration registration, Student student) throws IOException {
+        // First, load student's advisor & match it with student.advisor
+        AdvisorDBController advisorDBController = new AdvisorDBController();
+        advisorDBController.loadAdvisor(Integer.toString(student.getAdvisorId()));
+        student.setAdvisor(advisorDBController.getAdvisor());
+        student.getAdvisor().addRegistration(registration);
 
-        for (Advisor advisor1 : this.getAllAdvisors()) {
-            if (advisor1.getId().equals(advisor.getId())) {
-                advisor1.addRegistration(registration);
-            }
-        }
-    }
+        // Save the registration and Advisor's registration.
+        StudentDBController studentDBController = new StudentDBController();
+        studentDBController.setStudent(student);
+        studentDBController.saveStudent(student.getId());
+        studentDBController.saveStudentRegistration(student.getId());
+        advisorDBController.saveAdvisor(Integer.toString(student.getAdvisorId()));
+    };
 
     public void getStudentRegistrationStatus(Student student){
 

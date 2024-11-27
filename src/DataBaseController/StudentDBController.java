@@ -11,9 +11,12 @@ import java.util.List;
 
 import main.*;
 public class StudentDBController implements DatabaseController {
-    private static final String USERS_DIRECTORY = "CSE3063F24P1_GRP17/src/database/"; // Kullanıcı dosyalarının olduğu dizin
+    private static final String USERS_DIRECTORY = "out/production/project/database/"; // Kullanıcı dosyalarının olduğu dizin
 
     private Student student;
+
+    public StudentDBController() {
+    }
 
 
     public boolean loadStudent(String studentId) throws IOException{
@@ -44,6 +47,20 @@ public class StudentDBController implements DatabaseController {
 
     }
 
+    public void saveStudent(String studentId) throws IOException {
+        // Kayıtların saklanacağı dosya yolu
+        String filePath = USERS_DIRECTORY +"students"+ File.separator + studentId + ".json";
+        File studentFile = new File(filePath);
+
+        // Öğrenciyi al ve JSON olarak kaydet
+        if (this.student == null) {
+            throw new IllegalStateException("Student is null, cannot save.");
+        }
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(studentFile, student);
+    }
+
     public void loadStudentRegistration(String studentId) throws IOException{
         String filePath = USERS_DIRECTORY +"registrations"+File.separator +"r"+studentId + ".json";
         File studentFile = new File(filePath);
@@ -57,6 +74,25 @@ public class StudentDBController implements DatabaseController {
         Registration registration = objectMapper.readValue(Files.readString(Paths.get(filePath)), Registration.class);
         this.student.setRegistration(registration);
     };
+
+    public void saveStudentRegistration(String studentId) throws IOException {
+        // Kayıtların saklanacağı dosya yolu
+        String filePath = USERS_DIRECTORY + "registrations" + File.separator + "r" + studentId + ".json";
+        File studentFile = new File(filePath);
+
+        // Öğrenci kaydını al ve JSON olarak kaydet
+        Registration registration = this.student.getRegistration();
+        if (registration == null) {
+            throw new IllegalStateException("Student registration is null, cannot save.");
+        }
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(studentFile, registration);
+    }
+
+
+
+
 
 
     // Login sonrası Student nesnesini ayarlar

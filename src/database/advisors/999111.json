@@ -3,5 +3,6 @@
   "firstName": "Veli",
   "lastName": "Yılmaz",
   "password": "veli123",
-  "registrations": []
+  "registrationsIDs": [],
+  "supervisedStudentsIDs": []
 }
