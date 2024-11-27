@@ -1,0 +1,17 @@
+{
+  "enrolledStudents": [],
+  "classroom": "M2-Z11",
+  "id": "CSE3033-1",
+  "scheduledTime": null,
+  "sectionNumber": 1,
+  "course": {
+    "id": "CSE3033",
+    "name": "Operating Systems",
+    "credit": "3",
+    "departments": [],
+    "term": 5,
+    "prerequisiteCourses": []
+  },
+  "capacity": 123,
+  "courseId": "CSE3033"
+}

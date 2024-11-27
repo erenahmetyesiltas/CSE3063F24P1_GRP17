@@ -1,0 +1,17 @@
+{
+  "enrolledStudents": [],
+  "classroom": "M2-Z11",
+  "id": "IE3081-1",
+  "scheduledTime": null,
+  "sectionNumber": 1,
+  "course": {
+    "id": "CSE3081",
+    "name": "Modeling and Discrete Simulation",
+    "credit": "3",
+    "departments": [],
+    "term": 5,
+    "prerequisiteCourses": []
+  },
+  "capacity": 123,
+  "courseId": "IE3081"
+}
