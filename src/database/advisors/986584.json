@@ -1,7 +1,10 @@
 {
   "id": "986584",
   "firstName": "Ali",
-  "lastName": "Yılmaz",
+  "lastName": "Mahmut",
   "password": "ali123",
-  "registrations": []
+  "registrations": [],
+  "registrationsIDs": [],
+  "supervisedStudents": [],
+  "supervisedStudentsIDs": []
 }

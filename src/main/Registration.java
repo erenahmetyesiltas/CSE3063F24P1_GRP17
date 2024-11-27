@@ -9,6 +9,8 @@ import java.util.List;
 //@JsonIgnoreProperties(ignoreUnknown = true)
 public class Registration {
     private String id;
+
+
     private List<CourseSection> courseSections = new ArrayList<>();
 
     /*

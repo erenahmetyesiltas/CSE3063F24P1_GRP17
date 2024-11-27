@@ -78,7 +78,7 @@ class CourseRegistrationSimulation {
         }
     }
 
-    private void handleStudentActions(Student student) {
+    private void handleStudentActions(Student student) throws IOException {
         while (true) {
             System.out.println();
             System.out.println("----------ACTIONS----------");
@@ -161,7 +161,7 @@ class CourseRegistrationSimulation {
         System.out.println("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.");
     };
 
-    private void createRegistration(Student student) {
+    private void createRegistration(Student student) throws IOException {
 
 
         courseRegSystem.printSuitableCourses();

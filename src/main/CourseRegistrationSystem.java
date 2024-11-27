@@ -1,6 +1,8 @@
 package main;
 
+import DataBaseController.AdvisorDBController;
 import DataBaseController.CourseDBController;
+import DataBaseController.StudentDBController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -135,17 +137,20 @@ public class CourseRegistrationSystem {
        }
    }
 
-    public void sendRegistrationToAdvisor(Registration registration, Student student){
-        // an advisor is needs
-        Advisor advisor = student.getAdvisor();
-        advisor.addRegistration(registration);
+    public void sendRegistrationToAdvisor(Registration registration, Student student) throws IOException {
+        // First, load student's advisor & match it with student.advisor
+        AdvisorDBController advisorDBController = new AdvisorDBController();
+        advisorDBController.loadAdvisor(Integer.toString(student.getAdvisorId()));
+        student.setAdvisor(advisorDBController.getAdvisor());
+        student.getAdvisor().addRegistration(registration);
 
-        for (Advisor advisor1 : this.getAllAdvisors()) {
-            if (advisor1.getId().equals(advisor.getId())) {
-                advisor1.addRegistration(registration);
-            }
-        }
-    }
+        // Save the registration and Advisor's registration.
+        StudentDBController studentDBController = new StudentDBController();
+        studentDBController.setStudent(student);
+        studentDBController.saveStudent(student.getId());
+        studentDBController.saveStudentRegistration(student.getId());
+        advisorDBController.saveAdvisor(Integer.toString(student.getAdvisorId()));
+    };
 
     public void getStudentRegistrationStatus(Student student){
 

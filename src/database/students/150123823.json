@@ -3,27 +3,16 @@
   "firstName": "ilker",
   "lastName": "yetimoglu",
   "password": "123",
-  "gpa": 3.27,
+  "gpa": 2.55,
 
-  "courses": [
-    {
-      "id": "CS101",
-      "name": "Introduction to Computer Science",
-      "credit": 3
-    },
-    {
-      "id": "MATH201",
-      "name": "Calculus II",
-      "credit": 4
-    }
-  ],
+  "courses": [],
   "advisorId": 999111,
   "departments": [
     {
       "departmentName": "Computer Science"
     }
   ],
-  "startYear": 2022,
-  "year": 3,
+  "startYear": 2021,
+  "year": 2,
   "registrationId": "r150123823"
 }
