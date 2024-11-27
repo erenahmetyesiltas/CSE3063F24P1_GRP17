@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -21,8 +22,11 @@ public class StudentDBController implements DatabaseController {
 
     public boolean loadStudent(String studentId) throws IOException{
         // Belirtilen ID'ye ait dosyanın yolunu oluştur.
-        String filePath = USERS_DIRECTORY +"students"+ File.separator + studentId + ".json";
-        File studentFile = new File(filePath);
+
+        URL studentJsonPath = StudentDBController.class.getClassLoader().getResource("database/students/"+studentId+".json");
+
+        //String filePath = USERS_DIRECTORY +"students"+ File.separator + studentId + ".json";
+        File studentFile = new File(studentJsonPath.getFile());
 
         // Dosya mevcut mu kontrol et.
         if (!studentFile.exists()) {
@@ -34,7 +38,7 @@ public class StudentDBController implements DatabaseController {
         Student storedStudent = null;
 
         try {
-        storedStudent = objectMapper.readValue(Files.readString(Paths.get(filePath)), Student.class);
+        storedStudent = objectMapper.readValue(studentFile, Student.class);
 
         } catch (IOException e) {
            throw new RuntimeException(e);
@@ -49,8 +53,12 @@ public class StudentDBController implements DatabaseController {
 
     public void saveStudent(String studentId) throws IOException {
         // Kayıtların saklanacağı dosya yolu
-        String filePath = USERS_DIRECTORY +"students"+ File.separator + studentId + ".json";
-        File studentFile = new File(filePath);
+
+        //String filePath = USERS_DIRECTORY +"students"+ File.separator + studentId + ".json";
+
+        URL studentJsonPath = StudentDBController.class.getClassLoader().getResource("database/students/"+studentId+".json");
+
+        File studentFile = new File(studentJsonPath.getFile());
 
         // Öğrenciyi al ve JSON olarak kaydet
         if (this.student == null) {
@@ -63,22 +71,28 @@ public class StudentDBController implements DatabaseController {
 
     public void loadStudentRegistration(String studentId) throws IOException{
         String filePath = USERS_DIRECTORY +"registrations"+File.separator +"r"+studentId + ".json";
-        File studentFile = new File(filePath);
+
+        URL registrationJsonPath = StudentDBController.class.getClassLoader().getResource("database/registrations/r"+studentId+".json");
+
+        File registrationFile = new File(registrationJsonPath.getFile());
 
         // Dosya mevcut mu kontrol et.
-        if (!studentFile.exists()) {
+        if (!registrationFile.exists()) {
             return; // Eğer dosya yoksa doğrulama başarısız.
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
-        Registration registration = objectMapper.readValue(Files.readString(Paths.get(filePath)), Registration.class);
+        Registration registration = objectMapper.readValue(registrationFile, Registration.class);
         this.student.setRegistration(registration);
     };
 
     public void saveStudentRegistration(String studentId) throws IOException {
         // Kayıtların saklanacağı dosya yolu
         String filePath = USERS_DIRECTORY + "registrations" + File.separator + "r" + studentId + ".json";
-        File studentFile = new File(filePath);
+
+        URL studentJsonPath = StudentDBController.class.getClassLoader().getResource("database/students/"+studentId+".json");
+
+        File studentFile = new File(studentJsonPath.getFile());
 
         // Öğrenci kaydını al ve JSON olarak kaydet
         Registration registration = this.student.getRegistration();
