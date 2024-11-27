@@ -90,9 +90,9 @@ public class StudentDBController implements DatabaseController {
         // Kayıtların saklanacağı dosya yolu
         String filePath = USERS_DIRECTORY + "registrations" + File.separator + "r" + studentId + ".json";
 
-        URL studentJsonPath = StudentDBController.class.getClassLoader().getResource("database/students/"+studentId+".json");
+        URL registrationJsonPath = StudentDBController.class.getClassLoader().getResource("database/registrations/r"+studentId+".json");
 
-        File studentFile = new File(studentJsonPath.getFile());
+        File registrationFile = new File(registrationJsonPath.getFile());
 
         // Öğrenci kaydını al ve JSON olarak kaydet
         Registration registration = this.student.getRegistration();
@@ -101,7 +101,7 @@ public class StudentDBController implements DatabaseController {
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writerWithDefaultPrettyPrinter().writeValue(studentFile, registration);
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(registrationFile, registration);
     }
 
 
