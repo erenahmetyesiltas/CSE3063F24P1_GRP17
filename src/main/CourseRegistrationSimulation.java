@@ -32,7 +32,8 @@ class CourseRegistrationSimulation {
                 System.out.println("Please select an option:");
                 System.out.println("1- Advisor Login");
                 System.out.println("2- Student Login");
-                System.out.println("3- Log Out");
+                System.out.println("3- Department Scheduler Login");
+                System.out.println("4- Log Out");
 
                 System.out.print("Enter your choice: ");
 
@@ -49,7 +50,8 @@ class CourseRegistrationSimulation {
                 switch (userChoice) {
                     case 1 -> loginAdvisor();
                     case 2 -> loginStudent();
-                    case 3 -> logout();
+                    case 3 -> loginDepartmentScheduler();
+                    case 4 -> logout();
                     default -> System.out.println("Invalid choice.");
                 }
             }
@@ -165,6 +167,10 @@ class CourseRegistrationSimulation {
                 break;
             }
         }
+    }
+
+    public void loginDepartmentScheduler(){
+
     }
 
     private void checkStudents(Advisor advisor) {
