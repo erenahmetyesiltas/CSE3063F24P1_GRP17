@@ -1,11 +1,9 @@
 package main;
 
 import DataBaseController.AdvisorDBController;
-import DataBaseController.RegistrationDBController;
 import DataBaseController.StudentDBController;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
 
 class CourseRegistrationSimulation {
@@ -15,12 +13,9 @@ class CourseRegistrationSimulation {
     private final AdvisorDBController advisorDBController;
     private final Scanner scanner;
 
-    private final RegistrationDBController registrationDBController;
-
     public CourseRegistrationSimulation(CourseRegistrationSystem courseRegSystem) {
         this.studentDBController = new StudentDBController();
         this.advisorDBController = new AdvisorDBController();
-        this.registrationDBController = new RegistrationDBController();
         this.courseRegSystem = courseRegSystem;
         this.loginSystem = new LoginSystem(this.studentDBController, this.advisorDBController);
         this.scanner = new Scanner(System.in);
@@ -77,7 +72,6 @@ class CourseRegistrationSimulation {
                 }
             } else {
                 System.out.println("Invalid nickname or password.");
-                System.out.println();
             }
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
@@ -111,10 +105,10 @@ class CourseRegistrationSimulation {
 
     private void loginAdvisor() {
         try {
-            System.out.print("Enter your nickname: ");
+            System.out.println("Enter your nickname: ");
             String nickname = scanner.nextLine();
 
-            System.out.print("Enter your password: ");
+            System.out.println("Enter your password: ");
             String password = scanner.nextLine();
 
             if (loginSystem.authenticateAdvisorUser(nickname, password)) {
@@ -123,9 +117,7 @@ class CourseRegistrationSimulation {
                     // Load student to studentDBController.
                     // studentDBController.setStudent(loginSystem.getStudent());
                     // Student actions.
-
                     handleAdvisorActions(advisorDBController.getAdvisor());
-
                 }
             } else {
                 System.out.println("Invalid nickname or password.");
@@ -139,23 +131,17 @@ class CourseRegistrationSimulation {
 
     private void handleAdvisorActions(Advisor advisor) {
         while (true) {
-            System.out.println();
             System.out.println("----------ACTIONS----------");
-            //System.out.println("1- Check students");
-            System.out.println("1- Approve/Reject student registration requests");
-            System.out.print("Please choose an action: ");
+            System.out.println("1- Check students");
+            System.out.println("2- Approve/Reject student registration requests");
+            System.out.println("Please choose an action: ");
 
             int choice = scanner.nextInt();
 
-            while(choice != 1){
-                System.out.println();
-                System.out.print("Please enter a valid option:");
-                choice = scanner.nextInt();
-            }
-
             switch (choice) {
-                //case 1 -> checkStudents(advisor);
-                case 1 -> handleRegistrationRequests(advisor);
+                case 1 -> checkStudents(advisor);
+                case 2 -> handleRegistrationRequests(advisor);
+                default -> System.out.println("Invalid choice.");
             }
 
             System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
@@ -172,33 +158,7 @@ class CourseRegistrationSimulation {
     };
 
     private void handleRegistrationRequests(Advisor advisor) {
-        //System.out.println("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.");
-
-        List<Registration> registrations = registrationDBController.getRegistrationsOfAdvisor(advisor);
-
-        System.out.println();
-        System.out.println("Please set the status of the registrations:");
-        System.out.println("In order to specify as not approved print O");
-        System.out.println("In order to specify as not checked yet 1");
-        System.out.println("In order to specify as approved print 2");
-
-        for (int i = 0; i < registrations.size(); i++) {
-            System.out.println(registrations.get(i).getId());
-            System.out.println(registrations.get(i).getRegistrationStatus());
-
-            System.out.print("Print the status to change the state of the registration listed: ");
-            int status = scanner.nextInt();
-
-            while(status < 0 || status > 2){
-                System.out.print("Please enter valid number: ");
-                status = scanner.nextInt();
-            }
-
-            registrations.get(i).setRegistrationStatus(status);
-            registrationDBController.updateRegistrations(registrations.get(i),status);
-
-        }
-
+        System.out.println("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.");
     };
 
     private void createRegistration(Student student) throws IOException {

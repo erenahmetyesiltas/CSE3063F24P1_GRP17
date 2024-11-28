@@ -19,17 +19,6 @@ public class CourseRegistrationSystem {
     private final DataHandler dataHandler = new DataHandler();
     private CourseDBController courseDBController = new CourseDBController();
 
-    // Registration
-    private List<Registration> registrationsOfAdvisor = new ArrayList<>();
-
-    public List<Registration> getRegistrationsOfAdvisor() {
-        return registrationsOfAdvisor;
-    }
-
-    public void setRegistrationsOfAdvisor(List<Registration> registrationsOfAdvisor) {
-        this.registrationsOfAdvisor = registrationsOfAdvisor;
-    }
-
     public CourseRegistrationSystem() throws IOException {
         setAllCourseSections(dataHandler.getCourseSectionList());
     }
