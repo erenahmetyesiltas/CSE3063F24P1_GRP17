@@ -182,6 +182,8 @@ class CourseRegistrationSimulation {
         System.out.println("In order to specify as not checked yet 1");
         System.out.println("In order to specify as approved print 2");
 
+
+
         for (int i = 0; i < registrations.size(); i++) {
             System.out.println(registrations.get(i).getId());
             System.out.println(registrations.get(i).getRegistrationStatus());

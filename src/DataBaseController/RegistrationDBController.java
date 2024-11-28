@@ -20,6 +20,8 @@ public class RegistrationDBController {
         URL registrationMainPath;
         File registrationFile;
 
+        advisor.getRegistrations().clear();
+
         // Json veri çekimi
         for (int i = 0; i < advisor.getRegistrationsIDs().size(); i++) {
             registraionId = advisor.getRegistrationsIDs().get(i);
