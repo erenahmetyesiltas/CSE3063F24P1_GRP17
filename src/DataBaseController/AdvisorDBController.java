@@ -26,6 +26,11 @@ public class AdvisorDBController implements DatabaseController {
 
     public boolean loadAdvisor(String advisorId) {
         URL advisorJsonsPath = AdvisorDBController.class.getClassLoader().getResource("database/advisors/"+advisorId+".json");
+
+        if(advisorJsonsPath == null){
+            return false;
+        }
+
         File file = new File(advisorJsonsPath.getFile());
 
         // if the file does not exist, there is no advisor in the system has the advisorId entered.

@@ -25,6 +25,10 @@ public class StudentDBController implements DatabaseController {
 
         URL studentJsonPath = StudentDBController.class.getClassLoader().getResource("database/students/"+studentId+".json");
 
+        if(studentJsonPath == null){
+            return false;
+        }
+
         //String filePath = USERS_DIRECTORY +"students"+ File.separator + studentId + ".json";
         File studentFile = new File(studentJsonPath.getFile());
 

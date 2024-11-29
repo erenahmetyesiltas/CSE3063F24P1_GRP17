@@ -1,6 +1,7 @@
 package main;
 
 import DataBaseController.AdvisorDBController;
+import DataBaseController.DepartmentSchedulerDBController;
 import DataBaseController.RegistrationDBController;
 import DataBaseController.StudentDBController;
 
@@ -13,6 +14,7 @@ class CourseRegistrationSimulation {
     private final LoginSystem loginSystem;
     private final StudentDBController studentDBController;
     private final AdvisorDBController advisorDBController;
+    private final DepartmentSchedulerDBController departmentSchedulerDBController;
     private final Scanner scanner;
 
     private final RegistrationDBController registrationDBController;
@@ -20,9 +22,10 @@ class CourseRegistrationSimulation {
     public CourseRegistrationSimulation(CourseRegistrationSystem courseRegSystem) {
         this.studentDBController = new StudentDBController();
         this.advisorDBController = new AdvisorDBController();
+        this.departmentSchedulerDBController = new DepartmentSchedulerDBController();
         this.registrationDBController = new RegistrationDBController();
         this.courseRegSystem = courseRegSystem;
-        this.loginSystem = new LoginSystem(this.studentDBController, this.advisorDBController);
+        this.loginSystem = new LoginSystem(this.studentDBController, this.advisorDBController, this.departmentSchedulerDBController);
         this.scanner = new Scanner(System.in);
     }
 
@@ -170,7 +173,65 @@ class CourseRegistrationSimulation {
     }
 
     public void loginDepartmentScheduler(){
+        try {
+            System.out.print("Enter your nickname: ");
+            String nickname = scanner.nextLine();
 
+            System.out.print("Enter your password: ");
+            String password = scanner.nextLine();
+
+            if (loginSystem.authenticateDepartmentSchedulerUser(nickname, password)) {
+                if (loginSystem.getDepartmentScheduler() != null) {
+                    System.out.println("Login successful!");
+
+                    handleDepartmentSchedulerActions(departmentSchedulerDBController.getDepartmentScheduler());
+                    //handleAdvisorActions(advisorDBController.getAdvisor());
+
+                }
+            } else {
+                System.out.println("Invalid nickname or password.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleDepartmentSchedulerActions(DepartmentScheduler departmentScheduler) {
+
+        while (true) {
+            System.out.println();
+            System.out.println("----------ACTIONS----------");
+            System.out.println("1- Assign time to the course sections of the department");
+            //System.out.println("2- Turn back");
+            System.out.print("Please choose an action: ");
+
+            int choice = scanner.nextInt();
+
+            while(choice != 1){
+                System.out.println();
+                System.out.print("Please enter a valid option:");
+                choice = scanner.nextInt();
+            }
+
+            switch (choice) {
+                //case 1 -> checkStudents(advisor);
+                case 1 -> handleCourseSectionTimes(departmentScheduler);
+            }
+
+            System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
+            String continueChoice = scanner.next();
+            if (continueChoice.equalsIgnoreCase("n")) {
+                logout();
+                break;
+            }
+        }
+
+    }
+
+    private void handleCourseSectionTimes(DepartmentScheduler departmentScheduler) {
+        System.out.println("CONSTRUCTION");
     }
 
     private void checkStudents(Advisor advisor) {

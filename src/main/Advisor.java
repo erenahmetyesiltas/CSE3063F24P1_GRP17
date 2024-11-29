@@ -28,6 +28,7 @@ public class Advisor extends Person {
 
     @JsonIgnore
     private List<Student> supervisedStudents = new ArrayList<>();
+
     @JsonIgnore
     private List<Registration> registrations = new ArrayList<>();
 
