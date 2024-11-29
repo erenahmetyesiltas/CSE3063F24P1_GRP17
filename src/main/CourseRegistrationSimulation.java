@@ -32,7 +32,7 @@ class CourseRegistrationSimulation {
                 System.out.println("Please select an option:");
                 System.out.println("1- Advisor Login");
                 System.out.println("2- Student Login");
-                System.out.println("3- Department Scheduler Login");
+                System.out.println("3- Department Scheduler Login ");
                 System.out.println("4- Log Out");
 
                 System.out.print("Enter your choice: ");
