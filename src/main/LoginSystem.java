@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import DataBaseController.AdvisorDBController;
+import DataBaseController.DepartmentSchedulerDBController;
 import DataBaseController.StudentDBController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -18,9 +19,13 @@ public class LoginSystem {
     private Advisor advisor;
     private AdvisorDBController advisorDBController;
 
-    LoginSystem(StudentDBController studentDBController,AdvisorDBController advisorDBController) {
+    private DepartmentScheduler departmentScheduler;
+    private DepartmentSchedulerDBController departmentSchedulerDBController;
+
+    LoginSystem(StudentDBController studentDBController,AdvisorDBController advisorDBController,DepartmentSchedulerDBController departmentSchedulerDBController) {
         this.studentDBController = studentDBController;
         this.advisorDBController = advisorDBController;
+        this.departmentSchedulerDBController = departmentSchedulerDBController;
     }
 
 
@@ -69,6 +74,24 @@ public class LoginSystem {
 
     }
 
+    public boolean authenticateDepartmentSchedulerUser(String departmentSchedulerId, String password) throws IOException{
+
+        if(departmentSchedulerDBController.loadDepartmentScheduler(departmentSchedulerId)){
+            this.departmentScheduler = departmentSchedulerDBController.getDepartmentScheduler();
+        }else{
+            return false;
+        }
+
+        if(departmentScheduler.getPassword().equals(password)){
+            return true;
+        }else{
+            this.departmentScheduler = null;
+            departmentSchedulerDBController.setDepartmentScheduler(null);
+            return false;
+        }
+
+    }
+
     // Getter methodu
     public Student getStudent() {
         return student;
@@ -77,6 +100,15 @@ public class LoginSystem {
     public Advisor getAdvisor() {
         return advisor;
     }
+
+    public DepartmentScheduler getDepartmentScheduler() {
+        return departmentScheduler;
+    }
+
+    public void setDepartmentScheduler(DepartmentScheduler departmentScheduler) {
+        this.departmentScheduler = departmentScheduler;
+    }
+
 }
 
 

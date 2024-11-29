@@ -1,9 +1,12 @@
 package main;
 
 import DataBaseController.AdvisorDBController;
+import DataBaseController.DepartmentSchedulerDBController;
+import DataBaseController.RegistrationDBController;
 import DataBaseController.StudentDBController;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 class CourseRegistrationSimulation {
@@ -11,13 +14,18 @@ class CourseRegistrationSimulation {
     private final LoginSystem loginSystem;
     private final StudentDBController studentDBController;
     private final AdvisorDBController advisorDBController;
+    private final DepartmentSchedulerDBController departmentSchedulerDBController;
     private final Scanner scanner;
+
+    private final RegistrationDBController registrationDBController;
 
     public CourseRegistrationSimulation(CourseRegistrationSystem courseRegSystem) {
         this.studentDBController = new StudentDBController();
         this.advisorDBController = new AdvisorDBController();
+        this.departmentSchedulerDBController = new DepartmentSchedulerDBController();
+        this.registrationDBController = new RegistrationDBController();
         this.courseRegSystem = courseRegSystem;
-        this.loginSystem = new LoginSystem(this.studentDBController, this.advisorDBController);
+        this.loginSystem = new LoginSystem(this.studentDBController, this.advisorDBController, this.departmentSchedulerDBController);
         this.scanner = new Scanner(System.in);
     }
 
@@ -27,7 +35,8 @@ class CourseRegistrationSimulation {
                 System.out.println("Please select an option:");
                 System.out.println("1- Advisor Login");
                 System.out.println("2- Student Login");
-                System.out.println("3- Log Out");
+                System.out.println("3- Department Scheduler Login ");
+                System.out.println("4- Log Out");
 
                 System.out.print("Enter your choice: ");
 
@@ -44,7 +53,8 @@ class CourseRegistrationSimulation {
                 switch (userChoice) {
                     case 1 -> loginAdvisor();
                     case 2 -> loginStudent();
-                    case 3 -> logout();
+                    case 3 -> loginDepartmentScheduler();
+                    case 4 -> logout();
                     default -> System.out.println("Invalid choice.");
                 }
             }
@@ -72,6 +82,7 @@ class CourseRegistrationSimulation {
                 }
             } else {
                 System.out.println("Invalid nickname or password.");
+                System.out.println();
             }
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
@@ -105,10 +116,10 @@ class CourseRegistrationSimulation {
 
     private void loginAdvisor() {
         try {
-            System.out.println("Enter your nickname: ");
+            System.out.print("Enter your nickname: ");
             String nickname = scanner.nextLine();
 
-            System.out.println("Enter your password: ");
+            System.out.print("Enter your password: ");
             String password = scanner.nextLine();
 
             if (loginSystem.authenticateAdvisorUser(nickname, password)) {
@@ -117,7 +128,9 @@ class CourseRegistrationSimulation {
                     // Load student to studentDBController.
                     // studentDBController.setStudent(loginSystem.getStudent());
                     // Student actions.
+
                     handleAdvisorActions(advisorDBController.getAdvisor());
+
                 }
             } else {
                 System.out.println("Invalid nickname or password.");
@@ -131,17 +144,23 @@ class CourseRegistrationSimulation {
 
     private void handleAdvisorActions(Advisor advisor) {
         while (true) {
+            System.out.println();
             System.out.println("----------ACTIONS----------");
-            System.out.println("1- Check students");
-            System.out.println("2- Approve/Reject student registration requests");
-            System.out.println("Please choose an action: ");
+            //System.out.println("1- Check students");
+            System.out.println("1- Approve/Reject student registration requests");
+            System.out.print("Please choose an action: ");
 
             int choice = scanner.nextInt();
 
+            while(choice != 1){
+                System.out.println();
+                System.out.print("Please enter a valid option:");
+                choice = scanner.nextInt();
+            }
+
             switch (choice) {
-                case 1 -> checkStudents(advisor);
-                case 2 -> handleRegistrationRequests(advisor);
-                default -> System.out.println("Invalid choice.");
+                //case 1 -> checkStudents(advisor);
+                case 1 -> handleRegistrationRequests(advisor);
             }
 
             System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
@@ -153,12 +172,102 @@ class CourseRegistrationSimulation {
         }
     }
 
+    public void loginDepartmentScheduler(){
+        try {
+            System.out.print("Enter your nickname: ");
+            String nickname = scanner.nextLine();
+
+            System.out.print("Enter your password: ");
+            String password = scanner.nextLine();
+
+            if (loginSystem.authenticateDepartmentSchedulerUser(nickname, password)) {
+                if (loginSystem.getDepartmentScheduler() != null) {
+                    System.out.println("Login successful!");
+
+                    handleDepartmentSchedulerActions(departmentSchedulerDBController.getDepartmentScheduler());
+                    //handleAdvisorActions(advisorDBController.getAdvisor());
+
+                }
+            } else {
+                System.out.println("Invalid nickname or password.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleDepartmentSchedulerActions(DepartmentScheduler departmentScheduler) {
+
+        while (true) {
+            System.out.println();
+            System.out.println("----------ACTIONS----------");
+            System.out.println("1- Assign time to the course sections of the department");
+            //System.out.println("2- Turn back");
+            System.out.print("Please choose an action: ");
+
+            int choice = scanner.nextInt();
+
+            while(choice != 1){
+                System.out.println();
+                System.out.print("Please enter a valid option:");
+                choice = scanner.nextInt();
+            }
+
+            switch (choice) {
+                //case 1 -> checkStudents(advisor);
+                case 1 -> handleCourseSectionTimes(departmentScheduler);
+            }
+
+            System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
+            String continueChoice = scanner.next();
+            if (continueChoice.equalsIgnoreCase("n")) {
+                logout();
+                break;
+            }
+        }
+
+    }
+
+    private void handleCourseSectionTimes(DepartmentScheduler departmentScheduler) {
+        System.out.println("CONSTRUCTION");
+    }
+
     private void checkStudents(Advisor advisor) {
         System.out.println("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.");
     };
 
     private void handleRegistrationRequests(Advisor advisor) {
-        System.out.println("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.");
+        //System.out.println("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.");
+
+        List<Registration> registrations = registrationDBController.getRegistrationsOfAdvisor(advisor);
+
+        System.out.println();
+        System.out.println("Please set the status of the registrations:");
+        System.out.println("In order to specify as not approved print O");
+        System.out.println("In order to specify as not checked yet 1");
+        System.out.println("In order to specify as approved print 2");
+
+
+
+        for (int i = 0; i < registrations.size(); i++) {
+            System.out.println(registrations.get(i).getId());
+            System.out.println(registrations.get(i).getRegistrationStatus());
+
+            System.out.print("Print the status to change the state of the registration listed: ");
+            int status = scanner.nextInt();
+
+            while(status < 0 || status > 2){
+                System.out.print("Please enter valid number: ");
+                status = scanner.nextInt();
+            }
+
+            registrations.get(i).setRegistrationStatus(status);
+            registrationDBController.updateRegistrations(registrations.get(i),status);
+
+        }
+
     };
 
     private void createRegistration(Student student) throws IOException {
