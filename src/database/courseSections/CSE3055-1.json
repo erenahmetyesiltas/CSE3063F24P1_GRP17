@@ -2,7 +2,7 @@
   "enrolledStudents": [],
   "classroom": "M2-Z11",
   "id": "CSE3055-1",
-  "scheduledTime": null,
+  "scheduledTimes": [],
   "sectionNumber": 1,
   "course": {
     "id": "CSE3055",
