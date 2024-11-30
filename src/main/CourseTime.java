@@ -6,6 +6,8 @@ public class CourseTime {
     private Time startTime;
     private Time endTime;
     private String courseDay;
+    public CourseTime() {
+    }
 
     public CourseTime(Time startTime, Time endTime) {
         this.startTime = startTime;
