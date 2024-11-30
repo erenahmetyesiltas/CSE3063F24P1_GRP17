@@ -6,7 +6,7 @@ import java.util.List;
 public class CourseSection {
 
     private List<Student> enrolledStudents = new ArrayList<Student>();
-    private String Classroom;
+    private Classroom classroom;
     private String id;
     private List<CourseTime> scheduledTimes = new ArrayList<>();
     private int sectionNumber;
@@ -66,12 +66,12 @@ public class CourseSection {
         this.course = course;
     }
 
-    public String getClassroom() {
-        return Classroom;
+    public Classroom getClassroom() {
+        return classroom;
     }
 
-    public void setClassroom(String classroom) {
-        Classroom = classroom;
+    public void setClassroom(Classroom classroom) {
+        this.classroom = classroom;
     }
 
     public int getCapacity() {return capacity;}

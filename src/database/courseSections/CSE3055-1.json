@@ -1,6 +1,9 @@
 {
   "enrolledStudents": [],
-  "classroom": "M2-Z11",
+  "classroom": {
+    "id": "M2-Z11",
+    "capacity": 70
+  },
   "id": "CSE3055-1",
   "scheduledTimes": [],
   "sectionNumber": 1,
@@ -10,7 +13,8 @@
     "credit": "3",
     "departments": [],
     "term": 5,
-    "prerequisiteCourses": []
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 5
   },
   "capacity": 123,
   "courseId": "CSE3055"
