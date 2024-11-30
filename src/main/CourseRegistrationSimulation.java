@@ -95,6 +95,7 @@ class CourseRegistrationSimulation {
             System.out.println("----------ACTIONS----------");
             System.out.println("1- Create a registration");
             System.out.println("2- Check current registration status");
+            System.out.println("3- Print weekly schedule");
             System.out.print("Please choose an action: ");
 
             int choice = scanner.nextInt();
@@ -102,6 +103,7 @@ class CourseRegistrationSimulation {
             switch (choice) {
                 case 1 -> createRegistration(student);
                 case 2 -> courseRegSystem.getStudentRegistrationStatus(student);
+                case 3 -> student.printWeeklyScheduleAsTable(student);
                 default -> System.out.println("Invalid choice.");
             }
 
