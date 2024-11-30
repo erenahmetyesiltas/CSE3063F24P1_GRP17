@@ -32,6 +32,7 @@ class CourseRegistrationSimulation {
     public void run() throws IOException {
         try {
             while (true) {
+                System.out.println();
                 System.out.println("Please select an option:");
                 System.out.println("1- Advisor Login");
                 System.out.println("2- Student Login");
@@ -95,6 +96,7 @@ class CourseRegistrationSimulation {
             System.out.println("----------ACTIONS----------");
             System.out.println("1- Create a registration");
             System.out.println("2- Check current registration status");
+            System.out.println("3- Turn back to the user selection menu");
             System.out.print("Please choose an action: ");
 
             int choice = scanner.nextInt();
@@ -102,6 +104,7 @@ class CourseRegistrationSimulation {
             switch (choice) {
                 case 1 -> createRegistration(student);
                 case 2 -> courseRegSystem.getStudentRegistrationStatus(student);
+                case 3 -> run();
                 default -> System.out.println("Invalid choice.");
             }
 
@@ -134,6 +137,7 @@ class CourseRegistrationSimulation {
                 }
             } else {
                 System.out.println("Invalid nickname or password.");
+                System.out.println();
             }
         } catch (IOException e) {
             System.out.println("An error occurred: " + e.getMessage());
@@ -142,17 +146,18 @@ class CourseRegistrationSimulation {
         }
     }
 
-    private void handleAdvisorActions(Advisor advisor) {
+    private void handleAdvisorActions(Advisor advisor) throws IOException{
         while (true) {
             System.out.println();
             System.out.println("----------ACTIONS----------");
             //System.out.println("1- Check students");
             System.out.println("1- Approve/Reject student registration requests");
+            System.out.println("2- Turn back to the user selection menu");
             System.out.print("Please choose an action: ");
 
             int choice = scanner.nextInt();
 
-            while(choice != 1){
+            while(choice < 1 || choice > 2){
                 System.out.println();
                 System.out.print("Please enter a valid option:");
                 choice = scanner.nextInt();
@@ -161,6 +166,7 @@ class CourseRegistrationSimulation {
             switch (choice) {
                 //case 1 -> checkStudents(advisor);
                 case 1 -> handleRegistrationRequests(advisor);
+                case 2 -> run();
             }
 
             System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
@@ -190,6 +196,7 @@ class CourseRegistrationSimulation {
                 }
             } else {
                 System.out.println("Invalid nickname or password.");
+                System.out.println();
             }
         } catch (IOException e) {
             System.out.println("An error occurred: " + e.getMessage());
@@ -198,18 +205,18 @@ class CourseRegistrationSimulation {
         }
     }
 
-    private void handleDepartmentSchedulerActions(DepartmentScheduler departmentScheduler) {
+    private void handleDepartmentSchedulerActions(DepartmentScheduler departmentScheduler) throws IOException {
 
         while (true) {
             System.out.println();
             System.out.println("----------ACTIONS----------");
             System.out.println("1- Assign time to the course sections of the department");
-            //System.out.println("2- Turn back");
+            System.out.println("2- Turn back to the user selection menu");
             System.out.print("Please choose an action: ");
 
             int choice = scanner.nextInt();
 
-            while(choice != 1){
+            while(choice < 1 || choice > 2){
                 System.out.println();
                 System.out.print("Please enter a valid option:");
                 choice = scanner.nextInt();
@@ -218,6 +225,7 @@ class CourseRegistrationSimulation {
             switch (choice) {
                 //case 1 -> checkStudents(advisor);
                 case 1 -> handleCourseSectionTimes(departmentScheduler);
+                case 2 -> run();
             }
 
             System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
