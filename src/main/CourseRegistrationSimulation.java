@@ -238,10 +238,7 @@ class CourseRegistrationSimulation {
             e.printStackTrace();
         }
     }
-
-    private void checkStudents(Advisor advisor) {
-        System.out.println("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.");
-    };
+    
 
     private void handleRegistrationRequests(Advisor advisor) {
         try {
