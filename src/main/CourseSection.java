@@ -6,13 +6,25 @@ import java.util.List;
 public class CourseSection {
 
     private List<Student> enrolledStudents = new ArrayList<Student>();
-    private String Classroom;
+    // FIX THIS.!!!
+    private Classroom classroom; // EREN'S USAGE!!
+    //private String Classroom; // IBRAHIM'S USAGE!!
+
     private String id;
     private List<CourseTime> scheduledTimes = new ArrayList<>();
     private int sectionNumber;
     private Course course;
     private int capacity;
     private String courseId;
+    private Lecturer lecturer;
+
+    public Lecturer getLecturer() {
+        return lecturer;
+    }
+
+    public void setLecturer(Lecturer lecturer) {
+        this.lecturer = lecturer;
+    }
 
     public String getCourseId() {
         return courseId;
@@ -66,12 +78,12 @@ public class CourseSection {
         this.course = course;
     }
 
-    public String getClassroom() {
-        return Classroom;
+    public Classroom getClassroom() {
+        return this.classroom;
     }
 
-    public void setClassroom(String classroom) {
-        Classroom = classroom;
+    public void setClassroom(Classroom classroom) {
+        this.classroom = classroom;
     }
 
     public int getCapacity() {return capacity;}

@@ -104,7 +104,7 @@ public class Student extends Person {
                 // Populate the scheduleTable for all time slots within the range
                 if (startIndex != -1 && endIndex != -1 && dayIndex != -1) {
                     for (int i = startIndex; i <= endIndex; i++) {
-                        scheduleTable[i][dayIndex] = String.format("%s (%s)", section.getCourseId(), section.getClassroom());
+                        scheduleTable[i][dayIndex] = String.format("%s (%s)", section.getCourseId(), section.getClassroom().getId());
                     }
                 }
             }
