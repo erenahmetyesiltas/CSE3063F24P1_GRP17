@@ -294,7 +294,6 @@ class CourseRegistrationSimulation {
         }
     }
 
-<<<<<<< HEAD
     private void handleCourseSectionTimes(DepartmentScheduler departmentScheduler) {
         System.out.println("CONSTRUCTION");
     }
