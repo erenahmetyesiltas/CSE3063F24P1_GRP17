@@ -1,6 +1,7 @@
 package DataBaseController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import main.Advisor;
 import main.DataHandler;
 import main.Registration;
@@ -43,6 +44,8 @@ public class RegistrationDBController {
     }
 
     public void updateRegistrations(Registration registrationGiven,int status){
+
+        //objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
         URL registrationMainPath = RegistrationDBController.class.getClassLoader().getResource("database/registrations/"+registrationGiven.getId()+".json");
         File willUpdateRegistrationFile;
