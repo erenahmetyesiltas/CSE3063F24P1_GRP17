@@ -1,9 +1,6 @@
 {
   "enrolledStudents": [],
-  "classroom": {
-    "id": "M2-Z11",
-    "capacity": 70
-  },
+  "classroom": "M2-Z13",
   "id": "CSE3063-1",
   "scheduledTimes": [
     {
@@ -24,16 +21,8 @@
     "credit": "3",
     "departments": [],
     "term": 5,
-    "prerequisiteCourses": [],
-    "weeklyCourseHours": 3
+    "prerequisiteCourses": []
   },
   "capacity": 123,
-  "courseId": "CSE3063",
-  "lecturer": {
-    "id": "2002",
-    "password": "velihan123",
-    "firstName": "Velihan",
-    "lastName": "Kayalar",
-    "departmentIds": ["cse"]
-  }
+  "courseId": "CSE3063"
 }
