@@ -97,13 +97,12 @@ public class CourseRegistrationSystem {
 
     public void printSuitableCourses() {
         System.out.println("\nThe available courses that you can register");
-        System.out.println("Course:                Section:               Lecturer:");
+        System.out.println("Course :               Section :");
         //courseDBController.getCourseSectionList(); //Bunu alttakiyle değiştirdim, aynı fonksiyonu içeriyor./ilker
         dataHandler.getCourseSectionList();
 
         for (CourseSection courseSection : getAllCourseSections()) {
-            String lecturerFullName = courseSection.getLecturer().getFirstName() + " " + courseSection.getLecturer().getLastName();
-            System.out.printf("%-23s%-23d%-30s\n",courseSection.getCourse().getId(),courseSection.getSectionNumber(),lecturerFullName);
+            System.out.printf("%-23s%-1d\n",courseSection.getCourse().getId(),courseSection.getSectionNumber());
             //System.out.println(courseSection.getCourse().getName());
         }
     }
