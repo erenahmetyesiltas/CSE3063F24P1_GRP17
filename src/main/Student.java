@@ -14,10 +14,30 @@ public class Student extends Person {
     private List<Department> departments;
     private int startYear;
     private int year;
+    private int currentTerm;
     private Registration registration = new Registration(); // Used as composition/aggregation
     private String registrationId; // Easier to connect with Database
+    private Transcript transcript;
 
     public Student() {
+    }
+
+    public void printTranscript() {
+        System.out.println("|_______________________________________________");
+        System.out.println("| Student Name: " + this.getFirstName() + " " + this.getLastName());
+        System.out.println("| Student ID: " + this.getId());
+        System.out.println("| Program: " + this.getDepartments().get(0).getDepartmentName());
+        System.out.println("| Year/Term: " + this.getYear() + " / " + this.getCurrentTerm());
+        System.out.println("|_______________________________________________");
+        for (int i = 0; i < currentTerm; i++) {
+            for (int j = 0; j < transcript.getCoursesTaken().size(); j++) {
+                if ((int) (transcript.getTermOfCourse().get(j)) == i) {
+                    System.out.println("| " + transcript.getCoursesTaken().get(j).getName() + " - " +
+                    transcript.getGrade().get(j));
+                }
+            }
+        }
+
     }
 
     public String getId() {
@@ -193,5 +213,19 @@ public class Student extends Person {
 
     public int getAdvisorId() {
         return advisorId;
+    }
+
+    public Transcript getTranscript() {
+        return transcript;
+    }
+    public void setTranscript(Transcript transcript) {
+        this.transcript = transcript;
+    }
+    public int getCurrentTerm() {
+        return currentTerm;
+    }
+    public void setCurrentTerm(int currentTerm) {
+        this.currentTerm = currentTerm;
+        this.year = currentTerm / 2;
     }
 }
