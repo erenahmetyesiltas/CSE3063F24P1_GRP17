@@ -1,5 +1,8 @@
 package main;
 
+import DataBaseController.AdvisorDBController;
+import DataBaseController.CourseDBController;
+import DataBaseController.StudentDBController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -14,8 +17,10 @@ public class CourseRegistrationSystem {
     private List<CourseSection> allCourseSections = new ArrayList<>();
     private List<Department> allDepartments = new ArrayList<>();
     private final DataHandler dataHandler = new DataHandler();
+    private CourseDBController courseDBController = new CourseDBController();
 
     public CourseRegistrationSystem() throws IOException {
+        setAllCourseSections(dataHandler.getCourseSectionList());
     }
 
     public List<Student> getAllStudents() {
@@ -54,33 +59,35 @@ public class CourseRegistrationSystem {
         return dataHandler;
     }
 
-    public void restoreSystem() throws NoSuchElementException {
-        int i = 0;
-        List<SystemData> allDatas = dataHandler.getAllDatas();
-        ObjectMapper mapper = dataHandler.getObjectMapper();
 
-        while (i != (allDatas.size())) {
-            Class objectClass = allDatas.get(i).getObjectClass();
-            Object object = allDatas.get(i).getObject();
-
-            if (objectClass == Student.class) {
-                Student student = mapper.convertValue(object, Student.class);
-                this.getAllStudents().add(student);
-            }
-
-            if (objectClass == CourseSection.class) {
-                CourseSection course = mapper.convertValue(object, CourseSection.class);
-                this.getAllCourseSections().add(course);
-            }
-
-            if (objectClass == Advisor.class) {
-                Advisor advisor = mapper.convertValue(object, Advisor.class);
-                this.getAllAdvisors().add(advisor);
-            }
-
-            i++;
-        }
-    }
+//    public void restoreSystem() throws NoSuchElementException {
+//        int i = 0;
+//        List<SystemData> allDatas = dataHandler.getAllDatas();
+//        ObjectMapper mapper = dataHandler.getObjectMapper();
+//
+//        while (i != (allDatas.size())) {
+//            Class objectClass = allDatas.get(i).getObjectClass();
+//            Object object = allDatas.get(i).getObject();
+//
+//            if (objectClass == Student.class) {
+//                Student student = mapper.convertValue(object, Student.class);
+//                this.getAllStudents().add(student);
+//            }
+//
+//            if (objectClass == CourseSection.class) {
+//                CourseSection course = mapper.convertValue(object, CourseSection.class);
+//                this.getAllCourseSections().add(course);
+//
+//            }
+//
+//            if (objectClass == Advisor.class) {
+//                Advisor advisor = mapper.convertValue(object, Advisor.class);
+//                this.getAllAdvisors().add(advisor);
+//            }
+//
+//            i++;
+//        }
+//    }
 
     public void updateData(Object object) {
         SystemData data = new SystemData(object, object.getClass(), "object" + dataHandler.getFileNumber() + ".json");
@@ -89,19 +96,23 @@ public class CourseRegistrationSystem {
     }
 
     public void printSuitableCourses() {
-        System.out.println("\nThe available courses that you can register\n");
-        System.out.println("main.Course :               Section :");
-        for (CourseSection courseSection : this.getAllCourseSections()) {
-            Course currentCourse = courseSection.getCourse();
+        System.out.println("\nThe available courses that you can register");
+        System.out.println("Course :               Section :");
+        //courseDBController.getCourseSectionList(); //Bunu alttakiyle değiştirdim, aynı fonksiyonu içeriyor./ilker
+        dataHandler.getCourseSectionList();
 
-            System.out.printf("%-21s%-10d", currentCourse.getId(), courseSection.getSectionNumber());
-            System.out.println();
+        for (CourseSection courseSection : getAllCourseSections()) {
+            System.out.printf("%-23s%-1d\n",courseSection.getCourse().getId(),courseSection.getSectionNumber());
+            //System.out.println(courseSection.getCourse().getName());
         }
     }
+
     // addCourseSection is added to main.Student, change it in DSD and SSD
     public CourseSection findCourseSection(String course, String section) {
         int sectionNumber = Integer.parseInt(section);
+
         for (CourseSection courseSection : this.getAllCourseSections()) {
+
             if (courseSection.getCourse().getId().equals(course) && courseSection.getSectionNumber() == sectionNumber) {
                 return courseSection;
             }
@@ -111,52 +122,85 @@ public class CourseRegistrationSystem {
 
     public boolean readCourses(Student student){
        Scanner scanner = new Scanner(System.in);
-       System.out.println("Enter the course");
+       System.out.print("Enter the course: ");
        String course = scanner.next();
-       System.out.println("Enter the section");
+       System.out.print("Enter the section: ");
        String courseSection =scanner.next();
 
        if (findCourseSection(course,courseSection) != null) {
-           return student.getRegistration().addCourseSection((findCourseSection(course,courseSection)));
+          if (checkRegistrationTimeConflict(student,findCourseSection(course,courseSection))){
+              System.out.println("WARNING: The hours of the course you want to add conflict with the courses you added.");
+              return false;
+          }
+          else {
+              return student.getRegistration().addCourseSection((findCourseSection(course,courseSection)));
+          }
+
        }
        else {
-           System.out.println("WARNING: main.Course cannot find in available courses");
+           System.out.println("WARNING: The course section entered cannot find in available courses.");
            return false;
        }
-
-
    }
 
-    public void sendRegistrationToAdvisor(Registration registration, Student student){
-        // an advisor is needs
-        Advisor advisor = student.getAdvisor();
-        advisor.addRegistration(registration);
-
-        for (Advisor advisor1 : this.getAllAdvisors()) {
-            if (advisor1.getId().equals(advisor.getId())) {
-                advisor1.addRegistration(registration);
-            }
+   public boolean checkRegistrationTimeConflict(Student student,CourseSection newAddedCourseSection) {
+        for (CourseSection eachCourseSection : student.getRegistration().getCourseSections()) {
+           for(CourseTime courseTime : eachCourseSection.getScheduledTimes()){
+               for(CourseTime newCourseTime : newAddedCourseSection.getScheduledTimes()){
+                   if(courseTime.getCourseDay().equals(newCourseTime.getCourseDay())){
+                       if((courseTime.getStartTime().before(newCourseTime.getEndTime())) && newCourseTime.getStartTime().before(courseTime.getEndTime())){
+                            return true;
+                       }
+                       else if ((courseTime.getStartTime().equals(newCourseTime.getStartTime())) && (courseTime.getEndTime().equals(newCourseTime.getEndTime()))){
+                           return true;
+                       }
+                   }
+               }
+           }
         }
-    }
+        return false;
+   }
 
-    public void studentEnrollRequest(Student student){
+
+
+
+
+
+
+    public void sendRegistrationToAdvisor(Registration registration, Student student) throws IOException {
+        // First, load student's advisor & match it with student.advisor
+        AdvisorDBController advisorDBController = new AdvisorDBController();
+        advisorDBController.loadAdvisor(Integer.toString(student.getAdvisorId()));
+        student.setAdvisor(advisorDBController.getAdvisor());
+        student.getAdvisor().addRegistration(registration);
+
+        // Save the registration and Advisor's registration.
+        StudentDBController studentDBController = new StudentDBController();
+        studentDBController.setStudent(student);
+        studentDBController.saveStudent(student.getId());
+        studentDBController.saveStudentRegistration(student.getId());
+        advisorDBController.saveAdvisor(Integer.toString(student.getAdvisorId()));
+    };
+
+    public void getStudentRegistrationStatus(Student student){
 
         // Regist. and Adv. got from main.Student
         Registration registration = student.getRegistration();
 
         switch (registration.getRegistrationStatus()) {
             case 0 :
+                System.out.println(registration.getCourseSections());
                 System.out.println("WARNING : Your advisor has disapproved your registration, you have to create a new one and send it again\n");
-                student.getAdvisor().getRegistrations().remove(student.getRegistration());
+                //student.getAdvisor().getRegistrations().remove(student.getRegistration());
                 // allAdvisorstan da remove et
-                student.setRegistration(null);
+                //student.setRegistration(null);
                 break;
             case 1:
                 System.out.println("WARNING : Your advisor has not yet checked your registration\n");
                 break;
             case 2 :
                 System.out.println("SUCCESS : Your advisor has approved your registration, you will be enrolled to the courses you \n");
-                enrollStudent(registration.getCourseSectionList(), student);
+                enrollStudent(registration.getCourseSections(), student);
                 break;
         }
 
@@ -165,7 +209,7 @@ public class CourseRegistrationSystem {
     public void enrollStudent(List<CourseSection> enrollCourseSections, Student student){
         for (CourseSection courseSection : allCourseSections) {
             for (CourseSection enrollCourseSection : enrollCourseSections) {
-                if (enrollCourseSection.getCourse().getId().equals(courseSection.getCourse().getId())) {
+                if (enrollCourseSection.getCourseId().equals(courseSection.getCourseId())) {
                     courseSection.getEnrolledStudents().add(student);
                     enrollCourseSection.getEnrolledStudents().add(student);
                 }
@@ -198,7 +242,7 @@ public class CourseRegistrationSystem {
     }
 
     public boolean checkCourseSectionFull(Student student) {
-        List<CourseSection> regCourseSections = student.getRegistration().getCourseSectionList();
+        List<CourseSection> regCourseSections = student.getRegistration().getCourseSections();
         List<Course> prerequisiteCourses = new ArrayList<Course>();
 
         for (int i = 0; i < regCourseSections.size(); i++) {
@@ -214,7 +258,7 @@ public class CourseRegistrationSystem {
     }
 
     public boolean checkPrerequisite(Student student) {
-        List<CourseSection> regCourseSections = student.getRegistration().getCourseSectionList();
+        List<CourseSection> regCourseSections = student.getRegistration().getCourseSections();
         List<Course> prerequisiteCourses = new ArrayList<Course>();
 
         for (int i = 0; i < regCourseSections.size(); i++) {

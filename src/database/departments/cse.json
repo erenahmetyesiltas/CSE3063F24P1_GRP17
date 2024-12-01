@@ -1,0 +1,14 @@
+{
+  "id": "cse",
+  "departmentName": "Computer Engineering",
+  "courseSectionIds": [
+    "CSE3033-1",
+    "CSE3033-2",
+    "CSE3055-1",
+    "CSE3055-2",
+    "CSE3063-1",
+    "CSE3215-1",
+    "CSE3215-2",
+    "IE3081-1"
+  ]
+}

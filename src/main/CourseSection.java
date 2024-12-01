@@ -1,6 +1,5 @@
 package main;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,11 +8,19 @@ public class CourseSection {
     private List<Student> enrolledStudents = new ArrayList<Student>();
     private String Classroom;
     private String id;
-    private Time scheduledTime;
+    private List<CourseTime> scheduledTimes = new ArrayList<>();
     private int sectionNumber;
     private Course course;
     private int capacity;
-    private int currentParticipantNumber;
+    private String courseId;
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
 
     public List<Student> getEnrolledStudents() {
         return enrolledStudents;
@@ -35,12 +42,12 @@ public class CourseSection {
 
     }
 
-    public Time getScheduledTime() {
-        return scheduledTime;
+    public List<CourseTime> getScheduledTimes() {
+        return scheduledTimes;
     }
 
-    public void setScheduledTime(Time scheduledTime) {
-        this.scheduledTime = scheduledTime;
+    public void setScheduledTimes(List<CourseTime> scheduledTime) {
+        this.scheduledTimes =  scheduledTime;
     }
 
     public int getSectionNumber() {

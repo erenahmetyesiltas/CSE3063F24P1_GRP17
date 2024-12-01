@@ -4,12 +4,10 @@ import DataBaseController.AdvisorDBController;
 import DataBaseController.DepartmentSchedulerDBController;
 import DataBaseController.RegistrationDBController;
 import DataBaseController.StudentDBController;
-import log.SingletonLogger;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 class CourseRegistrationSimulation {
     private final CourseRegistrationSystem courseRegSystem;
@@ -17,9 +15,9 @@ class CourseRegistrationSimulation {
     private final StudentDBController studentDBController;
     private final AdvisorDBController advisorDBController;
     private final DepartmentSchedulerDBController departmentSchedulerDBController;
-    private final RegistrationDBController registrationDBController;
-    private final Logger logger;
     private final Scanner scanner;
+
+    private final RegistrationDBController registrationDBController;
 
     public CourseRegistrationSimulation(CourseRegistrationSystem courseRegSystem) {
         this.studentDBController = new StudentDBController();
@@ -28,13 +26,11 @@ class CourseRegistrationSimulation {
         this.registrationDBController = new RegistrationDBController();
         this.courseRegSystem = courseRegSystem;
         this.loginSystem = new LoginSystem(this.studentDBController, this.advisorDBController, this.departmentSchedulerDBController);
-        this.logger = SingletonLogger.getInstance().getLogger();
         this.scanner = new Scanner(System.in);
     }
 
     public void run() throws IOException {
         try {
-            this.logger.info("Course Registration Simulation started.");
             while (true) {
                 System.out.println("Please select an option:");
                 System.out.println("1- Advisor Login");
@@ -63,15 +59,12 @@ class CourseRegistrationSimulation {
                 }
             }
         } catch (Exception e) {
-            this.logger.severe("An error occurred in CourseRegistrationSimulation.run(): " + e.getMessage());
             e.printStackTrace(); // Beklenmeyen hatalar için genel hata yakalayıcı
         }
     }
 
     private void loginStudent() {
         try {
-            this.logger.info("Student login initiated.");
-
             System.out.println();
             System.out.print("Enter your nickname: ");
             String nickname = scanner.nextLine();
@@ -92,50 +85,39 @@ class CourseRegistrationSimulation {
                 System.out.println();
             }
         } catch (Exception e) {
-            this.logger.severe("An error occurred in loginStudent: " + e.getMessage());
             System.out.println("An error occurred: " + e.getMessage());
         }
     }
 
     private void handleStudentActions(Student student) throws IOException {
         while (true) {
-            try {
-                logger.info("handleStudentActions initiated.");
+            System.out.println();
+            System.out.println("----------ACTIONS----------");
+            System.out.println("1- Create a registration");
+            System.out.println("2- Check current registration status");
+            System.out.println("3- Print weekly schedule");
+            System.out.print("Please choose an action: ");
 
-                System.out.println();
-                System.out.println("----------ACTIONS----------");
-                System.out.println("1- Create a registration");
-                System.out.println("2- Check current registration status");
-                System.out.println("3- Print weekly schedule");
-                System.out.print("Please choose an action: ");
+            int choice = scanner.nextInt();
 
-                int choice = scanner.nextInt();
+            switch (choice) {
+                case 1 -> createRegistration(student);
+                case 2 -> courseRegSystem.getStudentRegistrationStatus(student);
+                case 3 -> student.printWeeklyScheduleAsTable(student);
+                default -> System.out.println("Invalid choice.");
+            }
 
-                switch (choice) {
-                    case 1 -> createRegistration(student);
-                    case 2 -> courseRegSystem.getStudentRegistrationStatus(student);
-                    case 3 -> student.printWeeklyScheduleAsTable(student);
-                    default -> System.out.println("Invalid choice.");
-                }
-
-                System.out.println("Do you want to continue? (If not you will logout) (y/n): ");
-                String continueChoice = scanner.next();
-                if (continueChoice.equalsIgnoreCase("n")) {
-                    logout();
-                    break;
-                }
-            } catch (IOException e) {
-                this.logger.severe("An error occurred in handleStudentActions: " + e.getMessage());
-            } catch (Exception e) {
-                this.logger.severe("An error occurred in handleStudentActions: " + e.getMessage());;
+            System.out.println("Do you want to continue? (If not you will logout) (y/n): ");
+            String continueChoice = scanner.next();
+            if (continueChoice.equalsIgnoreCase("n")) {
+                logout();
+                break;
             }
         }
     }
 
     private void loginAdvisor() {
         try {
-            logger.info("Advisor login initiated.");
-
             System.out.print("Enter your nickname: ");
             String nickname = scanner.nextLine();
 
@@ -145,6 +127,10 @@ class CourseRegistrationSimulation {
             if (loginSystem.authenticateAdvisorUser(nickname, password)) {
                 if (loginSystem.getAdvisor() != null) {
                     System.out.println("Login successful!");
+                    // Load student to studentDBController.
+                    // studentDBController.setStudent(loginSystem.getStudent());
+                    // Student actions.
+
                     handleAdvisorActions(advisorDBController.getAdvisor());
 
                 }
@@ -152,55 +138,44 @@ class CourseRegistrationSimulation {
                 System.out.println("Invalid nickname or password.");
             }
         } catch (IOException e) {
-            logger.severe("An error occurred in loginAdvisor: " + e.getMessage());
             System.out.println("An error occurred: " + e.getMessage());
         } catch (Exception e) {
-            logger.severe("An error occurred in loginAdvisor: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     private void handleAdvisorActions(Advisor advisor) {
         while (true) {
-            try {
-                logger.info("handleAdvisorActions initiated.");
+            System.out.println();
+            System.out.println("----------ACTIONS----------");
+            //System.out.println("1- Check students");
+            System.out.println("1- Approve/Reject student registration requests");
+            System.out.print("Please choose an action: ");
 
+            int choice = scanner.nextInt();
+
+            while(choice != 1){
                 System.out.println();
-                System.out.println("----------ACTIONS----------");
-                //System.out.println("1- Check students");
-                System.out.println("1- Approve/Reject student registration requests");
-                System.out.print("Please choose an action: ");
-
-                int choice = scanner.nextInt();
-
-                while (choice != 1) {
-                    System.out.println();
-                    System.out.print("Please enter a valid option:");
-                    choice = scanner.nextInt();
-                }
-
-                switch (choice) {
-                    //case 1 -> checkStudents(advisor);
-                    case 1 -> handleRegistrationRequests(advisor);
-                }
-
-                System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
-                String continueChoice = scanner.next();
-                if (continueChoice.equalsIgnoreCase("n")) {
-                    logout();
-                    break;
-                }
-            } catch (Exception e) {
-                logger.severe("An error occurred in handleAdvisorActions: " + e.getMessage());
+                System.out.print("Please enter a valid option:");
+                choice = scanner.nextInt();
             }
 
+            switch (choice) {
+                //case 1 -> checkStudents(advisor);
+                case 1 -> handleRegistrationRequests(advisor);
+            }
+
+            System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
+            String continueChoice = scanner.next();
+            if (continueChoice.equalsIgnoreCase("n")) {
+                logout();
+                break;
+            }
         }
     }
 
     public void loginDepartmentScheduler(){
         try {
-            logger.info("Login department scheduler initiated.");
-
             System.out.print("Enter your nickname: ");
             String nickname = scanner.nextLine();
 
@@ -219,45 +194,40 @@ class CourseRegistrationSimulation {
                 System.out.println("Invalid nickname or password.");
             }
         } catch (IOException e) {
-            logger.severe("An error occurred in loginDepartmentScheduler: " + e.getMessage());
             System.out.println("An error occurred: " + e.getMessage());
         } catch (Exception e) {
-            logger.severe("An error occurred in loginDepartmentScheduler: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     private void handleDepartmentSchedulerActions(DepartmentScheduler departmentScheduler) {
+
         while (true) {
-            try {
+            System.out.println();
+            System.out.println("----------ACTIONS----------");
+            System.out.println("1- Assign time to the course sections of the department");
+            //System.out.println("2- Turn back");
+            System.out.print("Please choose an action: ");
+
+            int choice = scanner.nextInt();
+
+            while(choice != 1){
                 System.out.println();
-                System.out.println("----------ACTIONS----------");
-                System.out.println("1- Assign time to the course sections of the department");
-                //System.out.println("2- Turn back");
-                System.out.print("Please choose an action: ");
+                System.out.print("Please enter a valid option:");
+                choice = scanner.nextInt();
+            }
 
-                int choice = scanner.nextInt();
+            switch (choice) {
+                //case 1 -> checkStudents(advisor);
+                case 1 -> handleCourseSectionTimes(departmentScheduler);
+            }
 
-                while (choice != 1) {
-                    System.out.println();
-                    System.out.print("Please enter a valid option:");
-                    choice = scanner.nextInt();
-                }
-
-                switch (choice) {
-                    //case 1 -> checkStudents(advisor);
-                    case 1 -> handleCourseSectionTimes(departmentScheduler);
-                }
-
-                System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
-                String continueChoice = scanner.next();
-                if (continueChoice.equalsIgnoreCase("n")) {
-                    logout();
-                    break;
-                }
-            }   catch (Exception e) {
-                logger.severe("An error occurred in handleDepartmentSchedulerActions: " + e.getMessage());
-                }
+            System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
+            String continueChoice = scanner.next();
+            if (continueChoice.equalsIgnoreCase("n")) {
+                logout();
+                break;
+            }
         }
 
     }
@@ -271,37 +241,35 @@ class CourseRegistrationSimulation {
     };
 
     private void handleRegistrationRequests(Advisor advisor) {
-        try {
-            logger.info("handleRegistrationRequests initiated.");
+        //System.out.println("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.");
 
-            List<Registration> registrations = registrationDBController.getRegistrationsOfAdvisor(advisor);
+        List<Registration> registrations = registrationDBController.getRegistrationsOfAdvisor(advisor);
 
-            System.out.println();
-            System.out.println("Please set the status of the registrations:");
-            System.out.println("In order to specify as not approved print O");
-            System.out.println("In order to specify as not checked yet 1");
-            System.out.println("In order to specify as approved print 2");
+        System.out.println();
+        System.out.println("Please set the status of the registrations:");
+        System.out.println("In order to specify as not approved print O");
+        System.out.println("In order to specify as not checked yet 1");
+        System.out.println("In order to specify as approved print 2");
 
 
-            for (int i = 0; i < registrations.size(); i++) {
-                System.out.println(registrations.get(i).getId());
-                System.out.println(registrations.get(i).getRegistrationStatus());
 
-                System.out.print("Print the status to change the state of the registration listed: ");
-                int status = scanner.nextInt();
+        for (int i = 0; i < registrations.size(); i++) {
+            System.out.println(registrations.get(i).getId());
+            System.out.println(registrations.get(i).getRegistrationStatus());
 
-                while (status < 0 || status > 2) {
-                    System.out.print("Please enter valid number: ");
-                    status = scanner.nextInt();
-                }
+            System.out.print("Print the status to change the state of the registration listed: ");
+            int status = scanner.nextInt();
 
-                registrations.get(i).setRegistrationStatus(status);
-                registrationDBController.updateRegistrations(registrations.get(i), status);
-
+            while(status < 0 || status > 2){
+                System.out.print("Please enter valid number: ");
+                status = scanner.nextInt();
             }
-        } catch (Exception e) {
-            logger.severe("An error occurred in handleRegistrationRequests: " + e.getMessage());
+
+            registrations.get(i).setRegistrationStatus(status);
+            registrationDBController.updateRegistrations(registrations.get(i),status);
+
         }
+
     };
 
     private void createRegistration(Student student) throws IOException {

@@ -7,7 +7,7 @@ public class Course {
     private String id;
     private int credit;
     private List<Department> departments;
-    private Date year;
+    private int term;
     private List<Course> prerequisiteCourses;
     private String name;
 
@@ -31,12 +31,12 @@ public class Course {
         this.departments = departments;
     }
 
-    public Date getYear() {
-        return year;
+    public int getTerm() {
+        return term;
     }
 
-    public void setYear(Date year) {
-        this.year = year;
+    public void setTerm(int term) {
+        this.term = term;
     }
 
 
@@ -61,6 +61,10 @@ public class Course {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     //public List<main.CourseSection> getCourseSection() {
