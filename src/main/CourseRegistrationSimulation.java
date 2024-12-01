@@ -294,6 +294,31 @@ class CourseRegistrationSimulation {
                     System.out.print("Please enter the classroom name:");
                     String croomName = scanner.next();
                     isClassroomValid = courseDBController.assignClassroomToCourseSection(courseSection, croomName);
+
+                    if(!isClassroomValid){
+
+                        System.out.print("Do you want to change the classroom of this course section? (y/n): ");
+                        yesOrNo = scanner.next();
+                        boolean isTrueInputInner = false;
+
+                        while(!isTrueInputInner){
+
+                            if(yesOrNo.equalsIgnoreCase("Y")){
+                                isTrueInputInner = true;
+                                isTrueInput = false;
+                            }else if(yesOrNo.equalsIgnoreCase("N")){
+                                isTrueInputInner = true;
+                                isTrueInput = true;
+                            }else{
+                                isTrueInput = false;
+                                System.out.print("Do you want to add classroom? Please enter the input correctly (y/n):");
+                                yesOrNo = scanner.next();
+                            }
+
+                        }
+                    }
+
+
                 }else if(yesOrNo.equalsIgnoreCase("N")){
                     break;
                 }else{
@@ -303,7 +328,8 @@ class CourseRegistrationSimulation {
                 }
             }
 
-        }else{
+        }
+        else{
             System.out.print(courseSection.getId() + "'s classroom is "+ courseSection.getClassroom().getId() +".\nDo you want to change the classroom? ");
             System.out.print("(y/n): ");
             String yesOrNo = scanner.next();
@@ -318,6 +344,29 @@ class CourseRegistrationSimulation {
                     String croomName = scanner.next();
                     isClassroomValid = courseDBController.assignClassroomToCourseSection(courseSection, croomName);
 
+                    if(!isClassroomValid){
+
+                        System.out.print("Do you want to change the classroom of this course section? (y/n): ");
+                        yesOrNo = scanner.next();
+                        boolean isTrueInputInner = false;
+
+                        while(!isTrueInputInner){
+
+                            if(yesOrNo.equalsIgnoreCase("Y")){
+                                   isTrueInputInner = true;
+                                   isTrueInput = false;
+                            }else if(yesOrNo.equalsIgnoreCase("N")){
+                                    isTrueInputInner = true;
+                                    isTrueInput = true;
+                            }else{
+                                isTrueInput = false;
+                                System.out.print("Do you want to add classroom? Please enter the input correctly (y/n):");
+                                yesOrNo = scanner.next();
+                            }
+
+                        }
+                    }
+
                 } else if (yesOrNo.equalsIgnoreCase("N")) {
                     break;
                 } else {
@@ -331,7 +380,7 @@ class CourseRegistrationSimulation {
 
         // Time Settings
         if(courseSection.getScheduledTimes().isEmpty()){
-            System.out.print(courseSection.getId() + "'s time is empty. \n Do you want to add times for this course section?(y/n)");
+            System.out.print(courseSection.getId() + "'s time is empty. \nDo you want to add times for this course section?(y/n): ");
             String yesOrNo = scanner.next();
 
             boolean isTrueInput = false;
@@ -341,6 +390,28 @@ class CourseRegistrationSimulation {
                 if(yesOrNo.equalsIgnoreCase("Y")){
                     isTrueInput = true;
                     isTimeValid = courseDBController.assignTimesToCourseSection(courseSection,departmentSchedulerDBController.getDepartmentScheduler());
+
+                    if(!isTimeValid){
+                        System.out.print("Do you want to change the classroom of this course section? (y/n): ");
+                        yesOrNo = scanner.next();
+                        boolean isTrueInputInner = false;
+
+                        while(!isTrueInputInner){
+
+                            if(yesOrNo.equalsIgnoreCase("Y")){
+                                isTrueInputInner = true;
+                                isTrueInput = false;
+                            }else if(yesOrNo.equalsIgnoreCase("N")){
+                                isTrueInputInner = true;
+                                isTrueInput = true;
+                            }else{
+                                isTrueInput = false;
+                                System.out.print("Do you want to add times? Please enter the input correctly (y/n):");
+                                yesOrNo = scanner.next();
+                            }
+
+                        }
+                    }
 
                 }else if(yesOrNo.equalsIgnoreCase("N")){
                     break;
@@ -352,7 +423,8 @@ class CourseRegistrationSimulation {
 
             }
 
-        }else{
+        }
+        else{
             System.out.println(courseSection.getId() + "'s classroom times are:");
 
             for (int i = 0; i < courseSection.getScheduledTimes().size(); i++) {
@@ -372,6 +444,28 @@ class CourseRegistrationSimulation {
                 if(yesOrNo.equalsIgnoreCase("Y")){
                     isTrueInput = true;
                     isTimeValid = courseDBController.assignTimesToCourseSection(courseSection,departmentSchedulerDBController.getDepartmentScheduler());
+
+                    if(!isTimeValid){
+                        System.out.print("Do you want to change the classroom of this course section? (y/n): ");
+                        yesOrNo = scanner.next();
+                        boolean isTrueInputInner = false;
+
+                        while(!isTrueInputInner){
+
+                            if(yesOrNo.equalsIgnoreCase("Y")){
+                                isTrueInputInner = true;
+                                isTrueInput = false;
+                            }else if(yesOrNo.equalsIgnoreCase("N")){
+                                isTrueInputInner = true;
+                                isTrueInput = true;
+                            }else{
+                                isTrueInput = false;
+                                System.out.print("Do you want to add times? Please enter the input correctly (y/n):");
+                                yesOrNo = scanner.next();
+                            }
+
+                        }
+                    }
 
                 }else if(yesOrNo.equalsIgnoreCase("N")){
                     break;
@@ -407,6 +501,7 @@ class CourseRegistrationSimulation {
         System.out.println("Please enter the inputs correctly.");
         System.out.println();
         return false;
+
     }
 
     private void checkStudents(Advisor advisor) {
