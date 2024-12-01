@@ -11,10 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CourseDBController {
@@ -288,19 +285,30 @@ public class CourseDBController {
         // Course Section Hours enrolling attempt
         for (int i = 0; i < courseSection.getCourse().getWeeklyCourseHours(); i++) {
 
-            System.out.print("Enter a day for the course hour "+i+": ");
-            String day = scanner.next();
-            courseSection.getScheduledTimes().get(i).setCourseDay(day);
+            int nthCourseSectionHour = i+1;
+            CourseTime courseTime = new CourseTime();
 
-            System.out.print("Enter a day for the course hour "+i+": ");
+
+            System.out.print("Enter a day for the course hour "+nthCourseSectionHour+": ");
+            String day = scanner.next();
+            //courseSection.getScheduledTimes().get(i).setCourseDay(day);
+            courseTime.setCourseDay(day);
+
+            System.out.print("Enter a start time for the course hour "+nthCourseSectionHour+": ");
             String startTime = scanner.next();
-            courseSection.getScheduledTimes().get(i).setStartTime(Time.valueOf(startTime));
+            //courseSection.getScheduledTimes().get(i).setStartTime(Time.valueOf(startTime));
+            courseTime.setStartTime(Time.valueOf(startTime));
 
             String endTime = startTime.substring(0,3) + "50:00";
-            courseSection.getScheduledTimes().get(i).setEndTime(Time.valueOf(endTime));
+            //courseSection.getScheduledTimes().get(i).setEndTime(Time.valueOf(endTime));
+            courseTime.setEndTime(Time.valueOf(endTime));
+
+            courseSection.getScheduledTimes().add(courseTime);
         }
 
-        int enteredValidCourseSectionTime = 0;
+        //System.out.println(courseSection.getScheduledTimes().size());
+
+        int enteredValidCourseSectionTime = courseSection.getScheduledTimes().size();
 
         // Kendi bölümleri ile zaman çakışıyor ise patla
         for (int i = 0; i < courseSection.getScheduledTimes().size(); i++) {
@@ -327,7 +335,7 @@ public class CourseDBController {
                             System.out.println("Start Time: "+courseSection.getScheduledTimes().get(i).getStartTime());
                             System.out.println("End Time: "+courseSection.getScheduledTimes().get(i).getEndTime());
                             courseSection.getScheduledTimes().remove(i);
-                            enteredValidCourseSectionTime++;
+                            enteredValidCourseSectionTime--;
                         }
 
                     }
@@ -338,8 +346,12 @@ public class CourseDBController {
 
         }
 
+
+
         if(enteredValidCourseSectionTime <= courseSection.getCourse().getWeeklyCourseHours() &&
-        courseSection.getCourse().getWeeklyCourseHours() > 0){
+        enteredValidCourseSectionTime > 0){
+
+            //System.out.println(enteredValidCourseSectionTime);
 
 //            try {
 //                mapper.writeValue(courseSectionFile,courseSection);
@@ -369,32 +381,73 @@ public class CourseDBController {
 
         List<CourseSection> allCourseSections = getAllCourseSectionList();
 
-        for (int i = 0; i < courseSection.getScheduledTimes().size(); i++) {
-            for (int j = 0; j < allCourseSections.size(); j++) {
+        // Discard itself from the allCourseSections
+        for (int i = 0; i < allCourseSections.size(); i++) {
+            if(courseSection.getId().equals(allCourseSections.get(i).getId())){
+                allCourseSections.remove(allCourseSections.get(i));
+            }
+        }
 
-                if(courseSection.getClassroom() != allCourseSections.get(j).getClassroom()){
+//        for (int i = 0; i < courseSection.getScheduledTimes().size(); i++) {
+//            for (int j = 0; j < allCourseSections.size(); j++) {
+//
+//                if(!courseSection.getClassroom().getId().equalsIgnoreCase(allCourseSections.get(j).getClassroom().getId())){
+//                    continue;
+//                }else if(allCourseSections.get(j).getScheduledTimes().size() == 0){
+//                    System.out.println(allCourseSections.get(j).getId() + " is empty");
+//                    continue;
+//                }
+//
+//                for (int k = 0; k < allCourseSections.get(j).getScheduledTimes().size(); k++) {
+//
+//                    if(courseSection.getScheduledTimes().get(i).getCourseDay().equalsIgnoreCase(allCourseSections.get(j).getScheduledTimes().get(k).getCourseDay()) &&
+//                    courseSection.getScheduledTimes().get(i).getStartTime().equals(allCourseSections.get(j).getScheduledTimes().get(k).getStartTime()) &&
+//                    courseSection.getScheduledTimes().get(i).getEndTime().equals(allCourseSections.get(j).getScheduledTimes().get(k).getEndTime())){
+//
+//                        System.out.println("The course section was removed since the classroom was already used for another course section hours at the time.");
+//                        System.out.println("Day: "+courseSection.getScheduledTimes().get(i).getCourseDay());
+//                        System.out.println("Start Time: "+courseSection.getScheduledTimes().get(i).getStartTime());
+//                        System.out.println("End Time: "+courseSection.getScheduledTimes().get(i).getEndTime());
+//                        System.out.println("Classroom:" + courseSection.getClassroom().getId());
+//                        System.out.println();
+//
+//                        courseSection.getScheduledTimes().remove(i);
+//
+//                    }
+//
+//                }
+//            }
+//        }
+
+        Iterator<CourseTime> iterator = courseSection.getScheduledTimes().iterator();
+        while (iterator.hasNext()) {
+            CourseTime scheduledTime = iterator.next();
+            for (int j = 0; j < allCourseSections.size(); j++) {
+                if (!courseSection.getClassroom().getId().equalsIgnoreCase(allCourseSections.get(j).getClassroom().getId())) {
+                    continue;
+                } else if (allCourseSections.get(j).getScheduledTimes().size() == 0) {
+                    System.out.println(allCourseSections.get(j).getId() + " is empty");
                     continue;
                 }
 
-                for (int k = 0; k < allCourseSections.get(j).getScheduledTimes().size(); k++) {
-
-                    if(courseSection.getScheduledTimes().get(i).getCourseDay().equalsIgnoreCase(allCourseSections.get(j).getScheduledTimes().get(k).getCourseDay()) &&
-                    courseSection.getScheduledTimes().get(i).getStartTime().equals(allCourseSections.get(j).getScheduledTimes().get(k).getStartTime()) &&
-                    courseSection.getScheduledTimes().get(i).getEndTime().equals(allCourseSections.get(j).getScheduledTimes().get(k).getEndTime())){
+                for (CourseTime otherScheduledTime : allCourseSections.get(j).getScheduledTimes()) {
+                    if (scheduledTime.getCourseDay().equalsIgnoreCase(otherScheduledTime.getCourseDay()) &&
+                            scheduledTime.getStartTime().equals(otherScheduledTime.getStartTime()) &&
+                            scheduledTime.getEndTime().equals(otherScheduledTime.getEndTime())) {
 
                         System.out.println("The course section was removed since the classroom was already used for another course section hours at the time.");
-                        System.out.println("Day: "+courseSection.getScheduledTimes().get(i).getCourseDay());
-                        System.out.println("Start Time: "+courseSection.getScheduledTimes().get(i).getStartTime());
-                        System.out.println("End Time: "+courseSection.getScheduledTimes().get(i).getEndTime());
+                        System.out.println("Day: " + scheduledTime.getCourseDay());
+                        System.out.println("Start Time: " + scheduledTime.getStartTime());
+                        System.out.println("End Time: " + scheduledTime.getEndTime());
                         System.out.println("Classroom:" + courseSection.getClassroom().getId());
                         System.out.println();
-                        courseSection.getScheduledTimes().remove(i);
-
+                        iterator.remove(); // Güvenli kaldırma
+                        break;
                     }
-
                 }
             }
         }
+
 
         if(courseSection.getScheduledTimes().isEmpty()){
             System.out.println("Any course section hours cannot be saved.");
@@ -406,6 +459,8 @@ public class CourseDBController {
             assignTimesToCourseSectionWithNoDoubt(courseSectionFile, courseSection);
             assignClassroomToCourseSectionWithNoDoubt(courseSectionFile, courseSection);
 
+            System.out.println();
+            System.out.println("The course section hours "+ courseSection.getScheduledTimes().size()+"/"+courseSection.getCourse().getWeeklyCourseHours()+" are saved.");
             System.out.println("The saved course sections are:");
 
             System.out.println("Classroom: "+courseSection.getClassroom().getId());

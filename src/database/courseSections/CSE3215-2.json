@@ -23,6 +23,6 @@
     "password": "yavuz123",
     "firstName": "Yavuz",
     "lastName": "Sarı",
-    "departmentId": "cse"
+    "departmentIds": ["cse"]
   }
 }

@@ -14,7 +14,7 @@
     "departments": [],
     "term": 5,
     "prerequisiteCourses": [],
-    "weeklyCourseHours": 5
+    "weeklyCourseHours": 3
   },
   "capacity": 123,
   "courseId": "IE3081",
@@ -23,6 +23,6 @@
     "password": "kazım123",
     "firstName": "Kazım",
     "lastName": "Yılmaz",
-    "departmentId": "cse"
+    "departmentIds": ["cse"]
   }
 }

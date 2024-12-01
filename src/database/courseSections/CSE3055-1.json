@@ -23,6 +23,6 @@
     "password": "hamdi123",
     "firstName": "Hamdi",
     "lastName": "Demirci",
-    "departmentId": "cse"
+    "departmentIds": ["cse"]
   }
 }

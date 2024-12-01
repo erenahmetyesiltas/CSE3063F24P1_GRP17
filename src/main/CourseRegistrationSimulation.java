@@ -368,6 +368,7 @@ class CourseRegistrationSimulation {
                     }
 
                 } else if (yesOrNo.equalsIgnoreCase("N")) {
+                    isClassroomValid = true;
                     break;
                 } else {
                     isTrueInput = false;
@@ -380,7 +381,7 @@ class CourseRegistrationSimulation {
 
         // Time Settings
         if(courseSection.getScheduledTimes().isEmpty()){
-            System.out.print(courseSection.getId() + "'s time is empty. \nDo you want to add times for this course section?(y/n): ");
+            System.out.print(courseSection.getId() + "'s time is empty.\nDo you want to add times for this course section?(y/n): ");
             String yesOrNo = scanner.next();
 
             boolean isTrueInput = false;
@@ -468,6 +469,7 @@ class CourseRegistrationSimulation {
                     }
 
                 }else if(yesOrNo.equalsIgnoreCase("N")){
+                    isTimeValid = true;
                     break;
                 }else{
                     isTrueInput = false;
