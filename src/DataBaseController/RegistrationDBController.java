@@ -59,7 +59,7 @@ public class RegistrationDBController {
         registrationWillUpdate.setRegistrationStatus(status);
 
         try {
-            objectMapper.writeValue(willUpdateRegistrationFile, registrationWillUpdate);
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(willUpdateRegistrationFile, registrationWillUpdate);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
