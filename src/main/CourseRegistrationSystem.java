@@ -139,8 +139,14 @@ public class CourseRegistrationSystem {
        String courseSection =scanner.next();
 
        if (findCourseSection(course,courseSection) != null) {
+          if (checkRegistrationTimeConflict(student,findCourseSection(course,courseSection))){
+              System.out.println("WARNING: The hours of the course you want to add conflict with the courses you added.");
+              return false;
+          }
+          else {
+              return student.getRegistration().addCourseSection((findCourseSection(course,courseSection)));
+          }
 
-           return student.getRegistration().addCourseSection((findCourseSection(course,courseSection)));
        }
        else {
            System.out.println("WARNING: The course section entered cannot find in available courses.");
@@ -148,11 +154,41 @@ public class CourseRegistrationSystem {
        }
    }
 
+   public boolean checkRegistrationTimeConflict(Student student,CourseSection newAddedCourseSection) {
+        for (CourseSection eachCourseSection : student.getRegistration().getCourseSections()) {
+           for(CourseTime courseTime : eachCourseSection.getScheduledTimes()){
+               for(CourseTime newCourseTime : newAddedCourseSection.getScheduledTimes()){
+                   if(courseTime.getCourseDay().equals(newCourseTime.getCourseDay())){
+                       if((courseTime.getStartTime().before(newCourseTime.getEndTime())) && newCourseTime.getStartTime().before(courseTime.getEndTime())){
+                            return true;
+                       }
+                       else if ((courseTime.getStartTime().equals(newCourseTime.getStartTime())) && (courseTime.getEndTime().equals(newCourseTime.getEndTime()))){
+                           return true;
+                       }
+                   }
+               }
+           }
+        }
+        return false;
+   }
+
+
+
+
+
+
+
     public void sendRegistrationToAdvisor(Registration registration, Student student) throws IOException {
         // First, load student's advisor & match it with student.advisor
         AdvisorDBController advisorDBController = new AdvisorDBController();
         advisorDBController.loadAdvisor(Integer.toString(student.getAdvisorId()));
         student.setAdvisor(advisorDBController.getAdvisor());
+        for (String eachRegistration : advisorDBController.getAdvisor().getRegistrationsIDs() ){
+            if(eachRegistration.equals(student.getRegistrationId())){
+                advisorDBController.getAdvisor().getRegistrationsIDs().remove(eachRegistration);
+            }
+        }
+
         student.getAdvisor().addRegistration(registration);
 
         // Save the registration and Advisor's registration.
