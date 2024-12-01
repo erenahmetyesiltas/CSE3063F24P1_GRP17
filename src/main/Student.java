@@ -16,7 +16,7 @@ public class Student extends Person {
     private int year;
     private int currentTerm;
     private Registration registration = new Registration(); // Used as composition/aggregation
-    private String registrationId; // Easier to connect with Database
+    private String registrationId;
     private Transcript transcript;
 
     public Student() {
@@ -218,9 +218,11 @@ public class Student extends Person {
     public Transcript getTranscript() {
         return transcript;
     }
+
     public void setTranscript(Transcript transcript) {
         this.transcript = transcript;
     }
+
     public int getCurrentTerm() {
         return currentTerm;
     }

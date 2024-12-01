@@ -9,9 +9,44 @@ public class Transcript {
     private float GPA;
     private int totalCredit;
     private List<Course> coursesTaken;
-    private List<String> grade;
+    private List<String> grades;
     private List<Integer> termOfCourse; // Holds the information on which term the corresponding course was taken
-    private List<Integer> yearOfCourse; // Holds the information on which year the corresponding course was taken
+
+    public Transcript() {
+    }
+
+    public void addCourseTaken(Course course, String grade, Integer term) {
+        totalCredit = 0;
+        GPA = 0.0f;
+        coursesTaken.add(course);
+        grades.add(grade);
+        termOfCourse.add(term);
+        for (int i = 0; i < grades.size(); i++) {
+            totalCredit += coursesTaken.get(i).getCredit(); // calculates total credit
+
+            if (grade.equalsIgnoreCase("aa"))
+                GPA += 4.0f;
+            else if (grade.equalsIgnoreCase("ba"))
+                GPA += 3.5f;
+            else if (grade.equalsIgnoreCase("bb"))
+                GPA += 3.0f;
+            else if (grade.equalsIgnoreCase("cb"))
+                GPA += 2.5f;
+            else if (grade.equalsIgnoreCase("cc"))
+                GPA += 2.0f;
+            else if (grade.equalsIgnoreCase("dc"))
+                GPA += 1.5f;
+            else if (grade.equalsIgnoreCase("dd"))
+                GPA += 1.0f;
+            else if (grade.equalsIgnoreCase("fd"))
+                GPA += 0.5f;
+            else if (grade.equalsIgnoreCase("ff"))
+                GPA += 0.0f;
+        }
+        GPA /= grades.size();
+
+
+    }
 
     public String getStudentID() {
         return studentID;
@@ -44,21 +79,15 @@ public class Transcript {
         this.coursesTaken = coursesTaken;
     }
     public List<String> getGrade() {
-        return grade;
+        return grades;
     }
     public void setGrade(List<String> grade) {
-        this.grade = grade;
+        this.grades = grade;
     }
     public List<Integer> getTermOfCourse() {
         return termOfCourse;
     }
     public void setTermOfCourse(List<Integer> termOfCourse) {
         this.termOfCourse = termOfCourse;
-    }
-    public List<Integer> getYearOfCourse() {
-        return yearOfCourse;
-    }
-    public void setYearOfCourse(List<Integer> yearOfCourse) {
-        this.yearOfCourse = yearOfCourse;
     }
 }
