@@ -1,9 +1,6 @@
 {
   "enrolledStudents": [],
-  "classroom": {
-    "id": "M2-Z11",
-    "capacity": 70
-  },
+  "classroom": "M2-Z12",
   "id": "CSE3033-2",
   "scheduledTimes": [
     {
@@ -24,16 +21,8 @@
     "credit": "3",
     "departments": [],
     "term": 5,
-    "prerequisiteCourses": [],
-    "weeklyCourseHours": 5
+    "prerequisiteCourses": []
   },
   "capacity": 123,
-  "courseId": "CSE3033",
-  "lecturer": {
-    "id": "2000",
-    "password": "halil123",
-    "firstName": "Halil",
-    "lastName": "Demir",
-    "departmentIds": ["cse"]
-  }
+  "courseId": "CSE3033"
 }

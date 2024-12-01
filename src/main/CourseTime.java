@@ -14,10 +14,6 @@ public class CourseTime {
         this.endTime = endTime;
     }
 
-    public CourseTime(){
-
-    }
-
     public Time getStartTime() {
         return startTime;
     }
