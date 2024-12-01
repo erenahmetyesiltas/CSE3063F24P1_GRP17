@@ -13,37 +13,46 @@ public class Transcript {
     private List<Integer> termOfCourse; // Holds the information on which term the corresponding course was taken
 
     public Transcript() {
+        calculateThings();
     }
 
-    public void addCourseTaken(Course course, String grade, Integer term) {
+    public void calculateThings() {
         totalCredit = 0;
         GPA = 0.0f;
-        coursesTaken.add(course);
-        grades.add(grade);
-        termOfCourse.add(term);
+
         for (int i = 0; i < grades.size(); i++) {
             totalCredit += coursesTaken.get(i).getCredit(); // calculates total credit
 
-            if (grade.equalsIgnoreCase("aa"))
+            if (grades.get(i).equalsIgnoreCase("aa"))
                 GPA += 4.0f;
-            else if (grade.equalsIgnoreCase("ba"))
+            else if (grades.get(i).equalsIgnoreCase("ba"))
                 GPA += 3.5f;
-            else if (grade.equalsIgnoreCase("bb"))
+            else if (grades.get(i).equalsIgnoreCase("bb"))
                 GPA += 3.0f;
-            else if (grade.equalsIgnoreCase("cb"))
+            else if (grades.get(i).equalsIgnoreCase("cb"))
                 GPA += 2.5f;
-            else if (grade.equalsIgnoreCase("cc"))
+            else if (grades.get(i).equalsIgnoreCase("cc"))
                 GPA += 2.0f;
-            else if (grade.equalsIgnoreCase("dc"))
+            else if (grades.get(i).equalsIgnoreCase("dc"))
                 GPA += 1.5f;
-            else if (grade.equalsIgnoreCase("dd"))
+            else if (grades.get(i).equalsIgnoreCase("dd"))
                 GPA += 1.0f;
-            else if (grade.equalsIgnoreCase("fd"))
+            else if (grades.get(i).equalsIgnoreCase("fd"))
                 GPA += 0.5f;
-            else if (grade.equalsIgnoreCase("ff"))
+            else if (grades.get(i).equalsIgnoreCase("ff"))
                 GPA += 0.0f;
         }
         GPA /= grades.size();
+
+    }
+
+    public void addCourseTaken(Course course, String grade, Integer term) {
+
+        coursesTaken.add(course);
+        grades.add(grade);
+        termOfCourse.add(term);
+
+        calculateThings();
 
 
     }
