@@ -2,6 +2,9 @@ package main;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DepartmentScheduler extends Person{
     @JsonProperty("id")
     private String id;
