@@ -2,6 +2,7 @@ package main;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeId;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Student extends Person {
@@ -23,11 +24,13 @@ public class Student extends Person {
     }
 
     public void printTranscript() {
+        transcript.calculateThings();
         System.out.println("|_______________________________________________");
         System.out.println("| Student Name: " + this.getFirstName() + " " + this.getLastName());
         System.out.println("| Student ID: " + this.getId());
         System.out.println("| Program: " + this.getDepartments().get(0).getDepartmentName());
         System.out.println("| Year/Term: " + this.getYear() + " / " + this.getCurrentTerm());
+        System.out.println("| GPA: " + transcript.getGPA());
         System.out.println("|_______________________________________________");
         for (int i = 0; i < currentTerm; i++) {
             for (int j = 0; j < transcript.getCoursesTaken().size(); j++) {
@@ -36,7 +39,9 @@ public class Student extends Person {
                     transcript.getGrade().get(j));
                 }
             }
+            System.out.println("|_______________________________________________");
         }
+        System.out.println("| Total Credit: " + transcript.getTotalCredit());
 
     }
 
