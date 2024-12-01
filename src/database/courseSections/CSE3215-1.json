@@ -17,5 +17,12 @@
     "weeklyCourseHours": 5
   },
   "capacity": 123,
-  "courseId": "CSE3215"
+  "courseId": "CSE3215",
+  "lecturer": {
+    "id": "2003",
+    "password": "yavuz123",
+    "firstName": "Yavuz",
+    "lastName": "Sarı",
+    "departmentId": "cse"
+  }
 }

@@ -17,5 +17,12 @@
     "weeklyCourseHours": 5
   },
   "capacity": 123,
-  "courseId": "CSE3055"
+  "courseId": "CSE3055",
+  "lecturer": {
+    "id": "2001",
+    "password": "hamdi123",
+    "firstName": "Hamdi",
+    "lastName": "Demirci",
+    "departmentId": "cse"
+  }
 }

@@ -17,5 +17,12 @@
     "weeklyCourseHours": 5
   },
   "capacity": 123,
-  "courseId": "IE3081"
+  "courseId": "IE3081",
+  "lecturer": {
+    "id": "2004",
+    "password": "kazım123",
+    "firstName": "Kazım",
+    "lastName": "Yılmaz",
+    "departmentId": "cse"
+  }
 }

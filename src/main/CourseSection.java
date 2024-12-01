@@ -13,6 +13,15 @@ public class CourseSection {
     private Course course;
     private int capacity;
     private String courseId;
+    private Lecturer lecturer;
+
+    public Lecturer getLecturer() {
+        return lecturer;
+    }
+
+    public void setLecturer(Lecturer lecturer) {
+        this.lecturer = lecturer;
+    }
 
     public String getCourseId() {
         return courseId;
