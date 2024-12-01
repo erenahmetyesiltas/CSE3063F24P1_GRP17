@@ -1,8 +1,19 @@
 {
   "enrolledStudents": [],
-  "classroom": "M2-Z11",
+  "classroom": "M2-Z12",
   "id": "CSE3055-2",
-  "scheduledTime": null,
+  "scheduledTimes": [
+    {
+      "startTime": "14:00:00",
+      "endTime": "15:00:00",
+      "courseDay": "Tuesday"
+    },
+    {
+      "startTime": "16:00:00",
+      "endTime": "17:00:00",
+      "courseDay": "Thursday"
+    }
+  ],
   "sectionNumber": 2,
   "course": {
     "id": "CSE3055",

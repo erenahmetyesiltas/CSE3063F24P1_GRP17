@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Advisor extends Person {
@@ -28,6 +29,7 @@ public class Advisor extends Person {
 
     @JsonIgnore
     private List<Student> supervisedStudents = new ArrayList<>();
+
     @JsonIgnore
     private List<Registration> registrations = new ArrayList<>();
 
@@ -43,11 +45,36 @@ public class Advisor extends Person {
         this.id = id;
     }
 
+    // Add-Send a new student registration to advisor. Advisor will check the registration and set status.
     public void addRegistration (Registration registration) {
+        // Check If there is a recorded registration of the same student.
+        // If there is, remove ex-registration before adding new one.
+        checkAndRemoveDuplicateRegistration(registration.getId());
+
+        // Add new registration
+        // Every new registration added to the advisor's registration means it's sent for approval, status 1.
         registration.setRegistrationStatus(1);
-        registrations.add(registration);
+        this.registrations.add(registration);
         addRegistrationsIDs(registration.getId());
     };
+
+    // If there is a recorded registration of the same student.
+    // First remove the ex-registration before uploading new registration.
+    public void checkAndRemoveDuplicateRegistration(String registrationID) {
+        if (this.registrationsIDs != null) {
+            Iterator<String> iterator = this.registrationsIDs.iterator();
+            while (iterator.hasNext()) {
+                String regID = iterator.next();
+                if (regID.equals(registrationID)) {
+                    iterator.remove();
+                }
+            }
+        } else {
+            System.out.println("registrationsIDs is null!");
+        }
+    }
+
+
 
     public List<Registration> getRegistrations() {
         return registrations;
