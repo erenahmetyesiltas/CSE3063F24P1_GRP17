@@ -6,7 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartmentScheduler extends Person{
+public class Lecturer extends Staff{
+
     @JsonProperty("id")
     private String id;
 
@@ -19,18 +20,15 @@ public class DepartmentScheduler extends Person{
     @JsonProperty("password")
     private String password;
 
-    @JsonProperty("departmentId")
-    private String departmentId;
+    @JsonProperty("departmentIds")
+    private List<String> departmentIds = new ArrayList<>();
 
-    @JsonIgnore
-    private List<CourseSection> courseSectionList = new ArrayList<>();
-
-    public List<CourseSection> getCourseSectionList() {
-        return courseSectionList;
+    public List<String> getDepartmentId() {
+        return departmentIds;
     }
 
-    public void setCourseSectionList(List<CourseSection> courseSectionList) {
-        this.courseSectionList = courseSectionList;
+    public void setDepartmentId(List<String> departmentIds) {
+        this.departmentIds = departmentIds;
     }
 
     public String getId() {
@@ -66,14 +64,6 @@ public class DepartmentScheduler extends Person{
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(String departmentId) {
-        this.departmentId = departmentId;
     }
 
 }

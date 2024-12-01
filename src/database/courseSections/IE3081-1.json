@@ -1,19 +1,11 @@
 {
   "enrolledStudents": [],
-  "classroom": "M2-Z16",
+  "classroom": {
+    "id": "M2-Z11",
+    "capacity": 70
+  },
   "id": "IE3081-1",
-  "scheduledTimes": [
-    {
-      "startTime": "10:00:00",
-      "endTime": "11:00:00",
-      "courseDay": "Tuesday"
-    },
-    {
-      "startTime": "15:00:00",
-      "endTime": "16:00:00",
-      "courseDay": "Thursday"
-    }
-  ],
+  "scheduledTimes": [],
   "sectionNumber": 1,
   "course": {
     "id": "IE3081",
@@ -21,8 +13,16 @@
     "credit": "3",
     "departments": [],
     "term": 5,
-    "prerequisiteCourses": []
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 5
   },
   "capacity": 123,
-  "courseId": "IE3081"
+  "courseId": "IE3081",
+  "lecturer": {
+    "id": "2004",
+    "password": "kazım123",
+    "firstName": "Kazım",
+    "lastName": "Yılmaz",
+    "departmentId": "cse"
+  }
 }

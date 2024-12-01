@@ -1,19 +1,11 @@
 {
   "enrolledStudents": [],
-  "classroom": "M2-Z14",
+  "classroom": {
+    "id": "M2-Z11",
+    "capacity": 70
+  },
   "id": "CSE3215-1",
-  "scheduledTimes": [
-    {
-      "startTime": "13:00:00",
-      "endTime": "14:00:00",
-      "courseDay": "Monday"
-    },
-    {
-      "startTime": "15:00:00",
-      "endTime": "16:00:00",
-      "courseDay": "Wednesday"
-    }
-  ],
+  "scheduledTimes": [],
   "sectionNumber": 1,
   "course": {
     "id": "CSE3215",
@@ -21,8 +13,16 @@
     "credit": "3",
     "departments": [],
     "term": 5,
-    "prerequisiteCourses": []
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 5
   },
   "capacity": 123,
-  "courseId": "CSE3215"
+  "courseId": "CSE3215",
+  "lecturer": {
+    "id": "2003",
+    "password": "yavuz123",
+    "firstName": "Yavuz",
+    "lastName": "Sarı",
+    "departmentId": "cse"
+  }
 }

@@ -1,19 +1,11 @@
 {
   "enrolledStudents": [],
-  "classroom": "M2-Z12",
+  "classroom": {
+    "id": "M2-Z11",
+    "capacity": 70
+  },
   "id": "CSE3055-2",
-  "scheduledTimes": [
-    {
-      "startTime": "14:00:00",
-      "endTime": "15:00:00",
-      "courseDay": "Tuesday"
-    },
-    {
-      "startTime": "16:00:00",
-      "endTime": "17:00:00",
-      "courseDay": "Thursday"
-    }
-  ],
+  "scheduledTimes": [],
   "sectionNumber": 2,
   "course": {
     "id": "CSE3055",
@@ -21,8 +13,16 @@
     "credit": "3",
     "departments": [],
     "term": 5,
-    "prerequisiteCourses": []
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 5
   },
   "capacity": 123,
-  "courseId": "CSE3055"
+  "courseId": "CSE3055",
+  "lecturer": {
+    "id": "2001",
+    "password": "hamdi123",
+    "firstName": "Hamdi",
+    "lastName": "Demirci",
+    "departmentId": "cse"
+  }
 }
