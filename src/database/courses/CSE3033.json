@@ -4,5 +4,6 @@
   "credit": "3",
   "departments": [],
   "term": 5,
-  "prerequisiteCourses": []
+  "prerequisiteCourses": [],
+  "weeklyCourseHours": 5
 }

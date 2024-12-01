@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Advisor extends Person {
+public class Advisor extends Lecturer {
 
-    @JsonProperty("id")
-    private String id;
-
-    @JsonProperty("firstName")
-    private String firstName;
-
-    @JsonProperty("lastName")
-    private String lastName;
-
-    @JsonProperty("password")
-    private String password;
+//    @JsonProperty("id")
+//    private String id;
+//
+//    @JsonProperty("firstName")
+//    private String firstName;
+//
+//    @JsonProperty("lastName")
+//    private String lastName;
+//
+//    @JsonProperty("password")
+//    private String password;
 
     @JsonProperty
     private List<String> registrationsIDs = new ArrayList<>();
@@ -33,17 +33,16 @@ public class Advisor extends Person {
     @JsonIgnore
     private List<Registration> registrations = new ArrayList<>();
 
-
     // Getters and Setters
     public Advisor() {}
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public void setId(String id) {
+//        this.id = id;
+//    }
 
     // Add-Send a new student registration to advisor. Advisor will check the registration and set status.
     public void addRegistration (Registration registration) {
@@ -90,32 +89,32 @@ public class Advisor extends Person {
     }
 
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    @Override
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+//    @Override
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
+//
+//    @Override
+//    public String getLastName() {
+//        return lastName;
+//    }
+//
+//    public void setLastName(String lastName) {
+//        this.lastName = lastName;
+//    }
+//
+//    @Override
+//    public String getFirstName() {
+//        return firstName;
+//    }
+//
+//    public void setFirstName(String firstName) {
+//        this.firstName = firstName;
+//    }
 
     public List<Student> getSupervisedStudents() {
         return supervisedStudents;

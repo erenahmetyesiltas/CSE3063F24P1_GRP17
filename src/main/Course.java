@@ -10,6 +10,7 @@ public class Course {
     private int term;
     private List<Course> prerequisiteCourses;
     private String name;
+    private int weeklyCourseHours;
 
     public Course() {
 
@@ -65,6 +66,14 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getWeeklyCourseHours() {
+        return weeklyCourseHours;
+    }
+
+    public void setWeeklyCourseHours(int weeklyCourseHours) {
+        this.weeklyCourseHours = weeklyCourseHours;
     }
 
     //public List<main.CourseSection> getCourseSection() {
