@@ -1,0 +1,17 @@
+{
+  "id": "MATH1002",
+  "name": "Calculus II",
+  "credit": 6,
+  "departments": [],
+  "term": 2,
+  "prerequisiteCourses": [{
+    "id": "MATH1001",
+    "name": "Calculus I",
+    "credit": 6,
+    "departments": [],
+    "term": 1,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 4
+  }],
+  "weeklyCourseHours": 4
+}
