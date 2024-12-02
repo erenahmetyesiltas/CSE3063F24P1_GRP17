@@ -1,8 +1,12 @@
 package main;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class DepartmentScheduler extends Person{
+import java.util.ArrayList;
+import java.util.List;
+
+public class DepartmentScheduler extends Staff{
     @JsonProperty("id")
     private String id;
 
@@ -17,6 +21,17 @@ public class DepartmentScheduler extends Person{
 
     @JsonProperty("departmentId")
     private String departmentId;
+
+    @JsonIgnore
+    private List<CourseSection> courseSectionList = new ArrayList<>();
+
+    public List<CourseSection> getCourseSectionList() {
+        return courseSectionList;
+    }
+
+    public void setCourseSectionList(List<CourseSection> courseSectionList) {
+        this.courseSectionList = courseSectionList;
+    }
 
     public String getId() {
         return id;

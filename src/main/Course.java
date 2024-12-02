@@ -68,13 +68,11 @@ public class Course {
     }
 
     //public List<main.CourseSection> getCourseSection() {
-        //return courseSections;
+    //return courseSections;
     //}
 
     //public void setCourseSection(List<main.CourseSection> courseSection) {
-        //this.courseSections = courseSection;
+    //this.courseSections = courseSection;
     //}
 
 }
-
-
