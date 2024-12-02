@@ -1,0 +1,25 @@
+{
+  "id": "150719046",
+  "firstName": "İbrahim",
+  "lastName": "Tınas",
+  "password": "ibo123",
+  "gpa": 2.77,
+
+  "courses": [
+    {
+      "id": "CS101",
+      "name": "Introduction to Computer Science",
+      "credit": 3
+    }
+  ],
+  "advisorId": 999111,
+  "departments": [
+    {
+      "id": "CSE",
+      "departmentName": "Computer Science & Engineering"
+    }
+  ],
+  "startYear": 2019,
+  "year": 2,
+  "registrationId": "r150719046"
+}
