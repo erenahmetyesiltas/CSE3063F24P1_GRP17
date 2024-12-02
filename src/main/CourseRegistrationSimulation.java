@@ -373,9 +373,11 @@ class CourseRegistrationSimulation {
         boolean isTimeValid = false;
         boolean isClassroomValid = false;
 
+        String result = "";
+
         // Classroom Settings
         if(courseSection.getClassroom() == null){
-            System.out.println(courseSection.getId() + "'s classroom is empty. Do you want to add classroom?");
+            System.out.print(courseSection.getId() + "'s classroom is empty.\nDo you want to add classroom?(y/n): ");
             String yesOrNo = scanner.next();
 
             boolean isTrueInput = false;
@@ -400,6 +402,7 @@ class CourseRegistrationSimulation {
                                 isTrueInputInner = true;
                                 isTrueInput = false;
                             }else if(yesOrNo.equalsIgnoreCase("N")){
+                                result += "There is no any classroom for this course section.\n";
                                 isTrueInputInner = true;
                                 isTrueInput = true;
                             }else{
@@ -413,6 +416,7 @@ class CourseRegistrationSimulation {
 
 
                 }else if(yesOrNo.equalsIgnoreCase("N")){
+                    result += "There is no any classroom for this course section.\n";
                     break;
                 }else{
                     isTrueInput = false;
@@ -496,6 +500,7 @@ class CourseRegistrationSimulation {
                                 isTrueInputInner = true;
                                 isTrueInput = false;
                             }else if(yesOrNo.equalsIgnoreCase("N")){
+                                result += "There is no any saved course section times for this course section.";
                                 isTrueInputInner = true;
                                 isTrueInput = true;
                             }else{
@@ -508,6 +513,7 @@ class CourseRegistrationSimulation {
                     }
 
                 }else if(yesOrNo.equalsIgnoreCase("N")){
+                    result += "There is no any saved course section times for this course section.";
                     break;
                 }else{
                     isTrueInput = false;
@@ -578,7 +584,8 @@ class CourseRegistrationSimulation {
         if(isClassroomValid && isTimeValid){
             courseDBController.isClassroomAvailable(courseSection);
         }else{
-
+            System.out.println();
+            System.out.print("Any course section hour cannot be saved because:\n"+result+"\n");
         }
 
         //System.out.println(courseSection.getClassroom().getCapacity());
