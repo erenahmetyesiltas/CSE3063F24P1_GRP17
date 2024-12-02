@@ -1,0 +1,38 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M1-Z06",
+    "capacity": 56
+  },
+  "id": "IE3081-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "IE3081",
+    "name": "Digital Logic Design",
+    "credit": 4,
+    "departments": [],
+    "term": 5,
+    "prerequisiteCourses": [{
+      "id": "STAT2253",
+      "name": "Introduction to Probability and Statistics",
+      "credit": 5,
+      "departments": [],
+      "term": 4,
+      "prerequisiteCourses": [],
+      "weeklyCourseHours": 3
+    }],
+    "weeklyCourseHours": 3
+  },
+  "capacity": 56,
+  "courseId": "IE3081",
+  "lecturer": {
+    "id": "2003",
+    "password": "yavuz123",
+    "firstName": "Yavuz",
+    "lastName": "Sarı",
+    "departmentIds": ["CSE"]
+  }
+}

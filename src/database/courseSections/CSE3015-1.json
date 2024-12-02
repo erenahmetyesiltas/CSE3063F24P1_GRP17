@@ -1,0 +1,30 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M1-Z01",
+    "capacity": 56
+  },
+  "id": "CSE3015-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "CSE3015",
+    "name": "Digital Logic Design",
+    "credit": 7,
+    "departments": [],
+    "term": 5,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 5
+  },
+  "capacity": 56,
+  "courseId": "CSE3015",
+  "lecturer": {
+    "id": "2003",
+    "password": "yavuz123",
+    "firstName": "Yavuz",
+    "lastName": "Sarı",
+    "departmentIds": ["CSE"]
+  }
+}
