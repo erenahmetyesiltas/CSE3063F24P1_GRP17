@@ -347,9 +347,8 @@ public class CourseDBController {
         }
 
 
-
         if(enteredValidCourseSectionTime <= courseSection.getCourse().getWeeklyCourseHours() &&
-        enteredValidCourseSectionTime > 0){
+                enteredValidCourseSectionTime > 0){
 
             //System.out.println(enteredValidCourseSectionTime);
 

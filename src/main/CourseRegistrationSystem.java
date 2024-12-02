@@ -19,17 +19,6 @@ public class CourseRegistrationSystem {
     private final DataHandler dataHandler = new DataHandler();
     private CourseDBController courseDBController = new CourseDBController();
 
-    // Registration
-    private List<Registration> registrationsOfAdvisor = new ArrayList<>();
-
-    public List<Registration> getRegistrationsOfAdvisor() {
-        return registrationsOfAdvisor;
-    }
-
-    public void setRegistrationsOfAdvisor(List<Registration> registrationsOfAdvisor) {
-        this.registrationsOfAdvisor = registrationsOfAdvisor;
-    }
-
     public CourseRegistrationSystem() throws IOException {
         setAllCourseSections(dataHandler.getCourseSectionList());
     }
@@ -108,13 +97,12 @@ public class CourseRegistrationSystem {
 
     public void printSuitableCourses() {
         System.out.println("\nThe available courses that you can register");
-        System.out.println("Course:                Section:               Lecturer:");
+        System.out.println("Course :               Section :");
         //courseDBController.getCourseSectionList(); //Bunu alttakiyle değiştirdim, aynı fonksiyonu içeriyor./ilker
         dataHandler.getCourseSectionList();
 
         for (CourseSection courseSection : getAllCourseSections()) {
-            String lecturerFullName = courseSection.getLecturer().getFirstName() + " " + courseSection.getLecturer().getLastName();
-            System.out.printf("%-23s%-23d%-30s\n",courseSection.getCourse().getId(),courseSection.getSectionNumber(),lecturerFullName);
+            System.out.printf("%-23s%-1d\n",courseSection.getCourse().getId(),courseSection.getSectionNumber());
             //System.out.println(courseSection.getCourse().getName());
         }
     }
@@ -184,12 +172,6 @@ public class CourseRegistrationSystem {
         AdvisorDBController advisorDBController = new AdvisorDBController();
         advisorDBController.loadAdvisor(Integer.toString(student.getAdvisorId()));
         student.setAdvisor(advisorDBController.getAdvisor());
-        for (String eachRegistration : advisorDBController.getAdvisor().getRegistrationsIDs() ){
-            if(eachRegistration.equals(student.getRegistrationId())){
-                advisorDBController.getAdvisor().getRegistrationsIDs().remove(eachRegistration);
-            }
-        }
-
         student.getAdvisor().addRegistration(registration);
 
         // Save the registration and Advisor's registration.

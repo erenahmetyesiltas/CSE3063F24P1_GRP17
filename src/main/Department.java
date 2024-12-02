@@ -3,7 +3,6 @@ package main;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Department {
@@ -15,7 +14,7 @@ public class Department {
     private String departmentName;
 
     @JsonProperty
-    private List<String> courseSectionIds = new ArrayList<>();
+    private List<String> courseSectionIds;
 
     public Department() {
 

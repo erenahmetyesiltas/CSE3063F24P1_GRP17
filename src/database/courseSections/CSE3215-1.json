@@ -5,7 +5,18 @@
     "capacity": 70
   },
   "id": "CSE3215-1",
-  "scheduledTimes": [],
+  "scheduledTimes": [
+    {
+      "startTime": "13:00:00",
+      "endTime": "14:00:00",
+      "courseDay": "Monday"
+    },
+    {
+      "startTime": "15:00:00",
+      "endTime": "16:00:00",
+      "courseDay": "Wednesday"
+    }
+  ],
   "sectionNumber": 1,
   "course": {
     "id": "CSE3215",

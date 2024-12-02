@@ -1,4 +1,4 @@
 package main;
 
-public class StudentAffairsStaff extends Staff{
+public class StudentAffairsStaff extends Staff {
 }

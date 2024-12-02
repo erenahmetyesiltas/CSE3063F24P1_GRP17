@@ -45,6 +45,91 @@ public class Student extends Person {
 
     }
 
+    public void printWeeklyScheduleAsTable(Student student) {
+        if (student.getRegistration() == null || student.getRegistration().getCourseSections().isEmpty()) {
+            System.out.println("No courses registered for this student.");
+            return;
+        }
+
+        // Define table headers and time slots (1-hour intervals)
+        String[] days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+        String[] timeSlots = {
+                "08:00 - 09:00", "09:00 - 10:00",
+                "10:00 - 11:00", "11:00 - 12:00",
+                "12:00 - 13:00", "13:00 - 14:00",
+                "14:00 - 15:00", "15:00 - 16:00",
+                "16:00 - 17:00", "17:00 - 18:00"
+        };
+
+        // Fixed column width
+        int columnWidth = 25;
+
+        // Initialize a 2D array for the table
+        String[][] scheduleTable = new String[timeSlots.length][days.length];
+
+        // Fill the table with empty strings
+        for (int i = 0; i < timeSlots.length; i++) {
+            for (int j = 0; j < days.length; j++) {
+                scheduleTable[i][j] = ""; // Empty cells
+            }
+        }
+
+        // Populate the table with course data
+        for (CourseSection section : student.getRegistration().getCourseSections()) {
+            for (CourseTime time : section.getScheduledTimes()) {
+                String courseDay = time.getCourseDay();
+                String startTime = time.getStartTime().toString();
+                String endTime = time.getEndTime().toString();
+
+                // Find the start and end indexes for the time slots
+                int startIndex = -1;
+                int endIndex = -1;
+                for (int i = 0; i < timeSlots.length; i++) {
+                    if (timeSlots[i].startsWith(startTime.substring(0, 5))) {
+                        startIndex = i;
+                    }
+                    if (timeSlots[i].endsWith(endTime.substring(0, 5))) {
+                        endIndex = i;
+                    }
+                }
+
+                // Find the index for the day
+                int dayIndex = -1;
+                for (int j = 0; j < days.length; j++) {
+                    if (days[j].equalsIgnoreCase(courseDay)) {
+                        dayIndex = j;
+                    }
+                }
+
+                // Populate the scheduleTable for all time slots within the range
+                if (startIndex != -1 && endIndex != -1 && dayIndex != -1) {
+                    for (int i = startIndex; i <= endIndex; i++) {
+                        scheduleTable[i][dayIndex] = String.format("%s (%s)", section.getCourseId(), section.getClassroom().getId());
+                    }
+                }
+            }
+        }
+
+        // Print table headers
+        System.out.println("Weekly Schedule for Student ID: " + student.getId());
+        System.out.printf("%-15s", "Time");
+        for (String day : days) {
+            System.out.printf("| %-"+columnWidth+"s", day);
+        }
+        System.out.println();
+        System.out.println("-".repeat(15 + (columnWidth + 3) * days.length));
+
+        // Print the table content
+        for (int i = 0; i < timeSlots.length; i++) {
+            System.out.printf("%-15s", timeSlots[i]); // Print time slot
+            for (int j = 0; j < days.length; j++) {
+                System.out.printf("| %-"+columnWidth+"s", scheduleTable[i][j]); // Print course and classroom in one line
+            }
+            System.out.println();
+            System.out.println("-".repeat(15 + (columnWidth + 3) * days.length));
+        }
+    }
+
     // getter and setter methods.
     public List<Course> getCourses() {
         return courses;

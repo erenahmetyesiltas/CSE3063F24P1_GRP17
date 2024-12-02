@@ -6,7 +6,10 @@ import java.util.List;
 public class CourseSection {
 
     private List<Student> enrolledStudents = new ArrayList<Student>();
-    private Classroom classroom;
+    // FIX THIS.!!!
+    private Classroom classroom; // EREN'S USAGE!!
+    //private String Classroom; // IBRAHIM'S USAGE!!
+
     private String id;
     private List<CourseTime> scheduledTimes = new ArrayList<>();
     private int sectionNumber;
@@ -76,7 +79,7 @@ public class CourseSection {
     }
 
     public Classroom getClassroom() {
-        return classroom;
+        return this.classroom;
     }
 
     public void setClassroom(Classroom classroom) {

@@ -5,7 +5,18 @@
     "capacity": 70
   },
   "id": "IE3081-1",
-  "scheduledTimes": [],
+  "scheduledTimes": [
+    {
+      "startTime": "10:00:00",
+      "endTime": "11:00:00",
+      "courseDay": "Tuesday"
+    },
+    {
+      "startTime": "15:00:00",
+      "endTime": "16:00:00",
+      "courseDay": "Thursday"
+    }
+  ],
   "sectionNumber": 1,
   "course": {
     "id": "IE3081",
