@@ -1,33 +1,33 @@
 {
   "enrolledStudents": [],
   "classroom": {
-    "id": "M1-Z06",
-    "capacity": 56
+    "id": "M2-103",
+    "capacity": 124
   },
-  "id": "IE3081-1",
+  "id": "CSE3264-1",
   "scheduledTimes": [
 
   ],
   "sectionNumber": 1,
   "course": {
-    "id": "IE3081",
-    "name": "Modeling and Discrete Simulation",
-    "credit": 4,
+    "id": "CSE3264",
+    "name": "Formal Languages and Automata Theory",
+    "credit": 5,
     "departments": [],
-    "term": 5,
+    "term": 6,
     "prerequisiteCourses": [{
-      "id": "STAT2253",
-      "name": "Introduction to Probability and Statistics",
-      "credit": 5,
+      "id": "CSE2023",
+      "name": "Discrete Computational Structures",
+      "credit": 6,
       "departments": [],
-      "term": 4,
+      "term": 3,
       "prerequisiteCourses": [],
       "weeklyCourseHours": 3
     }],
     "weeklyCourseHours": 3
   },
-  "capacity": 56,
-  "courseId": "IE3081",
+  "capacity": 124,
+  "courseId": "CSE3264",
   "lecturer": {
     "id": "2003",
     "password": "yavuz123",
