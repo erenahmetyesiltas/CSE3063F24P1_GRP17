@@ -1,0 +1,46 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M1-Z01",
+    "capacity": 56
+  },
+  "id": "EE2031-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "EE2031",
+    "name": "Electric Circuits",
+    "credit": 5,
+    "departments": [],
+    "term": 3,
+    "prerequisiteCourses": [{
+      "id": "PHYS1102",
+      "name": "Physics II",
+      "credit": 6,
+      "departments": [],
+      "term": 2,
+      "prerequisiteCourses": [{
+        "id": "PHYS1101",
+        "name": "Physics I",
+        "credit": 6,
+        "departments": [],
+        "term": 1,
+        "prerequisiteCourses": [],
+        "weeklyCourseHours": 5
+      }],
+      "weeklyCourseHours": 5
+    }],
+    "weeklyCourseHours": 3
+  },
+  "capacity": 56,
+  "courseId": "EE2031",
+  "lecturer": {
+    "id": "2001",
+    "password": "hamdi123",
+    "firstName": "Hamdi",
+    "lastName": "Demirci",
+    "departmentIds": ["CSE"]
+  }
+}

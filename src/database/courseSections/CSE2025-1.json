@@ -1,0 +1,46 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M2-Z11",
+    "capacity": 70
+  },
+  "id": "CSE2025-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "CSE2025",
+    "name": "Data Structures",
+    "credit": 7,
+    "departments": [],
+    "term": 3,
+    "prerequisiteCourses": [{
+      "id": "CSE1242",
+      "name": "Computer Programming II",
+      "credit": 6,
+      "departments": [],
+      "term": 2,
+      "prerequisiteCourses": [{
+        "id": "CSE1141",
+        "name": "Computer Programming I",
+        "credit": 6,
+        "departments": [],
+        "term": 1,
+        "prerequisiteCourses": [],
+        "weeklyCourseHours": 5
+      }],
+      "weeklyCourseHours": 5
+    }],
+    "weeklyCourseHours": 5
+  },
+  "capacity": 70,
+  "courseId": "CSE2025",
+  "lecturer": {
+    "id": "2001",
+    "password": "hamdi123",
+    "firstName": "Hamdi",
+    "lastName": "Demirci",
+    "departmentIds": ["CSE"]
+  }
+}
