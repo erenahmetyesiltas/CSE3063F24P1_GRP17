@@ -1,9 +1,9 @@
 {
-  "id": "150123824",
-  "firstName": "fatih",
-  "lastName": "terim",
-  "password": "123",
-  "gpa": 2.99,
+  "id": "150122507",
+  "firstName": "Enes Berk",
+  "lastName": "Yetim",
+  "password": "enes123",
+  "gpa": 2.77,
 
   "courses": [
     {
@@ -31,9 +31,9 @@
       "departmentName": "Computer Engineering"
     }
   ],
-  "startYear": 2021,
+  "startYear": 2022,
   "year": 3,
-  "registrationId": "r150123824",
+  "registrationId": "r150122507",
   "departmentIds": ["cse"],
   "term": 5
 }

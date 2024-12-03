@@ -1,9 +1,9 @@
 {
-  "id": "150123001",
-  "firstName": "fatma",
-  "lastName": "ozdemir",
-  "password": "123",
-  "gpa": 2.55,
+  "id": "150122011",
+  "firstName": "Melisa",
+  "lastName": "Arac",
+  "password": "melisa123",
+  "gpa": 2.52,
 
   "courses": [
     {
@@ -23,9 +23,9 @@
       "departmentName": "Computer Engineering"
     }
   ],
-  "startYear": 2021,
-  "year": 2,
-  "registrationId": "r150123001",
+  "startYear": 2022,
+  "year": 3,
+  "registrationId": "r150122011",
   "departmentIds": ["cse"],
   "term": 5
 }
