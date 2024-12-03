@@ -1,5 +1,5 @@
 {
-  "id": "CSE2025",
+  "id": "CSE2225",
   "name": "Data Structures",
   "credit": 7,
   "departments": [],
@@ -10,15 +10,7 @@
     "credit": 6,
     "departments": [],
     "term": 2,
-    "prerequisiteCourses": [{
-      "id": "CSE1141",
-      "name": "Computer Programming I",
-      "credit": 6,
-      "departments": [],
-      "term": 1,
-      "prerequisiteCourses": [],
-      "weeklyCourseHours": 5
-    }],
+    "prerequisiteCourses": [],
     "weeklyCourseHours": 5
   }],
   "weeklyCourseHours": 5

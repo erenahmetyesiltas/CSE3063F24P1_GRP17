@@ -197,9 +197,10 @@ public class CourseRegistrationSystem {
             case 0 :
                 System.out.println(registration.getCourseSections());
                 System.out.println("WARNING : Your advisor has disapproved your registration, you have to create a new one and send it again\n");
-                //student.getAdvisor().getRegistrations().remove(student.getRegistration());
-                // allAdvisorstan da remove et
-                //student.setRegistration(null);
+                student.getAdvisor().getRegistrations().remove(student.getRegistration());
+                student.getAdvisor().getRegistrationsIDs().remove(student.getRegistration().getId());
+                student.setRegistration(new Registration());
+
                 break;
             case 1:
                 System.out.println("WARNING : Your advisor has not yet checked your registration\n");
@@ -281,14 +282,16 @@ public class CourseRegistrationSystem {
 
         for (int i = 0; i < prerequisiteCourses.size(); i++) {
             for (int j = 0; j < takenCourses.size(); j++) {
-                if (prerequisiteCourses.get(i).equals(takenCourses.get(j))) {
+                if (prerequisiteCourses.get(i).getId().equals(takenCourses.get(j).getId())) {
                     z++;
                     break;
                 }
             }
         }
-        if (n == z)
+        if (n == z) {
             canTake = true;
+            return true;
+        }
         System.out.println("WARNING : There is a prerequisite conflict in your registration, your registration will be discarded\n");
         return canTake;
     }

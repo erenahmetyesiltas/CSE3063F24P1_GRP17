@@ -21,23 +21,7 @@
       "credit": 7,
       "departments": [],
       "term": 3,
-      "prerequisiteCourses": [{
-        "id": "CSE1242",
-        "name": "Computer Programming II",
-        "credit": 6,
-        "departments": [],
-        "term": 2,
-        "prerequisiteCourses": [{
-          "id": "CSE1141",
-          "name": "Computer Programming I",
-          "credit": 6,
-          "departments": [],
-          "term": 1,
-          "prerequisiteCourses": [],
-          "weeklyCourseHours": 5
-        }],
-        "weeklyCourseHours": 5
-      }],
+      "prerequisiteCourses": [],
       "weeklyCourseHours": 5
     }],
     "weeklyCourseHours": 5

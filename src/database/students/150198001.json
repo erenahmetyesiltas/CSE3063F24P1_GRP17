@@ -5,13 +5,7 @@
   "password": "betül123",
   "gpa": 3.99,
 
-  "courses": [
-    {
-      "id": "CS101",
-      "name": "Introduction to Computer Science",
-      "credit": 3
-    }
-  ],
+  "courses": [],
   "advisorId": 999111,
   "departments": [
     {

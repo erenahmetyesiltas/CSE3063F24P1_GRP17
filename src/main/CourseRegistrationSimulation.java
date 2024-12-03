@@ -157,6 +157,12 @@ class CourseRegistrationSimulation {
 
             System.out.println("\n----------System is checking eligibility----------\n");
             // Eligibility check can be implemented here
+//           if(!(courseRegSystem.checkEligibility(student))) {
+//                student.getAdvisor().getRegistrations().remove(student.getRegistration());
+//                student.getAdvisor().getRegistrationsIDs().remove(student.getRegistration().getId());
+//              student.setRegistration(new Registration());
+//                return;
+//           }
 
             System.out.print("Are you sure you want to send the registration request to your advisor? (y/n): ");
             String requestChoice = scanner.next();
@@ -164,7 +170,9 @@ class CourseRegistrationSimulation {
                 courseRegSystem.sendRegistrationToAdvisor(student.getRegistration(), student);
                 System.out.println("SUCCESS: The registration request has been sent to your advisor\n");
             } else {
-                student.setRegistration(null);
+                student.getAdvisor().getRegistrations().remove(student.getRegistration());
+                student.getAdvisor().getRegistrationsIDs().remove(student.getRegistration().getId());
+                student.setRegistration(new Registration());
                 System.out.println("WARNING: The registration you have created has been deleted. Make a new one\n");
             }
         } catch (Exception e) {

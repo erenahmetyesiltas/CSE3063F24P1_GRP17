@@ -5,13 +5,15 @@
   "password": "ata123",
   "gpa": 3.32,
 
-  "courses": [
-    {
-      "id": "CS101",
-      "name": "Introduction to Computer Science",
-      "credit": 3
-    }
-  ],
+  "courses": [{
+    "id": "CSE1141",
+    "name": "Computer Programming I",
+    "credit": 6,
+    "departments": [],
+    "term": 1,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 5
+  }],
   "advisorId": 999111,
   "departments": [
     {

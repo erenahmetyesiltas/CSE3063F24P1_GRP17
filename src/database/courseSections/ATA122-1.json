@@ -11,7 +11,7 @@
   "sectionNumber": 1,
   "course": {
     "id": "ATA122",
-    "name": "Atatürk İlkeleri ve İnkılap Tarihi II",
+    "name": "Ataturk Ilkeleri ve Inkilap Tarihi II",
     "credit": 2,
     "departments": [],
     "term": 1,
@@ -19,7 +19,7 @@
     "weeklyCourseHours": 2
   },
   "capacity": 100,
-  "courseId": "ATA121",
+  "courseId": "ATA122",
   "lecturer": {
     "id": "2000",
     "password": "halil123",

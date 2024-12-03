@@ -4,13 +4,13 @@
     "id": "M1-Z06",
     "capacity": 56
   },
-  "id": "CSE1141-3",
+  "id": "CSE1241-2",
   "scheduledTimes": [
 
   ],
-  "sectionNumber": 3,
+  "sectionNumber": 2,
   "course": {
-    "id": "CSE1141",
+    "id": "CSE1241",
     "name": "Computer Programming I",
     "credit": 6,
     "departments": [],
@@ -19,7 +19,7 @@
     "weeklyCourseHours": 5
   },
   "capacity": 28,
-  "courseId": "CSE1100",
+  "courseId": "CSE1241",
   "lecturer": {
     "id": "2000",
     "password": "halil123",

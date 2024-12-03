@@ -4,23 +4,23 @@
     "id": "M2-Z11",
     "capacity": 70
   },
-  "id": "CSE3055-1",
+  "id": "CSE3215-2",
   "scheduledTimes": [
     {
       "startTime": "09:00:00",
       "endTime": "10:00:00",
-      "courseDay": "Tuesday"
+      "courseDay": "Wednesday"
     },
     {
       "startTime": "11:00:00",
       "endTime": "12:00:00",
-      "courseDay": "Thursday"
+      "courseDay": "Friday"
     }
   ],
-  "sectionNumber": 1,
+  "sectionNumber": 2,
   "course": {
-    "id": "CSE3055",
-    "name": "Database Systems",
+    "id": "CSE3215",
+    "name": "Digital Logic Design",
     "credit": "3",
     "departments": [],
     "term": 5,
@@ -28,12 +28,12 @@
     "weeklyCourseHours": 5
   },
   "capacity": 123,
-  "courseId": "CSE3055",
+  "courseId": "CSE3215",
   "lecturer": {
-    "id": "2001",
-    "password": "hamdi123",
-    "firstName": "Hamdi",
-    "lastName": "Demirci",
+    "id": "2003",
+    "password": "yavuz123",
+    "firstName": "Yavuz",
+    "lastName": "Sarı",
     "departmentIds": ["cse"]
   }
 }

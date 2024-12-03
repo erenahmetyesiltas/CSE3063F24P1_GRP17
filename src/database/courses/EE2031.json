@@ -10,15 +10,7 @@
     "credit": 6,
     "departments": [],
     "term": 2,
-    "prerequisiteCourses": [{
-      "id": "PHYS1101",
-      "name": "Physics I",
-      "credit": 6,
-      "departments": [],
-      "term": 1,
-      "prerequisiteCourses": [],
-      "weeklyCourseHours": 5
-    }],
+    "prerequisiteCourses": [],
     "weeklyCourseHours": 5
   }],
   "weeklyCourseHours": 3
