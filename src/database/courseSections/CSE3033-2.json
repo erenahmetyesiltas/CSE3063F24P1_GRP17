@@ -1,39 +1,54 @@
 {
   "enrolledStudents": [],
   "classroom": {
-    "id": "M2-Z11",
-    "capacity": 70
+    "id": "M1-Z06",
+    "capacity": 56
   },
   "id": "CSE3033-2",
   "scheduledTimes": [
-    {
-      "startTime": "12:00:00",
-      "endTime": "14:00:00",
-      "courseDay": "Tuesday"
-    },
-    {
-      "startTime": "16:00:00",
-      "endTime": "18:00:00",
-      "courseDay": "Thursday"
-    }
+
   ],
   "sectionNumber": 2,
   "course": {
     "id": "CSE3033",
     "name": "Operating Systems",
-    "credit": "3",
+    "credit": 7,
     "departments": [],
     "term": 5,
-    "prerequisiteCourses": [],
+    "prerequisiteCourses": [{
+      "id": "CSE2025",
+      "name": "Data Structures",
+      "credit": 7,
+      "departments": [],
+      "term": 3,
+      "prerequisiteCourses": [{
+        "id": "CSE1242",
+        "name": "Computer Programming II",
+        "credit": 6,
+        "departments": [],
+        "term": 2,
+        "prerequisiteCourses": [{
+          "id": "CSE1141",
+          "name": "Computer Programming I",
+          "credit": 6,
+          "departments": [],
+          "term": 1,
+          "prerequisiteCourses": [],
+          "weeklyCourseHours": 5
+        }],
+        "weeklyCourseHours": 5
+      }],
+      "weeklyCourseHours": 5
+    }],
     "weeklyCourseHours": 5
   },
-  "capacity": 123,
+  "capacity": 56,
   "courseId": "CSE3033",
   "lecturer": {
-    "id": "2000",
-    "password": "halil123",
-    "firstName": "Halil",
-    "lastName": "Demir",
-    "departmentIds": ["cse"]
+    "id": "2003",
+    "password": "yavuz123",
+    "firstName": "Yavuz",
+    "lastName": "Sarı",
+    "departmentIds": ["CSE"]
   }
 }

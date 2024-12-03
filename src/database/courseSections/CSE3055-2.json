@@ -2,38 +2,53 @@
   "enrolledStudents": [],
   "classroom": {
     "id": "M2-Z11",
-    "capacity": 70
+    "capacity": 150
   },
   "id": "CSE3055-2",
   "scheduledTimes": [
-    {
-      "startTime": "14:00:00",
-      "endTime": "15:00:00",
-      "courseDay": "Tuesday"
-    },
-    {
-      "startTime": "16:00:00",
-      "endTime": "17:00:00",
-      "courseDay": "Thursday"
-    }
+
   ],
   "sectionNumber": 2,
   "course": {
-    "id": "CSE3055",
-    "name": "Database Systems",
-    "credit": "3",
+    "id": "CSE3033",
+    "name": "Operating Systems",
+    "credit": 7,
     "departments": [],
     "term": 5,
-    "prerequisiteCourses": [],
+    "prerequisiteCourses": [{
+      "id": "CSE2025",
+      "name": "Data Structures",
+      "credit": 7,
+      "departments": [],
+      "term": 3,
+      "prerequisiteCourses": [{
+        "id": "CSE1242",
+        "name": "Computer Programming II",
+        "credit": 6,
+        "departments": [],
+        "term": 2,
+        "prerequisiteCourses": [{
+          "id": "CSE1141",
+          "name": "Computer Programming I",
+          "credit": 6,
+          "departments": [],
+          "term": 1,
+          "prerequisiteCourses": [],
+          "weeklyCourseHours": 5
+        }],
+        "weeklyCourseHours": 5
+      }],
+      "weeklyCourseHours": 5
+    }],
     "weeklyCourseHours": 5
   },
-  "capacity": 123,
+  "capacity": 150,
   "courseId": "CSE3055",
   "lecturer": {
-    "id": "2001",
-    "password": "hamdi123",
-    "firstName": "Hamdi",
-    "lastName": "Demirci",
-    "departmentIds": ["cse"]
+    "id": "2003",
+    "password": "yavuz123",
+    "firstName": "Yavuz",
+    "lastName": "Sarı",
+    "departmentIds": ["CSE"]
   }
 }

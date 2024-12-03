@@ -1,0 +1,30 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "UZEM",
+    "capacity": 100
+  },
+  "id": "ISG122-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "ISG122",
+    "name": "İş Sağlığı ve Güvenliği II",
+    "credit": 2,
+    "departments": [],
+    "term": 8,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 2
+  },
+  "capacity": 100,
+  "courseId": "ISG122",
+  "lecturer": {
+    "id": "2004",
+    "password": "kazım123",
+    "firstName": "Kazım",
+    "lastName": "Yılmaz",
+    "departmentIds": ["CSE"]
+  }
+}

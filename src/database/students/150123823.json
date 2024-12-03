@@ -1,9 +1,9 @@
 {
   "id": "150123823",
-  "firstName": "ilker",
-  "lastName": "yetimoglu",
-  "password": "123",
-  "gpa": 2.55,
+  "firstName": "İlker",
+  "lastName": "Yetimoğlu",
+  "password": "ilker123",
+  "gpa": 3.10,
 
   "courses": [
     {

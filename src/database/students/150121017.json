@@ -1,0 +1,19 @@
+{
+  "id": "150121017",
+  "firstName": "Eren Ahmet",
+  "lastName": "Yeşiltaş",
+  "password": "eren123",
+  "gpa": 2.99,
+
+  "courses": [],
+  "advisorId": 999111,
+  "departments": [
+    {
+      "id": "CSE",
+      "departmentName": "Computer Science & Engineering"
+    }
+  ],
+  "startYear": 2021,
+  "year": 4,
+  "registrationId": "r150121017"
+}

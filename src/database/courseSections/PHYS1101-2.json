@@ -1,0 +1,30 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M2-103",
+    "capacity": 124
+  },
+  "id": "PHYS1101-2",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 2,
+  "course": {
+    "id": "PHYS1101",
+    "name": "Physics I",
+    "credit": 6,
+    "departments": [],
+    "term": 1,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 5
+  },
+  "capacity": 62,
+  "courseId": "PHYS1101",
+  "lecturer": {
+    "id": "2000",
+    "password": "halil123",
+    "firstName": "Halil",
+    "lastName": "Demir",
+    "departmentIds": ["CSE"]
+  }
+}

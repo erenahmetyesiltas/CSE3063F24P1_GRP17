@@ -1,39 +1,46 @@
 {
   "enrolledStudents": [],
   "classroom": {
-    "id": "M2-Z11",
-    "capacity": 70
+    "id": "M2-103",
+    "capacity": 124
   },
   "id": "CSE3063-1",
   "scheduledTimes": [
-    {
-      "startTime": "08:00:00",
-      "endTime": "09:00:00",
-      "courseDay": "Monday"
-    },
-    {
-      "startTime": "10:00:00",
-      "endTime": "11:00:00",
-      "courseDay": "Friday"
-    }
+
   ],
   "sectionNumber": 1,
   "course": {
-    "id": "CSE3063",
-    "name": "OOSD",
-    "credit": "3",
+    "id": "CSE3055",
+    "name": "Object Oriented Software Design",
+    "credit": 5,
     "departments": [],
     "term": 5,
-    "prerequisiteCourses": [],
+    "prerequisiteCourses": [{
+      "id": "CSE1242",
+      "name": "Computer Programming II",
+      "credit": 6,
+      "departments": [],
+      "term": 2,
+      "prerequisiteCourses": [{
+        "id": "CSE1141",
+        "name": "Computer Programming I",
+        "credit": 6,
+        "departments": [],
+        "term": 1,
+        "prerequisiteCourses": [],
+        "weeklyCourseHours": 5
+      }],
+      "weeklyCourseHours": 5
+    }],
     "weeklyCourseHours": 3
   },
-  "capacity": 123,
+  "capacity": 56,
   "courseId": "CSE3063",
   "lecturer": {
-    "id": "2002",
-    "password": "velihan123",
-    "firstName": "Velihan",
-    "lastName": "Kayalar",
-    "departmentIds": ["cse"]
+    "id": "2003",
+    "password": "yavuz123",
+    "firstName": "Yavuz",
+    "lastName": "Sarı",
+    "departmentIds": ["CSE"]
   }
 }

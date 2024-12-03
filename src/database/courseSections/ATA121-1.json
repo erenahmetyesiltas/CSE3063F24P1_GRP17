@@ -1,0 +1,30 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "UZEM",
+    "capacity": 100
+  },
+  "id": "ATA121-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "ATA121",
+    "name": "Atatürk İlkeleri ve İnkılap Tarihi I",
+    "credit": 2,
+    "departments": [],
+    "term": 1,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 2
+  },
+  "capacity": 100,
+  "courseId": "ATA121",
+  "lecturer": {
+    "id": "2000",
+    "password": "halil123",
+    "firstName": "Halil",
+    "lastName": "Demir",
+    "departmentIds": ["CSE"]
+  }
+}

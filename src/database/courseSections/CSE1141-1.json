@@ -1,0 +1,30 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M1-Z06",
+    "capacity": 56
+  },
+  "id": "CSE1141-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "CSE1141",
+    "name": "Computer Programming I",
+    "credit": 6,
+    "departments": [],
+    "term": 1,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 5
+  },
+  "capacity": 28,
+  "courseId": "CSE1100",
+  "lecturer": {
+    "id": "2000",
+    "password": "halil123",
+    "firstName": "Halil",
+    "lastName": "Demir",
+    "departmentIds": ["CSE"]
+  }
+}
