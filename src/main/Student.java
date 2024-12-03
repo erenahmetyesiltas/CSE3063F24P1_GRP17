@@ -23,7 +23,7 @@ public class Student extends Person {
         return term;
     }
 
-    public void setTerm(int term) { 
+    public void setTerm(int term) {
         this.term = term;
     }
 
