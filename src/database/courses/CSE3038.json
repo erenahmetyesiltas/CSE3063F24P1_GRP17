@@ -1,0 +1,26 @@
+{
+  "id": "CSE3038",
+  "name": "Computer Organization",
+  "credit": 7,
+  "departments": [],
+  "term": 6,
+  "prerequisiteCourses": [{
+    "id": "CSE3015",
+    "name": "Digital Logic Design",
+    "credit": 7,
+    "departments": [],
+    "term": 5,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 5
+  },
+    {
+    "id": "CSE2138",
+    "name": "Systems Programming",
+    "credit": 7,
+    "departments": [],
+    "term": 4,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 5
+  }],
+  "weeklyCourseHours": 5
+}

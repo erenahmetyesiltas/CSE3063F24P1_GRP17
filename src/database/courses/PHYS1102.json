@@ -1,15 +1,15 @@
 {
-  "id": "CSE3055",
-  "name": "Database Systems",
-  "credit": 7,
+  "id": "PHYS1102",
+  "name": "Physics II",
+  "credit": 6,
   "departments": [],
-  "term": 5,
+  "term": 2,
   "prerequisiteCourses": [{
-    "id": "CSE2225",
-    "name": "Data Structures",
-    "credit": 7,
+    "id": "PHYS1101",
+    "name": "Physics I",
+    "credit": 6,
     "departments": [],
-    "term": 3,
+    "term": 1,
     "prerequisiteCourses": [],
     "weeklyCourseHours": 5
   }],

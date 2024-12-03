@@ -1,15 +1,15 @@
 {
-  "id": "CSE3055",
-  "name": "Database Systems",
+  "id": "CSE3044",
+  "name": "Software Engineering",
   "credit": 7,
   "departments": [],
-  "term": 5,
+  "term": 6,
   "prerequisiteCourses": [{
-    "id": "CSE2225",
-    "name": "Data Structures",
+    "id": "CSE3055",
+    "name": "Database Systems",
     "credit": 7,
     "departments": [],
-    "term": 3,
+    "term": 5,
     "prerequisiteCourses": [],
     "weeklyCourseHours": 5
   }],

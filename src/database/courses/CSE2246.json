@@ -1,11 +1,11 @@
 {
-  "id": "CSE3055",
-  "name": "Database Systems",
-  "credit": 7,
+  "id": "CSE2246",
+  "name": "Analysis of Algorithms",
+  "credit": 6,
   "departments": [],
-  "term": 5,
+  "term": 4,
   "prerequisiteCourses": [{
-    "id": "CSE2225",
+    "id": "CSE2025",
     "name": "Data Structures",
     "credit": 7,
     "departments": [],

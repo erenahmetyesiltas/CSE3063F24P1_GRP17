@@ -1,12 +1,12 @@
 {
-  "id": "CSE3063",
-  "name": "Object Oriented Software Design",
+  "id": "EE2031",
+  "name": "Electric Circuits",
   "credit": 5,
   "departments": [],
-  "term": 5,
+  "term": 3,
   "prerequisiteCourses": [{
-    "id": "CSE1242",
-    "name": "Computer Programming II",
+    "id": "PHYS1102",
+    "name": "Physics II",
     "credit": 6,
     "departments": [],
     "term": 2,

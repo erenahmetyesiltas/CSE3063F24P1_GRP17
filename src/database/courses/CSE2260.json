@@ -1,9 +1,9 @@
 {
-  "id": "CSE3063",
-  "name": "Object Oriented Software Design",
-  "credit": 5,
+  "id": "CSE2138",
+  "name": "Systems Programming",
+  "credit": 6,
   "departments": [],
-  "term": 5,
+  "term": 4,
   "prerequisiteCourses": [{
     "id": "CSE1242",
     "name": "Computer Programming II",
@@ -13,5 +13,5 @@
     "prerequisiteCourses": [],
     "weeklyCourseHours": 5
   }],
-  "weeklyCourseHours": 3
+  "weeklyCourseHours": 5
 }
