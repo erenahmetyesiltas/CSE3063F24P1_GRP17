@@ -160,7 +160,12 @@ class CourseRegistrationSimulation {
             );
 
             System.out.println("\n----------System is checking eligibility----------\n");
-            // Eligibility check can be implemented here
+            // Eligibility check implemented in here
+//            if(!courseRegSystem.checkEligibility(student)){
+//              System.out.println("Eligibility check failed, registration deleted.");
+//              student.getRegistration().deleteCourseSectionList();
+//            };
+
 
             System.out.print("Are you sure you want to send the registration request to your advisor? (y/n): ");
             String requestChoice = scanner.next();
@@ -278,9 +283,15 @@ class CourseRegistrationSimulation {
                         System.out.print("Please enter valid number: ");
                         status = scanner.nextInt();
                     }
-
-                    registrations.get(i).setRegistrationStatus(status);
-                    registrationDBController.updateRegistrations(registrations.get(i), status);
+                    if(status == 0){
+                        registrations.get(i).setRegistrationStatus(status);
+                        registrations.get(i).setCourseSections(null);
+                        registrationDBController.removeRegistrations(registrations.get(i));
+                        registrationDBController.updateRegistrations(registrations.get(i), status); // Update status
+                    } else {
+                        registrations.get(i).setRegistrationStatus(status);
+                        registrationDBController.updateRegistrations(registrations.get(i), status);
+                    }
                 }
 
                 System.out.println();

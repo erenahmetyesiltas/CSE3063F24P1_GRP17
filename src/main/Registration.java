@@ -70,6 +70,7 @@ public class Registration {
         this.courseSections = courseSections;
     }
 
+
     public void deleteCourseSectionList() {
         courseSections.clear();
     }

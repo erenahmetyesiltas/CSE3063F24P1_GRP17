@@ -69,4 +69,29 @@ public class RegistrationDBController {
 
     }
 
-}
+
+    public void removeRegistrations(Registration registrationGiven) {
+
+        //objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+
+        URL registrationMainPath = RegistrationDBController.class.getClassLoader().getResource("database/registrations/" + registrationGiven.getId() + ".json");
+        File willUpdateRegistrationFile;
+        Registration registrationWillUpdate;
+
+        willUpdateRegistrationFile = new File(registrationMainPath.getFile());
+
+        try {
+            registrationWillUpdate = objectMapper.readValue(willUpdateRegistrationFile, Registration.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        registrationWillUpdate.deleteCourseSectionList();
+
+        try {
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(willUpdateRegistrationFile, registrationWillUpdate);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+};
