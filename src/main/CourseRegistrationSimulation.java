@@ -105,14 +105,12 @@ class CourseRegistrationSimulation {
                 System.out.println("1- Create a registration");
                 System.out.println("2- Check current registration status");
                 System.out.println("3- Print weekly schedule");
-                System.out.println("4- View Transcript");
-
                 //System.out.println("4- Turn back to the user selection menu");
                 System.out.print("Please choose an action: ");
 
                 int choice = scanner.nextInt();
 
-                while(choice < 1 || choice > 4){
+                while(choice < 1 || choice > 3){
                     System.out.print("Please type a invalid choice: ");
                     choice = scanner.nextInt();
                 }
@@ -121,7 +119,7 @@ class CourseRegistrationSimulation {
                     case 1 -> createRegistration(student);
                     case 2 -> courseRegSystem.getStudentRegistrationStatus(student);
                     case 3 -> student.printWeeklyScheduleAsTable(student);
-                    case 4 -> student.getTranscript().printTranscript(student.getFirstName() + " " + student.getLastName(), student.getId());
+                    //case 4 -> run();
                     default -> System.out.println("Invalid choice.");
                 }
 
