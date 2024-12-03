@@ -59,36 +59,6 @@ public class CourseRegistrationSystem {
         return dataHandler;
     }
 
-
-//    public void restoreSystem() throws NoSuchElementException {
-//        int i = 0;
-//        List<SystemData> allDatas = dataHandler.getAllDatas();
-//        ObjectMapper mapper = dataHandler.getObjectMapper();
-//
-//        while (i != (allDatas.size())) {
-//            Class objectClass = allDatas.get(i).getObjectClass();
-//            Object object = allDatas.get(i).getObject();
-//
-//            if (objectClass == Student.class) {
-//                Student student = mapper.convertValue(object, Student.class);
-//                this.getAllStudents().add(student);
-//            }
-//
-//            if (objectClass == CourseSection.class) {
-//                CourseSection course = mapper.convertValue(object, CourseSection.class);
-//                this.getAllCourseSections().add(course);
-//
-//            }
-//
-//            if (objectClass == Advisor.class) {
-//                Advisor advisor = mapper.convertValue(object, Advisor.class);
-//                this.getAllAdvisors().add(advisor);
-//            }
-//
-//            i++;
-//        }
-//    }
-
     public void updateData(Object object) {
         SystemData data = new SystemData(object, object.getClass(), "object" + dataHandler.getFileNumber() + ".json");
         dataHandler.getAllDatas().add(data);
