@@ -3,6 +3,8 @@
   "firstName": "Ali",
   "lastName": "Mahmut",
   "password": "ali123",
+  "registrations": [],
   "registrationsIDs": [],
-  "supervisedStudentsIDs": ["150198001", "150198002", "150122075", "150719046"]
+  "supervisedStudents": [],
+  "supervisedStudentsIDs": []
 }

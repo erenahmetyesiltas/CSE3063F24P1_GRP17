@@ -4,23 +4,23 @@
     "id": "M2-Z11",
     "capacity": 70
   },
-  "id": "CSE3033-2",
+  "id": "CSE3215-1",
   "scheduledTimes": [
     {
-      "startTime": "12:00:00",
+      "startTime": "13:00:00",
       "endTime": "14:00:00",
-      "courseDay": "Tuesday"
+      "courseDay": "Monday"
     },
     {
-      "startTime": "16:00:00",
-      "endTime": "18:00:00",
-      "courseDay": "Thursday"
+      "startTime": "15:00:00",
+      "endTime": "16:00:00",
+      "courseDay": "Wednesday"
     }
   ],
-  "sectionNumber": 2,
+  "sectionNumber": 1,
   "course": {
-    "id": "CSE3033",
-    "name": "Operating Systems",
+    "id": "CSE3215",
+    "name": "Digital Logic Design",
     "credit": "3",
     "departments": [],
     "term": 5,
@@ -28,12 +28,12 @@
     "weeklyCourseHours": 5
   },
   "capacity": 123,
-  "courseId": "CSE3033",
+  "courseId": "CSE3215",
   "lecturer": {
-    "id": "2000",
-    "password": "halil123",
-    "firstName": "Halil",
-    "lastName": "Demir",
+    "id": "2003",
+    "password": "yavuz123",
+    "firstName": "Yavuz",
+    "lastName": "Sarı",
     "departmentIds": ["cse"]
   }
 }

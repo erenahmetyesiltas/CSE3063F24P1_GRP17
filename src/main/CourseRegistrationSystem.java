@@ -185,12 +185,6 @@ public class CourseRegistrationSystem {
         AdvisorDBController advisorDBController = new AdvisorDBController();
         advisorDBController.loadAdvisor(Integer.toString(student.getAdvisorId()));
         student.setAdvisor(advisorDBController.getAdvisor());
-        for (String eachRegistration : advisorDBController.getAdvisor().getRegistrationsIDs() ){
-            if(eachRegistration.equals(student.getRegistrationId())){
-                advisorDBController.getAdvisor().getRegistrationsIDs().remove(eachRegistration);
-            }
-        }
-
         student.getAdvisor().addRegistration(registration);
 
         // Save the registration and Advisor's registration.

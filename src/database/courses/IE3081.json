@@ -1,17 +1,9 @@
 {
   "id": "IE3081",
-  "name": "Digital Logic Design",
-  "credit": 4,
+  "name": "Modeling and Discrete Simulation",
+  "credit": "3",
   "departments": [],
   "term": 5,
-  "prerequisiteCourses": [{
-    "id": "STAT2253",
-    "name": "Introduction to Probability and Statistics",
-    "credit": 5,
-    "departments": [],
-    "term": 4,
-    "prerequisiteCourses": [],
-    "weeklyCourseHours": 3
-  }],
+  "prerequisiteCourses": [],
   "weeklyCourseHours": 3
 }
