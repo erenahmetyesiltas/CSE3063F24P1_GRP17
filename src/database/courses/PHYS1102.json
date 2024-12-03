@@ -1,9 +1,9 @@
 {
-  "id": "CSE3215",
-  "name": "Digital Logic Design",
+  "id": "PHYS1102",
+  "name": "Physics II",
   "credit": 6,
   "departments": [],
-  "term": 5,
+  "term": 2,
   "prerequisiteCourses": [],
   "weeklyCourseHours": 5
 }

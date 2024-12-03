@@ -1,0 +1,30 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M2-103",
+    "capacity": 124
+  },
+  "id": "MBG1201-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "MBG1201",
+    "name": "Introduction to Modern Biology",
+    "credit": 5,
+    "departments": [],
+    "term": 1,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 3
+  },
+  "capacity": 124,
+  "courseId": "MBG1201",
+  "lecturer": {
+    "id": "2000",
+    "password": "halil123",
+    "firstName": "Halil",
+    "lastName": "Demir",
+    "departmentIds": ["CSE"]
+  }
+}

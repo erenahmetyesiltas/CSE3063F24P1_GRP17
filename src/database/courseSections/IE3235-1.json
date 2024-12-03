@@ -1,0 +1,38 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M1-Z01",
+    "capacity": 56
+  },
+  "id": "IE3235-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "IE3235",
+    "name": "Operations Research",
+    "credit": 4,
+    "departments": [],
+    "term": 6,
+    "prerequisiteCourses": [{
+      "id": "MATH2256",
+      "name": "Linear Algebra",
+      "credit": 5,
+      "departments": [],
+      "term": 2,
+      "prerequisiteCourses": [],
+      "weeklyCourseHours": 3
+    }],
+    "weeklyCourseHours": 3
+  },
+  "capacity": 56,
+  "courseId": "IE3235",
+  "lecturer": {
+    "id": "2003",
+    "password": "yavuz123",
+    "firstName": "Yavuz",
+    "lastName": "Sarı",
+    "departmentIds": ["CSE"]
+  }
+}

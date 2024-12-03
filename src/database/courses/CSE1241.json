@@ -1,9 +1,9 @@
 {
-  "id": "CSE3215",
-  "name": "Digital Logic Design",
+  "id": "CSE2141",
+  "name": "Computer Programming I",
   "credit": 6,
   "departments": [],
-  "term": 5,
+  "term": 1,
   "prerequisiteCourses": [],
   "weeklyCourseHours": 5
 }

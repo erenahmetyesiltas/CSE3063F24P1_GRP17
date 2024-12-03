@@ -1,0 +1,38 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M2-Z11",
+    "capacity": 150
+  },
+  "id": "CSE2246-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "CSE2246",
+    "name": "Analysis of Algorithms",
+    "credit": 6,
+    "departments": [],
+    "term": 4,
+    "prerequisiteCourses": [{
+      "id": "CSE2025",
+      "name": "Data Structures",
+      "credit": 7,
+      "departments": [],
+      "term": 3,
+      "prerequisiteCourses": [],
+      "weeklyCourseHours": 5
+    }],
+    "weeklyCourseHours": 5
+  },
+  "capacity": 150,
+  "courseId": "CSE2246",
+  "lecturer": {
+    "id": "2001",
+    "password": "hamdi123",
+    "firstName": "Hamdi",
+    "lastName": "Demirci",
+    "departmentIds": ["CSE"]
+  }
+}

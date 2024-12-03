@@ -1,15 +1,15 @@
 {
-  "id": "CSE3055",
-  "name": "Database Systems",
-  "credit": 7,
+  "id": "CSE4219",
+  "name": "Principles of Embedded System Design",
+  "credit": 6,
   "departments": [],
-  "term": 5,
+  "term": 7,
   "prerequisiteCourses": [{
-    "id": "CSE2225",
-    "name": "Data Structures",
+    "id": "CSE3038",
+    "name": "Computer Organization",
     "credit": 7,
     "departments": [],
-    "term": 3,
+    "term": 6,
     "prerequisiteCourses": [],
     "weeklyCourseHours": 5
   }],
