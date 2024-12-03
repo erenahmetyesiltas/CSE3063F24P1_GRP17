@@ -243,27 +243,43 @@ class CourseRegistrationSimulation {
             logger.info("Handling Registration Requests");
             List<Registration> registrations = registrationDBController.getRegistrationsOfAdvisor(advisor);
 
-            System.out.println();
-            System.out.println("Please set the status of the registrations:");
-            System.out.println("In order to specify as not approved print O");
-            System.out.println("In order to specify as not checked yet 1");
-            System.out.println("In order to specify as approved print 2");
+            if(registrations.size() == 0){
+                System.out.println("There are no any registrations for the advisor.");
+            }else{
+                System.out.println();
 
+                for (int i = 0; i < registrations.size(); i++) {
 
-            for (int i = 0; i < registrations.size(); i++) {
-                System.out.println(registrations.get(i).getId());
-                System.out.println(registrations.get(i).getRegistrationStatus());
+                    System.out.println("Student-"+(i+1)+": "+registrations.get(i).getId().substring(1));
 
-                System.out.print("Print the status to change the state of the registration listed: ");
-                int status = scanner.nextInt();
+                    System.out.println("-----Course Sections-----");
 
-                while (status < 0 || status > 2) {
-                    System.out.print("Please enter valid number: ");
-                    status = scanner.nextInt();
+                    for (int j = 0; j < registrations.get(i).getCourseSections().size(); j++) {
+                        System.out.println("Selected Course Section-"+(j+1));
+                        System.out.println(registrations.get(i).getCourseSections().get(j).getId());
+
+                    }
+
+                    System.out.println("The current status of this registration: "+registrations.get(i).getRegistrationStatus());
+
+                    System.out.println();
+
+                    System.out.println("In order to specify as not approved print O");
+                    System.out.println("In order to specify as not checked yet 1");
+                    System.out.println("In order to specify as approved print 2");
+                    System.out.print("Print the status to change the state of the registration listed(0/1/2): ");
+                    int status = scanner.nextInt();
+
+                    while (status < 0 || status > 2) {
+                        System.out.print("Please enter valid number: ");
+                        status = scanner.nextInt();
+                    }
+
+                    registrations.get(i).setRegistrationStatus(status);
+                    registrationDBController.updateRegistrations(registrations.get(i), status);
                 }
 
-                registrations.get(i).setRegistrationStatus(status);
-                registrationDBController.updateRegistrations(registrations.get(i), status);
+                System.out.println();
 
             }
         } catch (Exception e) {

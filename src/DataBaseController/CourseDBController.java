@@ -508,7 +508,7 @@ public class CourseDBController {
 
         }
 
-        System.out.println("NEW");
+        //System.out.println("NEW");
 
         Iterator<CourseSection> iteratorForSameTermCourseSections = courseSections.iterator();
 
@@ -523,8 +523,8 @@ public class CourseDBController {
 
         }
 
-        System.out.println(courseSections.size());
-        System.out.println("TakenCourse tan önce");
+//        System.out.println(courseSections.size());
+//        System.out.println("TakenCourse tan önce");
 
         Iterator<CourseSection> iteratorForAlreadyTakenCourses = courseSections.iterator();
 
@@ -543,7 +543,7 @@ public class CourseDBController {
 
         }
 
-        System.out.println(courseSections.size());
+//        System.out.println(courseSections.size());
 
         // Get the course sections which the student has their prerequisite courses.
 
