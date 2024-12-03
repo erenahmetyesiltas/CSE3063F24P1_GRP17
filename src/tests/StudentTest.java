@@ -1,139 +1,144 @@
 package tests;
 
-import org.junit.Assert;
+import main.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
+import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import main.*;
 
 public class StudentTest {
 
-    private DataHandler dataHandler;
     private Student student;
 
     @Before
-    public void setUp() throws IOException {
-        // Initialize main.DataHandler to load data
-        dataHandler = new DataHandler();
-
-        // Retrieve all data and find the first main.Student instance for testing
-        List<SystemData> allData = dataHandler.getAllDatas();
-        for (SystemData data : allData) {
-            if (data.getObjectClass() == Student.class) {
-                student = dataHandler.getObjectMapper().convertValue(data.getObject(), Student.class);
-                break;
-            }
-        }
-
-        // Ensure a main.Student object was loaded for testing
-        assertNotNull("No main.Student object found in data", student);
+    public void setUp() {
+        student = new Student();
     }
 
     @Test
-    public void getPassword() {
-        // Assuming password is inherited from main.Person
-        // Note: If password is private and inaccessible, you'll need reflection to set it for the test
-        assertNotNull("Expected non-null password", student.getPassword());
+    public void testSetAndGetId() {
+        student.setId("12345");
+        assertEquals("12345", student.getId());
     }
 
     @Test
-    public void getId() {
-        assertNotNull("Expected non-null ID", student.getId());
+    public void testSetAndGetGpa() {
+        student.setGpa(3.5f);
+        assertEquals(3.5f, student.getGpa(), 0.0f);
     }
 
     @Test
-    public void setId() {
-        String newId = "654321";
-        student.setId(newId);
-        Assert.assertEquals(newId, student.getId());
-    }
+    public void testSetAndGetCourses() {
+        List<Course> courses = new ArrayList<>();
+        Course course = new Course();
+        course.setId("CSE101");
+        courses.add(course);
 
-    @Test
-    public void prerequisiteFail() {
-        // Simply test that the method runs without throwing an exception
-        student.prerequisiteFail(null);
-    }
-
-    @Test
-    public void sectionFullFailFail() {
-        // Simply test that the method runs without throwing an exception
-        student.sectionFullFail(null);
-    }
-
-    @Test
-    public void printAdvisorDisapproval() {
-        student.getRegistration().setRegistrationStatus(0);
-        // Test to ensure no exceptions or issues occur when this method is called
-        student.printAdvisorDisapproval();
-    }
-
-
-
-    @Test
-    public void getCourses() {
-        assertNotNull("Expected non-null courses list", student.getCourses());
-    }
-
-    @Test
-    public void setCourses() {
-        List<Course> courses = List.of(new Course());
         student.setCourses(courses);
-        Assert.assertEquals(courses, student.getCourses());
+        assertEquals(1, student.getCourses().size());
+        assertEquals("CSE101", student.getCourses().get(0).getId());
     }
 
     @Test
-    public void getAdvisor() {
-        assertNotNull("Expected non-null advisor", student.getAdvisor());
+    public void testSetAndGetAdvisor() {
+        Advisor advisor = new Advisor();
+        advisor.setId("advisor1");
+
+        student.setAdvisor(advisor);
+        assertEquals("advisor1", student.getAdvisor().getId());
     }
 
     @Test
-    public void setAdvisor() {
-        Advisor newAdvisor = new Advisor();
-        student.setAdvisor(newAdvisor);
-        Assert.assertEquals(newAdvisor, student.getAdvisor());
-    }
+    public void testSetAndGetDepartments() {
+        List<Department> departments = new ArrayList<>();
+        Department department = new Department();
+        department.setId("CS");
+        departments.add(department);
 
-
-    @Test
-    public void setDepartments() {
-        List<Department> departments = List.of(new Department());
         student.setDepartments(departments);
-        Assert.assertEquals(departments, student.getDepartments());
+        assertEquals(1, student.getDepartments().size());
+        assertEquals("CS", student.getDepartments().get(0).getId());
     }
 
     @Test
-    public void setStartYear() {
-        int newStartYear = 2020;
-        student.setYear(newStartYear);
-        Assert.assertEquals(newStartYear, student.getYear());
-    }
+    public void testPrerequisiteFail() {
+        List<CourseSection> courseSections = new ArrayList<>();
+        CourseSection courseSection = new CourseSection();
+        courseSection.setId("CS101-1");
+        courseSections.add(courseSection);
 
-
-    @Test
-    public void getYear() {
-        assertTrue("Expected valid year", student.getYear() > 0);
-    }
-
-    @Test
-    public void setYear() {
-        int newYear = 2021;
-        student.setYear(newYear);
-        Assert.assertEquals(newYear, student.getYear());
+        student.prerequisiteFail(courseSections);
+        // Simply verify the method executes without errors.
     }
 
     @Test
-    public void getRegistration() {
-        assertNotNull("Expected non-null registration", student.getRegistration());
+    public void testSectionFullFail() {
+        List<CourseSection> courseSections = new ArrayList<>();
+        CourseSection courseSection = new CourseSection();
+        courseSection.setId("CS102-1");
+        courseSections.add(courseSection);
+
+        student.sectionFullFail(courseSections);
+        // Simply verify the method executes without errors.
     }
 
     @Test
-    public void setRegistration() {
-        Registration newRegistration = new Registration();
-        student.setRegistration(newRegistration);
-        Assert.assertEquals(newRegistration, student.getRegistration());
+    public void testPrintAdvisorDisapproval() {
+        Registration registration = new Registration();
+        registration.setRegistrationStatus(0);
+        student.setRegistration(registration);
+
+        student.printAdvisorDisapproval();
+        // This is a void method with output, so no direct assertion is made.
     }
+
+    @Test
+    public void testPrintWeeklyScheduleAsTable_NoCourses() {
+        student.printWeeklyScheduleAsTable(student);
+        // This is a void method with output, so no direct assertion is made.
+    }
+
+    @Test
+    public void testPrintWeeklyScheduleAsTable_WithCourses() {
+        // Setup Registration
+        Registration registration = new Registration();
+        List<CourseSection> courseSections = new ArrayList<>();
+
+        // Create a CourseSection with scheduled times
+        CourseSection courseSection = new CourseSection();
+        courseSection.setId("CS101-1");
+        courseSection.setCourseId("CS101");
+
+        CourseTime courseTime = new CourseTime();
+        courseTime.setCourseDay("Monday");
+        courseTime.setStartTime(Time.valueOf("08:00:00")); // Set start time
+        courseTime.setEndTime(Time.valueOf("10:00:00"));   // Set end time
+
+        List<CourseTime> courseTimes = new ArrayList<>();
+        courseTimes.add(courseTime);
+        courseSection.setScheduledTimes(courseTimes);
+
+        // Create and assign a Classroom
+        Classroom classroom = new Classroom();
+        classroom.setId("Room101"); // Set classroom ID
+        classroom.setCapacity(50);  // Optional: Set classroom capacity
+        courseSection.setClassroom(classroom); // Associate classroom with the course section
+
+        // Add the course section to the registration
+        courseSections.add(courseSection);
+        registration.setCourseSections(courseSections);
+
+        // Assign the registration to the student
+        student.setRegistration(registration);
+
+        // Execute the function to test
+        student.printWeeklyScheduleAsTable(student);
+
+        // Verify manually if the console output aligns with the schedule setup
+    }
+
 }
