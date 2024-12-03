@@ -161,21 +161,21 @@ class CourseRegistrationSimulation {
 
             System.out.println("\n----------System is checking eligibility----------\n");
             // Eligibility check implemented in here
-//            if(!courseRegSystem.checkEligibility(student)){
-//              System.out.println("Eligibility check failed, registration deleted.");
-//              student.getRegistration().deleteCourseSectionList();
-//            };
+           if(courseRegSystem.checkEligibility(student)){
+              System.out.println("Eligibility check failed, registration deleted.");
+              student.getRegistration().deleteCourseSectionList();
 
-
-            System.out.print("Are you sure you want to send the registration request to your advisor? (y/n): ");
-            String requestChoice = scanner.next();
-            if (requestChoice.equalsIgnoreCase("y")) {
-                courseRegSystem.sendRegistrationToAdvisor(student.getRegistration(), student);
-                System.out.println("SUCCESS: The registration request has been sent to your advisor\n");
-            } else {
-                student.setRegistration(null);
-                System.out.println("WARNING: The registration you have created has been deleted. Make a new one\n");
-            }
+           } else {
+               System.out.print("Are you sure you want to send the registration request to your advisor? (y/n): ");
+               String requestChoice = scanner.next();
+               if (requestChoice.equalsIgnoreCase("y")) {
+                   courseRegSystem.sendRegistrationToAdvisor(student.getRegistration(), student);
+                   System.out.println("SUCCESS: The registration request has been sent to your advisor\n");
+               } else {
+                   student.setRegistration(null);
+                   System.out.println("WARNING: The registration you have created has been deleted. Make a new one\n");
+               }
+           }
         } catch (Exception e) {
             logger.severe("An error occurred creating registration for student:: " + e.getMessage());
         }
