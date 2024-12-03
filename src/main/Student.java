@@ -2,7 +2,6 @@ package main;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Student extends Person {
 
@@ -26,6 +25,7 @@ public class Student extends Person {
     public void setTerm(int term) {
         this.term = term;
     }
+    private Transcript transcript; // New Transcript field
 
     public Student() {
     }
@@ -215,5 +215,11 @@ public class Student extends Person {
 
     public void setAdvisorId(int advisorId) {
         this.advisorId = advisorId;
+    public Transcript getTranscript() {
+        return transcript;
+    }
+
+    public void setTranscript(Transcript transcript) {
+        this.transcript = transcript;
     }
 }
