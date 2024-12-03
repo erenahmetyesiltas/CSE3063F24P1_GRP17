@@ -1,22 +1,8 @@
 {
   "enrolledStudents": [],
-  "classroom": {
-    "id": "M2-Z11",
-    "capacity": 70
-  },
+  "classroom": null,
   "id": "IE3081-1",
-  "scheduledTimes": [
-    {
-      "startTime": "10:00:00",
-      "endTime": "11:00:00",
-      "courseDay": "Tuesday"
-    },
-    {
-      "startTime": "15:00:00",
-      "endTime": "16:00:00",
-      "courseDay": "Thursday"
-    }
-  ],
+  "scheduledTimes": [],
   "sectionNumber": 1,
   "course": {
     "id": "IE3081",

@@ -22,7 +22,7 @@ public class LoginSystem {
     private DepartmentScheduler departmentScheduler;
     private DepartmentSchedulerDBController departmentSchedulerDBController;
 
-    LoginSystem(StudentDBController studentDBController,AdvisorDBController advisorDBController,DepartmentSchedulerDBController departmentSchedulerDBController) {
+    public LoginSystem(StudentDBController studentDBController, AdvisorDBController advisorDBController, DepartmentSchedulerDBController departmentSchedulerDBController) {
         this.studentDBController = studentDBController;
         this.advisorDBController = advisorDBController;
         this.departmentSchedulerDBController = departmentSchedulerDBController;

@@ -1,0 +1,39 @@
+{
+  "id": "150122507",
+  "firstName": "Enes Berk",
+  "lastName": "Yetim",
+  "password": "enes123",
+  "gpa": 2.77,
+
+  "courses": [
+    {
+      "id": "CSE3215",
+      "name": "Digital Logic Design",
+      "credit": "3",
+      "departments": [],
+      "term": 5,
+      "prerequisiteCourses": [],
+      "weeklyCourseHours": 5
+    },
+    {
+      "id": "CSE3033",
+      "name": "Operating Systems",
+      "credit": "3",
+      "departments": [],
+      "term": 5,
+      "prerequisiteCourses": [],
+      "weeklyCourseHours": 5
+    }
+  ],
+  "advisorId": 999222,
+  "departments": [
+    {
+      "departmentName": "Computer Engineering"
+    }
+  ],
+  "startYear": 2022,
+  "year": 3,
+  "registrationId": "r150122507",
+  "departmentIds": ["cse"],
+  "term": 5
+}

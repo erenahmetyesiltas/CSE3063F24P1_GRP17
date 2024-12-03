@@ -1,86 +1,97 @@
 package tests;
 
-import main.*;
-
+import DataBaseController.AdvisorDBController;
+import DataBaseController.DepartmentSchedulerDBController;
+import DataBaseController.StudentDBController;
+import main.Advisor;
+import main.DepartmentScheduler;
+import main.LoginSystem;
+import main.Student;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.util.List;
 
-import static org.junit.Assert.*;
-/*
 public class LoginSystemTest {
 
+    private StudentDBController studentDBController;
+    private AdvisorDBController advisorDBController;
+    private DepartmentSchedulerDBController departmentSchedulerDBController;
     private LoginSystem loginSystem;
-    private CourseRegistrationSystem system;
-    private DataHandler dataHandler;
+
+    private Student student;
+    private Advisor advisor;
+    private DepartmentScheduler departmentScheduler;
 
     @Before
-    public void setUp() throws IOException {
-        // Initialize main.LoginSystem and main.CourseRegistrationSystem
-        loginSystem = new LoginSystem();
-        system = new CourseRegistrationSystem();
-        dataHandler = new DataHandler();
+    public void setUp() {
+        // Initialize controllers and objects manually
+        studentDBController = new StudentDBController();
+        advisorDBController = new AdvisorDBController();
+        departmentSchedulerDBController = new DepartmentSchedulerDBController();
 
-        // Retrieve data from main.DataHandler and populate system
-        List<SystemData> allData = dataHandler.getAllDatas();
+        // Initialize Student, Advisor, and DepartmentScheduler with dummy data
+        student = new Student();
+        student.setId("student123");
 
-        for (SystemData data : allData) {
-            if (data.getObjectClass() == Student.class) {
-                Student student = dataHandler.getObjectMapper().convertValue(data.getObject(), Student.class);
-                system.getAllStudents().add(student);
-            } else if (data.getObjectClass() == Advisor.class) {
-                Advisor advisor = dataHandler.getObjectMapper().convertValue(data.getObject(), Advisor.class);
-                system.getAllAdvisors().add(advisor);
-            }
-        }
+        advisor = new Advisor();
+        advisor.setId("advisor123");
+        advisor.setPassword("advisorPass");
+
+        departmentScheduler = new DepartmentScheduler();
+        departmentScheduler.setId("scheduler123");
+        departmentScheduler.setPassword("schedulerPass");
+
+        // Initialize LoginSystem
+        loginSystem = new LoginSystem(studentDBController, advisorDBController, departmentSchedulerDBController);
+
+        // Add student, advisor, and department scheduler to the respective "databases"
+        // Simulate data loading for testing purposes
+        studentDBController.setStudent(student);  // Simulate student loading
+        advisorDBController.setAdvisor(advisor);  // Simulate advisor loading
+        departmentSchedulerDBController.setDepartmentScheduler(departmentScheduler);  // Simulate scheduler loading
     }
 
     @Test
-    public void authenticateUser_validStudentCredentials() throws IOException {
-        boolean isAuthenticated = loginSystem.authenticateUser("150122011", "melisa123", system);
-        assertTrue(isAuthenticated);
-        assertNotNull("Expected a student to be authenticated", loginSystem.getStudent());
-        assertNull("Expected no advisor to be authenticated", loginSystem.getAdvisor());
+    public void testAuthenticateStudentFailure() throws IOException {
+        // Simulate failed student authentication with incorrect password
+        boolean result = loginSystem.authenticateUser("student123", "wrongPass");
+        assertFalse("Student authentication should fail with incorrect password", result);
     }
 
     @Test
-    public void authenticateUser_validAdvisorCredentials() throws IOException {
-        boolean isAuthenticated = loginSystem.authenticateUser("A12345", "StrongPassword@123", system);
-        assertTrue(isAuthenticated);
-        assertNotNull("Expected an advisor to be authenticated", loginSystem.getAdvisor());
-        assertNull("Expected no student to be authenticated", loginSystem.getStudent());
+    public void testAuthenticateStudentNotFound() throws IOException {
+        // Simulate a student who is not in the database
+        boolean result = loginSystem.authenticateUser("nonExistingStudent", "studentPass");
+        assertFalse("Student authentication should fail for non-existing student", result);
     }
 
     @Test
-    public void authenticateUser_invalidCredentials() throws IOException {
-        boolean isAuthenticated = loginSystem.authenticateUser("unknown", "wrongpass", system);
-        assertFalse(isAuthenticated);
-        assertNull("Expected no student to be authenticated", loginSystem.getStudent());
-        assertNull("Expected no advisor to be authenticated", loginSystem.getAdvisor());
+    public void testAuthenticateAdvisorFailure() throws IOException {
+        // Simulate failed advisor authentication with incorrect password
+        boolean result = loginSystem.authenticateAdvisorUser("advisor123", "wrongPass");
+        assertFalse("Advisor authentication should fail with incorrect password", result);
     }
 
     @Test
-    public void getStudent_afterSuccessfulStudentLogin() throws IOException {
-        loginSystem.authenticateUser("150122011", "melisa123", system);
-        assertNotNull("Expected a student to be authenticated", loginSystem.getStudent());
+    public void testAuthenticateAdvisorNotFound() throws IOException {
+        // Simulate an advisor who is not in the database
+        boolean result = loginSystem.authenticateAdvisorUser("nonExistingAdvisor", "advisorPass");
+        assertFalse("Advisor authentication should fail for non-existing advisor", result);
     }
 
     @Test
-    public void getAdvisor_afterSuccessfulAdvisorLogin() throws IOException {
-        loginSystem.authenticateUser("A12345", "StrongPassword@123", system);
-        assertNotNull("Expected an advisor to be authenticated", loginSystem.getAdvisor());
+    public void testAuthenticateDepartmentSchedulerFailure() throws IOException {
+        // Simulate failed department scheduler authentication with incorrect password
+        boolean result = loginSystem.authenticateDepartmentSchedulerUser("scheduler123", "wrongPass");
+        assertFalse("Department Scheduler authentication should fail with incorrect password", result);
     }
 
     @Test
-    public void getStudent_withoutLogin() {
-        assertNull("Expected no student to be authenticated", loginSystem.getStudent());
-    }
-
-    @Test
-    public void getAdvisor_withoutLogin() {
-        assertNull("Expected no advisor to be authenticated", loginSystem.getAdvisor());
+    public void testAuthenticateDepartmentSchedulerNotFound() throws IOException {
+        // Simulate a department scheduler who is not in the database
+        boolean result = loginSystem.authenticateDepartmentSchedulerUser("nonExistingScheduler", "schedulerPass");
+        assertFalse("Department Scheduler authentication should fail for non-existing department scheduler", result);
     }
 }
-*/

@@ -70,6 +70,7 @@ class CourseRegistrationSimulation {
     }
 
     private void loginStudent() {
+        logger.info("Student trying to login.");
         try {
             System.out.println();
             System.out.print("Enter your nickname: ");
@@ -105,20 +106,26 @@ class CourseRegistrationSimulation {
                 System.out.println("1- Create a registration");
                 System.out.println("2- Check current registration status");
                 System.out.println("3- Print weekly schedule");
-                System.out.println("4- Turn back to the user selection menu");
+                System.out.print("4- Log Out: ");
+                //System.out.println("4- Turn back to the user selection menu");
                 System.out.print("Please choose an action: ");
 
                 int choice = scanner.nextInt();
+
+                while(choice < 1 || choice > 4){
+                    System.out.print("Please type a invalid choice: ");
+                    choice = scanner.nextInt();
+                }
 
                 switch (choice) {
                     case 1 -> createRegistration(student);
                     case 2 -> courseRegSystem.getStudentRegistrationStatus(student);
                     case 3 -> student.printWeeklyScheduleAsTable(student);
-                    case 4 -> run();
+                    case 4 -> logout();
                     default -> System.out.println("Invalid choice.");
                 }
 
-                System.out.println("Do you want to continue? (If not you will logout) (y/n): ");
+                System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
                 String continueChoice = scanner.next();
                 if (continueChoice.equalsIgnoreCase("n")) {
                     logout();
@@ -131,9 +138,11 @@ class CourseRegistrationSimulation {
     }
 
     private void createRegistration(Student student) throws IOException {
+        logger.info("Creating a new registration");
         try {
             logger.info("Creating registration for student: " + student.getId());
-            courseRegSystem.printSuitableCourses();
+            //courseRegSystem.printSuitableCourses();
+            courseRegSystem.printSuitableCoursesRemake(student);
 
             while (true) {
                 System.out.print("\nDo you want to add courses? (y/n): ");
@@ -151,17 +160,22 @@ class CourseRegistrationSimulation {
             );
 
             System.out.println("\n----------System is checking eligibility----------\n");
-            // Eligibility check can be implemented here
+            // Eligibility check implemented in here
+           if(courseRegSystem.checkEligibility(student)){
+              System.out.println("Eligibility check failed, registration deleted.");
+              student.getRegistration().deleteCourseSectionList();
 
-            System.out.print("Are you sure you want to send the registration request to your advisor? (y/n): ");
-            String requestChoice = scanner.next();
-            if (requestChoice.equalsIgnoreCase("y")) {
-                courseRegSystem.sendRegistrationToAdvisor(student.getRegistration(), student);
-                System.out.println("SUCCESS: The registration request has been sent to your advisor\n");
-            } else {
-                student.setRegistration(null);
-                System.out.println("WARNING: The registration you have created has been deleted. Make a new one\n");
-            }
+           } else {
+               System.out.print("Are you sure you want to send the registration request to your advisor? (y/n): ");
+               String requestChoice = scanner.next();
+               if (requestChoice.equalsIgnoreCase("y")) {
+                   courseRegSystem.sendRegistrationToAdvisor(student.getRegistration(), student);
+                   System.out.println("SUCCESS: The registration request has been sent to your advisor\n");
+               } else {
+                   student.setRegistration(null);
+                   System.out.println("WARNING: The registration you have created has been deleted. Make a new one\n");
+               }
+           }
         } catch (Exception e) {
             logger.severe("An error occurred creating registration for student:: " + e.getMessage());
         }
@@ -203,7 +217,8 @@ class CourseRegistrationSimulation {
                 System.out.println("----------ACTIONS----------");
                 //System.out.println("1- Check students");
                 System.out.println("1- Approve/Reject student registration requests");
-                System.out.println("2- Turn back to the user selection menu");
+                System.out.println("2- Log out!.");
+                //System.out.println("2- Turn back to the user selection menu");
                 System.out.print("Please choose an action: ");
 
                 int choice = scanner.nextInt();
@@ -217,7 +232,7 @@ class CourseRegistrationSimulation {
                 switch (choice) {
                     //case 1 -> checkStudents(advisor);
                     case 1 -> handleRegistrationRequests(advisor);
-                    case 2 -> run();
+                    case 2 -> logout();
                 }
 
                 System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
@@ -237,27 +252,49 @@ class CourseRegistrationSimulation {
             logger.info("Handling Registration Requests");
             List<Registration> registrations = registrationDBController.getRegistrationsOfAdvisor(advisor);
 
-            System.out.println();
-            System.out.println("Please set the status of the registrations:");
-            System.out.println("In order to specify as not approved print O");
-            System.out.println("In order to specify as not checked yet 1");
-            System.out.println("In order to specify as approved print 2");
+            if(registrations.size() == 0){
+                System.out.println("There are no any registrations for the advisor.");
+            }else{
+                System.out.println();
 
+                for (int i = 0; i < registrations.size(); i++) {
 
-            for (int i = 0; i < registrations.size(); i++) {
-                System.out.println(registrations.get(i).getId());
-                System.out.println(registrations.get(i).getRegistrationStatus());
+                    System.out.println("Student-"+(i+1)+": "+registrations.get(i).getId().substring(1));
 
-                System.out.print("Print the status to change the state of the registration listed: ");
-                int status = scanner.nextInt();
+                    System.out.println("-----Course Sections-----");
 
-                while (status < 0 || status > 2) {
-                    System.out.print("Please enter valid number: ");
-                    status = scanner.nextInt();
+                    for (int j = 0; j < registrations.get(i).getCourseSections().size(); j++) {
+                        System.out.println("Selected Course Section-"+(j+1));
+                        System.out.println(registrations.get(i).getCourseSections().get(j).getId());
+
+                    }
+
+                    System.out.println("The current status of this registration: "+registrations.get(i).getRegistrationStatus());
+
+                    System.out.println();
+
+                    System.out.println("In order to specify as not approved print O");
+                    System.out.println("In order to specify as not checked yet 1");
+                    System.out.println("In order to specify as approved print 2");
+                    System.out.print("Print the status to change the state of the registration listed(0/1/2): ");
+                    int status = scanner.nextInt();
+
+                    while (status < 0 || status > 2) {
+                        System.out.print("Please enter valid number: ");
+                        status = scanner.nextInt();
+                    }
+                    if(status == 0){
+                        registrations.get(i).setRegistrationStatus(status);
+                        registrations.get(i).setCourseSections(null);
+                        registrationDBController.removeRegistrations(registrations.get(i));
+                        registrationDBController.updateRegistrations(registrations.get(i), status); // Update status
+                    } else {
+                        registrations.get(i).setRegistrationStatus(status);
+                        registrationDBController.updateRegistrations(registrations.get(i), status);
+                    }
                 }
 
-                registrations.get(i).setRegistrationStatus(status);
-                registrationDBController.updateRegistrations(registrations.get(i), status);
+                System.out.println();
 
             }
         } catch (Exception e) {
@@ -268,6 +305,8 @@ class CourseRegistrationSimulation {
 
     public void loginDepartmentScheduler(){
         try {
+            logger.info("Login department scheduler");
+
             System.out.print("Enter your nickname: ");
             String nickname = scanner.nextLine();
 
@@ -288,317 +327,332 @@ class CourseRegistrationSimulation {
             }
         } catch (IOException e) {
             System.out.println("An error occurred: " + e.getMessage());
+            logger.severe("Unexpected error during login departmentScheduler:: " + e.getMessage());
         } catch (Exception e) {
+            logger.severe("Unexpected error during login departmentScheduler: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     private void handleDepartmentSchedulerActions(DepartmentScheduler departmentScheduler) throws IOException {
-
-        while (true) {
-            System.out.println();
-            System.out.println("----------ACTIONS----------");
-            System.out.println("1- Assign time to the course sections of the department");
-            System.out.println("2- Turn back to the user selection menu");
-            System.out.print("Please choose an action: ");
-
-            int choice = scanner.nextInt();
-
-            while(choice < 1 || choice > 2){
+        try {
+            while (true) {
                 System.out.println();
-                System.out.print("Please enter a valid option:");
-                choice = scanner.nextInt();
-            }
+                System.out.println("----------ACTIONS----------");
+                System.out.println("1- Assign time and classroom to the course sections of the department");
+                //System.out.println("2- Turn back to the user selection menu");
+                System.out.print("Please choose an action: ");
 
-            switch (choice) {
-                //case 1 -> checkStudents(advisor);
-                case 1 -> handleCourseSectionTimesAndClassroom(departmentScheduler);
-                case 2 -> run();
-            }
+                int choice = scanner.nextInt();
 
-            System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
-            String continueChoice = scanner.next();
-            if (continueChoice.equalsIgnoreCase("n")) {
-                logout();
-                break;
+                while (choice != 1) {
+                    System.out.println();
+                    System.out.print("Please enter a valid option:");
+                    choice = scanner.nextInt();
+                }
+
+                switch (choice) {
+                    //case 1 -> checkStudents(advisor);
+                    case 1 -> handleCourseSectionTimesAndClassroom(departmentScheduler);
+                    //case 2 -> run();
+                }
+
+                System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
+                String continueChoice = scanner.next();
+                if (continueChoice.equalsIgnoreCase("n")) {
+                    logout();
+                    break;
+                }
             }
+        } catch (Exception e) {
+            logger.severe("Unexpected error during handleDepartmentSchedulerActions: " + e.getMessage());
         }
-
     }
 
     private void handleCourseSectionTimesAndClassroom(DepartmentScheduler departmentScheduler) {
-        // CourseSectionList
-        courseDBController.loadCourseSectionListOfDepartmentScheduler(departmentScheduler);
+        try {
+            logger.info("Handling Course Section times");
+            // CourseSectionList
+            courseDBController.loadCourseSectionListOfDepartmentScheduler(departmentScheduler);
 
-        System.out.println();
-        System.out.println("------------Course Sections------------");
-        for (CourseSection courseSection: departmentScheduler.getCourseSectionList()){
-            System.out.println(courseSection.getId());
+            System.out.println();
+            System.out.println("------------Course Sections------------");
+            for (CourseSection courseSection : departmentScheduler.getCourseSectionList()) {
+                System.out.println(courseSection.getId());
+            }
+
+            System.out.println("Please select a course section to change/assign its time and classroom");
+
+            System.out.print("Print the course name: ");
+            String courseName = scanner.next();
+
+            System.out.print("Print the course section id: ");
+            String sectionId = scanner.next();
+
+            String courseSectionId = courseName + "-" + sectionId;
+
+            // to define is printed course section exist call this function
+            isCourseSectionExistInDepartment(courseSectionId, departmentScheduler.getCourseSectionList());
+
+            // handle the operation about this course section
+            handleCourseSectionSettingsMenus(courseSectionId);
+        } catch (Exception e) {
+            logger.severe("Unexpected error during handleCourseSectionTimesAndClassroom: " + e.getMessage());
         }
 
-        System.out.println("Please select a course section to change/assign its time and classroom");
-
-        System.out.print("Print the course name: ");
-        String courseName = scanner.next();
-
-        System.out.print("Print the course section id: ");
-        String sectionId = scanner.next();
-
-        String courseSectionId = courseName + "-" + sectionId;
-
-        // to define is printed course section exist call this function
-        isCourseSectionExistInDepartment(courseSectionId,departmentScheduler.getCourseSectionList());
-
-        // handle the operation about this course section
-        handleCourseSectionSettingsMenus(courseSectionId);
-
-        // CourseSectionı seç
-
-        // Yeni Menu ayarla.
     }
 
     private void handleCourseSectionSettingsMenus(String courseSectionId) {
+        try {
+            CourseSection courseSection;
+            courseSection = courseDBController.loadCourseSection(courseSectionId);
 
-        CourseSection courseSection;
-        courseSection = courseDBController.loadCourseSection(courseSectionId);
+            boolean isTimeChange = false;
+            boolean isClassroomChange = false;
 
-        boolean isTimeChange = false;
-        boolean isClassroomChange = false;
+            boolean isTimeValid = false;
+            boolean isClassroomValid = false;
 
-        boolean isTimeValid = false;
-        boolean isClassroomValid = false;
+            String result = "";
 
-        // Classroom Settings
-        if(courseSection.getClassroom() == null){
-            System.out.println(courseSection.getId() + "'s classroom is empty. Do you want to add classroom?");
-            String yesOrNo = scanner.next();
+            // Classroom Settings
+            if (courseSection.getClassroom() == null) {
+                System.out.print(courseSection.getId() + "'s classroom is empty.\nDo you want to add classroom?(y/n): ");
+                String yesOrNo = scanner.next();
 
-            boolean isTrueInput = false;
+                boolean isTrueInput = false;
 
-            while(!isTrueInput){
-                if(yesOrNo.equalsIgnoreCase("Y")){
-                    isTrueInput = true;
+                while (!isTrueInput) {
+                    if (yesOrNo.equalsIgnoreCase("Y")) {
+                        isTrueInput = true;
 
-                    System.out.print("Please enter the classroom name:");
-                    String croomName = scanner.next();
-                    isClassroomValid = courseDBController.assignClassroomToCourseSection(courseSection, croomName);
+                        System.out.print("Please enter the classroom name:");
+                        String croomName = scanner.next();
+                        isClassroomValid = courseDBController.assignClassroomToCourseSection(courseSection, croomName);
 
-                    if(!isClassroomValid){
+                        if (!isClassroomValid) {
 
-                        System.out.print("Do you want to change the classroom of this course section? (y/n): ");
-                        yesOrNo = scanner.next();
-                        boolean isTrueInputInner = false;
+                            System.out.print("Do you want to change the classroom of this course section? (y/n): ");
+                            yesOrNo = scanner.next();
+                            boolean isTrueInputInner = false;
 
-                        while(!isTrueInputInner){
+                            while (!isTrueInputInner) {
 
-                            if(yesOrNo.equalsIgnoreCase("Y")){
-                                isTrueInputInner = true;
-                                isTrueInput = false;
-                            }else if(yesOrNo.equalsIgnoreCase("N")){
-                                isTrueInputInner = true;
-                                isTrueInput = true;
-                            }else{
-                                isTrueInput = false;
-                                System.out.print("Do you want to add classroom? Please enter the input correctly (y/n):");
-                                yesOrNo = scanner.next();
+                                if (yesOrNo.equalsIgnoreCase("Y")) {
+                                    isTrueInputInner = true;
+                                    isTrueInput = false;
+                                } else if (yesOrNo.equalsIgnoreCase("N")) {
+                                    result += "There is no any classroom for this course section.\n";
+                                    isTrueInputInner = true;
+                                    isTrueInput = true;
+                                } else {
+                                    isTrueInput = false;
+                                    System.out.print("Do you want to add classroom? Please enter the input correctly (y/n):");
+                                    yesOrNo = scanner.next();
+                                }
+
                             }
-
                         }
-                    }
 
 
-                }else if(yesOrNo.equalsIgnoreCase("N")){
-                    break;
-                }else{
-                    isTrueInput = false;
-                    System.out.print("Do you want to add classroom? Please enter the input correctly (y/n):");
-                    yesOrNo = scanner.next();
-                }
-            }
-
-        }
-        else{
-            System.out.print(courseSection.getId() + "'s classroom is "+ courseSection.getClassroom().getId() +".\nDo you want to change the classroom? ");
-            System.out.print("(y/n): ");
-            String yesOrNo = scanner.next();
-
-            boolean isTrueInput = false;
-
-            while(!isTrueInput) {
-                if (yesOrNo.equalsIgnoreCase("Y")) {
-                    isTrueInput = true;
-
-                    System.out.print("Please enter the classroom name:");
-                    String croomName = scanner.next();
-                    isClassroomValid = courseDBController.assignClassroomToCourseSection(courseSection, croomName);
-
-                    if(!isClassroomValid){
-
-                        System.out.print("Do you want to change the classroom of this course section? (y/n): ");
+                    } else if (yesOrNo.equalsIgnoreCase("N")) {
+                        result += "There is no any classroom for this course section.\n";
+                        break;
+                    } else {
+                        isTrueInput = false;
+                        System.out.print("Do you want to add classroom? Please enter the input correctly (y/n):");
                         yesOrNo = scanner.next();
-                        boolean isTrueInputInner = false;
-
-                        while(!isTrueInputInner){
-
-                            if(yesOrNo.equalsIgnoreCase("Y")){
-                                isTrueInputInner = true;
-                                isTrueInput = false;
-                            }else if(yesOrNo.equalsIgnoreCase("N")){
-                                isTrueInputInner = true;
-                                isTrueInput = true;
-                            }else{
-                                isTrueInput = false;
-                                System.out.print("Do you want to add classroom? Please enter the input correctly (y/n):");
-                                yesOrNo = scanner.next();
-                            }
-
-                        }
                     }
-
-                } else if (yesOrNo.equalsIgnoreCase("N")) {
-                    isClassroomValid = true;
-                    break;
-                } else {
-                    isTrueInput = false;
-                    System.out.print("Do you want to add classroom? Please enter the input correctly (y/n):");
-                    yesOrNo = scanner.next();
-                }
-            }
-            //courseDBController.assignTimesToCourseSection(courseSection);
-        }
-
-        // Time Settings
-        if(courseSection.getScheduledTimes().isEmpty()){
-            System.out.print(courseSection.getId() + "'s time is empty.\nDo you want to add times for this course section?(y/n): ");
-            String yesOrNo = scanner.next();
-
-            boolean isTrueInput = false;
-
-            while(!isTrueInput){
-
-                if(yesOrNo.equalsIgnoreCase("Y")){
-                    isTrueInput = true;
-                    isTimeValid = courseDBController.assignTimesToCourseSection(courseSection,departmentSchedulerDBController.getDepartmentScheduler());
-
-                    if(!isTimeValid){
-                        System.out.print("Do you want to change the classroom of this course section? (y/n): ");
-                        yesOrNo = scanner.next();
-                        boolean isTrueInputInner = false;
-
-                        while(!isTrueInputInner){
-
-                            if(yesOrNo.equalsIgnoreCase("Y")){
-                                isTrueInputInner = true;
-                                isTrueInput = false;
-                            }else if(yesOrNo.equalsIgnoreCase("N")){
-                                isTrueInputInner = true;
-                                isTrueInput = true;
-                            }else{
-                                isTrueInput = false;
-                                System.out.print("Do you want to add times? Please enter the input correctly (y/n):");
-                                yesOrNo = scanner.next();
-                            }
-
-                        }
-                    }
-
-                }else if(yesOrNo.equalsIgnoreCase("N")){
-                    break;
-                }else{
-                    isTrueInput = false;
-                    System.out.print("Do you want to add times? Please enter the input correctly (y/n):");
-                    yesOrNo = scanner.next();
                 }
 
-            }
+            } else {
+                System.out.print(courseSection.getId() + "'s classroom is " + courseSection.getClassroom().getId() + ".\nDo you want to change the classroom? ");
+                System.out.print("(y/n): ");
+                String yesOrNo = scanner.next();
 
-        }
-        else{
-            System.out.println(courseSection.getId() + "'s classroom times are:");
+                boolean isTrueInput = false;
 
-            for (int i = 0; i < courseSection.getScheduledTimes().size(); i++) {
-                System.out.println(i+" ==> Day is :" + courseSection.getScheduledTimes().get(i).getCourseDay());
-                System.out.println("Start time: " + courseSection.getScheduledTimes().get(i).getStartTime());
-                System.out.println("End time: " + courseSection.getScheduledTimes().get(i).getEndTime());
-            }
+                while (!isTrueInput) {
+                    if (yesOrNo.equalsIgnoreCase("Y")) {
+                        isTrueInput = true;
 
-            System.out.print("Do you want to change the times (y/n): ");
+                        System.out.print("Please enter the classroom name:");
+                        String croomName = scanner.next();
+                        isClassroomValid = courseDBController.assignClassroomToCourseSection(courseSection, croomName);
 
-            String yesOrNo = scanner.next();
+                        if (!isClassroomValid) {
 
-            boolean isTrueInput = false;
+                            System.out.print("Do you want to change the classroom of this course section? (y/n): ");
+                            yesOrNo = scanner.next();
+                            boolean isTrueInputInner = false;
 
-            while(!isTrueInput){
+                            while (!isTrueInputInner) {
 
-                if(yesOrNo.equalsIgnoreCase("Y")){
-                    isTrueInput = true;
-                    isTimeValid = courseDBController.assignTimesToCourseSection(courseSection,departmentSchedulerDBController.getDepartmentScheduler());
+                                if (yesOrNo.equalsIgnoreCase("Y")) {
+                                    isTrueInputInner = true;
+                                    isTrueInput = false;
+                                } else if (yesOrNo.equalsIgnoreCase("N")) {
+                                    isTrueInputInner = true;
+                                    isTrueInput = true;
+                                } else {
+                                    isTrueInput = false;
+                                    System.out.print("Do you want to add classroom? Please enter the input correctly (y/n):");
+                                    yesOrNo = scanner.next();
+                                }
 
-                    if(!isTimeValid){
-                        System.out.print("Do you want to change the classroom of this course section? (y/n): ");
-                        yesOrNo = scanner.next();
-                        boolean isTrueInputInner = false;
-
-                        while(!isTrueInputInner){
-
-                            if(yesOrNo.equalsIgnoreCase("Y")){
-                                isTrueInputInner = true;
-                                isTrueInput = false;
-                            }else if(yesOrNo.equalsIgnoreCase("N")){
-                                isTrueInputInner = true;
-                                isTrueInput = true;
-                            }else{
-                                isTrueInput = false;
-                                System.out.print("Do you want to add times? Please enter the input correctly (y/n):");
-                                yesOrNo = scanner.next();
                             }
-
                         }
+
+                    } else if (yesOrNo.equalsIgnoreCase("N")) {
+                        isClassroomValid = true;
+                        break;
+                    } else {
+                        isTrueInput = false;
+                        System.out.print("Do you want to add classroom? Please enter the input correctly (y/n):");
+                        yesOrNo = scanner.next();
+                    }
+                }
+                //courseDBController.assignTimesToCourseSection(courseSection);
+            }
+
+            // Time Settings
+            if (courseSection.getScheduledTimes().isEmpty()) {
+                System.out.print(courseSection.getId() + "'s time is empty.\nDo you want to add times for this course section?(y/n): ");
+                String yesOrNo = scanner.next();
+
+                boolean isTrueInput = false;
+
+                while (!isTrueInput) {
+
+                    if (yesOrNo.equalsIgnoreCase("Y")) {
+                        isTrueInput = true;
+                        isTimeValid = courseDBController.assignTimesToCourseSection(courseSection, departmentSchedulerDBController.getDepartmentScheduler());
+
+                        if (!isTimeValid) {
+                            System.out.print("Do you want to change the classroom of this course section? (y/n): ");
+                            yesOrNo = scanner.next();
+                            boolean isTrueInputInner = false;
+
+                            while (!isTrueInputInner) {
+
+                                if (yesOrNo.equalsIgnoreCase("Y")) {
+                                    isTrueInputInner = true;
+                                    isTrueInput = false;
+                                } else if (yesOrNo.equalsIgnoreCase("N")) {
+                                    result += "There is no any saved course section times for this course section.";
+                                    isTrueInputInner = true;
+                                    isTrueInput = true;
+                                } else {
+                                    isTrueInput = false;
+                                    System.out.print("Do you want to add times? Please enter the input correctly (y/n):");
+                                    yesOrNo = scanner.next();
+                                }
+
+                            }
+                        }
+
+                    } else if (yesOrNo.equalsIgnoreCase("N")) {
+                        result += "There is no any saved course section times for this course section.";
+                        break;
+                    } else {
+                        isTrueInput = false;
+                        System.out.print("Do you want to add times? Please enter the input correctly (y/n):");
+                        yesOrNo = scanner.next();
                     }
 
-                }else if(yesOrNo.equalsIgnoreCase("N")){
-                    isTimeValid = true;
-                    break;
-                }else{
-                    isTrueInput = false;
-                    System.out.print("Do you want to add times? Please enter the input correctly (y/n):");
-                    yesOrNo = scanner.next();
                 }
+
+            } else {
+                System.out.println(courseSection.getId() + "'s classroom times are:");
+
+                for (int i = 0; i < courseSection.getScheduledTimes().size(); i++) {
+                    System.out.println(i + " ==> Day is :" + courseSection.getScheduledTimes().get(i).getCourseDay());
+                    System.out.println("Start time: " + courseSection.getScheduledTimes().get(i).getStartTime());
+                    System.out.println("End time: " + courseSection.getScheduledTimes().get(i).getEndTime());
+                }
+
+                System.out.print("Do you want to change the times (y/n): ");
+
+                String yesOrNo = scanner.next();
+
+                boolean isTrueInput = false;
+
+                while (!isTrueInput) {
+
+                    if (yesOrNo.equalsIgnoreCase("Y")) {
+                        isTrueInput = true;
+                        isTimeValid = courseDBController.assignTimesToCourseSection(courseSection, departmentSchedulerDBController.getDepartmentScheduler());
+
+                        if (!isTimeValid) {
+                            System.out.print("Do you want to change the classroom of this course section? (y/n): ");
+                            yesOrNo = scanner.next();
+                            boolean isTrueInputInner = false;
+
+                            while (!isTrueInputInner) {
+
+                                if (yesOrNo.equalsIgnoreCase("Y")) {
+                                    isTrueInputInner = true;
+                                    isTrueInput = false;
+                                } else if (yesOrNo.equalsIgnoreCase("N")) {
+                                    isTrueInputInner = true;
+                                    isTrueInput = true;
+                                } else {
+                                    isTrueInput = false;
+                                    System.out.print("Do you want to add times? Please enter the input correctly (y/n):");
+                                    yesOrNo = scanner.next();
+                                }
+
+                            }
+                        }
+
+                    } else if (yesOrNo.equalsIgnoreCase("N")) {
+                        isTimeValid = true;
+                        break;
+                    } else {
+                        isTrueInput = false;
+                        System.out.print("Do you want to add times? Please enter the input correctly (y/n):");
+                        yesOrNo = scanner.next();
+                    }
+
+                }
+
 
             }
 
+            if (isClassroomValid && isTimeValid) {
+                courseDBController.isClassroomAvailable(courseSection);
+            } else {
+                System.out.println();
+                System.out.print("Any course section hour cannot be saved because:\n" + result + "\n");
+            }
 
+            //System.out.println(courseSection.getClassroom().getCapacity());
+        } catch (Exception e) {
+            logger.severe("Error during handling Course SectionSettings Menus" + e.getMessage());
         }
-
-        if(isClassroomValid && isTimeValid){
-            courseDBController.isClassroomAvailable(courseSection);
-        }else{
-
-        }
-
-        //System.out.println(courseSection.getClassroom().getCapacity());
-
     };
 
     private boolean isCourseSectionExistInDepartment(String courseSectionId, List<CourseSection> courseSectionList){
-
-        for (CourseSection courseSection : courseSectionList) {
-            if(courseSection.getId().equals(courseSectionId)){
-                return true;
+        try {
+            logger.info("Handling isCourseSectionExistInDepartment");
+            for (CourseSection courseSection : courseSectionList) {
+                if (courseSection.getId().equals(courseSectionId)) {
+                    return true;
+                }
             }
+
+            System.out.println("Please enter the inputs correctly.");
+            System.out.println();
+            return false;
+        } catch (Exception e) {
+            logger.severe("An error ocurred during isCourseSectionExistInDepartment: "+ e.getMessage());
+            return false;
         }
-
-        System.out.println("Please enter the inputs correctly.");
-        System.out.println();
-        return false;
-
     }
 
     private void checkStudents(Advisor advisor) {
         System.out.println("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.");
     };
-
-
 
 
     private void logout() {

@@ -59,36 +59,6 @@ public class CourseRegistrationSystem {
         return dataHandler;
     }
 
-
-//    public void restoreSystem() throws NoSuchElementException {
-//        int i = 0;
-//        List<SystemData> allDatas = dataHandler.getAllDatas();
-//        ObjectMapper mapper = dataHandler.getObjectMapper();
-//
-//        while (i != (allDatas.size())) {
-//            Class objectClass = allDatas.get(i).getObjectClass();
-//            Object object = allDatas.get(i).getObject();
-//
-//            if (objectClass == Student.class) {
-//                Student student = mapper.convertValue(object, Student.class);
-//                this.getAllStudents().add(student);
-//            }
-//
-//            if (objectClass == CourseSection.class) {
-//                CourseSection course = mapper.convertValue(object, CourseSection.class);
-//                this.getAllCourseSections().add(course);
-//
-//            }
-//
-//            if (objectClass == Advisor.class) {
-//                Advisor advisor = mapper.convertValue(object, Advisor.class);
-//                this.getAllAdvisors().add(advisor);
-//            }
-//
-//            i++;
-//        }
-//    }
-
     public void updateData(Object object) {
         SystemData data = new SystemData(object, object.getClass(), "object" + dataHandler.getFileNumber() + ".json");
         dataHandler.getAllDatas().add(data);
@@ -103,6 +73,19 @@ public class CourseRegistrationSystem {
 
         for (CourseSection courseSection : getAllCourseSections()) {
             System.out.printf("%-23s%-1d\n",courseSection.getCourse().getId(),courseSection.getSectionNumber());
+            //System.out.println(courseSection.getCourse().getName());
+        }
+    }
+
+    public void printSuitableCoursesRemake(Student student){
+        System.out.println("\nThe available courses that you can register");
+        System.out.println("Course:                Section:                Lecturer:");
+        //dataHandler.getCourseSectionList();
+        List<CourseSection> appropriateCourseSections = courseDBController.getCourseSectionListAppropriate(student);
+
+        for (CourseSection courseSection : appropriateCourseSections) {
+            String fullNameOfLecturer = courseSection.getLecturer().getFirstName() + " " +courseSection.getLecturer().getLastName();
+            System.out.printf("%-23s%-24d%-23s\n",courseSection.getCourse().getId(),courseSection.getSectionNumber(),fullNameOfLecturer);
             //System.out.println(courseSection.getCourse().getName());
         }
     }

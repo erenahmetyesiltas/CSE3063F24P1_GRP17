@@ -1,0 +1,31 @@
+{
+  "id": "150122011",
+  "firstName": "Melisa",
+  "lastName": "Arac",
+  "password": "melisa123",
+  "gpa": 2.52,
+
+  "courses": [
+    {
+      "id": "CS101",
+      "name": "Introduction to Computer Science",
+      "credit": 3
+    },
+    {
+      "id": "MATH201",
+      "name": "Calculus II",
+      "credit": 4
+    }
+  ],
+  "advisorId": 999222,
+  "departments": [
+    {
+      "departmentName": "Computer Engineering"
+    }
+  ],
+  "startYear": 2022,
+  "year": 3,
+  "registrationId": "r150122011",
+  "departmentIds": ["cse"],
+  "term": 5
+}

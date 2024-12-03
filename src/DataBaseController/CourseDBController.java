@@ -469,8 +469,114 @@ public class CourseDBController {
                 System.out.println("End Time: "+courseSection.getScheduledTimes().get(i).getEndTime());
             }
 
+            System.out.println("Course section hours are saved successfully.");
 
         }
+
+    }
+
+    public List<CourseSection> getCourseSectionListAppropriate(Student student) {
+
+        URL departmentUrl = CourseDBController.class.getClassLoader().getResource("database/departments/"+student.getDepartmentIds().get(0)+".json");
+        File departmentFile = new File(departmentUrl.getFile());
+
+        Department department;
+
+        try {
+            department = mapper.readValue(departmentFile,Department.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        List<CourseSection> courseSections = new ArrayList<>();
+
+        // Get all the course sections of the department
+        for (int i = 0; i < department.getCourseSectionIds().size(); i++) {
+            URL courseSectionPath = CourseDBController.class.getClassLoader().getResource("database/courseSections/"+department.getCourseSectionIds().get(i)+".json");
+            File courseSectionFile = new File(courseSectionPath.getFile());
+
+            CourseSection courseSection;
+
+            try {
+                courseSection = mapper.readValue(courseSectionFile, CourseSection.class);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            courseSections.add(courseSection);
+
+        }
+
+        //System.out.println("NEW");
+
+        Iterator<CourseSection> iteratorForSameTermCourseSections = courseSections.iterator();
+
+        // Get the course section list at most has the same term with the student
+        while(iteratorForSameTermCourseSections.hasNext()){
+
+            CourseSection courseSectionTerm = iteratorForSameTermCourseSections.next();
+
+            if(courseSectionTerm.getCourse().getTerm() > student.getTerm()){
+                iteratorForSameTermCourseSections.remove();
+            }
+
+        }
+
+//        System.out.println(courseSections.size());
+//        System.out.println("TakenCourse tan önce");
+
+        Iterator<CourseSection> iteratorForAlreadyTakenCourses = courseSections.iterator();
+
+        // Discard the course sections which they are already passed.
+        while (iteratorForAlreadyTakenCourses.hasNext()){
+
+            CourseSection courseSection = iteratorForAlreadyTakenCourses.next();
+
+            for (int i = 0; i < student.getCourses().size(); i++) {
+
+                if(courseSection.getCourse().getName().equalsIgnoreCase(student.getCourses().get(i).getName())){
+                    iteratorForAlreadyTakenCourses.remove();
+                }
+
+            }
+
+        }
+
+//        System.out.println(courseSections.size());
+
+        // Get the course sections which the student has their prerequisite courses.
+
+        Iterator<CourseSection> prerequisiteCourses = courseSections.iterator();
+
+        while (prerequisiteCourses.hasNext()){
+
+            CourseSection courseSection = prerequisiteCourses.next();
+
+            int counter = 0;
+
+            for (int i = 0; i < courseSection.getCourse().getPrerequisiteCourses().size(); i++) {
+                for (int j = 0; j < student.getCourses().size(); j++) {
+
+                    if(courseSection.getCourse().getPrerequisiteCourses().get(i).getName().equalsIgnoreCase(
+                            student.getCourses().get(j).getName()
+                    )){
+                        counter++;
+                    }
+
+                }
+            }
+
+            if(counter == courseSection.getCourse().getPrerequisiteCourses().size()){
+
+            }else{
+                prerequisiteCourses.remove();
+            }
+
+        }
+
+        return courseSections;
+
 
     }
 }

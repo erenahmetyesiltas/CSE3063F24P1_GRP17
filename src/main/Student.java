@@ -12,10 +12,20 @@ public class Student extends Person {
     private Advisor advisor;
     private int advisorId; // Retrieving advisorId from database.
     private List<Department> departments;
+    private List<String> departmentIds;
     private int startYear;
     private int year;
     private Registration registration = new Registration(); // Used as composition/aggregation
     private String registrationId; // Easier to connect with Database
+    private int term;
+
+    public int getTerm() {
+        return term;
+    }
+
+    public void setTerm(int term) {
+        this.term = term;
+    }
 
     public Student() {
     }
@@ -193,5 +203,17 @@ public class Student extends Person {
 
     public int getAdvisorId() {
         return advisorId;
+    }
+
+    public List<String> getDepartmentIds() {
+        return departmentIds;
+    }
+
+    public void setDepartmentIds(List<String> departmentIds) {
+        this.departmentIds = departmentIds;
+    }
+
+    public void setAdvisorId(int advisorId) {
+        this.advisorId = advisorId;
     }
 }
