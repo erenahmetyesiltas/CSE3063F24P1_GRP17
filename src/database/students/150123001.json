@@ -3,8 +3,7 @@
   "firstName": "fatma",
   "lastName": "ozdemir",
   "password": "123",
-  "gpa": 2.55,
-
+  "gpa": 2.57,
   "courses": [
     {
       "id": "CS101",
@@ -25,5 +24,29 @@
   ],
   "startYear": 2021,
   "year": 2,
-  "registrationId": "r150123001"
+  "registrationId": "r150123001",
+  "transcript": {
+    "courseRecords": [
+      {
+        "course": {
+          "id": "CS101",
+          "name": "Introduction to Computer Science",
+          "credit": 3
+        },
+        "grade": "CC",
+        "term": 1
+      },
+      {
+        "course": {
+          "id": "MATH201",
+          "name": "Calculus II",
+          "credit": 4
+        },
+        "grade": "BA",
+        "term": 2
+      }
+    ],
+    "totalCredit": 7,
+    "GPA": 2.57
+  }
 }

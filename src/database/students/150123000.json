@@ -1,10 +1,8 @@
 {
   "id": "150123000",
-  "firstName": "mahmut",
-  "lastName": "kacar",
-  "password": "123",
+  "firstName": "John",
+  "lastName": "Doe",
   "gpa": 3.91,
-
   "courses": [
     {
       "id": "CS101",
@@ -25,5 +23,28 @@
   ],
   "startYear": 2021,
   "year": 2,
-  "registrationId": "r150123000"
+  "transcript": {
+    "courseRecords": [
+      {
+        "course": {
+          "id": "CS101",
+          "name": "Introduction to Computer Science",
+          "credit": 3
+        },
+        "grade": "AA",
+        "term": 1
+      },
+      {
+        "course": {
+          "id": "MATH201",
+          "name": "Calculus II",
+          "credit": 4
+        },
+        "grade": "BA",
+        "term": 2
+      }
+    ],
+    "totalCredit": 7,
+    "GPA": 3.85
+  }
 }

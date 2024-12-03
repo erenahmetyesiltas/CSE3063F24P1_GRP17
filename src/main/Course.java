@@ -11,7 +11,7 @@ public class Course {
     private List<Course> prerequisiteCourses;
     private String name;
     private int weeklyCourseHours;
-
+    private String courseType; // New attribute: NTE, FTE, TE, etc.
     public Course() {
 
     }
@@ -83,5 +83,12 @@ public class Course {
     //public void setCourseSection(List<main.CourseSection> courseSection) {
     //this.courseSections = courseSection;
     //}
+    // Getters and Setters for courseType
+    public String getCourseType() {
+        return courseType;
+    }
 
+    public void setCourseType(String courseType) {
+        this.courseType = courseType;
+    }
 }

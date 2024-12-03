@@ -2,7 +2,6 @@ package main;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Student extends Person {
 
@@ -16,6 +15,7 @@ public class Student extends Person {
     private int year;
     private Registration registration = new Registration(); // Used as composition/aggregation
     private String registrationId; // Easier to connect with Database
+    private Transcript transcript; // New Transcript field
 
     public Student() {
     }
@@ -193,5 +193,12 @@ public class Student extends Person {
 
     public int getAdvisorId() {
         return advisorId;
+    }
+    public Transcript getTranscript() {
+        return transcript;
+    }
+
+    public void setTranscript(Transcript transcript) {
+        this.transcript = transcript;
     }
 }

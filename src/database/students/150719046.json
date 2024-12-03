@@ -1,0 +1,403 @@
+{
+    "id": "150719046",
+    "firstName": "İbrahim",
+    "lastName": "Tınas",
+    "password": "i̇brahim123",
+    "gpa": 2.25,
+    "courses": [
+        {
+            "id": "ATA121",
+            "name": "Atatürk İlkeleri ve İnkılap Tarihi I",
+            "credit": 2
+        },
+        {
+            "id": "MBG1201",
+            "name": "Introduction to Modern Biology",
+            "credit": 5
+        },
+        {
+            "id": "CSE1200",
+            "name": "Introduction to Computer Engineering",
+            "credit": 4
+        },
+        {
+            "id": "CSE1241",
+            "name": "Computer Programming I",
+            "credit": 6
+        },
+        {
+            "id": "MATH1001",
+            "name": "Calculus I",
+            "credit": 6
+        },
+        {
+            "id": "PHYS1101",
+            "name": "Physics I",
+            "credit": 4
+        },
+        {
+            "id": "PHYS1103",
+            "name": "Physics Lab I",
+            "credit": 2
+        },
+        {
+            "id": "TRD121",
+            "name": "Türk Dili I",
+            "credit": 2
+        },
+        {
+            "id": "ATA122",
+            "name": "Atatürk İlkeleri ve İnkılap Tarihi II",
+            "credit": 2
+        },
+        {
+            "id": "CSE1242",
+            "name": "Computer Programming II",
+            "credit": 6
+        },
+        {
+            "id": "MATH1002",
+            "name": "Calculus II",
+            "credit": 6
+        },
+        {
+            "id": "MATH2256",
+            "name": "Linear Algebra for Computer Engineering",
+            "credit": 5
+        },
+        {
+            "id": "PHYS1102",
+            "name": "Physics II",
+            "credit": 4
+        },
+        {
+            "id": "PHYS1104",
+            "name": "Physics Lab II",
+            "credit": 2
+        },
+        {
+            "id": "TRD122",
+            "name": "Türk Dili II",
+            "credit": 2
+        },
+        {
+            "id": "BUS1003",
+            "name": "Entrepreneurship and Innovation",
+            "credit": 3
+        },
+        {
+            "id": "CSE2023",
+            "name": "Discrete Computational Structures",
+            "credit": 6
+        },
+        {
+            "id": "CSE2225",
+            "name": "Data Structures",
+            "credit": 7
+        },
+        {
+            "id": "ECON2004",
+            "name": "Engineering Economy",
+            "credit": 4
+        },
+        {
+            "id": "EE2031",
+            "name": "Electric Circuits",
+            "credit": 5
+        },
+        {
+            "id": "MATH2055",
+            "name": "Differential Equations",
+            "credit": 4
+        },
+        {
+            "id": "MATH2059",
+            "name": "Numerical Methods",
+            "credit": 4
+        },
+        {
+            "id": "CSE2246",
+            "name": "Analysis of Algorithms",
+            "credit": 6
+        },
+        {
+            "id": "CSE2138",
+            "name": "Systems Programming",
+            "credit": 7
+        },
+        {
+            "id": "CSE2260",
+            "name": "Principles of Programming Languages",
+            "credit": 6
+        },
+        {
+            "id": "EE2032",
+            "name": "Electronics",
+            "credit": 5
+        },
+        {
+            "id": "STAT2253",
+            "name": "Introduction to Probability and Statistics",
+            "credit": 5
+        }
+    ],
+    "advisorId": 999111,
+    "departments": [
+        {
+            "id": "CSE",
+            "departmentName": "Computer Science & Engineering"
+        }
+    ],
+    "startYear": 2021,
+    "year": 2,
+    "registrationId": "r150719046",
+    "transcript": {
+        "courseRecords": [
+            {
+                "course": {
+                    "id": "ATA121",
+                    "name": "Atatürk İlkeleri ve İnkılap Tarihi I",
+                    "credit": 2
+                },
+                "grade": "BB",
+                "term": 1
+            },
+            {
+                "course": {
+                    "id": "MBG1201",
+                    "name": "Introduction to Modern Biology",
+                    "credit": 5
+                },
+                "grade": "BB",
+                "term": 1
+            },
+            {
+                "course": {
+                    "id": "CSE1200",
+                    "name": "Introduction to Computer Engineering",
+                    "credit": 4
+                },
+                "grade": "DC",
+                "term": 1
+            },
+            {
+                "course": {
+                    "id": "CSE1241",
+                    "name": "Computer Programming I",
+                    "credit": 6
+                },
+                "grade": "DC",
+                "term": 1
+            },
+            {
+                "course": {
+                    "id": "MATH1001",
+                    "name": "Calculus I",
+                    "credit": 6
+                },
+                "grade": "DD",
+                "term": 1
+            },
+            {
+                "course": {
+                    "id": "PHYS1101",
+                    "name": "Physics I",
+                    "credit": 4
+                },
+                "grade": "DD",
+                "term": 1
+            },
+            {
+                "course": {
+                    "id": "PHYS1103",
+                    "name": "Physics Lab I",
+                    "credit": 2
+                },
+                "grade": "FD",
+                "term": 1
+            },
+            {
+                "course": {
+                    "id": "TRD121",
+                    "name": "Türk Dili I",
+                    "credit": 2
+                },
+                "grade": "CC",
+                "term": 1
+            },
+            {
+                "course": {
+                    "id": "ATA122",
+                    "name": "Atatürk İlkeleri ve İnkılap Tarihi II",
+                    "credit": 2
+                },
+                "grade": "BB",
+                "term": 2
+            },
+            {
+                "course": {
+                    "id": "CSE1242",
+                    "name": "Computer Programming II",
+                    "credit": 6
+                },
+                "grade": "AA",
+                "term": 2
+            },
+            {
+                "course": {
+                    "id": "MATH1002",
+                    "name": "Calculus II",
+                    "credit": 6
+                },
+                "grade": "AA",
+                "term": 2
+            },
+            {
+                "course": {
+                    "id": "MATH2256",
+                    "name": "Linear Algebra for Computer Engineering",
+                    "credit": 5
+                },
+                "grade": "DD",
+                "term": 2
+            },
+            {
+                "course": {
+                    "id": "PHYS1102",
+                    "name": "Physics II",
+                    "credit": 4
+                },
+                "grade": "CB",
+                "term": 2
+            },
+            {
+                "course": {
+                    "id": "PHYS1104",
+                    "name": "Physics Lab II",
+                    "credit": 2
+                },
+                "grade": "BA",
+                "term": 2
+            },
+            {
+                "course": {
+                    "id": "TRD122",
+                    "name": "Türk Dili II",
+                    "credit": 2
+                },
+                "grade": "CB",
+                "term": 2
+            },
+            {
+                "course": {
+                    "id": "BUS1003",
+                    "name": "Entrepreneurship and Innovation",
+                    "credit": 3
+                },
+                "grade": "DC",
+                "term": 2
+            },
+            {
+                "course": {
+                    "id": "CSE2023",
+                    "name": "Discrete Computational Structures",
+                    "credit": 6
+                },
+                "grade": "AA",
+                "term": 3
+            },
+            {
+                "course": {
+                    "id": "CSE2225",
+                    "name": "Data Structures",
+                    "credit": 7
+                },
+                "grade": "DD",
+                "term": 3
+            },
+            {
+                "course": {
+                    "id": "ECON2004",
+                    "name": "Engineering Economy",
+                    "credit": 4
+                },
+                "grade": "CC",
+                "term": 3
+            },
+            {
+                "course": {
+                    "id": "EE2031",
+                    "name": "Electric Circuits",
+                    "credit": 5
+                },
+                "grade": "BB",
+                "term": 3
+            },
+            {
+                "course": {
+                    "id": "MATH2055",
+                    "name": "Differential Equations",
+                    "credit": 4
+                },
+                "grade": "CC",
+                "term": 3
+            },
+            {
+                "course": {
+                    "id": "MATH2059",
+                    "name": "Numerical Methods",
+                    "credit": 4
+                },
+                "grade": "DD",
+                "term": 3
+            },
+            {
+                "course": {
+                    "id": "CSE2246",
+                    "name": "Analysis of Algorithms",
+                    "credit": 6
+                },
+                "grade": "BB",
+                "term": 4
+            },
+            {
+                "course": {
+                    "id": "CSE2138",
+                    "name": "Systems Programming",
+                    "credit": 7
+                },
+                "grade": "CB",
+                "term": 4
+            },
+            {
+                "course": {
+                    "id": "CSE2260",
+                    "name": "Principles of Programming Languages",
+                    "credit": 6
+                },
+                "grade": "AA",
+                "term": 4
+            },
+            {
+                "course": {
+                    "id": "EE2032",
+                    "name": "Electronics",
+                    "credit": 5
+                },
+                "grade": "FF",
+                "term": 4
+            },
+            {
+                "course": {
+                    "id": "STAT2253",
+                    "name": "Introduction to Probability and Statistics",
+                    "credit": 5
+                },
+                "grade": "DC",
+                "term": 4
+            }
+        ],
+        "totalCredit": 120,
+        "GPA": 2.25
+    }
+}

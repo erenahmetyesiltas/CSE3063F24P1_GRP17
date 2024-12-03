@@ -1,9 +1,9 @@
 {
-    "id": "150123823",
-    "firstName": "İlker",
-    "lastName": "Yetimoğlu",
-    "password": "i̇lker123",
-    "gpa": 2.13,
+    "id": "150122507",
+    "firstName": "Enes Berk",
+    "lastName": "Yetim",
+    "password": "enes berk123",
+    "gpa": 2.22,
     "courses": [
         {
             "id": "ATA121",
@@ -81,8 +81,8 @@
             "credit": 2
         },
         {
-            "id": "BUS1003",
-            "name": "Entrepreneurship and Innovation",
+            "id": "CAS2002",
+            "name": "Human Performance and Nutrition",
             "credit": 3
         },
         {
@@ -199,81 +199,6 @@
             "id": "COM2202",
             "name": "Technical Comm. and Entrepreneurship",
             "credit": 2
-        },
-        {
-            "id": "CSE4000",
-            "name": "Summer Practice II",
-            "credit": 10
-        },
-        {
-            "id": "CSE4074",
-            "name": "Computer Networks",
-            "credit": 5
-        },
-        {
-            "id": "CSE4219",
-            "name": "Principles of Embedded System Design",
-            "credit": 6
-        },
-        {
-            "id": "CSE4297",
-            "name": "Engineering Project I",
-            "credit": 5
-        },
-        {
-            "id": "ISG121",
-            "name": "İş Sağlığı ve Güvenliği I",
-            "credit": 2
-        },
-        {
-            "id": "CSE4288",
-            "name": "Introduction to Machine Learning",
-            "credit": 5
-        },
-        {
-            "id": "UE",
-            "name": "University Elective",
-            "credit": 3
-        },
-        {
-            "id": "CSE4026",
-            "name": "Introduction to Robotics and Control Theory",
-            "credit": 5
-        },
-        {
-            "id": "CSE4298",
-            "name": "Engineering Project II",
-            "credit": 5
-        },
-        {
-            "id": "ISG122",
-            "name": "İş Sağlığı ve Güvenliği II",
-            "credit": 2
-        },
-        {
-            "id": "BIOE4072",
-            "name": "Planning and Management of Research",
-            "credit": 5
-        },
-        {
-            "id": "CAS2002",
-            "name": "Human Performance and Nutrition",
-            "credit": 3
-        },
-        {
-            "id": "CSE4026",
-            "name": "Introduction to Robotics and Control Theory",
-            "credit": 5
-        },
-        {
-            "id": "CSE4038",
-            "name": "Introduction to Parallel Processing",
-            "credit": 5
-        },
-        {
-            "id": "CSE4038",
-            "name": "Introduction to Parallel Processing",
-            "credit": 5
         }
     ],
     "advisorId": 999111,
@@ -284,8 +209,8 @@
         }
     ],
     "startYear": 2021,
-    "year": 4,
-    "registrationId": "r150123823",
+    "year": 3,
+    "registrationId": "r150122507",
     "transcript": {
         "courseRecords": [
             {
@@ -294,7 +219,7 @@
                     "name": "Atatürk İlkeleri ve İnkılap Tarihi I",
                     "credit": 2
                 },
-                "grade": "FF",
+                "grade": "BA",
                 "term": 1
             },
             {
@@ -303,7 +228,7 @@
                     "name": "Introduction to Modern Biology",
                     "credit": 5
                 },
-                "grade": "FF",
+                "grade": "CC",
                 "term": 1
             },
             {
@@ -312,7 +237,7 @@
                     "name": "Introduction to Computer Engineering",
                     "credit": 4
                 },
-                "grade": "BB",
+                "grade": "CB",
                 "term": 1
             },
             {
@@ -321,7 +246,7 @@
                     "name": "Computer Programming I",
                     "credit": 6
                 },
-                "grade": "FD",
+                "grade": "AA",
                 "term": 1
             },
             {
@@ -330,7 +255,7 @@
                     "name": "Calculus I",
                     "credit": 6
                 },
-                "grade": "CC",
+                "grade": "CB",
                 "term": 1
             },
             {
@@ -339,7 +264,7 @@
                     "name": "Physics I",
                     "credit": 4
                 },
-                "grade": "DC",
+                "grade": "CB",
                 "term": 1
             },
             {
@@ -348,7 +273,7 @@
                     "name": "Physics Lab I",
                     "credit": 2
                 },
-                "grade": "AA",
+                "grade": "BA",
                 "term": 1
             },
             {
@@ -357,7 +282,7 @@
                     "name": "Türk Dili I",
                     "credit": 2
                 },
-                "grade": "BA",
+                "grade": "DC",
                 "term": 1
             },
             {
@@ -366,7 +291,7 @@
                     "name": "Atatürk İlkeleri ve İnkılap Tarihi II",
                     "credit": 2
                 },
-                "grade": "AA",
+                "grade": "CC",
                 "term": 2
             },
             {
@@ -375,7 +300,7 @@
                     "name": "Computer Programming II",
                     "credit": 6
                 },
-                "grade": "BA",
+                "grade": "FF",
                 "term": 2
             },
             {
@@ -384,7 +309,7 @@
                     "name": "Calculus II",
                     "credit": 6
                 },
-                "grade": "DD",
+                "grade": "AA",
                 "term": 2
             },
             {
@@ -393,7 +318,7 @@
                     "name": "Linear Algebra for Computer Engineering",
                     "credit": 5
                 },
-                "grade": "CB",
+                "grade": "DC",
                 "term": 2
             },
             {
@@ -402,7 +327,7 @@
                     "name": "Physics II",
                     "credit": 4
                 },
-                "grade": "FF",
+                "grade": "CC",
                 "term": 2
             },
             {
@@ -411,7 +336,7 @@
                     "name": "Physics Lab II",
                     "credit": 2
                 },
-                "grade": "CB",
+                "grade": "CC",
                 "term": 2
             },
             {
@@ -420,16 +345,16 @@
                     "name": "Türk Dili II",
                     "credit": 2
                 },
-                "grade": "CC",
+                "grade": "DC",
                 "term": 2
             },
             {
                 "course": {
-                    "id": "BUS1003",
-                    "name": "Entrepreneurship and Innovation",
+                    "id": "CAS2002",
+                    "name": "Human Performance and Nutrition",
                     "credit": 3
                 },
-                "grade": "CB",
+                "grade": "BB",
                 "term": 2
             },
             {
@@ -438,7 +363,7 @@
                     "name": "Discrete Computational Structures",
                     "credit": 6
                 },
-                "grade": "BA",
+                "grade": "DC",
                 "term": 3
             },
             {
@@ -447,7 +372,7 @@
                     "name": "Data Structures",
                     "credit": 7
                 },
-                "grade": "DC",
+                "grade": "CC",
                 "term": 3
             },
             {
@@ -456,7 +381,7 @@
                     "name": "Engineering Economy",
                     "credit": 4
                 },
-                "grade": "BA",
+                "grade": "AA",
                 "term": 3
             },
             {
@@ -465,7 +390,7 @@
                     "name": "Electric Circuits",
                     "credit": 5
                 },
-                "grade": "CB",
+                "grade": "FF",
                 "term": 3
             },
             {
@@ -474,7 +399,7 @@
                     "name": "Differential Equations",
                     "credit": 4
                 },
-                "grade": "DC",
+                "grade": "BB",
                 "term": 3
             },
             {
@@ -483,7 +408,7 @@
                     "name": "Numerical Methods",
                     "credit": 4
                 },
-                "grade": "FF",
+                "grade": "CB",
                 "term": 3
             },
             {
@@ -492,7 +417,7 @@
                     "name": "Analysis of Algorithms",
                     "credit": 6
                 },
-                "grade": "AA",
+                "grade": "CC",
                 "term": 4
             },
             {
@@ -501,7 +426,7 @@
                     "name": "Systems Programming",
                     "credit": 7
                 },
-                "grade": "BB",
+                "grade": "DC",
                 "term": 4
             },
             {
@@ -510,7 +435,7 @@
                     "name": "Principles of Programming Languages",
                     "credit": 6
                 },
-                "grade": "DC",
+                "grade": "CC",
                 "term": 4
             },
             {
@@ -519,7 +444,7 @@
                     "name": "Electronics",
                     "credit": 5
                 },
-                "grade": "AA",
+                "grade": "CB",
                 "term": 4
             },
             {
@@ -528,7 +453,7 @@
                     "name": "Introduction to Probability and Statistics",
                     "credit": 5
                 },
-                "grade": "CC",
+                "grade": "FD",
                 "term": 4
             },
             {
@@ -537,7 +462,7 @@
                     "name": "Summer Practice I",
                     "credit": 10
                 },
-                "grade": "DD",
+                "grade": "FD",
                 "term": 5
             },
             {
@@ -546,7 +471,7 @@
                     "name": "Digital Logic Design",
                     "credit": 6
                 },
-                "grade": "FF",
+                "grade": "AA",
                 "term": 5
             },
             {
@@ -564,7 +489,7 @@
                     "name": "Database Systems",
                     "credit": 7
                 },
-                "grade": "CB",
+                "grade": "FD",
                 "term": 5
             },
             {
@@ -573,7 +498,7 @@
                     "name": "Object-Oriented Software Design",
                     "credit": 5
                 },
-                "grade": "AA",
+                "grade": "BA",
                 "term": 5
             },
             {
@@ -582,7 +507,7 @@
                     "name": "Modeling and Discrete Simulation",
                     "credit": 4
                 },
-                "grade": "CB",
+                "grade": "AA",
                 "term": 5
             },
             {
@@ -591,7 +516,7 @@
                     "name": "Computer Organization",
                     "credit": 7
                 },
-                "grade": "CC",
+                "grade": "CB",
                 "term": 6
             },
             {
@@ -600,7 +525,7 @@
                     "name": "Software Engineering",
                     "credit": 7
                 },
-                "grade": "CC",
+                "grade": "BB",
                 "term": 6
             },
             {
@@ -609,7 +534,7 @@
                     "name": "Introduction to Signals and Systems",
                     "credit": 5
                 },
-                "grade": "DC",
+                "grade": "BA",
                 "term": 6
             },
             {
@@ -618,7 +543,7 @@
                     "name": "Formal Languages and Automata Theory",
                     "credit": 5
                 },
-                "grade": "FD",
+                "grade": "AA",
                 "term": 6
             },
             {
@@ -627,7 +552,7 @@
                     "name": "Operations Research",
                     "credit": 4
                 },
-                "grade": "BA",
+                "grade": "DD",
                 "term": 6
             },
             {
@@ -636,146 +561,11 @@
                     "name": "Technical Comm. and Entrepreneurship",
                     "credit": 2
                 },
-                "grade": "FF",
+                "grade": "CC",
                 "term": 6
-            },
-            {
-                "course": {
-                    "id": "CSE4000",
-                    "name": "Summer Practice II",
-                    "credit": 10
-                },
-                "grade": "BA",
-                "term": 7
-            },
-            {
-                "course": {
-                    "id": "CSE4074",
-                    "name": "Computer Networks",
-                    "credit": 5
-                },
-                "grade": "BB",
-                "term": 7
-            },
-            {
-                "course": {
-                    "id": "CSE4219",
-                    "name": "Principles of Embedded System Design",
-                    "credit": 6
-                },
-                "grade": "DD",
-                "term": 7
-            },
-            {
-                "course": {
-                    "id": "CSE4297",
-                    "name": "Engineering Project I",
-                    "credit": 5
-                },
-                "grade": "BA",
-                "term": 7
-            },
-            {
-                "course": {
-                    "id": "ISG121",
-                    "name": "İş Sağlığı ve Güvenliği I",
-                    "credit": 2
-                },
-                "grade": "CB",
-                "term": 7
-            },
-            {
-                "course": {
-                    "id": "CSE4288",
-                    "name": "Introduction to Machine Learning",
-                    "credit": 5
-                },
-                "grade": "CC",
-                "term": 7
-            },
-            {
-                "course": {
-                    "id": "UE",
-                    "name": "University Elective",
-                    "credit": 3
-                },
-                "grade": "CB",
-                "term": 7
-            },
-            {
-                "course": {
-                    "id": "CSE4026",
-                    "name": "Introduction to Robotics and Control Theory",
-                    "credit": 5
-                },
-                "grade": "CB",
-                "term": 7
-            },
-            {
-                "course": {
-                    "id": "CSE4298",
-                    "name": "Engineering Project II",
-                    "credit": 5
-                },
-                "grade": "CC",
-                "term": 8
-            },
-            {
-                "course": {
-                    "id": "ISG122",
-                    "name": "İş Sağlığı ve Güvenliği II",
-                    "credit": 2
-                },
-                "grade": "BA",
-                "term": 8
-            },
-            {
-                "course": {
-                    "id": "BIOE4072",
-                    "name": "Planning and Management of Research",
-                    "credit": 5
-                },
-                "grade": "CB",
-                "term": 8
-            },
-            {
-                "course": {
-                    "id": "CAS2002",
-                    "name": "Human Performance and Nutrition",
-                    "credit": 3
-                },
-                "grade": "FF",
-                "term": 8
-            },
-            {
-                "course": {
-                    "id": "CSE4026",
-                    "name": "Introduction to Robotics and Control Theory",
-                    "credit": 5
-                },
-                "grade": "CC",
-                "term": 8
-            },
-            {
-                "course": {
-                    "id": "CSE4038",
-                    "name": "Introduction to Parallel Processing",
-                    "credit": 5
-                },
-                "grade": "BB",
-                "term": 8
-            },
-            {
-                "course": {
-                    "id": "CSE4038",
-                    "name": "Introduction to Parallel Processing",
-                    "credit": 5
-                },
-                "grade": "DC",
-                "term": 8
             }
         ],
-        "totalCredit": 260,
-        "GPA": 2.13
+        "totalCredit": 189,
+        "GPA": 2.22
     }
 }
