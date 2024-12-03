@@ -20,10 +20,12 @@
   "advisorId": 999111,
   "departments": [
     {
-      "departmentName": "Computer Science"
+        "departmentName": "Computer Engineering"
     }
   ],
+  "departmentIds": ["cse"],
   "startYear": 2021,
   "year": 2,
-  "registrationId": "r150123000"
+  "registrationId": "r150123000",
+  "term": 5
 }

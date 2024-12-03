@@ -107,6 +107,19 @@ public class CourseRegistrationSystem {
         }
     }
 
+    public void printSuitableCoursesRemake(Student student){
+        System.out.println("\nThe available courses that you can register");
+        System.out.println("Course:                Section:                Lecturer:");
+        //dataHandler.getCourseSectionList();
+        List<CourseSection> appropriateCourseSections = courseDBController.getCourseSectionListAppropriate(student);
+
+        for (CourseSection courseSection : appropriateCourseSections) {
+            String fullNameOfLecturer = courseSection.getLecturer().getFirstName() + " " +courseSection.getLecturer().getLastName();
+            System.out.printf("%-23s%-24d%-23s\n",courseSection.getCourse().getId(),courseSection.getSectionNumber(),fullNameOfLecturer);
+            //System.out.println(courseSection.getCourse().getName());
+        }
+    }
+
     // addCourseSection is added to main.Student, change it in DSD and SSD
     public CourseSection findCourseSection(String course, String section) {
         int sectionNumber = Integer.parseInt(section);

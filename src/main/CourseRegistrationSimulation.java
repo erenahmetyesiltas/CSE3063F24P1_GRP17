@@ -138,7 +138,8 @@ class CourseRegistrationSimulation {
     private void createRegistration(Student student) throws IOException {
         try {
             logger.info("Creating registration for student: " + student.getId());
-            courseRegSystem.printSuitableCourses();
+            //courseRegSystem.printSuitableCourses();
+            courseRegSystem.printSuitableCoursesRemake(student);
 
             while (true) {
                 System.out.print("\nDo you want to add courses? (y/n): ");
