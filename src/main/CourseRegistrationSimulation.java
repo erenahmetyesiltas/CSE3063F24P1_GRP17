@@ -106,12 +106,13 @@ class CourseRegistrationSimulation {
                 System.out.println("1- Create a registration");
                 System.out.println("2- Check current registration status");
                 System.out.println("3- Print weekly schedule");
+                System.out.print("4- Log Out: ");
                 //System.out.println("4- Turn back to the user selection menu");
                 System.out.print("Please choose an action: ");
 
                 int choice = scanner.nextInt();
 
-                while(choice < 1 || choice > 3){
+                while(choice < 1 || choice > 4){
                     System.out.print("Please type a invalid choice: ");
                     choice = scanner.nextInt();
                 }
@@ -120,7 +121,7 @@ class CourseRegistrationSimulation {
                     case 1 -> createRegistration(student);
                     case 2 -> courseRegSystem.getStudentRegistrationStatus(student);
                     case 3 -> student.printWeeklyScheduleAsTable(student);
-                    //case 4 -> run();
+                    case 4 -> logout();
                     default -> System.out.println("Invalid choice.");
                 }
 
@@ -211,12 +212,13 @@ class CourseRegistrationSimulation {
                 System.out.println("----------ACTIONS----------");
                 //System.out.println("1- Check students");
                 System.out.println("1- Approve/Reject student registration requests");
+                System.out.println("2- Log out!.");
                 //System.out.println("2- Turn back to the user selection menu");
                 System.out.print("Please choose an action: ");
 
                 int choice = scanner.nextInt();
 
-                while (choice != 1) {
+                while (choice != 1 && choice != 2) {
                     System.out.println();
                     System.out.print("Please enter a valid option:");
                     choice = scanner.nextInt();
@@ -225,7 +227,7 @@ class CourseRegistrationSimulation {
                 switch (choice) {
                     //case 1 -> checkStudents(advisor);
                     case 1 -> handleRegistrationRequests(advisor);
-                    //case 2 -> run();
+                    case 2 -> logout();
                 }
 
                 System.out.print("Do you want to continue? (If not you will logout) (y/n): ");
