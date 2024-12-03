@@ -469,6 +469,7 @@ public class CourseDBController {
                 System.out.println("End Time: "+courseSection.getScheduledTimes().get(i).getEndTime());
             }
 
+            System.out.println("Course section hours are saved successfully.");
 
         }
 
