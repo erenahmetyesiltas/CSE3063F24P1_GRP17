@@ -1,17 +1,9 @@
 {
   "id": "CSE3033",
   "name": "Operating Systems",
-  "credit": 7,
+  "credit": "3",
   "departments": [],
   "term": 5,
-  "prerequisiteCourses": [{
-    "id": "CSE2225",
-    "name": "Data Structures",
-    "credit": 7,
-    "departments": [],
-    "term": 3,
-    "prerequisiteCourses": [],
-    "weeklyCourseHours": 5
-  }],
+  "prerequisiteCourses": [],
   "weeklyCourseHours": 5
 }

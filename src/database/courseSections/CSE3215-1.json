@@ -7,14 +7,14 @@
   "id": "CSE3215-1",
   "scheduledTimes": [
     {
-      "startTime": "09:00:00",
-      "endTime": "10:00:00",
-      "courseDay": "Wednesday"
+      "startTime": "13:00:00",
+      "endTime": "14:00:00",
+      "courseDay": "Monday"
     },
     {
-      "startTime": "11:00:00",
-      "endTime": "12:00:00",
-      "courseDay": "Friday"
+      "startTime": "15:00:00",
+      "endTime": "16:00:00",
+      "courseDay": "Wednesday"
     }
   ],
   "sectionNumber": 1,
