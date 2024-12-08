@@ -1,5 +1,0 @@
-package DataBaseController;
-
-interface DatabaseController {
-
-}
