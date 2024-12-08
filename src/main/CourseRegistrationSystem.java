@@ -20,6 +20,7 @@ public class CourseRegistrationSystem {
     private CourseDBController courseDBController = new CourseDBController();
 
     public CourseRegistrationSystem() throws IOException {
+        // setAllCourseSections (together with dataHandler.getCourseSectionList()) will load the allCourseSections arraylist with the CourseSection objects that converted from the json files
         setAllCourseSections(dataHandler.getCourseSectionList());
     }
 
@@ -143,6 +144,8 @@ public class CourseRegistrationSystem {
        }
    }
 
+   // checkRegistrationTimeConflict is to check whether are there any courses inside of a student's registration that are taking place
+    // in the same time periods
    public boolean checkRegistrationTimeConflict(Student student,CourseSection newAddedCourseSection) {
         for (CourseSection eachCourseSection : student.getRegistration().getCourseSections()) {
            for(CourseTime courseTime : eachCourseSection.getScheduledTimes()){

@@ -16,6 +16,7 @@ public class RegistrationDBController {
     private Advisor advisor;
     private ObjectMapper objectMapper = new ObjectMapper();
 
+    // getRegistrationsOfAdvisor is for loading all of the current registrations inside of a particular advisor
     public List<Registration> getRegistrationsOfAdvisor(Advisor advisor){
         String registraionId;
         URL registrationMainPath;
@@ -23,7 +24,7 @@ public class RegistrationDBController {
 
         advisor.getRegistrations().clear();
 
-        // Json veri çekimi
+        // Loading the Registration objects from their json files by using the registration ID'S that were stored inside the Advisor object
         for (int i = 0; i < advisor.getRegistrationsIDs().size(); i++) {
             registraionId = advisor.getRegistrationsIDs().get(i);
             registrationMainPath = DataHandler.class.getClassLoader().getResource("database/registrations/"+registraionId+".json");
@@ -43,6 +44,8 @@ public class RegistrationDBController {
         return advisor.getRegistrations();
     }
 
+    // updateRegistrations function is for updating the given registration inside of an advisor's
+    // corresponding json file
     public void updateRegistrations(Registration registrationGiven,int status){
 
         //objectMapper.enable(SerializationFeature.INDENT_OUTPUT);

@@ -28,6 +28,7 @@ public class DataHandler {
         return objectMapper;
     }
 
+    // ObjectMapper is responsible of converting json files into the real object in the program that we run
     private ObjectMapper objectMapper = new ObjectMapper();
 
 
@@ -74,16 +75,19 @@ public class DataHandler {
 
     public List<CourseSection> getCourseSectionList(){
 
-        // parent path of course section json files
+        // Absolute parent path of course section json files is created with the help of ClassLoader
+        // In order to access the course section json files we need their directory's path
         URL mainPath = DataHandler.class.getClassLoader().getResource("database/courseSections");
+        // A file object is created to be able to manipulate the database/courseSections directory and the files inside it
         File file = new File(mainPath.getFile());
 
-        // all the json files of course sections stored in the courseSectionJsons array.
+        // All the json files of course sections stored in the courseSectionJsons array by listing files in the database/courseSections directory
         File[] courseSectionJsons = file.listFiles();
 
-        // Create a course section array list to handle all the course sections from the json files.
+        // Create a course section array list to load all converted course section json files to CourseSection objects
         List<CourseSection> courseSectionsList = new ArrayList<>();
 
+        // Converting the json files inside courseSectionJsons each by each and storing them inside courseSectionsList arraylist
         for (File fileCourseSection: courseSectionJsons) {
             CourseSection courseSection = new CourseSection();
 

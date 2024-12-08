@@ -13,10 +13,12 @@ import java.net.URL;
 import java.sql.Time;
 import java.util.*;
 import java.util.stream.Collectors;
-
+// CourseDBController is responsible of converting all course section json files into CourseSection objects
 public class CourseDBController {
+    // These lists will hold the Course and CourseSection objects that were converted from the json files
     private List<CourseSection> courseSectionList = new ArrayList<>();
     private List<Course> courseList = new ArrayList<>();
+    // ObjectMapper is used for conversion of json files
     private ObjectMapper mapper = new ObjectMapper();
 
     public void loadAllCourseSectionList() throws IOException {

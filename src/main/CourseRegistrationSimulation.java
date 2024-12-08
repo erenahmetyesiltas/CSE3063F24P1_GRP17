@@ -21,17 +21,23 @@ class CourseRegistrationSimulation {
     private final RegistrationDBController registrationDBController;
 
     public CourseRegistrationSimulation(CourseRegistrationSystem courseRegSystem) {
+        // All these DBControllers are for handling the database loading processes for different object types
         this.studentDBController = new StudentDBController();
         this.advisorDBController = new AdvisorDBController();
         this.departmentSchedulerDBController = new DepartmentSchedulerDBController();
         this.registrationDBController = new RegistrationDBController();
         this.courseDBController = new CourseDBController();
+        // courseRegSystem is the CourseRegistrationSystem that was created inside the main function, it will handle the backend processes and
+        // it's also used inside CourseRegistrationSimulation to switch the flow to it in neccessary times
         this.courseRegSystem = courseRegSystem;
+        // loginSystem is responsible of the handling of login actions
         this.loginSystem = new LoginSystem(this.studentDBController, this.advisorDBController, this.departmentSchedulerDBController);
         this.logger = SingletonLogger.getInstance().getLogger();
         this.scanner = new Scanner(System.in);
     }
 
+    // run() is the main function of the CourseRegistrationSimulation class that will print the first requests from the user and give the responsibility to other functions
+    // according to who is logged into the system
     public void run() throws IOException {
         try {
             logger.info("Simulation started.");
@@ -54,6 +60,7 @@ class CourseRegistrationSimulation {
                 int userChoice = scanner.nextInt();
                 scanner.nextLine(); // Consume newline left-over
 
+                // Flow of the program is changed according to who were logged in
                 switch (userChoice) {
                     case 1 -> loginAdvisor();
                     case 2 -> loginStudent();
@@ -69,6 +76,7 @@ class CourseRegistrationSimulation {
         logger.info("Simulation ended.");
     }
 
+    // loginStudent is responsible of handling the student CLI actions and prompts the student accordingly
     private void loginStudent() {
         try {
             System.out.println();
@@ -78,11 +86,13 @@ class CourseRegistrationSimulation {
             System.out.print("Enter your password: ");
             String password = scanner.nextLine();
 
+            // If the authentication returns a success student will be logged in and the flow will be switched to handleStudentActions function
             if (loginSystem.authenticateUser(nickname, password)) {
                 if (loginSystem.getStudent() != null) {
                     System.out.println("Login successful!");
                     logger.info("Student login successful: " + nickname);
 
+                    // As the login is successfull, we change the flow to handle the student actions
                     handleStudentActions(studentDBController.getStudent());
                 }
             } else {
@@ -96,6 +106,7 @@ class CourseRegistrationSimulation {
         }
     }
 
+    // handleStudentActions function is for switching the flow and prompting according to the student user
     private void handleStudentActions(Student student) throws IOException {
         try {
             logger.info("Handling student actions for: " + student.getId());
@@ -115,6 +126,7 @@ class CourseRegistrationSimulation {
                     choice = scanner.nextInt();
                 }
 
+                // Flow is changed according to what the student user has been selected for the desired action
                 switch (choice) {
                     case 1 -> createRegistration(student);
                     case 2 -> courseRegSystem.getStudentRegistrationStatus(student);
@@ -135,9 +147,12 @@ class CourseRegistrationSimulation {
         }
     }
 
+    // createRegistration is a student user specific function that prompts the user for creating a registration and initiates
+    // actions related to this process
     private void createRegistration(Student student) throws IOException {
         try {
             logger.info("Creating registration for student: " + student.getId());
+            // courseRegSystem will print the suitable courses that the student can take
             courseRegSystem.printSuitableCourses();
 
             while (true) {
@@ -150,11 +165,13 @@ class CourseRegistrationSimulation {
                 }
             }
 
+            // Printing the currently selected course and sections by the student user
             System.out.println("The courses inside your registration are:");
             student.getRegistration().getCourseSections().forEach(courseSection ->
                     System.out.println(courseSection.getCourseId() + " - " + courseSection.getSectionNumber())
             );
 
+            // We couldn't implement the eligibility well so we commented it out at the end of second iteration !!!!!
             System.out.println("\n----------System is checking eligibility----------\n");
             // Eligibility check can be implemented here
 //           if(!(courseRegSystem.checkEligibility(student))) {
@@ -167,11 +184,14 @@ class CourseRegistrationSimulation {
             System.out.print("Are you sure you want to send the registration request to your advisor? (y/n): ");
             String requestChoice = scanner.next();
             if (requestChoice.equalsIgnoreCase("y")) {
+                // courseRegSystem sends the currently completed registration to the student user's advisor
                 courseRegSystem.sendRegistrationToAdvisor(student.getRegistration(), student);
                 System.out.println("SUCCESS: The registration request has been sent to your advisor\n");
             } else {
+                // Otherwise all of the added things will be discarded
                 student.getAdvisor().getRegistrations().remove(student.getRegistration());
                 student.getAdvisor().getRegistrationsIDs().remove(student.getRegistration().getId());
+                // This should be new Registration() not null, otherwise it causes problems !!!
                 student.setRegistration(new Registration());
                 System.out.println("WARNING: The registration you have created has been deleted. Make a new one\n");
             }
@@ -180,6 +200,7 @@ class CourseRegistrationSimulation {
         }
     };
 
+    // loginAdvisor is responsible of handling the advisor CLI actions and prompts the advisor accordingly
     private void loginAdvisor() {
         try {
             logger.info("Handling advisor login");
@@ -190,6 +211,7 @@ class CourseRegistrationSimulation {
             System.out.print("Enter your password: ");
             String password = scanner.nextLine();
 
+            // If the authentication returns a success advisor will be logged in and the flow will be switched to handleAdvisorActions function
             if (loginSystem.authenticateAdvisorUser(nickname, password)) {
                 if (loginSystem.getAdvisor() != null) {
                     System.out.println("Login successful!");
@@ -208,6 +230,7 @@ class CourseRegistrationSimulation {
         }
     }
 
+    // handleAdvisorActions function is for switching the flow and prompting according to the advisor user
     private void handleAdvisorActions(Advisor advisor) {
         try {
             logger.info("Handling advisor actions");
@@ -248,6 +271,7 @@ class CourseRegistrationSimulation {
     private void handleRegistrationRequests(Advisor advisor) {
         try {
             logger.info("Handling Registration Requests");
+            // registrationDBController loads all of the registrations that were associated with this particular advisor
             List<Registration> registrations = registrationDBController.getRegistrationsOfAdvisor(advisor);
 
             System.out.println();
@@ -256,7 +280,7 @@ class CourseRegistrationSimulation {
             System.out.println("In order to specify as not checked yet 1");
             System.out.println("In order to specify as approved print 2");
 
-
+            // Registrations come each by each and advisor updates the status of them
             for (int i = 0; i < registrations.size(); i++) {
                 System.out.println(registrations.get(i).getId());
                 System.out.println(registrations.get(i).getRegistrationStatus());
@@ -269,6 +293,7 @@ class CourseRegistrationSimulation {
                     status = scanner.nextInt();
                 }
 
+                // Here is where a single registration's status is updated in both here and in registrationDBController's side
                 registrations.get(i).setRegistrationStatus(status);
                 registrationDBController.updateRegistrations(registrations.get(i), status);
 
@@ -278,7 +303,7 @@ class CourseRegistrationSimulation {
         }
     };
 
-
+    // loginDepartmentScheduler is responsible of handling the department scheduler CLI actions and prompts the department scheduler accordingly
     public void loginDepartmentScheduler(){
         try {
             System.out.print("Enter your nickname: ");
@@ -306,6 +331,7 @@ class CourseRegistrationSimulation {
         }
     }
 
+    // handleDepartmentSchedulerActions function is for switching the flow and prompting according to the department scheduler user
     private void handleDepartmentSchedulerActions(DepartmentScheduler departmentScheduler) throws IOException {
 
         while (true) {

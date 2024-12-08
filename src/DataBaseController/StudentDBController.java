@@ -21,7 +21,7 @@ public class StudentDBController implements DatabaseController {
 
 
     public boolean loadStudent(String studentId) throws IOException{
-        // Belirtilen ID'ye ait dosyanın yolunu oluştur.
+        // Creating the path of the student json file with the given student ID with the help of ClassLoader
 
         URL studentJsonPath = StudentDBController.class.getClassLoader().getResource("database/students/"+studentId+".json");
 
@@ -30,14 +30,17 @@ public class StudentDBController implements DatabaseController {
         }
 
         //String filePath = USERS_DIRECTORY +"students"+ File.separator + studentId + ".json";
+
+        // If there is no error, than creating a File objects that represents the json file of that particular student
         File studentFile = new File(studentJsonPath.getFile());
 
-        // Dosya mevcut mu kontrol et.
+        // Checking if the file actually exists
         if (!studentFile.exists()) {
             return false; // Eğer dosya yoksa doğrulama başarısız.
         }
 
-        // Dosyayı oku ve JSON'dan Student nesnesine dönüştür.
+        // The code below is trying to convert the json file of this student to the actual Student Object that we can
+        // mainpulate inside our program
         ObjectMapper objectMapper = new ObjectMapper();
         Student storedStudent = null;
 
@@ -47,9 +50,11 @@ public class StudentDBController implements DatabaseController {
         } catch (IOException e) {
            throw new RuntimeException(e);
         }
+        // Setting the converted Student object as the student attribute of this class to be able to reach it easily inside this class
         setStudent(storedStudent);
 
-        // If registration exist, load it.
+        // Also if there is any registration exist, load it inside the Student object that we previously
+        // converted from the database
         loadStudentRegistration(studentId);
         return true;
 
