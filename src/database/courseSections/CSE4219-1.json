@@ -1,0 +1,38 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M1-Z01",
+    "capacity": 56
+  },
+  "id": "CSE4219-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "CSE4219",
+    "name": "Principles of Embedded System Design",
+    "credit": 6,
+    "departments": [],
+    "term": 7,
+    "prerequisiteCourses": [{
+      "id": "CSE3038",
+      "name": "Computer Organization",
+      "credit": 7,
+      "departments": [],
+      "term": 6,
+      "prerequisiteCourses": [],
+      "weeklyCourseHours": 5
+    }],
+    "weeklyCourseHours": 5
+  },
+  "capacity": 56,
+  "courseId": "CSE4219",
+  "lecturer": {
+    "id": "2004",
+    "password": "kazım123",
+    "firstName": "Kazım",
+    "lastName": "Yılmaz",
+    "departmentIds": ["CSE"]
+  }
+}

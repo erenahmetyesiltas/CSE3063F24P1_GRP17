@@ -1,0 +1,25 @@
+{
+  "enrolledStudents": [],
+  "classroom": null,
+  "id": "IE3081-1",
+  "scheduledTimes": [],
+  "sectionNumber": 1,
+  "course": {
+    "id": "IE3081",
+    "name": "Modeling and Discrete Simulation",
+    "credit": "3",
+    "departments": [],
+    "term": 5,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 3
+  },
+  "capacity": 123,
+  "courseId": "IE3081",
+  "lecturer": {
+    "id": "2004",
+    "password": "kazım123",
+    "firstName": "Kazım",
+    "lastName": "Yılmaz",
+    "departmentIds": ["cse"]
+  }
+}

@@ -1,0 +1,5 @@
+package DataBaseController;
+
+interface DatabaseController {
+
+}
