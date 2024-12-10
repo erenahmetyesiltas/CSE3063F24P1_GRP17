@@ -1,3 +1,8 @@
+from LoginSystem import LoginSystem
+from databaseController.AdvisorDBController import AdvisorDBController
+from databaseController.RegistrationDBController import RegistrationDBController
+
+
 class CourseRegistrationSimulation:
     #CourseRegistrationSystem courseRegSystem
     #LoginSystem loginSystem;
@@ -25,11 +30,16 @@ class CourseRegistrationSimulation:
         self.logger = SingletonLogger.getInstance().getLogger()
         self.scanner = input  # Python'da giriş alırken kullanılacak
         """
+
+        self.__registrationDBController = RegistrationDBController()
+        self.__advisorDBController = AdvisorDBController()
+        self.__courseRegistrationSystem = courseRegSystem
+        self.__loginSystem = LoginSystem(self.__advisorDBController)
         self.attribute = 0
     
     def run(self):
         try:
-            self.logger.info("Simulation started.")
+            #self.logger.info("Simulation started.")
             while True:
                 print("Please select an option:")
                 print("1- Advisor Login")
@@ -47,7 +57,7 @@ class CourseRegistrationSimulation:
                 user_choice = int(choice)
 
                 if user_choice == 1:
-                    self.login_advisor()
+                    self.loginAdvisor()
                 elif user_choice == 2:
                     self.login_student()
                 elif user_choice == 3:
@@ -160,28 +170,28 @@ class CourseRegistrationSimulation:
 
     def loginAdvisor(self):
         try:
-            self.logger.info("Handling advisor login")
+            #self.logger.info("Handling advisor login")
 
-            nickname = input("Enter your nickname: ").strip()
-            password = input("Enter your password: ").strip()
+            nickname : str = input("Enter your nickname: ")
+            password : str = input("Enter your password: ")
 
-            if self.loginSystem.authenticateAdvisorUser(nickname, password):
-                if self.loginSystem.getAdvisor() is not None:
+            if self.__loginSystem.authenticateAdvisorUser(nickname,password):
+                if self.__loginSystem.getAdvisor() is not None:
                     print("Login successful!")
-                    self.handleAdvisorActions(self.advisorDBController.getAdvisor())
+                    self.handleAdvisorActions(self.__advisorDBController.getAdvisor())
             else:
-                print("Invalid nickname or password.")
+                print("Invalid nickname or password. \n")
         except IOError as e:
-            self.logger.severe(f"Unexpected error during login advisor: {str(e)}")
+            #self.logger.severe(f"Unexpected error during login advisor: {str(e)}")
             print(f"An error occurred: {str(e)}")
         except Exception as e:
-            self.logger.severe(f"Unexpected error during login advisor: {str(e)}")
+            #self.logger.severe(f"Unexpected error during login advisor: {str(e)}")
             print(f"An error occurred: {str(e)}")
 
 
     def handleAdvisorActions(self, advisor):
         try:
-            self.logger.info("Handling advisor actions")
+            #self.logger.info("Handling advisor actions")
             while True:
                 print()
                 print("----------ACTIONS----------")
@@ -217,8 +227,9 @@ class CourseRegistrationSimulation:
 
     def handleRegistrationRequests(self, advisor):
         try:
-            self.logger.info("Handling Registration Requests")
-            registrations = self.registrationDBController.getRegistrationsOfAdvisor(advisor)
+            #self.logger.info("Handling Registration Requests")
+
+            registrations = self.__registrationDBController.getRegistrationsOfAdvisor(advisor)
 
             if len(registrations) == 0:
                 print("There are no registrations for the advisor.")
@@ -516,6 +527,6 @@ class CourseRegistrationSimulation:
 
     def logout(self):
         # Save the final state to JSON or database
-        self.logger.info("User logged out.")
+        #self.logger.info("User logged out.")
         print("\nLogged out successfully!")
         exit(0)

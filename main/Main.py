@@ -1,0 +1,7 @@
+from CourseRegistrationSimulation import CourseRegistrationSimulation
+from CourseRegistrationSystem import CourseRegistrationSystem
+
+
+courseRegistrationSystem = CourseRegistrationSystem()
+CLI = CourseRegistrationSimulation(courseRegistrationSystem)
+CLI.run()
