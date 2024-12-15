@@ -1,0 +1,30 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M1-Z01",
+    "capacity": 56
+  },
+  "id": "MATH1002-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "MATH1002",
+    "name": "Calculus II",
+    "credit": 6,
+    "departments": [],
+    "term": 2,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 4
+  },
+  "capacity": 56,
+  "courseId": "MATH1002",
+  "lecturer": {
+    "id": "2000",
+    "password": "halil123",
+    "firstName": "Halil",
+    "lastName": "Demir",
+    "departmentIds": ["CSE"]
+  }
+}
