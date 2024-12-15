@@ -5,3 +5,4 @@ class Course :
     __credit : int
     __departments : []
     __term : int
+    __prereq
