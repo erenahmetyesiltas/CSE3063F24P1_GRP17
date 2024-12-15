@@ -1,0 +1,38 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M1-Z06",
+    "capacity": 56
+  },
+  "id": "CSE3048-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "CSE3048",
+    "name": "Introduction to Signal and Systems",
+    "credit": 5,
+    "departments": [],
+    "term": 6,
+    "prerequisiteCourses": [{
+      "id": "MATH2055",
+      "name": "Differential Equations",
+      "credit": 4,
+      "departments": [],
+      "term": 3,
+      "prerequisiteCourses": [],
+      "weeklyCourseHours": 3
+    }],
+    "weeklyCourseHours": 3
+  },
+  "capacity": 56,
+  "courseId": "CSE3048",
+  "lecturer": {
+    "id": "2003",
+    "password": "yavuz123",
+    "firstName": "Yavuz",
+    "lastName": "Sarı",
+    "departmentIds": ["CSE"]
+  }
+}

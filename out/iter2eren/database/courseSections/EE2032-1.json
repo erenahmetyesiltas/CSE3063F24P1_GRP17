@@ -1,0 +1,38 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M2-Z11",
+    "capacity": 150
+  },
+  "id": "EE2032-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "EE2032",
+    "name": "Electronics",
+    "credit": 5,
+    "departments": [],
+    "term": 4,
+    "prerequisiteCourses": [{
+      "id": "EE2031",
+      "name": "Electric Circuits",
+      "credit": 5,
+      "departments": [],
+      "term": 3,
+      "prerequisiteCourses": [],
+      "weeklyCourseHours": 3
+    }],
+    "weeklyCourseHours": 4
+  },
+  "capacity": 150,
+  "courseId": "EE2032",
+  "lecturer": {
+    "id": "2001",
+    "password": "hamdi123",
+    "firstName": "Hamdi",
+    "lastName": "Demirci",
+    "departmentIds": ["CSE"]
+  }
+}

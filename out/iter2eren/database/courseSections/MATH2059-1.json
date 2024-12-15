@@ -1,0 +1,38 @@
+{
+  "enrolledStudents": [],
+  "classroom": {
+    "id": "M2-Z11",
+    "capacity": 150
+  },
+  "id": "MATH2059-1",
+  "scheduledTimes": [
+
+  ],
+  "sectionNumber": 1,
+  "course": {
+    "id": "MATH2059",
+    "name": "Numerical Methods",
+    "credit": 4,
+    "departments": [],
+    "term": 3,
+    "prerequisiteCourses": [{
+      "id": "MATH1001",
+      "name": "Calculus I",
+      "credit": 6,
+      "departments": [],
+      "term": 1,
+      "prerequisiteCourses": [],
+      "weeklyCourseHours": 4
+    }],
+    "weeklyCourseHours": 3
+  },
+  "capacity": 150,
+  "courseId": "MATH2059",
+  "lecturer": {
+    "id": "2001",
+    "password": "hamdi123",
+    "firstName": "Hamdi",
+    "lastName": "Demirci",
+    "departmentIds": ["CSE"]
+  }
+}
