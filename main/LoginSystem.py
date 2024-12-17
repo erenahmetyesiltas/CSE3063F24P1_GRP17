@@ -1,3 +1,9 @@
+import sys
+import os
+
+# Üst dizinin yolunu ekle
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from databaseController.AdvisorDBController import AdvisorDBController
 from main.Advisor import Advisor
 
