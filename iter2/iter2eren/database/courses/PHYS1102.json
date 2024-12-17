@@ -1,0 +1,9 @@
+{
+  "id": "PHYS1102",
+  "name": "Physics II",
+  "credit": 6,
+  "departments": [],
+  "term": 2,
+  "prerequisiteCourses": [],
+  "weeklyCourseHours": 5
+}

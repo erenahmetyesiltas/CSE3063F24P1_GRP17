@@ -1,0 +1,17 @@
+{
+  "id": "CSE3044",
+  "name": "Software Engineering",
+  "credit": 7,
+  "departments": [],
+  "term": 6,
+  "prerequisiteCourses": [{
+    "id": "CSE3055",
+    "name": "Database Systems",
+    "credit": 7,
+    "departments": [],
+    "term": 5,
+    "prerequisiteCourses": [],
+    "weeklyCourseHours": 5
+  }],
+  "weeklyCourseHours": 5
+}

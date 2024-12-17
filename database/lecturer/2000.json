@@ -1,0 +1,7 @@
+{
+  "id": "2000",
+  "password": "halil123",
+  "firstName": "Halil",
+  "lastName": "Demir",
+  "departmentIds": ["cse"]
+}

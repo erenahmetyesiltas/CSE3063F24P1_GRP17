@@ -1,0 +1,30 @@
+{
+  "id": "150123823",
+  "firstName": "ilker",
+  "lastName": "yetimoglu",
+  "password": "ilker123",
+  "gpa": 2.55,
+
+  "courses": [
+    {
+      "id": "CSE3215",
+      "name": "Digital Logic Design",
+      "credit": "3",
+      "departments": [],
+      "term": 5,
+      "prerequisiteCourses": [],
+      "weeklyCourseHours": 5
+    }
+  ],
+  "advisorId": 999111,
+  "departments": [
+    {
+      "departmentName": "Computer Engineering"
+    }
+  ],
+  "startYear": 2021,
+  "year": 3,
+  "registrationId": "r150123823",
+  "departmentIds": ["cse"],
+  "term": 5
+}
