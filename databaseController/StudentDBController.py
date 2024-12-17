@@ -16,7 +16,7 @@ class StudentDBController:
         current_dir = Path(__file__).parent
 
         studentJsonPath = f"{studentId}.json"
-        relative_path = current_dir / "../database/student" / studentJsonPath
+        relative_path = current_dir / "../database/students" / studentJsonPath
 
         if not relative_path.is_file():
             return False  # File not found
