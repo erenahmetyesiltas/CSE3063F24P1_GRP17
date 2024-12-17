@@ -1,5 +1,6 @@
 from LoginSystem import LoginSystem
 from databaseController.AdvisorDBController import AdvisorDBController
+from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.RegistrationDBController import RegistrationDBController
 
@@ -35,9 +36,11 @@ class CourseRegistrationSimulation:
         self.__registrationDBController = RegistrationDBController()
         self.__advisorDBController = AdvisorDBController()
         self.__student_db_controller = StudentDBController()
+        self.__departmentSchedulerDBController = DepartmentSchedulerDBController()
         self.__courseRegistrationSystem = courseRegSystem
         self.__loginSystem = LoginSystem(self.__student_db_controller,
-                                         self.__advisorDBController)
+                                         self.__advisorDBController,
+                                         self.__departmentSchedulerDBController)
         self.attribute = 0
     
     def run(self):
@@ -64,7 +67,7 @@ class CourseRegistrationSimulation:
                 elif user_choice == 2:
                     self.login_student()
                 elif user_choice == 3:
-                    self.login_department_scheduler()
+                    self.loginDepartmentScheduler()
                 elif user_choice == 4:
                     self.logout()
                 else:
@@ -278,11 +281,11 @@ class CourseRegistrationSimulation:
             nickname = input("Enter your nickname: ").strip()
             password = input("Enter your password: ").strip()
 
-            if self.loginSystem.authenticateDepartmentSchedulerUser(nickname, password):
-                if self.loginSystem.getDepartmentScheduler() is not None:
+            if self.__loginSystem.authenticateDepartmentSchedulerUser(nickname, password):
+                if self.__loginSystem.getDepartmentScheduler() is not None:
                     print("Login successful!")
 
-                    self.handleDepartmentSchedulerActions(self.departmentSchedulerDBController.getDepartmentScheduler())
+                    self.handleDepartmentSchedulerActions(self.__departmentSchedulerDBController.getDepartmentScheduler())
             else:
                 print("Invalid nickname or password.")
                 print()
@@ -301,12 +304,13 @@ class CourseRegistrationSimulation:
                 print()
                 print("----------ACTIONS----------")
                 print("1- Assign time and classroom to the course sections of the department")
+                print("2- Logout")
                 print("Please choose an action: ", end="")
 
                 try:
                     choice = int(input())
 
-                    while choice != 1:
+                    while choice < 1 and choice > 2:
                         print()
                         print("Please enter a valid option: ", end="")
                         choice = int(input())
@@ -316,6 +320,8 @@ class CourseRegistrationSimulation:
 
                 if choice == 1:
                     self.handleCourseSectionTimesAndClassroom(departmentScheduler)
+                elif choice == 2:
+                    self.logout()
 
                 continueChoice = input("Do you want to continue? (If not you will logout) (y/n): ").strip()
                 if continueChoice.lower() == "n":

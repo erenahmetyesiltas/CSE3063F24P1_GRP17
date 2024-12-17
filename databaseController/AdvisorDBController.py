@@ -12,7 +12,7 @@ class AdvisorDBController:
 
         advisorJsonPath = "{}{}".format(advisorId,".json")
 
-        relative_path = current_dir / "../database/advisor" / advisorJsonPath
+        relative_path = current_dir / "../database/advisors" / advisorJsonPath
 
         if not relative_path.is_file():
             return False

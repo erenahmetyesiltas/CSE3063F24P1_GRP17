@@ -1,6 +1,9 @@
 import sys
 import os
 
+from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
+from main.DepartmentScheduler import DepartmentScheduler
+
 # Üst dizinin yolunu ekle
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -14,12 +17,15 @@ class LoginSystem:
 
     __advisor: Advisor
     __student: Student
+    __departmentScheduler: DepartmentScheduler
     __advisorDBController: AdvisorDBController
     __studentDBController: StudentDBController
+    __departmentSchedulerDBController: DepartmentSchedulerDBController
 
-    def __init__(self, studentDBController, advisorDBController):
+    def __init__(self, studentDBController, advisorDBController, departmentSchedulerDBController):
         self.__studentDBController = studentDBController
         self.__advisorDBController = advisorDBController
+        self.__departmentSchedulerDBController = departmentSchedulerDBController
 
     # Getter and setter for Advisor
     def getAdvisor(self):
@@ -34,6 +40,12 @@ class LoginSystem:
 
     def setStudent(self, student):
         self.__student = student
+
+    def getDepartmentScheduler(self):
+        return self.__departmentScheduler
+
+    def setDepartmentScheduler(self, departmentScheduler):
+        self.__departmentScheduler = departmentScheduler
 
     # Getter and setter for AdvisorDBController
     def getAdvisorDBController(self):
@@ -75,4 +87,18 @@ class LoginSystem:
         else:
             self.__student = None
             self.__studentDBController.setStudent(None)
+            return False
+
+    # Authenticate Department Scheduler
+    def authenticateDepartmentSchedulerUser(self, departmentSchedulerId, password):
+        if self.__departmentSchedulerDBController.loadDepartmentScheduler(departmentSchedulerId):
+            self.__departmentScheduler = self.__departmentSchedulerDBController.getDepartmentScheduler()
+        else:
+            return False
+
+        if self.__departmentScheduler.getPassword() == password:
+            return True
+        else:
+            self.__departmentScheduler = None
+            self.__departmentSchedulerDBController.setDepartmentScheduler(None)
             return False
