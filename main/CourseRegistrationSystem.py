@@ -106,19 +106,24 @@ class CourseRegistrationSystem:
 
 
     def sendRegistrationToAdvisor(self, registration : Registration, student: Student): # throws IOException
+        try:
+            # First, loadstudent's advisor & match it with student.advisor
+            advisorDBController : AdvisorDBController
+            advisorDBController.loadAdvisor(str(student.getAdvisorId()))
+            student.setAdvisor(advisorDBController.getAdvisor())
+            student.getAdvisor().addRegistration(registration)
 
-        # First, loadstudent's advisor & match it with student.advisor
-        advisorDBController : AdvisorDBController
-        advisorDBController.loadAdvisor(str(student.getAdvisorId()))
-        student.setAdvisor(advisorDBController.getAdvisor())
-        student.getAdvisor().addRegistration(registration)
+            #Save the registration and Advisor's registration.
+            studentDBController : StudentDBController
+            studentDBController.setStudent(student)
+            studentDBController.saveStudent(student.getId())
+            studentDBController.saveStudentRegistration(student.getId())
+            advisorDBController.saveAdvisor(str(student.getAdvisorId()))
 
-        #Save the registration and Advisor's registration.
-        studentDBController : StudentDBController
-        studentDBController.setStudent(student)
-        studentDBController.saveStudent(student.getId())
-        studentDBController.saveStudentRegistration(student.getId())
-        advisorDBController.saveAdvisor(str(student.getAdvisorId()))
+        except Exception as e:
+            # Input hatası olabilir
+            print(f"Bir hata oluştu: {e}")
+            raise
 
     def getStudentRegistrationStatus(self,student : Student):
         registration : Registration = student.getRegistration()
@@ -146,18 +151,23 @@ class CourseRegistrationSystem:
 
 
     def saveLastState(self): #throws IOException
-        for student in self.getAllStudents():
-            self.__dataHandler.storeObject(student)
-            self.__dataHandler.removeDuplicateData()
+        try:
+            for student in self.getAllStudents():
+                self.__dataHandler.storeObject(student)
+                self.__dataHandler.removeDuplicateData()
 
-        for courseSection in self.getAllCourseSections():
-            self.__dataHandler.storeObject(courseSection)
-            self.__dataHandler.removeDuplicateData()
+            for courseSection in self.getAllCourseSections():
+                self.__dataHandler.storeObject(courseSection)
+                self.__dataHandler.removeDuplicateData()
 
-        for advisor in self.getAllAdvisors():
-            self.__dataHandler.storeObject(advisor)
-            self.__dataHandler.removeDuplicateData()
-
+            for advisor in self.getAllAdvisors():
+                self.__dataHandler.storeObject(advisor)
+                self.__dataHandler.removeDuplicateData()
+                
+        except Exception as e:
+            # Input hatası olabilir
+            print(f"Bir hata oluştu: {e}")
+            raise
 
     def checkEligibility(self, student: Student):
         if self.checkPrerequisite(student) and self.checkCourseSectionFull(student):
