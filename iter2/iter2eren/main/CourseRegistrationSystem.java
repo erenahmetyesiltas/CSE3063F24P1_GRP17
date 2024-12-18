@@ -237,8 +237,8 @@ public class CourseRegistrationSystem {
         }
 
         return true;
-
     }
+
 
     public boolean checkPrerequisite(Student student) {
         List<CourseSection> regCourseSections = student.getRegistration().getCourseSections();
