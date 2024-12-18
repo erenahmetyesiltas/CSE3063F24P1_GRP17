@@ -3,6 +3,7 @@ from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.RegistrationDBController import RegistrationDBController
+from SingletonLogger import SingletonLogger
 
 
 class CourseRegistrationSimulation:
@@ -32,7 +33,7 @@ class CourseRegistrationSimulation:
         self.logger = SingletonLogger.getInstance().getLogger()
         self.scanner = input  # Python'da giriş alırken kullanılacak
         """
-
+        self.__logger = SingletonLogger().get_logger()
         self.__registrationDBController = RegistrationDBController()
         self.__advisorDBController = AdvisorDBController()
         self.__student_db_controller = StudentDBController()
@@ -45,7 +46,7 @@ class CourseRegistrationSimulation:
     
     def run(self):
         try:
-            #self.logger.info("Simulation started.")
+            self.__logger.info("Simulation started.")
             while True:
                 print("Please select an option:")
                 print("1- Advisor Login")
@@ -73,9 +74,9 @@ class CourseRegistrationSimulation:
                 else:
                     print("Invalid choice.")
         except Exception as e:
-            #self.logger.severe(f"Unexpected error: {str(e)}")
+            self.__logger.error(f"Unexpected error: {str(e)}")
             print(f"An error occurred: {str(e)}")
-        #self.logger.info("Simulation ended.")
+        self.__logger.info("Simulation ended.")
 
     def login_student(self):
         """Handles student login functionality."""
@@ -131,9 +132,9 @@ class CourseRegistrationSimulation:
 
 
     def createRegistration(self, student):
-        #self.logger.info("Creating a new registration")
+        self.__logger.info("Creating a new registration")
         try:
-            #self.logger.info(f"Creating registration for student: {student.getId()}")
+            self.__logger.info(f"Creating registration for student: {student.getId()}")
             # self.courseRegSystem.printSuitableCourses()
             self.courseRegSystem.printSuitableCoursesRemake(student)
 
@@ -162,14 +163,13 @@ class CourseRegistrationSimulation:
                 print("WARNING: The registration you have created has been deleted. Make a new one\n")
 
         except Exception as e:
-            pass
-            #self.logger.severe(f"An error occurred creating registration for student: {str(e)}")
+            self.__logger.error(f"An error occurred creating registration for student: {str(e)}")
 
 
 
     def loginAdvisor(self):
         try:
-            #self.logger.info("Handling advisor login")
+            self.__logger.info("Handling advisor login")
 
             nickname : str = input("Enter your nickname: ")
             password : str = input("Enter your password: ")
@@ -181,16 +181,14 @@ class CourseRegistrationSimulation:
             else:
                 print("Invalid nickname or password. \n")
         except IOError as e:
-            #self.logger.severe(f"Unexpected error during login advisor: {str(e)}")
-            print(f"An error occurred: {str(e)}")
+            self.__logger.error(f"Unexpected error during login advisor: {str(e)}")
         except Exception as e:
-            #self.logger.severe(f"Unexpected error during login advisor: {str(e)}")
-            print(f"An error occurred: {str(e)}")
+            self.__logger.error(f"Unexpected error during login advisor: {str(e)}")
 
 
     def handleAdvisorActions(self, advisor):
         try:
-            #self.logger.info("Handling advisor actions")
+            self.__logger.info("Handling advisor actions")
             while True:
                 print()
                 print("----------ACTIONS----------")
@@ -221,13 +219,12 @@ class CourseRegistrationSimulation:
                     self.logout()
                     break
         except Exception as e:
-            pass
-            #self.logger.severe(f"Unexpected error during handleAdvisorActions: {str(e)}")
+            self.__logger.error(f"Unexpected error during handleAdvisorActions: {str(e)}")
 
 
     def handleRegistrationRequests(self, advisor):
         try:
-            #self.logger.info("Handling Registration Requests")
+            self.__logger.info("Handling Registration Requests")
 
             registrations = self.__registrationDBController.getRegistrationsOfAdvisor(advisor)
 
@@ -270,13 +267,12 @@ class CourseRegistrationSimulation:
                 print()
 
         except Exception as e:
-            pass
-            #self.logger.severe(f"Unexpected error during handleRegistrationRequests: {str(e)}")
+            self.__logger.error(f"Unexpected error during handleRegistrationRequests: {str(e)}")
 
 
     def loginDepartmentScheduler(self):
         try:
-            #self.logger.info("Login department scheduler")
+            self.__logger.info("Login department scheduler")
 
             nickname = input("Enter your nickname: ").strip()
             password = input("Enter your password: ").strip()
@@ -291,15 +287,15 @@ class CourseRegistrationSimulation:
                 print()
 
         except IOError as e:
-            print(f"An error occurred: {e}")
-            #self.logger.severe(f"Unexpected error during login departmentScheduler:: {str(e)}")
+            self.__logger.error(f"Unexpected error during login departmentScheduler:: {str(e)}")
         except Exception as e:
-            #self.logger.severe(f"Unexpected error during login departmentScheduler: {str(e)}")
-            print(f"An error occurred: {str(e)}")
+            self.__logger.error(f"Unexpected error during login departmentScheduler: {str(e)}")
 
 
     def handleDepartmentSchedulerActions(self, departmentScheduler):
         try:
+            self.__logger.info("Handling Department Scheduler Actions")
+            
             while True:
                 print()
                 print("----------ACTIONS----------")
@@ -328,12 +324,11 @@ class CourseRegistrationSimulation:
                     self.logout()
                     break
         except Exception as e:
-            pass
-            #self.logger.severe(f"Unexpected error during handleDepartmentSchedulerActions: {str(e)}")
+            self.__logger.error(f"Unexpected error during handleDepartmentSchedulerActions: {str(e)}")
 
     def handleCourseSectionTimesAndClassroom(self, departmentScheduler):
         try:
-            #self.logger.info("Handling Course Section times")
+            self.__logger.info("Handling Course Section times")
             # CourseSectionList
             self.courseDBController.loadCourseSectionListOfDepartmentScheduler(departmentScheduler)
 
@@ -356,12 +351,12 @@ class CourseRegistrationSimulation:
             self.handleCourseSectionSettingsMenus(courseSectionId)
 
         except Exception as e:
-            pass
-            #self.logger.severe(f"Unexpected error during handleCourseSectionTimesAndClassroom: {str(e)}")
+            self.__logger.error(f"Unexpected error during handleCourseSectionTimesAndClassroom: {str(e)}")
 
 
     def handleCourseSectionSettingsMenus(self, courseSectionId):
         try:
+            self.__logger.info("Handling Course Section Settings Menus")
             courseSection = self.courseDBController.loadCourseSection(courseSectionId)
 
             isTimeChange = False
@@ -512,12 +507,11 @@ class CourseRegistrationSimulation:
                 print(f"\nAny course section hour cannot be saved because:\n{result}\n")
 
         except Exception as e:
-            pass
-            #self.logger.severe(f"Error during handling Course Section Settings Menus: {str(e)}")
+            self.__logger.error(f"Error during handling Course Section Settings Menus: {str(e)}")
 
     def isCourseSectionExistInDepartment(self, courseSectionId, courseSectionList):
         try:
-            #self.logger.info("Handling isCourseSectionExistInDepartment")
+            self.__logger.info("Handling isCourseSectionExistInDepartment")
             for courseSection in courseSectionList:
                 if courseSection.getId() == courseSectionId:
                     return True
@@ -526,7 +520,7 @@ class CourseRegistrationSimulation:
             print()
             return False
         except Exception as e:
-            #self.logger.severe(f"An error occurred during isCourseSectionExistInDepartment: {str(e)}")
+            self.__logger.error(f"An error occurred during isCourseSectionExistInDepartment: {str(e)}")
             return False
 
     def checkStudents(self, advisor):

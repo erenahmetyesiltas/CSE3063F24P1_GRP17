@@ -1,12 +1,10 @@
 import sys
 import os
-
-from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
-from main.DepartmentScheduler import DepartmentScheduler
-
 # Üst dizinin yolunu ekle
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
+from main.DepartmentScheduler import DepartmentScheduler
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.StudentDBController import StudentDBController
 from main.Advisor import Advisor

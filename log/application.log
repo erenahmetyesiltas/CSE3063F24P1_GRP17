@@ -1,0 +1,12 @@
+2024-12-18 11:04:06,719 - INFO - This is an info message.
+2024-12-18 11:04:06,719 - WARNING - This is a warning message.
+2024-12-18 11:04:06,719 - ERROR - This is an error message.
+2024-12-18 11:09:43,521 - INFO - Simulation started.
+2024-12-18 11:09:50,241 - INFO - Creating a new registration
+2024-12-18 11:09:50,241 - INFO - Creating registration for student: 150123823
+2024-12-18 11:09:50,242 - ERROR - An error occurred creating registration for student: 'CourseRegistrationSimulation' object has no attribute 'courseRegSystem'
+2024-12-18 11:10:08,645 - INFO - Simulation started.
+2024-12-18 11:10:11,177 - INFO - Login department scheduler
+2024-12-18 11:10:22,306 - INFO - Handling Department Scheduler Actions
+2024-12-18 11:10:23,449 - INFO - Handling Course Section times
+2024-12-18 11:10:23,449 - ERROR - Unexpected error during handleCourseSectionTimesAndClassroom: 'CourseRegistrationSimulation' object has no attribute 'courseDBController'
