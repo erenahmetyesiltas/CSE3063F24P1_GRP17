@@ -1,8 +1,16 @@
+# Append upper folder's path
+import os
+import sys
+
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from LoginSystem import LoginSystem
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.RegistrationDBController import RegistrationDBController
+from databaseController.AdminDBController import AdminDBController
 from SingletonLogger import SingletonLogger
 
 
@@ -38,10 +46,12 @@ class CourseRegistrationSimulation:
         self.__advisorDBController = AdvisorDBController()
         self.__student_db_controller = StudentDBController()
         self.__departmentSchedulerDBController = DepartmentSchedulerDBController()
+        self.__adminDBController = AdminDBController()
         self.__courseRegistrationSystem = courseRegSystem
         self.__loginSystem = LoginSystem(self.__student_db_controller,
                                          self.__advisorDBController,
-                                         self.__departmentSchedulerDBController)
+                                         self.__departmentSchedulerDBController,
+                                         self.__adminDBController)
         self.attribute = 0
     
     def run(self):
@@ -52,7 +62,8 @@ class CourseRegistrationSimulation:
                 print("1- Advisor Login")
                 print("2- Student Login")
                 print("3- Department Scheduler Login")
-                print("4- Log Out")
+                print("4- Admin Login")
+                print("5- Log Out")
 
                 choice = input("Enter your choice: ")
 
@@ -70,6 +81,8 @@ class CourseRegistrationSimulation:
                 elif user_choice == 3:
                     self.loginDepartmentScheduler()
                 elif user_choice == 4:
+                    self.loginAdmin()
+                elif user_choice == 5:
                     self.logout()
                 else:
                     print("Invalid choice.")
@@ -525,6 +538,38 @@ class CourseRegistrationSimulation:
 
     def checkStudents(self, advisor):
         print("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.")
+
+
+    def loginAdmin(self):
+        try:
+            self.__logger.info("Login admin")
+
+            nickname = input("Enter your nickname: ").strip()
+            password = input("Enter your password: ").strip()
+
+            if self.__loginSystem.authenticateAdminUser(nickname, password):
+                if self.__loginSystem.getAdmin() is not None:
+                    print("Login successful!")
+
+                    #self.handleDepartmentSchedulerActions(self.__departmentSchedulerDBController.getDepartmentScheduler())
+            else:
+                print("Invalid nickname or password.")
+                print()
+
+        except IOError as e:
+            self.__logger.error(f"Unexpected error during login admin:: {str(e)}")
+        except Exception as e:
+            self.__logger.error(f"Unexpected error during login admin: {str(e)}")
+
+
+
+
+
+
+
+
+
+
 
     def logout(self):
         # Save the final state to JSON or database

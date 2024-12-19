@@ -7,8 +7,10 @@ from databaseController.DepartmentSchedulerDBController import DepartmentSchedul
 from main.DepartmentScheduler import DepartmentScheduler
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.StudentDBController import StudentDBController
+from databaseController.AdminDBController import AdminDBController
 from main.Advisor import Advisor
 from main.Student import Student
+from main.Admin import Admin
 
 
 class LoginSystem:
@@ -16,14 +18,17 @@ class LoginSystem:
     __advisor: Advisor
     __student: Student
     __departmentScheduler: DepartmentScheduler
+    __admin : Admin
     __advisorDBController: AdvisorDBController
     __studentDBController: StudentDBController
     __departmentSchedulerDBController: DepartmentSchedulerDBController
+    __adminDBController: AdminDBController
 
-    def __init__(self, studentDBController, advisorDBController, departmentSchedulerDBController):
+    def __init__(self, studentDBController, advisorDBController, departmentSchedulerDBController, adminDBController):
         self.__studentDBController = studentDBController
         self.__advisorDBController = advisorDBController
         self.__departmentSchedulerDBController = departmentSchedulerDBController
+        self.__adminDBController = adminDBController
 
     # Getter and setter for Advisor
     def getAdvisor(self):
@@ -45,6 +50,12 @@ class LoginSystem:
     def setDepartmentScheduler(self, departmentScheduler):
         self.__departmentScheduler = departmentScheduler
 
+    def getAdmin(self):
+        return self.__admin
+    
+    def setAdmin(self, admin):
+        self.__admin = admin
+
     # Getter and setter for AdvisorDBController
     def getAdvisorDBController(self):
         return self.__advisorDBController
@@ -58,6 +69,12 @@ class LoginSystem:
 
     def setStudentDBController(self, studentDBController):
         self.__studentDBController = studentDBController
+
+    def getAdminDBController(self):
+        return self.__adminDBController
+    
+    def setAdminDBController(self, adminDBController):
+        self.__adminDBController = adminDBController
 
     # Authenticate Advisor
     def authenticateAdvisorUser(self, advisorId, password):
@@ -100,3 +117,17 @@ class LoginSystem:
             self.__departmentScheduler = None
             self.__departmentSchedulerDBController.setDepartmentScheduler(None)
             return False
+        
+    def authenticateAdminUser(self, adminId, password):
+        if self.__adminDBController.loadAdmin(adminId):
+            self.__admin = self.__adminDBController.getAdmin()
+        else:
+            return False
+
+        if self.__admin.getPassword() == password:
+            return True
+        else:
+            self.__admin = None
+            self.__adminDBController.setAdmin(None)
+            return False
+        

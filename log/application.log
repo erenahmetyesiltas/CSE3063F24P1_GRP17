@@ -10,3 +10,19 @@
 2024-12-18 11:10:22,306 - INFO - Handling Department Scheduler Actions
 2024-12-18 11:10:23,449 - INFO - Handling Course Section times
 2024-12-18 11:10:23,449 - ERROR - Unexpected error during handleCourseSectionTimesAndClassroom: 'CourseRegistrationSimulation' object has no attribute 'courseDBController'
+2024-12-18 19:29:35,450 - INFO - Simulation started.
+2024-12-18 19:31:48,816 - INFO - Simulation started.
+2024-12-18 19:31:57,094 - INFO - Simulation started.
+2024-12-18 20:32:58,060 - INFO - Simulation started.
+2024-12-19 20:01:19,135 - INFO - This is an info message.
+2024-12-19 20:01:19,135 - WARNING - This is a warning message.
+2024-12-19 20:01:19,135 - ERROR - This is an error message.
+2024-12-19 20:01:22,695 - INFO - Simulation started.
+2024-12-19 20:09:39,357 - INFO - Simulation started.
+2024-12-19 20:25:27,303 - INFO - Simulation started.
+2024-12-19 20:25:33,020 - INFO - Login admin
+2024-12-19 20:25:49,868 - INFO - Simulation started.
+2024-12-19 20:25:51,953 - INFO - Login admin
+2024-12-19 20:26:11,274 - INFO - Login admin
+2024-12-19 20:26:28,830 - INFO - Simulation started.
+2024-12-19 20:26:30,057 - INFO - Login admin

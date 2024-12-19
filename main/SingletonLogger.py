@@ -1,13 +1,11 @@
-import sys
-import os
-# Üst dizinin yolunu ekle
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
+from pathlib import Path
 import logging
 from logging.handlers import RotatingFileHandler
 
 
 class SingletonLogger:
+
+    
     # Singleton instance
     _instance = None
 
@@ -23,8 +21,11 @@ class SingletonLogger:
         self.logger.setLevel(logging.DEBUG)  # Set log level
 
         # Create file handler
+        
+        current_dir = Path(__file__).parent
+        relative_path = current_dir / "../log/application.log"
         file_handler = RotatingFileHandler(
-            "CSE3063F24P1_GRP17/log/application.log",
+            relative_path,
             maxBytes=5 * 1024 * 1024,  # Rotate after 5MB
             backupCount=5,  # Keep last 5 log files
         )
