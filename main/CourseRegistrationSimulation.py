@@ -119,7 +119,8 @@ class CourseRegistrationSimulation:
                 print("1- Create a Registration")
                 print("2- Check Registration Status")
                 print("3- Print Weekly Schedule")
-                print("4- Log Out")
+                print("4- Print Transcript")
+                print("5- Log Out")
 
                 choice = input("Please choose an action: ")
 
@@ -136,6 +137,9 @@ class CourseRegistrationSimulation:
                 elif user_choice == 3:
                     student.printWeeklyScheduleAsTable(student)
                 elif user_choice == 4:
+                    student.printTranscript()
+                    break
+                elif user_choice == 5:
                     self.logout()
                     break
                 else:
