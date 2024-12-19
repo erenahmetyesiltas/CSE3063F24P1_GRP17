@@ -550,8 +550,7 @@ class CourseRegistrationSimulation:
             if self.__loginSystem.authenticateAdminUser(nickname, password):
                 if self.__loginSystem.getAdmin() is not None:
                     print("Login successful!")
-
-                    #self.handleDepartmentSchedulerActions(self.__departmentSchedulerDBController.getDepartmentScheduler())
+                    self.handleAdminActions(self.__adminDBController.getAdmin())
             else:
                 print("Invalid nickname or password.")
                 print()
@@ -562,11 +561,157 @@ class CourseRegistrationSimulation:
             self.__logger.error(f"Unexpected error during login admin: {str(e)}")
 
 
+    def handleAdminActions(self, admin):
+        try:
+            self.__logger.info("Handling Admin Actions")
+            
+            while True:
+                print()
+                print("----------ACTIONS----------")
+                print("1- Create a new Student")
+                print("2- Logout")
+                print("Please choose an action: ", end="")
 
+                try:
+                    choice = int(input())
 
+                    while choice < 1 and choice > 2:
+                        print()
+                        print("Please enter a valid option: ", end="")
+                        choice = int(input())
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
+                    continue
 
+                if choice == 1:
+                    student = self.handleAddStudent()
+                    admin.createNewStudent(student)
+                    #self.handleCourseSectionTimesAndClassroom(departmentScheduler)
+                elif choice == 2:
+                    self.logout()
 
+                continueChoice = input("Do you want to continue? (If not you will logout) (y/n): ").strip()
+                if continueChoice.lower() == "n":
+                    self.logout()
+                    break
+        except IOError as e:
+            self.__logger.error(f"Unexpected error during handleAdminActions: {str(e)}")
+        except Exception as e:
+            self.__logger.error(f"Unexpected error during handleAdminActions: {str(e)}")
 
+    # It checks whether the user's input is validated.
+    def validateInput(self, prompt, condition, error_message, cast_type=str):
+        while True:
+            try:
+                user_input = cast_type(input(prompt))
+                if condition(user_input):
+                    return user_input
+                else:
+                    print(error_message)
+            except ValueError:
+                print("Invalid Input. Please Try Again!")
+
+    def handleAddStudent(self):
+        try:
+            studentId = self.validateInput(
+            "Student ID (9 digit): ",
+            lambda x: len(x) == 9 and x.isdigit(),
+            "Student ID is 9 digit and only integer values."
+            )
+
+            firstName = self.validateInput(
+                "First Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Name Field can not be empty!"
+            )
+
+            lastName = self.validateInput(
+                "Last Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Last Name can not be empty!"
+            )
+
+            password = self.validateInput(
+                "Password (at least 3 character): ",
+                lambda x: len(x) >= 3,
+                "Password must be at least 3 characters!"
+            )
+
+            gpa = self.validateInput(
+                "GPA (0.0 between 4.0): ",
+                lambda x: 0.0 <= x <= 4.0,
+                "GPA must be between 0.0 and 4.0!",
+                float
+            )
+
+            advisorId = self.validateInput(
+                "Advisor ID (6 digit): ",
+                lambda x: len(str(x)) == 6,
+                "Advisor ID must be 6 digits!",
+                int
+            )
+
+            departmentName = self.validateInput(
+                "Department Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Department Name can not be empty!"
+            )
+
+            departmentId = self.validateInput(
+                "Department ID: ",
+                lambda x: len(x.strip()) > 0,
+                "Department Id can not be empty!"
+            )
+
+            startYear = self.validateInput(
+                "Start year (between 2000 and 2100): ",
+                lambda x: 2000 <= x <= 2100,
+                "Start year should be between 2000 and 2100!",
+                int
+            )
+
+            year = self.validateInput(
+                "Class (between 1 and 6): ",
+                lambda x: 1 <= x <= 6,
+                "Class must be between 1 and 5!",
+                int
+            )
+
+            term = self.validateInput(
+                "Term (between 1 and 12): ",
+                lambda x: 1 <= x <= 10,
+                "The term must be between 1 and 12!",
+                int
+            )
+            
+            
+            registerId = "r{}".format(studentId) # Register id must be consistent with student id
+            student = {
+                    "id": studentId,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "password": password,
+                    "gpa": gpa,
+                    "courses": [],  # Default empty
+                    "advisorId": advisorId,
+                    "departments": [
+                        {
+                            "departmentName": departmentName
+                        }
+                    ],
+                    "departmentIds": [departmentId],
+                    "startYear": startYear,
+                    "year": year,
+                    "registrationId": registerId,
+                    "term": term
+                }
+
+        except IOError as e:
+            self.__logger.error(f"Error during add Student: {str(e)}")
+        except Exception as e:
+            self.__logger.error(f"Unexpected error during handleAddStudent: {str(e)}")
+
+        return student
 
 
 
