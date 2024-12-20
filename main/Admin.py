@@ -3,11 +3,18 @@ from pathlib import Path
 from io import StringIO
 import json
 
+from databaseController.AdvisorDBController import AdvisorDBController
+from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
+from databaseController.StudentDBController import StudentDBController
+
 class Admin:
     __id : str
     __firstName : str
     __lastName : str 
     __password : str
+    __studentDBController : StudentDBController = None
+    __advisorDBController : AdvisorDBController = None
+    __departmentSchedulerDBController : DepartmentSchedulerDBController = None
 
     def __init__(self, id, firstName, lastName, password):
         self.__id = id
@@ -15,62 +22,20 @@ class Admin:
         self.__lastName = lastName
         self.__password = password
 
+    # Create new People.
     def createNewStudent(self, student):
-        current_dir = Path(__file__).parent
-
-        studentJsonPath = "{}{}".format(student["id"],".json")
-
-        relative_path = current_dir / "../database/students" / studentJsonPath
-        
-        # Save Student JSON file.
-        with open(relative_path, "w") as json_file:
-            json.dump(student, json_file, indent=4)
-
-        self.createNewRegisterForStudent(student)
-        
-    def createNewRegisterForStudent(self, student):
-        current_dir = Path(__file__).parent
-        studentRegisterJsonPath = "{}{}".format(student["registrationId"],".json")
-
-        relative_path = current_dir / "../database/registrations" / studentRegisterJsonPath
-
-        register = {
-                "id": student["registrationId"],
-                "courseSections": [],
-                "registrationStatus": 0
-            }
-
-        # Save Student Register JSON file.
-        with open(relative_path, "w") as json_file:
-            json.dump(register, json_file, indent=4)
-        
+        self.__studentDBController = StudentDBController()
+        self.__studentDBController.createNewStudent(student)
 
     def createNewAdvisor(self, advisor):
-        current_dir = Path(__file__).parent
+        self.__advisorDBController = AdvisorDBController()
+        self.__advisorDBController.createNewAdvisor(advisor)
 
-        advisorJsonPath = "{}{}".format(advisor["id"],".json")
-
-        relative_path = current_dir / "../database/advisors" / advisorJsonPath
-        
-        # Save Student JSON file.
-        with open(relative_path, "w") as json_file:
-            json.dump(advisor, json_file, indent=4)
-
-    
     def createNewDepartmentScheduler(self, departmentScheduler):
-        current_dir = Path(__file__).parent
+        self.__departmentSchedulerDBController = DepartmentSchedulerDBController()
+        self.__departmentSchedulerDBController.createNewDepartmentScheduler(departmentScheduler)
 
-        departmentSchedulerJsonPath = "{}{}".format(departmentScheduler["id"],".json")
 
-        relative_path = current_dir / "../database/departmentSchedulers" / departmentSchedulerJsonPath
-        
-        # Save Student JSON file.
-        with open(relative_path, "w") as json_file:
-            json.dump(departmentScheduler, json_file, indent=4)
-
-    
-
-    #Getter , Setter methods
     def getId(self):
         return self.__id
 

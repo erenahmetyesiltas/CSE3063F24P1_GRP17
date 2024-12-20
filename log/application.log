@@ -95,3 +95,15 @@
 2024-12-20 16:33:59,147 - INFO - Login admin
 2024-12-20 16:34:02,546 - INFO - Handling Admin Actions
 2024-12-20 16:34:03,762 - INFO - Handling add Department Schuler.
+2024-12-20 16:52:46,748 - INFO - Simulation started.
+2024-12-20 16:52:48,578 - INFO - Login admin
+2024-12-20 16:52:52,027 - INFO - Handling Admin Actions
+2024-12-20 16:52:53,425 - INFO - Handling add Student.
+2024-12-20 16:56:04,557 - INFO - Simulation started.
+2024-12-20 16:56:05,713 - INFO - Login admin
+2024-12-20 16:56:10,249 - INFO - Handling Admin Actions
+2024-12-20 16:56:11,233 - INFO - Handling add Advisor.
+2024-12-20 16:56:39,144 - INFO - Simulation started.
+2024-12-20 16:56:41,434 - INFO - Login admin
+2024-12-20 16:56:43,906 - INFO - Handling Admin Actions
+2024-12-20 16:56:45,170 - INFO - Handling add Department Schuler.
