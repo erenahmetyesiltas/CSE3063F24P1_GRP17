@@ -574,13 +574,14 @@ class CourseRegistrationSimulation:
                 print("----------ACTIONS----------")
                 print("1- Create a new Student")
                 print("2- Create a new Advisor")
-                print("2- Logout")
+                print("3- Create a new Department Scheduler")
+                print("4- Logout")
                 print("Please choose an action: ", end="")
 
                 try:
                     choice = int(input())
 
-                    while choice < 1 and choice > 3:
+                    while choice < 1 and choice > 4:
                         print()
                         print("Please enter a valid option: ", end="")
                         choice = int(input())
@@ -596,7 +597,11 @@ class CourseRegistrationSimulation:
                     advisor = self.handleAddAdvisor()
                     admin.createNewAdvisor(advisor)
 
-                elif choice ==3:
+                elif choice == 3:
+                    departmentScheduler = self.handleAddDepartmentScheduler()
+                    admin.createNewDepartmentScheduler(departmentScheduler)
+
+                elif choice == 4:
                     self.logout()
 
                 continueChoice = input("Do you want to continue? (If not you will logout) (y/n): ").strip()
@@ -622,6 +627,7 @@ class CourseRegistrationSimulation:
 
     def handleAddStudent(self):
         try:
+            self.__logger.info("Handling add Student.")
             studentId = self.validateInput(
             "Student ID (9 digit): ",
             lambda x: len(x) == 9 and x.isdigit(),
@@ -725,6 +731,7 @@ class CourseRegistrationSimulation:
 
     def handleAddAdvisor(self):
         try:
+            self.__logger.info("Handling add Advisor.")
             advisorId = self.validateInput(
             "Advisor ID (6 digit): ",
             lambda x: len(x) == 6 and x.isdigit(),
@@ -772,11 +779,61 @@ class CourseRegistrationSimulation:
                 }
 
         except IOError as e:
-            self.__logger.error(f"Error during add Student: {str(e)}")
+            self.__logger.error(f"Error during add Advisor: {str(e)}")
         except Exception as e:
-            self.__logger.error(f"Unexpected error during handleAddStudent: {str(e)}")
+            self.__logger.error(f"Unexpected error during handleAddAdvisor: {str(e)}")
 
         return advisor
+
+    def handleAddDepartmentScheduler(self):
+        try:
+            self.__logger.info("Handling add Department Schuler.")
+
+            departmentSchedulerId = self.validateInput(
+            "Department Scheduler ID (4 digit): ",
+            lambda x: len(x) == 4 and x.isdigit(),
+            "Department Scheduler ID is 4 digit and only integer values."
+            )
+
+            firstName = self.validateInput(
+                "First Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Name Field can not be empty!"
+            )
+
+            lastName = self.validateInput(
+                "Last Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Last Name can not be empty!"
+            )
+
+            password = self.validateInput(
+                "Password (at least 3 character): ",
+                lambda x: len(x) >= 3,
+                "Password must be at least 3 characters!"
+            )
+
+            departmentId = self.validateInput(
+                "Department ID: ",
+                lambda x: len(x.strip()) > 0,
+                "Department Id can not be empty!"
+            )
+
+            departmentScheduler = {
+                    "id": departmentSchedulerId,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "password": password,
+                    "departmentId": departmentId,
+                    "courseSectionList": [] #Default is empty
+                }
+
+        except IOError as e:
+            self.__logger.error(f"Error during add Department Scheduler: {str(e)}")
+        except Exception as e:
+            self.__logger.error(f"Unexpected error during handleAddDepartmentScheduler: {str(e)}")
+
+        return departmentScheduler
 
 
 
