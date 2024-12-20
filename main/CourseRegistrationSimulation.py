@@ -573,13 +573,14 @@ class CourseRegistrationSimulation:
                 print()
                 print("----------ACTIONS----------")
                 print("1- Create a new Student")
+                print("2- Create a new Advisor")
                 print("2- Logout")
                 print("Please choose an action: ", end="")
 
                 try:
                     choice = int(input())
 
-                    while choice < 1 and choice > 2:
+                    while choice < 1 and choice > 3:
                         print()
                         print("Please enter a valid option: ", end="")
                         choice = int(input())
@@ -590,8 +591,12 @@ class CourseRegistrationSimulation:
                 if choice == 1:
                     student = self.handleAddStudent()
                     admin.createNewStudent(student)
-                    #self.handleCourseSectionTimesAndClassroom(departmentScheduler)
+
                 elif choice == 2:
+                    advisor = self.handleAddAdvisor()
+                    admin.createNewAdvisor(advisor)
+
+                elif choice ==3:
                     self.logout()
 
                 continueChoice = input("Do you want to continue? (If not you will logout) (y/n): ").strip()
@@ -717,6 +722,61 @@ class CourseRegistrationSimulation:
 
         return student
 
+
+    def handleAddAdvisor(self):
+        try:
+            advisorId = self.validateInput(
+            "Advisor ID (6 digit): ",
+            lambda x: len(x) == 6 and x.isdigit(),
+            "Student ID is 6 digit and only integer values."
+            )
+
+            firstName = self.validateInput(
+                "First Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Name Field can not be empty!"
+            )
+
+            lastName = self.validateInput(
+                "Last Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Last Name can not be empty!"
+            )
+
+            password = self.validateInput(
+                "Password (at least 3 character): ",
+                lambda x: len(x) >= 3,
+                "Password must be at least 3 characters!"
+            )
+
+            supervised_students = []
+            print("Enter Supervised Student IDs (9-digit). Type 'done' to finish.")
+
+            while True:
+                student_id = self.validateInput(
+                "Supervised Student ID: ",
+                lambda x: (x.isdigit() and len(x) == 9) or x.lower() == 'done',
+                "Each ID must be a 9-digit number!"
+                )
+
+                if student_id.lower() == 'done':
+                    break
+                supervised_students.append(student_id)
+
+            advisor = {
+                    "id": advisorId,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "password": password,
+                    "supervisedStudentIDs": supervised_students 
+                }
+
+        except IOError as e:
+            self.__logger.error(f"Error during add Student: {str(e)}")
+        except Exception as e:
+            self.__logger.error(f"Unexpected error during handleAddStudent: {str(e)}")
+
+        return advisor
 
 
 

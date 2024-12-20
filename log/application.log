@@ -82,3 +82,12 @@
 2024-12-19 21:57:00,064 - INFO - Login admin
 2024-12-19 21:57:03,704 - INFO - Handling Admin Actions
 2024-12-20 00:29:37,091 - INFO - Simulation started.
+2024-12-20 16:17:59,510 - INFO - Simulation started.
+2024-12-20 16:18:01,889 - INFO - Login admin
+2024-12-20 16:18:13,931 - INFO - Login admin
+2024-12-20 16:18:16,490 - INFO - Handling Admin Actions
+2024-12-20 16:18:40,899 - ERROR - Unexpected error during handleAddStudent: 'CourseRegistrationSimulation' object has no attribute 'validate_input'
+2024-12-20 16:18:40,902 - ERROR - Unexpected error during handleAdminActions: cannot access local variable 'advisor' where it is not associated with a value
+2024-12-20 16:20:54,054 - INFO - Simulation started.
+2024-12-20 16:20:55,291 - INFO - Login admin
+2024-12-20 16:20:57,723 - INFO - Handling Admin Actions

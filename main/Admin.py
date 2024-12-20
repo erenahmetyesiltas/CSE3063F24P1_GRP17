@@ -44,6 +44,18 @@ class Admin:
         with open(relative_path, "w") as json_file:
             json.dump(register, json_file, indent=4)
         
+
+    def createNewAdvisor(self, advisor):
+        current_dir = Path(__file__).parent
+
+        advisorJsonPath = "{}{}".format(advisor["id"],".json")
+
+        relative_path = current_dir / "../database/advisors" / advisorJsonPath
+        
+        # Save Student JSON file.
+        with open(relative_path, "w") as json_file:
+            json.dump(advisor, json_file, indent=4)
+
     
 
     #Getter , Setter methods
