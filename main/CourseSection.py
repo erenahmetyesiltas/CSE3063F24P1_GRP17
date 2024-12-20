@@ -1,6 +1,6 @@
-import Classroom
-import Course
-import Lecturer
+from main.Classroom import Classroom
+from main.Course import Course
+from main.Lecturer import Lecturer
 
 class CourseSection :
     __enrolledStudents : []
