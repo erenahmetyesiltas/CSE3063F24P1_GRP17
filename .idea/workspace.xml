@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75647eeb-1db9-4a08-a6f9-a09a28752173" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/databaseController/AdvisorDBController.py" beforeDir="false" afterPath="$PROJECT_DIR$/databaseController/AdvisorDBController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/courseSections/CSE1241-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/CSE1241-1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/courseSections/EE2032-2.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/EE2032-2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/courseSections/IE3081-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/IE3081-1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/courseSections/TRD121-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/TRD121-1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/courseSections/TRD122-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/TRD122-1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/Classroom.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Classroom.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/CourseRegistrationSimulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseRegistrationSimulation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/LoginSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/LoginSystem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/CourseSection.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseSection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/DepartmentScheduler.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/DepartmentScheduler.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,27 +42,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.DepartmentScheduler.executor": "Run",
-    "Python.LoginSystem.executor": "Run",
-    "Python.Main (1).executor": "Run",
-    "Python.Main.executor": "Run",
-    "Python.demo.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "iteration-3-python",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/enesb/OneDrive/Belgeler/GitHub/CSE3063F24P1_GRP17",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.DepartmentScheduler.executor&quot;: &quot;Run&quot;,
+    &quot;Python.LoginSystem.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Main (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.demo.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;iteration-3-eren&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/erena/Desktop/Py3/CSE3063F24P1_GRP17&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\enesb\OneDrive\Belgeler\GitHub\CSE3063F24P1_GRP17" />

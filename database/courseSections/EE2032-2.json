@@ -1,38 +1,61 @@
 {
-  "enrolledStudents": [],
-  "classroom": {
-    "id": "M2-Z11",
-    "capacity": 150
-  },
-  "id": "EE2032-2",
-  "scheduledTimes": [
-
-  ],
-  "sectionNumber": 2,
-  "course": {
-    "id": "EE2032",
-    "name": "Electronics",
-    "credit": 5,
-    "departments": [],
-    "term": 4,
-    "prerequisiteCourses": [{
-      "id": "EE2031",
-      "name": "Electric Circuits",
-      "credit": 5,
-      "departments": [],
-      "term": 3,
-      "prerequisiteCourses": [],
-      "weeklyCourseHours": 3
-    }],
-    "weeklyCourseHours": 4
-  },
-  "capacity": 150,
-  "courseId": "EE2032",
-  "lecturer": {
-    "id": "2001",
-    "password": "hamdi123",
-    "firstName": "Hamdi",
-    "lastName": "Demirci",
-    "departmentIds": ["CSE"]
-  }
+    "enrolledStudents": [],
+    "classroom": {
+        "id": "M2-Z11",
+        "capacity": 150
+    },
+    "id": "EE2032-2",
+    "scheduledTimes": [
+        {
+            "startTime": "17:00:00",
+            "endTime": "17:50:00",
+            "courseDay": "Monday"
+        },
+        {
+            "startTime": "18:00:00",
+            "endTime": "18:50:00",
+            "courseDay": "Monday"
+        },
+        {
+            "startTime": "19:00:00",
+            "endTime": "19:50:00",
+            "courseDay": "Monday"
+        },
+        {
+            "startTime": "20:00:00",
+            "endTime": "20:50:00",
+            "courseDay": "Monday"
+        }
+    ],
+    "sectionNumber": 1,
+    "course": {
+        "id": "EE2032",
+        "name": "Electronics",
+        "credit": 5,
+        "departments": [],
+        "term": 4,
+        "prerequisiteCourses": [
+            {
+                "id": "EE2031",
+                "name": "Electric Circuits",
+                "credit": 5,
+                "departments": [],
+                "term": 3,
+                "prerequisiteCourses": [],
+                "weeklyCourseHours": 3
+            }
+        ],
+        "weeklyCourseHours": 4
+    },
+    "capacity": 150,
+    "courseId": "EE2032",
+    "lecturer": {
+        "id": "2001",
+        "password": "hamdi123",
+        "firstName": "Hamdi",
+        "lastName": "Demirci",
+        "departmentIds": [
+            "CSE"
+        ]
+    }
 }

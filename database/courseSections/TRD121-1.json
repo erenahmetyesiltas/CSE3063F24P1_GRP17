@@ -1,30 +1,41 @@
 {
-  "enrolledStudents": [],
-  "classroom": {
-    "id": "UZEM",
-    "capacity": 100
-  },
-  "id": "TRD121-1",
-  "scheduledTimes": [
-
-  ],
-  "sectionNumber": 1,
-  "course": {
-    "id": "TRD121",
-    "name": "Turk Dili I",
-    "credit": 2,
-    "departments": [],
-    "term": 1,
-    "prerequisiteCourses": [],
-    "weeklyCourseHours": 2
-  },
-  "capacity": 100,
-  "courseId": "TRD121",
-  "lecturer": {
-    "id": "2000",
-    "password": "halil123",
-    "firstName": "Halil",
-    "lastName": "Demir",
-    "departmentIds": ["CSE"]
-  }
+    "enrolledStudents": [],
+    "classroom": {
+        "id": "UZEM",
+        "capacity": 100
+    },
+    "id": "TRD121-1",
+    "scheduledTimes": [
+        {
+            "startTime": "08:00:00",
+            "endTime": "08:50:00",
+            "courseDay": "Monday"
+        },
+        {
+            "startTime": "09:00:00",
+            "endTime": "09:50:00",
+            "courseDay": "Monday"
+        }
+    ],
+    "sectionNumber": 1,
+    "course": {
+        "id": "TRD121",
+        "name": "Turk Dili I",
+        "credit": 2,
+        "departments": [],
+        "term": 1,
+        "prerequisiteCourses": [],
+        "weeklyCourseHours": 2
+    },
+    "capacity": 100,
+    "courseId": "TRD121",
+    "lecturer": {
+        "id": "2000",
+        "password": "halil123",
+        "firstName": "Halil",
+        "lastName": "Demir",
+        "departmentIds": [
+            "CSE"
+        ]
+    }
 }
