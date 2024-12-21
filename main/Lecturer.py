@@ -8,7 +8,11 @@ class Lecturer :
     __departmentIds : []
 
     def __init__(self):
-        pass
+        self.__id
+        self.__firstName
+        self.__lastName
+        self.__password
+        self.__departmentIds
 
     def getId(self):
         return self.__id

@@ -1,6 +1,10 @@
 from contextlib import nullcontext
 from io import StringIO
 
+from main.Registration import Registration
+from main.Student import Student
+
+
 class Advisor:
     __id : str
     __firstName : str
@@ -20,6 +24,7 @@ class Advisor:
         self.__supervisedStudentsIDs = supervisedStudentsIDs
         self.__supervisedStudents = supervisedStudents
         self.__registrations = registrations
+
 
 
     def getId(self):

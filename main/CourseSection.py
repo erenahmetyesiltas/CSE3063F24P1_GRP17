@@ -31,6 +31,7 @@ class CourseSection :
         self.__courseId = courseId
         self.__lecturer = lecturer
 
+
     def toDict(self):
         return {
             "enrolledStudents": self.__enrolledStudents,

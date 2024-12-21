@@ -31,6 +31,7 @@ class Student:
         self.__registrationId = registrationId
         self.__transcript = transcript or {}
 
+
     def getTranscript(self):
         return self.__transcript
 

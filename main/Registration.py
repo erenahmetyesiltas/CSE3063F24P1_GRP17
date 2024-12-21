@@ -1,10 +1,15 @@
+from main.CourseSection import CourseSection
+
+
 class Registration:
     __id : str
     __courseSections:list
     __registrationStatus : int
 
-    def __init__(self):
-        pass
+    def __init__(self, id, courseSections, registrationStatus):
+        self.__id = id
+        self.__courseSections = courseSections
+        self.__registrationStatus = registrationStatus
 
     def getid (self):
         return self.__id

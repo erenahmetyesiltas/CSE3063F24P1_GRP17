@@ -29,6 +29,7 @@ class DepartmentScheduler(Staff):
         self.__departmentId = departmentId
         self.__courseSectionList = courseSectionList
 
+
     def getId(self):
         return self.__id
 

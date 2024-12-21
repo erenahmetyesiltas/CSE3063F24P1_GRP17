@@ -8,14 +8,15 @@ from main import Course, Student, Registration,CourseSection,DataHandler
 
 
 class CourseRegistrationSystem:
-    __allStudents: list
-    __allAdvisors: list
-    __allCourseSections: list
-    __allDepartments: list
-    __courseDBController: CourseDBController
-    def __init__(self):
+
+    def __init__(self, courseDBController):
     #    self.setAllCourseSections(self.__dataHandler.getCourseSectionList())
-        pass
+        self.__allStudents = []
+        self.__allAdvisors =[]
+        self.__allCourseSections = []
+        self.__allDepartments = []
+        self.__courseDBController = courseDBController
+
 
     def getAllStudents(self):
         return self.__allStudents
@@ -54,7 +55,7 @@ class CourseRegistrationSystem:
         print("\nThe available courses that you can register")
         print("Course:                Section:                Lecturer:")
 
-        appropriateCourseSections: list[CourseSection] = self.__courseDBController.getCourseSectionListAppropriate(student)
+        appropriateCourseSections: list[CourseSection] = self.__courseDBController.getCourseSectionList()
 
         for courseSection in appropriateCourseSections:
             fullNameOfLecturer = courseSection.getLecturer().getFirstName() + " " + courseSection.getLecturer().getLastName()

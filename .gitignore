@@ -16,3 +16,4 @@
 .idea/workspace.xml
 .log
 .idea/
+*.pyc

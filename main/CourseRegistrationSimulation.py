@@ -129,10 +129,13 @@ class CourseRegistrationSimulation:
 
                 if user_choice == 1:
                     self.createRegistration(student)
+
                 elif user_choice == 2:
                     self.__courseRegistrationSystem.getStudentRegistrationStatus(student)
+
                 elif user_choice == 3:
                     student.printWeeklyScheduleAsTable(student)
+
                 elif user_choice == 4:
                     student.printTranscript()
                     break
@@ -149,12 +152,12 @@ class CourseRegistrationSimulation:
         try:
             self.__logger.info(f"Creating registration for student: {student.getId()}")
             # self.courseRegSystem.printSuitableCourses()
-            self.courseRegSystem.printSuitableCoursesRemake(student)
+            self.__courseRegistrationSystem.printSuitableCourses(student)
 
             while True:
                 addCourse = input("\nDo you want to add courses? (y/n): ").strip()
                 if addCourse.lower() == "y":
-                    self.courseRegSystem.readCourses(student)
+                    self.__courseRegistrationSystem.readCourses(student)
                 elif addCourse.lower() == "n":
                     break
                 else:
@@ -170,7 +173,7 @@ class CourseRegistrationSimulation:
             requestChoice = input(
                 "Are you sure you want to send the registration request to your advisor? (y/n): ").strip()
             if requestChoice.lower() == "y":
-                self.courseRegSystem.sendRegistrationToAdvisor(student.getRegistration(), student)
+                self.__courseRegistrationSystem.sendRegistrationToAdvisor(student.getRegistration(), student)
                 print("SUCCESS: The registration request has been sent to your advisor\n")
             else:
                 student.setRegistration(None)
@@ -424,8 +427,7 @@ class CourseRegistrationSimulation:
             else:
 
                 yesOrNo = input(
-                    f"{courseSection.getId()}'s classroom is {courseSection.getClassroom()["id"]}.\nDo you want to change the classroom? (y/n): ").strip()
-
+                    f"{courseSection.getId()}'s classroom is {courseSection.getClassroom()['id']}.\nDo you want to change the classroom? (y/n): ").strip()
                 isTrueInput = False
                 while not isTrueInput:
                     if yesOrNo.lower() == "y":
@@ -501,9 +503,9 @@ class CourseRegistrationSimulation:
                 print()
                 print(f"{courseSection.getId()}'s classroom times are:")
                 for i, scheduledTime in enumerate(courseSection.getScheduledTimes()):
-                    print(f"{i + 1} ==> Day is: {scheduledTime["courseDay"]}")
-                    print(f"Start time: {scheduledTime["startTime"]}")
-                    print(f"End time: {scheduledTime["endTime"]}")
+                    print(f"{i + 1} ==> Day is: {scheduledTime['courseDay']}")
+                    print(f"Start time: {scheduledTime['startTime']}")
+                    print(f"End time: {scheduledTime['endTime']}")
 
                 if courseSection.getCourse()["weeklyCourseHours"] > len(courseSection.getScheduledTimes()):
                     print(len(courseSection.getScheduledTimes()), "/",
