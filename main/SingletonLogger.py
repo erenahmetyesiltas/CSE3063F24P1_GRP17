@@ -5,7 +5,7 @@ from logging.handlers import RotatingFileHandler
 
 class SingletonLogger:
 
-
+    
     # Singleton instance
     _instance = None
 
@@ -21,7 +21,7 @@ class SingletonLogger:
         self.logger.setLevel(logging.DEBUG)  # Set log level
 
         # Create file handler
-
+        
         current_dir = Path(__file__).parent
         relative_path = current_dir / "../log/application.log"
         file_handler = RotatingFileHandler(
