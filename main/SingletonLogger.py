@@ -1,20 +1,17 @@
-import sys
-import os
-# Append upper folder's path
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-local_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+from pathlib import Path
 import logging
 from logging.handlers import RotatingFileHandler
 
 
 class SingletonLogger:
+
+
     # Singleton instance
     _instance = None
 
     def __new__(cls):
         if cls._instance is None:
-            cls.instance = super(SingletonLogger, cls).new_(cls)
+            cls._instance = super(SingletonLogger, cls).__new__(cls)
             cls._instance._initialize_logger()
         return cls._instance
 
@@ -24,9 +21,11 @@ class SingletonLogger:
         self.logger.setLevel(logging.DEBUG)  # Set log level
 
         # Create file handler
-        file_path = local_path + "/log/application.log"
+
+        current_dir = Path(__file__).parent
+        relative_path = current_dir / "../log/application.log"
         file_handler = RotatingFileHandler(
-            file_path,
+            relative_path,
             maxBytes=5 * 1024 * 1024,  # Rotate after 5MB
             backupCount=5,  # Keep last 5 log files
         )
