@@ -18,11 +18,11 @@ class Registration:
             return False
         if (courseSectionAdded != None) :
             for courseSection in self.__courseSections :
-                if (courseSectionAdded.getCourse().getId().equals(courseSection.getCourse().getId()) and courseSectionAdded.getSectionNumber() == courseSection.getSectionNumber()):
+                if (courseSectionAdded.getCourse().getId() == (courseSection.getCourse().getId()) and courseSectionAdded.getSectionNumber() == courseSection.getSectionNumber()):
                     print("WARNING ! : (Same course and section exists in your registration) " + courseSectionAdded.getCourseId() + " - " + courseSectionAdded.getSectionNumber() + " cannot added to registration")
                     return False
 
-                elif (courseSectionAdded.getCourse().getId()==(courseSection.getCourse().getId()) and courseSectionAdded.getSectionNumber() != courseSection.getSectionNumber()):
+                elif (courseSectionAdded.getCourse().getId() == (courseSection.getCourse().getId()) and courseSectionAdded.getSectionNumber() != courseSection.getSectionNumber()):
                     print("WARNING ! : (You try to select a second section for the same course) " + courseSectionAdded.getCourseId() + " - " + courseSectionAdded.getSectionNumber() + " cannot added to registration")
                     return False
 
@@ -41,21 +41,21 @@ class Registration:
         self._registration_status = 0
 
 
-    def get_course_sections(self):
+    def getCourseSections(self):
         return self._course_sections
 
 
-    def set_course_sections(self, course_sections):
+    def setCourseSections(self, course_sections):
         self._course_sections = course_sections
 
 
-    def delete_course_section_list(self):
+    def deleteCourseSectionList(self):
         self._course_sections.clear()
 
 
-    def get_registration_status(self):
+    def getRegistrationStatus(self):
         return self._registration_status
 
 
-    def set_registration_status(self, status):
+    def setRegistrationStatus(self, status):
         self._registration_status = status

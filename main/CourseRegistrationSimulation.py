@@ -107,7 +107,6 @@ class CourseRegistrationSimulation:
                 print("Invalid ID or password.")
         except Exception as e:
             print(f"An error occurred during student login: {str(e)}")
-    
 
     def handleStudentActions(self, student):
         """Handles post-login actions for students."""
@@ -145,7 +144,6 @@ class CourseRegistrationSimulation:
         except Exception as e:
             print(f"An error occurred while handling student actions: {str(e)}")
 
-
     def createRegistration(self, student):
         self.__logger.info("Creating a new registration")
         try:
@@ -181,8 +179,6 @@ class CourseRegistrationSimulation:
         except Exception as e:
             self.__logger.error(f"An error occurred creating registration for student: {str(e)}")
 
-
-
     def loginAdvisor(self):
         try:
             self.__logger.info("Handling advisor login")
@@ -200,7 +196,6 @@ class CourseRegistrationSimulation:
             self.__logger.error(f"Unexpected error during login advisor: {str(e)}")
         except Exception as e:
             self.__logger.error(f"Unexpected error during login advisor: {str(e)}")
-
 
     def handleAdvisorActions(self, advisor):
         try:
@@ -236,7 +231,6 @@ class CourseRegistrationSimulation:
                     break
         except Exception as e:
             self.__logger.error(f"Unexpected error during handleAdvisorActions: {str(e)}")
-
 
     def handleRegistrationRequests(self, advisor):
         try:
@@ -285,7 +279,6 @@ class CourseRegistrationSimulation:
         except Exception as e:
             self.__logger.error(f"Unexpected error during handleRegistrationRequests: {str(e)}")
 
-
     def loginDepartmentScheduler(self):
         try:
             self.__logger.info("Login department scheduler")
@@ -297,7 +290,8 @@ class CourseRegistrationSimulation:
                 if self.__loginSystem.getDepartmentScheduler() is not None:
                     print("Login successful!")
 
-                    self.handleDepartmentSchedulerActions(self.__departmentSchedulerDBController.getDepartmentScheduler())
+                    self.handleDepartmentSchedulerActions(
+                        self.__departmentSchedulerDBController.getDepartmentScheduler())
             else:
                 print("Invalid nickname or password.")
                 print()
@@ -306,7 +300,6 @@ class CourseRegistrationSimulation:
             self.__logger.error(f"Unexpected error during login departmentScheduler:: {str(e)}")
         except Exception as e:
             self.__logger.error(f"Unexpected error during login departmentScheduler: {str(e)}")
-
 
     def handleDepartmentSchedulerActions(self, departmentScheduler):
         try:
@@ -400,7 +393,6 @@ class CourseRegistrationSimulation:
                         # changing
                         isClassroomValid = departmentScheduler.assignClassroomToCourseSection(courseSection, croomName)
 
-
                         if not isClassroomValid:
                             yesOrNo = input(
                                 "Do you want to change the classroom of this course section? (y/n): ").strip()
@@ -434,7 +426,6 @@ class CourseRegistrationSimulation:
                 yesOrNo = input(
                     f"{courseSection.getId()}'s classroom is {courseSection.getClassroom()["id"]}.\nDo you want to change the classroom? (y/n): ").strip()
 
-
                 isTrueInput = False
                 while not isTrueInput:
                     if yesOrNo.lower() == "y":
@@ -443,7 +434,6 @@ class CourseRegistrationSimulation:
 
                         # changing
                         isClassroomValid = departmentScheduler.assignClassroomToCourseSection(courseSection, croomName)
-
 
                         if not isClassroomValid:
                             yesOrNo = input(
@@ -516,8 +506,8 @@ class CourseRegistrationSimulation:
                     print(f"End time: {scheduledTime["endTime"]}")
 
                 if courseSection.getCourse()["weeklyCourseHours"] > len(courseSection.getScheduledTimes()):
-                    print(len(courseSection.getScheduledTimes()) , "/" ,
-                        courseSection.getCourse()["weeklyCourseHours"], "of the course section had already saved.")
+                    print(len(courseSection.getScheduledTimes()), "/",
+                          courseSection.getCourse()["weeklyCourseHours"], "of the course section had already saved.")
                 else:
                     print("All the course section hours had already saved.")
 
@@ -558,7 +548,8 @@ class CourseRegistrationSimulation:
 
             if isClassroomValid and isTimeValid:
 
-                if ((isTimeChange == False and isClassroomChange == False) and len(courseSection.getScheduledTimes()) > 0):
+                if ((isTimeChange == False and isClassroomChange == False) and len(
+                        courseSection.getScheduledTimes()) > 0):
                     print("Any course section is not changed.")
                 else:
                     # changing
@@ -587,7 +578,6 @@ class CourseRegistrationSimulation:
     def checkStudents(self, advisor):
         print("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.")
 
-
     def loginAdmin(self):
         try:
             self.__logger.info("Login admin")
@@ -607,7 +597,6 @@ class CourseRegistrationSimulation:
             self.__logger.error(f"Unexpected error during login admin:: {str(e)}")
         except Exception as e:
             self.__logger.error(f"Unexpected error during login admin: {str(e)}")
-
 
     def handleAdminActions(self, admin):
         try:
@@ -673,9 +662,9 @@ class CourseRegistrationSimulation:
         try:
             self.__logger.info("Handling add Student.")
             studentId = self.validateInput(
-            "Student ID (9 digit): ",
-            lambda x: len(x) == 9 and x.isdigit(),
-            "Student ID is 9 digit and only integer values."
+                "Student ID (9 digit): ",
+                lambda x: len(x) == 9 and x.isdigit(),
+                "Student ID is 9 digit and only integer values."
             )
 
             firstName = self.validateInput(
@@ -743,27 +732,26 @@ class CourseRegistrationSimulation:
                 int
             )
 
-
-            registerId = "r{}".format(studentId) # Register id must be consistent with student id
+            registerId = "r{}".format(studentId)  # Register id must be consistent with student id
             student = {
-                    "id": studentId,
-                    "firstName": firstName,
-                    "lastName": lastName,
-                    "password": password,
-                    "gpa": gpa,
-                    "courses": [],  # Default empty
-                    "advisorId": advisorId,
-                    "departments": [
-                        {
-                            "departmentName": departmentName
-                        }
-                    ],
-                    "departmentIds": [departmentId],
-                    "startYear": startYear,
-                    "year": year,
-                    "registrationId": registerId,
-                    "term": term
-                }
+                "id": studentId,
+                "firstName": firstName,
+                "lastName": lastName,
+                "password": password,
+                "gpa": gpa,
+                "courses": [],  # Default empty
+                "advisorId": advisorId,
+                "departments": [
+                    {
+                        "departmentName": departmentName
+                    }
+                ],
+                "departmentIds": [departmentId],
+                "startYear": startYear,
+                "year": year,
+                "registrationId": registerId,
+                "term": term
+            }
 
         except IOError as e:
             self.__logger.error(f"Error during add Student: {str(e)}")
@@ -772,14 +760,13 @@ class CourseRegistrationSimulation:
 
         return student
 
-
     def handleAddAdvisor(self):
         try:
             self.__logger.info("Handling add Advisor.")
             advisorId = self.validateInput(
-            "Advisor ID (6 digit): ",
-            lambda x: len(x) == 6 and x.isdigit(),
-            "Student ID is 6 digit and only integer values."
+                "Advisor ID (6 digit): ",
+                lambda x: len(x) == 6 and x.isdigit(),
+                "Student ID is 6 digit and only integer values."
             )
 
             firstName = self.validateInput(
@@ -805,9 +792,9 @@ class CourseRegistrationSimulation:
 
             while True:
                 student_id = self.validateInput(
-                "Supervised Student ID: ",
-                lambda x: (x.isdigit() and len(x) == 9) or x.lower() == 'done',
-                "Each ID must be a 9-digit number!"
+                    "Supervised Student ID: ",
+                    lambda x: (x.isdigit() and len(x) == 9) or x.lower() == 'done',
+                    "Each ID must be a 9-digit number!"
                 )
 
                 if student_id.lower() == 'done':
@@ -815,12 +802,12 @@ class CourseRegistrationSimulation:
                 supervised_students.append(student_id)
 
             advisor = {
-                    "id": advisorId,
-                    "firstName": firstName,
-                    "lastName": lastName,
-                    "password": password,
-                    "supervisedStudentIDs": supervised_students
-                }
+                "id": advisorId,
+                "firstName": firstName,
+                "lastName": lastName,
+                "password": password,
+                "supervisedStudentIDs": supervised_students
+            }
 
         except IOError as e:
             self.__logger.error(f"Error during add Advisor: {str(e)}")
@@ -834,9 +821,9 @@ class CourseRegistrationSimulation:
             self.__logger.info("Handling add Department Schuler.")
 
             departmentSchedulerId = self.validateInput(
-            "Department Scheduler ID (4 digit): ",
-            lambda x: len(x) == 4 and x.isdigit(),
-            "Department Scheduler ID is 4 digit and only integer values."
+                "Department Scheduler ID (4 digit): ",
+                lambda x: len(x) == 4 and x.isdigit(),
+                "Department Scheduler ID is 4 digit and only integer values."
             )
 
             firstName = self.validateInput(
@@ -864,13 +851,13 @@ class CourseRegistrationSimulation:
             )
 
             departmentScheduler = {
-                    "id": departmentSchedulerId,
-                    "firstName": firstName,
-                    "lastName": lastName,
-                    "password": password,
-                    "departmentId": departmentId,
-                    "courseSectionList": [] #Default is empty
-                }
+                "id": departmentSchedulerId,
+                "firstName": firstName,
+                "lastName": lastName,
+                "password": password,
+                "departmentId": departmentId,
+                "courseSectionList": []  # Default is empty
+            }
 
         except IOError as e:
             self.__logger.error(f"Error during add Department Scheduler: {str(e)}")
@@ -879,10 +866,8 @@ class CourseRegistrationSimulation:
 
         return departmentScheduler
 
-
-
     def logout(self):
         # Save the final state to JSON or database
-        #self.logger.info("User logged out.")
+        # self.logger.info("User logged out.")
         print("\nLogged out successfully!")
         exit(0)
