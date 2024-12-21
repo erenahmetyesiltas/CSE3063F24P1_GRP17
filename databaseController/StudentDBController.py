@@ -36,6 +36,36 @@ class StudentDBController:
                 print(f"An unexpected error occurred: {e}")
                 return False
 
+    def createNewStudent(self, student):
+        current_dir = Path(__file__).parent
+
+        studentJsonPath = "{}{}".format(student["id"],".json")
+
+        relative_path = current_dir / "../database/students" / studentJsonPath
+        
+        # Save Student JSON file.
+        with open(relative_path, "w") as json_file:
+            json.dump(student, json_file, indent=4)
+
+        self.createNewRegisterForStudent(student)
+        
+    def createNewRegisterForStudent(self, student):
+        current_dir = Path(__file__).parent
+        studentRegisterJsonPath = "{}{}".format(student["registrationId"],".json")
+
+        relative_path = current_dir / "../database/registrations" / studentRegisterJsonPath
+
+        register = {
+                "id": student["registrationId"],
+                "courseSections": [],
+                "registrationStatus": 0
+            }
+
+        # Save Student Register JSON file.
+        with open(relative_path, "w") as json_file:
+            json.dump(register, json_file, indent=4)
+
+
     def getStudent(self):
         """
         Get the currently loaded student.

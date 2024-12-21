@@ -1,25 +1,46 @@
 {
-  "enrolledStudents": [],
-  "classroom": null,
-  "id": "IE3081-1",
-  "scheduledTimes": [],
-  "sectionNumber": 1,
-  "course": {
-    "id": "IE3081",
-    "name": "Modeling and Discrete Simulation",
-    "credit": "3",
-    "departments": [],
-    "term": 5,
-    "prerequisiteCourses": [],
-    "weeklyCourseHours": 3
-  },
-  "capacity": 123,
-  "courseId": "IE3081",
-  "lecturer": {
-    "id": "2004",
-    "password": "kazım123",
-    "firstName": "Kazım",
-    "lastName": "Yılmaz",
-    "departmentIds": ["cse"]
-  }
+    "enrolledStudents": [],
+    "classroom": {
+        "id": "M2-Z11",
+        "capacity": 150
+    },
+    "id": "IE3081-1",
+    "scheduledTimes": [
+        {
+            "startTime": "08:00:00",
+            "endTime": "08:50:00",
+            "courseDay": "Monday"
+        },
+        {
+            "startTime": "09:00:00",
+            "endTime": "09:50:00",
+            "courseDay": "Monday"
+        },
+        {
+            "startTime": "10:00:00",
+            "endTime": "10:50:00",
+            "courseDay": "Monday"
+        }
+    ],
+    "sectionNumber": 1,
+    "course": {
+        "id": "IE3081",
+        "name": "Modeling and Discrete Simulation",
+        "credit": "3",
+        "departments": [],
+        "term": 5,
+        "prerequisiteCourses": [],
+        "weeklyCourseHours": 3
+    },
+    "capacity": 123,
+    "courseId": "IE3081",
+    "lecturer": {
+        "id": "2004",
+        "password": "kaz\u0131m123",
+        "firstName": "Kaz\u0131m",
+        "lastName": "Y\u0131lmaz",
+        "departmentIds": [
+            "cse"
+        ]
+    }
 }

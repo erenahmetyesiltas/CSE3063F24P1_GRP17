@@ -25,6 +25,17 @@ class DepartmentSchedulerDBController:
             self.setDepartmentScheduler(departmentScheduler)
             return True
 
+    def createNewDepartmentScheduler(self, departmentScheduler):
+        current_dir = Path(__file__).parent
+
+        departmentSchedulerJsonPath = "{}{}".format(departmentScheduler["id"],".json")
+
+        relative_path = current_dir / "../database/departmentSchedulers" / departmentSchedulerJsonPath
+        
+        # Save Student JSON file.
+        with open(relative_path, "w") as json_file:
+            json.dump(departmentScheduler, json_file, indent=4)
+
     def getDepartmentScheduler(self):
         return self.__departmentScheduler
 

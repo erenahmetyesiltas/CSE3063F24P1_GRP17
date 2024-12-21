@@ -1,22 +1,27 @@
 from LoginSystem import LoginSystem
 from databaseController.AdvisorDBController import AdvisorDBController
+from databaseController.CourseDBController import CourseDBController
 from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.RegistrationDBController import RegistrationDBController
+from databaseController.AdminDBController import AdminDBController
 from SingletonLogger import SingletonLogger
+from SingletonLogger import SingletonLogger
+from main.Classroom import Classroom
+from main.DepartmentScheduler import DepartmentScheduler
 
 
 class CourseRegistrationSimulation:
-    #CourseRegistrationSystem courseRegSystem
-    #LoginSystem loginSystem;
-    #StudentDBController studentDBController;
-    #AdvisorDBController advisorDBController;
-    #DepartmentSchedulerDBController departmentSchedulerDBController;
-    #CourseDBController courseDBController;
-    #Logger logger; // Logger instance
-    #Scanner scanner;
+    # CourseRegistrationSystem courseRegSystem
+    # LoginSystem loginSystem;
+    # StudentDBController studentDBController;
+    # AdvisorDBController advisorDBController;
+    # DepartmentSchedulerDBController departmentSchedulerDBController;
+    # CourseDBController courseDBController;
+    # Logger logger; // Logger instance
+    # Scanner scanner;
 
-    #RegistrationDBController registrationDBController;
+    # RegistrationDBController registrationDBController;
     def __init__(self, courseRegSystem):
         """
         self.student_db_controller = StudentDBController()
@@ -38,12 +43,15 @@ class CourseRegistrationSimulation:
         self.__advisorDBController = AdvisorDBController()
         self.__student_db_controller = StudentDBController()
         self.__departmentSchedulerDBController = DepartmentSchedulerDBController()
+        self.__adminDBController = AdminDBController()
+        self.__courseDBController = CourseDBController()
         self.__courseRegistrationSystem = courseRegSystem
         self.__loginSystem = LoginSystem(self.__student_db_controller,
                                          self.__advisorDBController,
-                                         self.__departmentSchedulerDBController)
+                                         self.__departmentSchedulerDBController,
+                                         self.__adminDBController)
         self.attribute = 0
-    
+
     def run(self):
         try:
             self.__logger.info("Simulation started.")
@@ -52,7 +60,8 @@ class CourseRegistrationSimulation:
                 print("1- Advisor Login")
                 print("2- Student Login")
                 print("3- Department Scheduler Login")
-                print("4- Log Out")
+                print("4- Admin Login")
+                print("5- Log Out")
 
                 choice = input("Enter your choice: ")
 
@@ -70,6 +79,8 @@ class CourseRegistrationSimulation:
                 elif user_choice == 3:
                     self.loginDepartmentScheduler()
                 elif user_choice == 4:
+                    self.loginAdmin()
+                elif user_choice == 5:
                     self.logout()
                 else:
                     print("Invalid choice.")
@@ -106,7 +117,8 @@ class CourseRegistrationSimulation:
                 print("1- Create a Registration")
                 print("2- Check Registration Status")
                 print("3- Print Weekly Schedule")
-                print("4- Log Out")
+                print("4- Print Transcript")
+                print("5- Log Out")
 
                 choice = input("Please choose an action: ")
 
@@ -123,6 +135,9 @@ class CourseRegistrationSimulation:
                 elif user_choice == 3:
                     student.printWeeklyScheduleAsTable(student)
                 elif user_choice == 4:
+                    student.printTranscript()
+                    break
+                elif user_choice == 5:
                     self.logout()
                     break
                 else:
@@ -154,7 +169,8 @@ class CourseRegistrationSimulation:
             print("\n----------System is checking eligibility----------\n")
             # Eligibility check implemented here
 
-            requestChoice = input("Are you sure you want to send the registration request to your advisor? (y/n): ").strip()
+            requestChoice = input(
+                "Are you sure you want to send the registration request to your advisor? (y/n): ").strip()
             if requestChoice.lower() == "y":
                 self.courseRegSystem.sendRegistrationToAdvisor(student.getRegistration(), student)
                 print("SUCCESS: The registration request has been sent to your advisor\n")
@@ -171,10 +187,10 @@ class CourseRegistrationSimulation:
         try:
             self.__logger.info("Handling advisor login")
 
-            nickname : str = input("Enter your nickname: ")
-            password : str = input("Enter your password: ")
+            nickname: str = input("Enter your nickname: ")
+            password: str = input("Enter your password: ")
 
-            if self.__loginSystem.authenticateAdvisorUser(nickname,password):
+            if self.__loginSystem.authenticateAdvisorUser(nickname, password):
                 if self.__loginSystem.getAdvisor() is not None:
                     print("Login successful!")
                     self.handleAdvisorActions(self.__advisorDBController.getAdvisor())
@@ -295,7 +311,7 @@ class CourseRegistrationSimulation:
     def handleDepartmentSchedulerActions(self, departmentScheduler):
         try:
             self.__logger.info("Handling Department Scheduler Actions")
-            
+
             while True:
                 print()
                 print("----------ACTIONS----------")
@@ -330,7 +346,7 @@ class CourseRegistrationSimulation:
         try:
             self.__logger.info("Handling Course Section times")
             # CourseSectionList
-            self.courseDBController.loadCourseSectionListOfDepartmentScheduler(departmentScheduler)
+            self.__courseDBController.loadCourseSectionListOfDepartmentScheduler(departmentScheduler)
 
             print()
             print("------------Course Sections------------")
@@ -345,39 +361,51 @@ class CourseRegistrationSimulation:
             courseSectionId = f"{courseName}-{sectionId}"
 
             # to define if printed course section exists, call this function
-            self.isCourseSectionExistInDepartment(courseSectionId, departmentScheduler.getCourseSectionList())
+            # self.isCourseSectionExistInDepartment(courseSectionId, departmentScheduler.getCourseSectionList())
 
             # handle the operation about this course section
-            self.handleCourseSectionSettingsMenus(courseSectionId)
+            self.handleCourseSectionSettingsMenus(courseSectionId, departmentScheduler)
 
         except Exception as e:
             self.__logger.error(f"Unexpected error during handleCourseSectionTimesAndClassroom: {str(e)}")
 
-
-    def handleCourseSectionSettingsMenus(self, courseSectionId):
+    def handleCourseSectionSettingsMenus(self, courseSectionId: str, departmentScheduler: DepartmentScheduler):
         try:
             self.__logger.info("Handling Course Section Settings Menus")
-            courseSection = self.courseDBController.loadCourseSection(courseSectionId)
+            courseSection = self.__courseDBController.loadCourseSection(courseSectionId)
 
             isTimeChange = False
             isClassroomChange = False
+
             isTimeValid = False
             isClassroomValid = False
             result = ""
 
+            # to handle classroom and course time selections
+            yesOrNo: str
+
             # Classroom Settings
             if courseSection.getClassroom() is None:
-                yesOrNo = input(f"{courseSection.getId()}'s classroom is empty.\nDo you want to add classroom? (y/n): ").strip()
+                yesOrNo = input(
+                    f"{courseSection.getId()}'s classroom is empty.\nDo you want to add classroom? (y/n): ").strip()
 
+                # understand whether entered input is true or not
                 isTrueInput = False
+
                 while not isTrueInput:
                     if yesOrNo.lower() == "y":
                         isTrueInput = True
                         croomName = input("Please enter the classroom name: ").strip()
-                        isClassroomValid = self.courseDBController.assignClassroomToCourseSection(courseSection, croomName)
+
+                        # changing
+                        isClassroomValid = departmentScheduler.assignClassroomToCourseSection(courseSection, croomName)
+
 
                         if not isClassroomValid:
-                            yesOrNo = input("Do you want to change the classroom of this course section? (y/n): ").strip()
+                            yesOrNo = input(
+                                "Do you want to change the classroom of this course section? (y/n): ").strip()
+
+                            # understand whether entered input is true or not
                             isTrueInputInner = False
 
                             while not isTrueInputInner:
@@ -391,6 +419,8 @@ class CourseRegistrationSimulation:
                                 else:
                                     isTrueInput = False
                                     yesOrNo = input("Please enter a valid input (y/n): ").strip()
+                        else:
+                            isClassroomChange = True
 
                     elif yesOrNo.lower() == "n":
                         result += "There is no classroom for this course section.\n"
@@ -400,17 +430,24 @@ class CourseRegistrationSimulation:
                         yesOrNo = input("Please enter a valid input (y/n): ").strip()
 
             else:
-                yesOrNo = input(f"{courseSection.getId()}'s classroom is {courseSection.getClassroom().getId()}.\nDo you want to change the classroom? (y/n): ").strip()
+
+                yesOrNo = input(
+                    f"{courseSection.getId()}'s classroom is {courseSection.getClassroom()["id"]}.\nDo you want to change the classroom? (y/n): ").strip()
+
 
                 isTrueInput = False
                 while not isTrueInput:
                     if yesOrNo.lower() == "y":
                         isTrueInput = True
                         croomName = input("Please enter the classroom name: ").strip()
-                        isClassroomValid = self.courseDBController.assignClassroomToCourseSection(courseSection, croomName)
+
+                        # changing
+                        isClassroomValid = departmentScheduler.assignClassroomToCourseSection(courseSection, croomName)
+
 
                         if not isClassroomValid:
-                            yesOrNo = input("Do you want to change the classroom of this course section? (y/n): ").strip()
+                            yesOrNo = input(
+                                "Do you want to change the classroom of this course section? (y/n): ").strip()
                             isTrueInputInner = False
 
                             while not isTrueInputInner:
@@ -423,6 +460,8 @@ class CourseRegistrationSimulation:
                                 else:
                                     isTrueInput = False
                                     yesOrNo = input("Please enter a valid input (y/n): ").strip()
+                        else:
+                            isClassroomChange = True
 
                     elif yesOrNo.lower() == "n":
                         isClassroomValid = True
@@ -433,16 +472,18 @@ class CourseRegistrationSimulation:
 
             # Time Settings
             if not courseSection.getScheduledTimes():
-                yesOrNo = input(f"{courseSection.getId()}'s time is empty.\nDo you want to add times for this course section? (y/n): ").strip()
+                yesOrNo = input(
+                    f"{courseSection.getId()}'s time is empty.\nDo you want to add times for this course section? (y/n): ").strip()
 
                 isTrueInput = False
                 while not isTrueInput:
                     if yesOrNo.lower() == "y":
                         isTrueInput = True
-                        isTimeValid = self.courseDBController.assignTimesToCourseSection(courseSection, self.departmentSchedulerDBController.getDepartmentScheduler())
+                        isTimeValid = departmentScheduler.assignTimesToCourseSection(courseSection)
 
                         if not isTimeValid:
-                            yesOrNo = input("Do you want to change the classroom of this course section? (y/n): ").strip()
+                            yesOrNo = input(
+                                "Do you want to change the classroom of this course section? (y/n): ").strip()
                             isTrueInputInner = False
 
                             while not isTrueInputInner:
@@ -456,6 +497,8 @@ class CourseRegistrationSimulation:
                                 else:
                                     isTrueInput = False
                                     yesOrNo = input("Please enter a valid input (y/n): ").strip()
+                        else:
+                            isTimeChange = True
 
                     elif yesOrNo.lower() == "n":
                         result += "There are no saved course section times for this course section."
@@ -465,11 +508,18 @@ class CourseRegistrationSimulation:
                         yesOrNo = input("Please enter a valid input (y/n): ").strip()
 
             else:
+                print()
                 print(f"{courseSection.getId()}'s classroom times are:")
                 for i, scheduledTime in enumerate(courseSection.getScheduledTimes()):
-                    print(f"{i} ==> Day is: {scheduledTime.getCourseDay()}")
-                    print(f"Start time: {scheduledTime.getStartTime()}")
-                    print(f"End time: {scheduledTime.getEndTime()}")
+                    print(f"{i + 1} ==> Day is: {scheduledTime["courseDay"]}")
+                    print(f"Start time: {scheduledTime["startTime"]}")
+                    print(f"End time: {scheduledTime["endTime"]}")
+
+                if courseSection.getCourse()["weeklyCourseHours"] > len(courseSection.getScheduledTimes()):
+                    print(len(courseSection.getScheduledTimes()) , "/" ,
+                        courseSection.getCourse()["weeklyCourseHours"], "of the course section had already saved.")
+                else:
+                    print("All the course section hours had already saved.")
 
                 yesOrNo = input("Do you want to change the times (y/n): ").strip()
 
@@ -477,10 +527,13 @@ class CourseRegistrationSimulation:
                 while not isTrueInput:
                     if yesOrNo.lower() == "y":
                         isTrueInput = True
-                        isTimeValid = self.courseDBController.assignTimesToCourseSection(courseSection, self.departmentSchedulerDBController.getDepartmentScheduler())
+
+                        # changing
+                        isTimeValid = departmentScheduler.assignTimesToCourseSection(courseSection)
 
                         if not isTimeValid:
-                            yesOrNo = input("Do you want to change the classroom of this course section? (y/n): ").strip()
+                            yesOrNo = input(
+                                "Do you want to change the classroom of this course section? (y/n): ").strip()
                             isTrueInputInner = False
 
                             while not isTrueInputInner:
@@ -493,6 +546,8 @@ class CourseRegistrationSimulation:
                                 else:
                                     isTrueInput = False
                                     yesOrNo = input("Please enter a valid input (y/n): ").strip()
+                        else:
+                            isTimeChange = True
 
                     elif yesOrNo.lower() == "n":
                         isTimeValid = True
@@ -502,8 +557,14 @@ class CourseRegistrationSimulation:
                         yesOrNo = input("Please enter a valid input (y/n): ").strip()
 
             if isClassroomValid and isTimeValid:
-                self.courseDBController.isClassroomAvailable(courseSection)
+
+                if ((isTimeChange == False and isClassroomChange == False) and len(courseSection.getScheduledTimes()) > 0):
+                    print("Any course section is not changed.")
+                else:
+                    # changing
+                    departmentScheduler.isClassroomAvailable(courseSection)
             else:
+                print(isClassroomValid, isTimeValid, courseSection.getScheduledTimes())
                 print(f"\nAny course section hour cannot be saved because:\n{result}\n")
 
         except Exception as e:
@@ -525,6 +586,300 @@ class CourseRegistrationSimulation:
 
     def checkStudents(self, advisor):
         print("IN THE NEXT ITERATION IT WILL BE IMPLEMENTED.")
+
+
+    def loginAdmin(self):
+        try:
+            self.__logger.info("Login admin")
+
+            nickname = input("Enter your nickname: ").strip()
+            password = input("Enter your password: ").strip()
+
+            if self.__loginSystem.authenticateAdminUser(nickname, password):
+                if self.__loginSystem.getAdmin() is not None:
+                    print("Login successful!")
+                    self.handleAdminActions(self.__adminDBController.getAdmin())
+            else:
+                print("Invalid nickname or password.")
+                print()
+
+        except IOError as e:
+            self.__logger.error(f"Unexpected error during login admin:: {str(e)}")
+        except Exception as e:
+            self.__logger.error(f"Unexpected error during login admin: {str(e)}")
+
+
+    def handleAdminActions(self, admin):
+        try:
+            self.__logger.info("Handling Admin Actions")
+
+            while True:
+                print()
+                print("----------ACTIONS----------")
+                print("1- Create a new Student")
+                print("2- Create a new Advisor")
+                print("3- Create a new Department Scheduler")
+                print("4- Logout")
+                print("Please choose an action: ", end="")
+
+                try:
+                    choice = int(input())
+
+                    while choice < 1 and choice > 4:
+                        print()
+                        print("Please enter a valid option: ", end="")
+                        choice = int(input())
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
+                    continue
+
+                if choice == 1:
+                    student = self.handleAddStudent()
+                    admin.createNewStudent(student)
+
+                elif choice == 2:
+                    advisor = self.handleAddAdvisor()
+                    admin.createNewAdvisor(advisor)
+
+                elif choice == 3:
+                    departmentScheduler = self.handleAddDepartmentScheduler()
+                    admin.createNewDepartmentScheduler(departmentScheduler)
+
+                elif choice == 4:
+                    self.logout()
+
+                continueChoice = input("Do you want to continue? (If not you will logout) (y/n): ").strip()
+                if continueChoice.lower() == "n":
+                    self.logout()
+                    break
+        except IOError as e:
+            self.__logger.error(f"Unexpected error during handleAdminActions: {str(e)}")
+        except Exception as e:
+            self.__logger.error(f"Unexpected error during handleAdminActions: {str(e)}")
+
+    # It checks whether the user's input is validated.
+    def validateInput(self, prompt, condition, error_message, cast_type=str):
+        while True:
+            try:
+                user_input = cast_type(input(prompt))
+                if condition(user_input):
+                    return user_input
+                else:
+                    print(error_message)
+            except ValueError:
+                print("Invalid Input. Please Try Again!")
+
+    def handleAddStudent(self):
+        try:
+            self.__logger.info("Handling add Student.")
+            studentId = self.validateInput(
+            "Student ID (9 digit): ",
+            lambda x: len(x) == 9 and x.isdigit(),
+            "Student ID is 9 digit and only integer values."
+            )
+
+            firstName = self.validateInput(
+                "First Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Name Field can not be empty!"
+            )
+
+            lastName = self.validateInput(
+                "Last Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Last Name can not be empty!"
+            )
+
+            password = self.validateInput(
+                "Password (at least 3 character): ",
+                lambda x: len(x) >= 3,
+                "Password must be at least 3 characters!"
+            )
+
+            gpa = self.validateInput(
+                "GPA (0.0 between 4.0): ",
+                lambda x: 0.0 <= x <= 4.0,
+                "GPA must be between 0.0 and 4.0!",
+                float
+            )
+
+            advisorId = self.validateInput(
+                "Advisor ID (6 digit): ",
+                lambda x: len(str(x)) == 6,
+                "Advisor ID must be 6 digits!",
+                int
+            )
+
+            departmentName = self.validateInput(
+                "Department Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Department Name can not be empty!"
+            )
+
+            departmentId = self.validateInput(
+                "Department ID: ",
+                lambda x: len(x.strip()) > 0,
+                "Department Id can not be empty!"
+            )
+
+            startYear = self.validateInput(
+                "Start year (between 2000 and 2100): ",
+                lambda x: 2000 <= x <= 2100,
+                "Start year should be between 2000 and 2100!",
+                int
+            )
+
+            year = self.validateInput(
+                "Class (between 1 and 6): ",
+                lambda x: 1 <= x <= 6,
+                "Class must be between 1 and 5!",
+                int
+            )
+
+            term = self.validateInput(
+                "Term (between 1 and 12): ",
+                lambda x: 1 <= x <= 10,
+                "The term must be between 1 and 12!",
+                int
+            )
+
+
+            registerId = "r{}".format(studentId) # Register id must be consistent with student id
+            student = {
+                    "id": studentId,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "password": password,
+                    "gpa": gpa,
+                    "courses": [],  # Default empty
+                    "advisorId": advisorId,
+                    "departments": [
+                        {
+                            "departmentName": departmentName
+                        }
+                    ],
+                    "departmentIds": [departmentId],
+                    "startYear": startYear,
+                    "year": year,
+                    "registrationId": registerId,
+                    "term": term
+                }
+
+        except IOError as e:
+            self.__logger.error(f"Error during add Student: {str(e)}")
+        except Exception as e:
+            self.__logger.error(f"Unexpected error during handleAddStudent: {str(e)}")
+
+        return student
+
+
+    def handleAddAdvisor(self):
+        try:
+            self.__logger.info("Handling add Advisor.")
+            advisorId = self.validateInput(
+            "Advisor ID (6 digit): ",
+            lambda x: len(x) == 6 and x.isdigit(),
+            "Student ID is 6 digit and only integer values."
+            )
+
+            firstName = self.validateInput(
+                "First Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Name Field can not be empty!"
+            )
+
+            lastName = self.validateInput(
+                "Last Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Last Name can not be empty!"
+            )
+
+            password = self.validateInput(
+                "Password (at least 3 character): ",
+                lambda x: len(x) >= 3,
+                "Password must be at least 3 characters!"
+            )
+
+            supervised_students = []
+            print("Enter Supervised Student IDs (9-digit). Type 'done' to finish.")
+
+            while True:
+                student_id = self.validateInput(
+                "Supervised Student ID: ",
+                lambda x: (x.isdigit() and len(x) == 9) or x.lower() == 'done',
+                "Each ID must be a 9-digit number!"
+                )
+
+                if student_id.lower() == 'done':
+                    break
+                supervised_students.append(student_id)
+
+            advisor = {
+                    "id": advisorId,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "password": password,
+                    "supervisedStudentIDs": supervised_students
+                }
+
+        except IOError as e:
+            self.__logger.error(f"Error during add Advisor: {str(e)}")
+        except Exception as e:
+            self.__logger.error(f"Unexpected error during handleAddAdvisor: {str(e)}")
+
+        return advisor
+
+    def handleAddDepartmentScheduler(self):
+        try:
+            self.__logger.info("Handling add Department Schuler.")
+
+            departmentSchedulerId = self.validateInput(
+            "Department Scheduler ID (4 digit): ",
+            lambda x: len(x) == 4 and x.isdigit(),
+            "Department Scheduler ID is 4 digit and only integer values."
+            )
+
+            firstName = self.validateInput(
+                "First Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Name Field can not be empty!"
+            )
+
+            lastName = self.validateInput(
+                "Last Name: ",
+                lambda x: len(x.strip()) > 0,
+                "Last Name can not be empty!"
+            )
+
+            password = self.validateInput(
+                "Password (at least 3 character): ",
+                lambda x: len(x) >= 3,
+                "Password must be at least 3 characters!"
+            )
+
+            departmentId = self.validateInput(
+                "Department ID: ",
+                lambda x: len(x.strip()) > 0,
+                "Department Id can not be empty!"
+            )
+
+            departmentScheduler = {
+                    "id": departmentSchedulerId,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "password": password,
+                    "departmentId": departmentId,
+                    "courseSectionList": [] #Default is empty
+                }
+
+        except IOError as e:
+            self.__logger.error(f"Error during add Department Scheduler: {str(e)}")
+        except Exception as e:
+            self.__logger.error(f"Unexpected error during handleAddDepartmentScheduler: {str(e)}")
+
+        return departmentScheduler
+
+
 
     def logout(self):
         # Save the final state to JSON or database

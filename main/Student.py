@@ -12,9 +12,10 @@ class Student:
     __year: int
     __term: int
     __registrationId: str
+    __transcript = None
 
     def __init__(self, id, firstName, lastName, password, gpa, courses=None, advisorId=0,
-                 departments=None, departmentIds=None, startYear=0, year=0, term=0, registrationId=""):
+                 departments=None, departmentIds=None, startYear=0, year=0, term=0, registrationId="", transcript=None):
         self.__id = id
         self.__firstName = firstName
         self.__lastName = lastName
@@ -28,47 +29,117 @@ class Student:
         self.__year = year
         self.__term = term
         self.__registrationId = registrationId
+        self.__transcript = transcript or {}
 
+    def getTranscript(self):
+        return self.__transcript
 
+    def setTranscript(self, transcript):
+        self.__transcript = transcript
+
+    def addCourseRecordToTranscript(self, course, grade, term):
+        if "courseRecords" not in self.__transcript:
+            self.__transcript["courseRecords"] = []
         
-    def printWeeklyScheduleAsTable(self):
-        if not self.__registration or not self.__registration.getCourseSections():
-            print("No courses registered for this student.")
+        self.__transcript["courseRecords"].append({
+            "course": course,
+            "grade": grade,
+            "term": term
+        })
+
+    def calculateGPA(self):
+        if "courseRecords" not in self.__transcript or not self.__transcript["courseRecords"]:
+            return 0.0
+
+        total_credits = 0
+        total_points = 0
+        grade_to_points = {
+            "AA": 4.0, "BA": 3.5, "BB": 3.0, "CB": 2.5, "CC": 2.0,
+            "DC": 1.5, "DD": 1.0, "FD": 0.5, "FF": 0.0
+        }
+
+        for record in self.__transcript["courseRecords"]:
+            grade = record["grade"]
+            credit = record["course"]["credit"]
+            
+            if grade in grade_to_points:
+                total_credits += credit
+                total_points += grade_to_points[grade] * credit
+
+        self.__gpa = total_points / total_credits if total_credits > 0 else 0.0
+        return self.__gpa
+
+    def printTranscript(self):
+        if not self.__transcript or "courseRecords" not in self.__transcript:
+            print("Transcript is empty.")
             return
 
-        days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-        time_slots = [
-            "08:00 - 09:00", "09:00 - 10:00",
-            "10:00 - 11:00", "11:00 - 12:00",
-            "12:00 - 13:00", "13:00 - 14:00",
-            "14:00 - 15:00", "15:00 - 16:00",
-            "16:00 - 17:00", "17:00 - 18:00"
-        ]
+        term_gpa = {}
+        term_credits = {}
+        cumulative_credits = 0
+        cumulative_points = 0
+        grade_to_points = {
+            "AA": 4.0, "BA": 3.5, "BB": 3.0, "CB": 2.5, "CC": 2.0,
+            "DC": 1.5, "DD": 1.0, "FD": 0.5, "FF": 0.0
+        }
 
-        column_width = 25
-        schedule_table = [["" for _ in days] for _ in time_slots]
+        # Calculate term GPAs
+        for record in self.__transcript["courseRecords"]:
+            term = record["term"]
+            course = record["course"]
+            grade = record["grade"]
+            credit = course["credit"]
 
-        for section in self.__registration.getCourseSections():
-            for time in section.getScheduledTimes():
-                course_day = time.getCourseDay()
-                start_time = time.getStartTime()
-                end_time = time.getEndTime()
+            if term not in term_gpa:
+                term_gpa[term] = 0
+                term_credits[term] = 0
 
-                start_index = next((i for i, slot in enumerate(time_slots) if slot.startswith(start_time[:5])), -1)
-                end_index = next((i for i, slot in enumerate(time_slots) if slot.endswith(end_time[:5])), -1)
-                day_index = next((i for i, day in enumerate(days) if day.lower() == course_day.lower()), -1)
+            if grade in grade_to_points:
+                term_gpa[term] += grade_to_points[grade] * credit
+                term_credits[term] += credit
 
-                if start_index != -1 and end_index != -1 and day_index != -1:
-                    for i in range(start_index, end_index + 1):
-                        schedule_table[i][day_index] = f"{section.getCourseId()} ({section.getClassroom().getId()})"
+        # Print transcript
+        print(f"{'Course ID':<10} {'Course Name':<50} {'Credit':<10} {'Grade':<10} {'Term':<5}")
+        print("-" * 90)
 
-        print(f"Weekly Schedule for Student ID: {self.getId()}")
-        print(f"{'Time':<15}" + "".join(f"| {day:<{column_width}}" for day in days))
-        print("-" * (15 + (column_width + 3) * len(days)))
+        current_term = None
+        for record in self.__transcript["courseRecords"]:
+            course = record["course"]
+            term = record["term"]
 
-        for i, time_slot in enumerate(time_slots):
-            print(f"{time_slot:<15}" + "".join(f"| {schedule_table[i][j]:<{column_width}}" for j in range(len(days))))
-            print("-" * (15 + (column_width + 3) * len(days)))
+            # Print separator for new terms
+            if term != current_term:
+                if current_term is not None:
+                    print("-" * 90)
+                    term_gpa_value = term_gpa[current_term] / term_credits[current_term] if term_credits[current_term] > 0 else 0.0
+                    cumulative_credits += term_credits[current_term]
+                    cumulative_points += term_gpa[current_term]
+                    cumulative_gpa = cumulative_points / cumulative_credits if cumulative_credits > 0 else 0.0
+                    print(f"Term {current_term} GPA: {term_gpa_value:.2f} | Cumulative GPA: {cumulative_gpa:.2f}")
+                    print("-" * 90)
+                current_term = term
+
+            print(f"{course['id']:<10} {course['name']:<50} {course['credit']:<10} {record['grade']:<10} {term:<5}")
+
+        # Print final term's GPA and cumulative GPA
+        if current_term is not None:
+            print("-" * 90)
+            term_gpa_value = term_gpa[current_term] / term_credits[current_term] if term_credits[current_term] > 0 else 0.0
+            cumulative_credits += term_credits[current_term]
+            cumulative_points += term_gpa[current_term]
+            cumulative_gpa = cumulative_points / cumulative_credits if cumulative_credits > 0 else 0.0
+            print(f"Term {current_term} GPA: {term_gpa_value:.2f} | Cumulative GPA: {cumulative_gpa:.2f}")
+            print("-" * 90)
+
+        # Print overall summary
+        print("Summary:")
+        print("-" * 90)
+        print(f"Total Credits: {self.__transcript.get('totalCredit', 0):<10}")
+        print(f"Final GPA: {self.__transcript.get('GPA', 0.0):.2f}")
+
+
+
+    # Existing methods remain unchanged...
 
     def getId(self):
         return self.__id
