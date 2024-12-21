@@ -12,11 +12,10 @@ class CourseRegistrationSystem:
     __allAdvisors: list
     __allCourseSections: list
     __allDepartments: list
-    __dataHandler: DataHandler
     __courseDBController: CourseDBController
     def __init__(self):
-        # Initialize all_course_sections with data from data_handler
-        self.setAllCourseSections(self.__dataHandler.getCourseSectionList())
+        # Initialize allcourseSections with data from data_handler
+    #    self.setAllCourseSections(self.__dataHandler.getCourseSectionList())
 
     def getAllStudents(self):
         return self.__allStudents
@@ -42,8 +41,7 @@ class CourseRegistrationSystem:
     def setAllDepartments(self, allDepartments):
         self.__allDepartments = allDepartments
 
-    def getDataHandler(self):
-        return self.__dataHandler
+
 
 
     #---------------------------------UPDATEDATA KULLANILMIYOR -----------------------------------------------
@@ -150,24 +148,24 @@ class CourseRegistrationSystem:
                     enrollCourseSection.getEnrolledStudents().add(student)
 
 
-    def saveLastState(self): #throws IOException
-        try:
-            for student in self.getAllStudents():
-                self.__dataHandler.storeObject(student)
-                self.__dataHandler.removeDuplicateData()
+    #def saveLastState(self): #throws IOException
+    #   try:
+    #        for student in self.getAllStudents():
+    #            self.__dataHandler.storeObject(student)
+    #            self.__dataHandler.removeDuplicateData()
 
-            for courseSection in self.getAllCourseSections():
-                self.__dataHandler.storeObject(courseSection)
-                self.__dataHandler.removeDuplicateData()
+    #        for courseSection in self.getAllCourseSections():
+    #            self.__dataHandler.storeObject(courseSection)
+    #            self.__dataHandler.removeDuplicateData()
 
-            for advisor in self.getAllAdvisors():
-                self.__dataHandler.storeObject(advisor)
-                self.__dataHandler.removeDuplicateData()
+    #        for advisor in self.getAllAdvisors():
+    #            self.__dataHandler.storeObject(advisor)
+    #            self.__dataHandler.removeDuplicateData()
                 
-        except Exception as e:
+    #    except Exception as e:
             # Input hatası olabilir
-            print(f"Bir hata oluştu: {e}")
-            raise
+    #        print(f"Bir hata oluştu: {e}")
+    #        raise
 
     def checkEligibility(self, student: Student):
         if self.checkPrerequisite(student) and self.checkCourseSectionFull(student):
