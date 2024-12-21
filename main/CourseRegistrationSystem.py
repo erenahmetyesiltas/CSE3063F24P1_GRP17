@@ -15,6 +15,7 @@ class CourseRegistrationSystem:
     __courseDBController: CourseDBController
     def __init__(self):
     #    self.setAllCourseSections(self.__dataHandler.getCourseSectionList())
+        pass
 
     def getAllStudents(self):
         return self.__allStudents
