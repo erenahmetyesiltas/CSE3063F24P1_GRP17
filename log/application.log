@@ -131,3 +131,8 @@
 2024-12-21 13:29:05,503 - ERROR - Error during handling Course Section Settings Menus: 'NoneType' object has no attribute 'getClassroom'
 2024-12-21 13:29:10,656 - INFO - Handling Course Section times
 2024-12-21 13:29:12,869 - INFO - Handling Course Section Settings Menus
+2024-12-21 14:04:56,145 - INFO - Simulation started.
+2024-12-21 14:04:57,365 - INFO - Login department scheduler
+2024-12-21 14:04:59,403 - INFO - Handling Department Scheduler Actions
+2024-12-21 14:05:00,656 - INFO - Handling Course Section times
+2024-12-21 14:05:03,679 - INFO - Handling Course Section Settings Menus
