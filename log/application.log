@@ -107,3 +107,32 @@
 2024-12-20 16:56:41,434 - INFO - Login admin
 2024-12-20 16:56:43,906 - INFO - Handling Admin Actions
 2024-12-20 16:56:45,170 - INFO - Handling add Department Schuler.
+2024-12-21 16:25:18,615 - INFO - Simulation started.
+2024-12-21 16:26:24,420 - INFO - Creating a new registration
+2024-12-21 16:26:24,421 - INFO - Creating registration for student: 150111222
+2024-12-21 16:26:24,421 - ERROR - An error occurred creating registration for student: 'CourseRegistrationSimulation' object has no attribute 'courseRegSystem'
+2024-12-21 16:26:35,018 - INFO - Creating a new registration
+2024-12-21 16:26:35,018 - INFO - Creating registration for student: 150111222
+2024-12-21 16:26:35,019 - ERROR - An error occurred creating registration for student: 'CourseRegistrationSimulation' object has no attribute 'courseRegSystem'
+2024-12-21 16:28:37,110 - INFO - Simulation started.
+2024-12-21 16:29:57,204 - INFO - Handling advisor login
+2024-12-21 16:31:39,954 - INFO - Simulation started.
+2024-12-21 16:31:41,723 - ERROR - Unexpected error: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-21 16:31:41,723 - INFO - Simulation ended.
+2024-12-21 16:32:33,966 - INFO - Simulation started.
+2024-12-21 16:32:35,678 - ERROR - Unexpected error: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-21 16:32:35,678 - INFO - Simulation ended.
+2024-12-21 16:33:05,370 - INFO - Simulation started.
+2024-12-21 16:34:27,671 - INFO - Simulation started.
+2024-12-21 16:35:55,286 - INFO - Creating a new registration
+2024-12-21 16:35:55,286 - INFO - Creating registration for student: 150111222
+2024-12-21 16:35:55,286 - ERROR - An error occurred creating registration for student: 'CourseRegistrationSimulation' object has no attribute 'courseRegSystem'
+2024-12-21 16:36:05,434 - INFO - Creating a new registration
+2024-12-21 16:36:05,434 - INFO - Creating registration for student: 150111222
+2024-12-21 16:36:05,434 - ERROR - An error occurred creating registration for student: 'CourseRegistrationSimulation' object has no attribute 'courseRegSystem'
+2024-12-21 16:36:22,656 - INFO - Creating a new registration
+2024-12-21 16:36:22,656 - INFO - Creating registration for student: 150111222
+2024-12-21 16:36:22,656 - ERROR - An error occurred creating registration for student: 'CourseRegistrationSimulation' object has no attribute 'courseRegSystem'
+2024-12-21 16:36:58,712 - INFO - Creating a new registration
+2024-12-21 16:36:58,712 - INFO - Creating registration for student: 150111222
+2024-12-21 16:36:58,712 - ERROR - An error occurred creating registration for student: 'CourseRegistrationSimulation' object has no attribute 'courseRegSystem'
