@@ -151,12 +151,12 @@ class CourseRegistrationSimulation:
         try:
             self.__logger.info(f"Creating registration for student: {student.getId()}")
             # self.courseRegSystem.printSuitableCourses()
-            self.courseRegSystem.printSuitableCoursesRemake(student)
+            self.__courseRegistrationSystem.printSuitableCoursesRemake(student)
 
             while True:
                 addCourse = input("\nDo you want to add courses? (y/n): ").strip()
                 if addCourse.lower() == "y":
-                    self.courseRegSystem.readCourses(student)
+                    self.__courseRegistrationSystem.readCourses(student)
                 elif addCourse.lower() == "n":
                     break
                 else:
@@ -172,7 +172,7 @@ class CourseRegistrationSimulation:
             requestChoice = input(
                 "Are you sure you want to send the registration request to your advisor? (y/n): ").strip()
             if requestChoice.lower() == "y":
-                self.courseRegSystem.sendRegistrationToAdvisor(student.getRegistration(), student)
+                self.__courseRegistrationSystem.sendRegistrationToAdvisor(student.getRegistration(), student)
                 print("SUCCESS: The registration request has been sent to your advisor\n")
             else:
                 student.setRegistration(None)
