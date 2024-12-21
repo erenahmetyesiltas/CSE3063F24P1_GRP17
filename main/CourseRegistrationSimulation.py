@@ -1,3 +1,10 @@
+# Append upper folder's path
+import os
+import sys
+
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from LoginSystem import LoginSystem
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.CourseDBController import CourseDBController
@@ -9,6 +16,10 @@ from SingletonLogger import SingletonLogger
 from SingletonLogger import SingletonLogger
 from main.Classroom import Classroom
 from main.DepartmentScheduler import DepartmentScheduler
+import Classroom
+import CourseSection
+import Course
+import CourseTime
 
 
 class CourseRegistrationSimulation:
@@ -44,7 +55,10 @@ class CourseRegistrationSimulation:
         self.__student_db_controller = StudentDBController()
         self.__departmentSchedulerDBController = DepartmentSchedulerDBController()
         self.__adminDBController = AdminDBController()
+
         self.__courseDBController = CourseDBController()
+
+
         self.__courseRegistrationSystem = courseRegSystem
         self.__loginSystem = LoginSystem(self.__student_db_controller,
                                          self.__advisorDBController,
@@ -431,8 +445,7 @@ class CourseRegistrationSimulation:
 
             else:
 
-                yesOrNo = input(
-                    f"{courseSection.getId()}'s classroom is {courseSection.getClassroom()["id"]}.\nDo you want to change the classroom? (y/n): ").strip()
+                yesOrNo = input(f"{courseSection.getId()}'s classroom is {courseSection.getClassroom().getId()}.\nDo you want to change the classroom? (y/n): ").strip()
 
 
                 isTrueInput = False
@@ -511,9 +524,9 @@ class CourseRegistrationSimulation:
                 print()
                 print(f"{courseSection.getId()}'s classroom times are:")
                 for i, scheduledTime in enumerate(courseSection.getScheduledTimes()):
-                    print(f"{i + 1} ==> Day is: {scheduledTime["courseDay"]}")
-                    print(f"Start time: {scheduledTime["startTime"]}")
-                    print(f"End time: {scheduledTime["endTime"]}")
+                    print(f"{i + 1} ==> Day is: {scheduledTime.getCourseDay()}")
+                    print(f"Start time: {scheduledTime.getStartTime()}")
+                    print(f"End time: {scheduledTime.getEndTime()}")
 
                 if courseSection.getCourse()["weeklyCourseHours"] > len(courseSection.getScheduledTimes()):
                     print(len(courseSection.getScheduledTimes()) , "/" ,
@@ -743,7 +756,6 @@ class CourseRegistrationSimulation:
                 int
             )
 
-
             registerId = "r{}".format(studentId) # Register id must be consistent with student id
             student = {
                     "id": studentId,
@@ -819,7 +831,11 @@ class CourseRegistrationSimulation:
                     "firstName": firstName,
                     "lastName": lastName,
                     "password": password,
-                    "supervisedStudentIDs": supervised_students
+
+                    "supervisedStudentIDs": supervised_students,
+
+                    "supervisedStudentIDs": supervised_students 
+
                 }
 
         except IOError as e:
