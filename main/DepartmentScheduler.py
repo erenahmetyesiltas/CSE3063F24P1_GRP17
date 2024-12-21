@@ -197,11 +197,14 @@ class DepartmentScheduler(Staff):
         # If conflict its times with other same department course sections
         # Iterator should be used (!!! must be change !!!)
 
+        emptyCourseTime = CourseTime()
+        courseSection.getScheduledTimes().insert(0,emptyCourseTime)
         iterator = iter(courseSection.getScheduledTimes())
 
         while True:
 
             try:
+
                 scheduledTime = next(iterator)
 
                 for item in list(iterator):
@@ -231,6 +234,8 @@ class DepartmentScheduler(Staff):
 
             except StopIteration:
                 break
+
+        del courseSection.getScheduledTimes()[0]
 
         if enteredValidCourseSectionTime > 0:
             return True
@@ -289,8 +294,7 @@ class DepartmentScheduler(Staff):
                     if allCourseSectionsList[i].getClassroom() == None:
                         continue
                     # if they have the different classroom then continue
-                    elif (classroom["id"] != allCourseSectionsList[i].getClassroom()["id"]
-                          or classroom["id"] == "UZEM"):
+                    elif (classroom["id"] == "UZEM" or classroom["id"] != allCourseSectionsList[i].getClassroom()["id"]):
                         continue
                     # if any course section hour not in a course section, then continue
                     elif len(allCourseSectionsList[i].getScheduledTimes()) == 0:

@@ -545,6 +545,7 @@ class CourseRegistrationSimulation:
                     # changing
                     departmentScheduler.isClassroomAvailable(courseSection)
             else:
+                print(isClassroomValid, isTimeValid, courseSection.getScheduledTimes())
                 print(f"\nAny course section hour cannot be saved because:\n{result}\n")
 
         except Exception as e:

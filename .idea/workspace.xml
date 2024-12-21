@@ -6,14 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="75647eeb-1db9-4a08-a6f9-a09a28752173" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/courseSections/CSE1241-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/CSE1241-1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/courseSections/EE2032-2.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/EE2032-2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/courseSections/IE3081-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/IE3081-1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/courseSections/TRD121-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/TRD121-1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/courseSections/TRD122-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/TRD122-1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Classroom.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Classroom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/courseSections/CSE4074-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/CSE4074-1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/courseSections/CSE4219-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/CSE4219-1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/courseSections/ISG121-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/ISG121-1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/courseSections/ISG122-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/courseSections/ISG122-1.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/CourseRegistrationSimulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseRegistrationSimulation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/CourseSection.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseSection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/DepartmentScheduler.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/DepartmentScheduler.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
