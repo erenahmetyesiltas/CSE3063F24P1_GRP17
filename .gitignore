@@ -16,5 +16,9 @@
 .idea/workspace.xml
 .log
 .idea/
-main/__pycache__
-databaseController/__pycache__
+main/__pycache__/
+databaseController/__pycache__/
+main\__pycache__\
+databaseController\__pycache__\
+*.pyc
+*.log
