@@ -16,3 +16,5 @@
 .idea/workspace.xml
 .log
 .idea/
+main/__pycache__
+databaseController/__pycache__
