@@ -16,7 +16,7 @@ class Admin:
     __advisorDBController : AdvisorDBController = None
     __departmentSchedulerDBController : DepartmentSchedulerDBController = None
 
-    def __init__(self, id, firstName, lastName, password):
+    def __init__(self, id = "", firstName = "", lastName = "", password = ""):
         self.__id = id
         self.__firstName = firstName
         self.__lastName = lastName

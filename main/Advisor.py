@@ -1,6 +1,12 @@
 from contextlib import nullcontext
 from io import StringIO
 
+import Student
+from main.Registration import Registration
+
+
+
+
 class Advisor:
     __id : str
     __firstName : str
@@ -11,15 +17,30 @@ class Advisor:
     __supervisedStudents = []
     __registrations = []
 
-    def __init__(self, id, firstName, lastName, password, registrationsIDs, supervisedStudentsIDs, supervisedStudents = None, registrations = None):
+    def __init__(self, id = "", firstName = "", lastName = "", password = "", registrationsIDs = [], supervisedStudentsIDs = [], supervisedStudents = [], registrations = []):
         self.__id = id
         self.__firstName = firstName
         self.__lastName = lastName
         self.__password = password
         self.__registrationIDs = registrationsIDs
         self.__supervisedStudentsIDs = supervisedStudentsIDs
-        self.__supervisedStudents = supervisedStudents
-        self.__registrations = registrations
+
+        if (len(supervisedStudents) != 0 and type(supervisedStudents[0]) == dict) :
+            for i in range(len(supervisedStudents)) :
+                supervisedStudents[i] = Student(**supervisedStudents[i])
+
+            self.__supervisedStudents = supervisedStudents
+        else :
+            self.__supervisedStudents = supervisedStudents
+
+        if (len(registrations) != 0 and type(registrations[0]) == dict) :
+            for i in range(len(registrations)):
+                registrations[i] = Registration(**registrations[i])
+
+            self.__registrations = registrations
+        else :
+            self.__registrations = registrations
+
 
 
     def getId(self):

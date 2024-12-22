@@ -13,6 +13,9 @@ class CourseDBController:
     __courseSectionList : List[CourseSection]
     __courseList : List[Course]
 
+    def __init__(self):
+        pass
+
     def getCourseSectionList(self):
         return self.__courseSectionList
 
@@ -104,8 +107,6 @@ class CourseDBController:
 
     def getAllCourseSections(self):
 
-        courseSections : List[CourseSection]
-
         # Find the course section json path
         current_dir = Path(__file__).parent
 
@@ -115,7 +116,7 @@ class CourseDBController:
 
         courseSectionJsonFiles = relative_path.glob("*.json")
 
-        courseSection : CourseSection
+        courseSections = []
 
         for courseSectionJsonFile in courseSectionJsonFiles:
             try:

@@ -1,21 +1,30 @@
-import string
+
 from typing import List
 
-from databaseController import AdvisorDBController, StudentDBController
+from databaseController.AdvisorDBController import AdvisorDBController
+from databaseController.StudentDBController import StudentDBController
 from databaseController.CourseDBController import CourseDBController
-from main import Course, Student, Registration,CourseSection,DataHandler
+
+from main.Course import Course
+from main.Student import Student
+from main.Registration import Registration
+from main.CourseSection import CourseSection
+from main.CourseTime import CourseTime
 
 
 
 class CourseRegistrationSystem:
-    __allStudents: list
-    __allAdvisors: list
-    __allCourseSections: list
-    __allDepartments: list
-    __courseDBController: CourseDBController
-    def __init__(self):
+
+    def __init__(self, courseDBController=CourseDBController(), advisorDBController=AdvisorDBController(), studentDBController=StudentDBController()):
     #    self.setAllCourseSections(self.__dataHandler.getCourseSectionList())
-        pass
+        self.__allStudents = []
+        self.__allAdvisors =[]
+        self.__allCourseSections = []
+        self.__allDepartments = []
+        self.__courseDBController = courseDBController
+        self.__advisorDBController = advisorDBController
+        self.__studentDBController = studentDBController
+
 
     def getAllStudents(self):
         return self.__allStudents
@@ -54,11 +63,13 @@ class CourseRegistrationSystem:
         print("\nThe available courses that you can register")
         print("Course:                Section:                Lecturer:")
 
-        appropriateCourseSections: list[CourseSection] = self.__courseDBController.getCourseSectionListAppropriate(student)
+
+        appropriateCourseSections = self.__courseDBController.getAllCourseSections()
 
         for courseSection in appropriateCourseSections:
             fullNameOfLecturer = courseSection.getLecturer().getFirstName() + " " + courseSection.getLecturer().getLastName()
-            print("%-23s%-24d%-23s\n", courseSection.getCourse().getId(), courseSection.getSectionNumber(), fullNameOfLecturer)
+            print(
+                f"{courseSection.getCourse().getId():<23}{courseSection.getSectionNumber():<24}{fullNameOfLecturer:<23}")
 
 
     def findCourseSection(self,course: str ,section: str):
@@ -67,23 +78,25 @@ class CourseRegistrationSystem:
         except ValueError:
             print("section parameter is different than int")
 
-        for courseSection in self.getAllCourseSections():
+        for courseSection in self.__courseDBController.getAllCourseSections():
             if courseSection.getCourse().getId() == course and courseSection.getSectionNumber() == sectionNumber:
                 return courseSection
 
         return None
 
     def readCourses(self,student: Student):
-        course : str = input("Enter the course: ")
-        courseSection : str= input("Enter the course section: ")
+        course = input("Enter the course: ")
+        courseSection = input("Enter the course section: ")
 
-        if self.findCourseSection(course,courseSection) != None:
-            if self.checkRegistrationTimeConflict(student,self.findCourseSection(course,courseSection)):
+        if self.findCourseSection(course,courseSection) != "":
+            if self.checkRegistrationTimeConflict(student, self.findCourseSection(course, courseSection)):
                 print("WARNING: The hours of the course you want to add conflict with the courses you added.")
                 return False
 
             else:
-                return student.getRegistration().addCourseSection((self.findCourseSection(course, courseSection)))
+                registration: Registration = student.getRegistration()
+                return registration.addCourseSection((self.findCourseSection(course, courseSection)))
+                print("eklendi")
 
         else:
             print("WARNING: The course section entered cannot find in available courses.")
@@ -91,39 +104,45 @@ class CourseRegistrationSystem:
 
 
     def checkRegistrationTimeConflict(self,student: Student, newAddedCourseSection: CourseSection):
-        for eachCourseSection in student.getRegistration().getCourseSections():
-            for courseTime in eachCourseSection.getScheduledTimes():
-                for newCourseTime in newAddedCourseSection.getScheduledTimes():
-                    if courseTime.getCourseDay() == newCourseTime.getCourseDay():
-                        if courseTime.getStartTime() < (newCourseTime.getEndTime()) and newCourseTime.getStartTime()< (courseTime.getEndTime()):
-                            return True
-                        elif courseTime.getStartTime() == newCourseTime.getStartTime() and courseTime.getEndTime() == newCourseTime.getEndTime() :
-                            return True
+        registration: Registration = student.getRegistration()
+        if(registration.getCourseSections()== []):
+            return False
+        else:
+            for eachCourseSection in registration.getCourseSections():
+                eachCourseSection: CourseSection
+                for courseTime in eachCourseSection.getScheduledTimes():
+                    courseTime: CourseTime
+                    for newCourseTime in newAddedCourseSection.getScheduledTimes():
+                        newCourseTime: CourseTime
+                        if courseTime.getCourseDay() == newCourseTime.getCourseDay():
+                            if courseTime.getStartTime() < (newCourseTime.getEndTime()) and newCourseTime.getStartTime() < (courseTime.getEndTime()):
+                                return True
+                            elif courseTime.getStartTime() == newCourseTime.getStartTime() and courseTime.getEndTime() == newCourseTime.getEndTime():
+                                return True
 
-        return False
+            return False
 
 
     def sendRegistrationToAdvisor(self, registration : Registration, student: Student): # throws IOException
         try:
             # First, loadstudent's advisor & match it with student.advisor
-            advisorDBController : AdvisorDBController
-            advisorDBController.loadAdvisor(str(student.getAdvisorId()))
-            student.setAdvisor(advisorDBController.getAdvisor())
-            student.getAdvisor().addRegistration(registration)
+
+            self.__advisorDBController.loadAdvisor(str(student.getAdvisorId()))
+            student.setAdvisor(self.__advisorDBController.getAdvisor())
+            student.getAdvisor().getRegistrationIDs().append(registration.getId())
 
             #Save the registration and Advisor's registration.
-            studentDBController : StudentDBController
-            studentDBController.setStudent(student)
-            studentDBController.saveStudent(student.getId())
-            studentDBController.saveStudentRegistration(student.getId())
-            advisorDBController.saveAdvisor(str(student.getAdvisorId()))
+
+            self.__studentDBController.setStudent(student)
+            self.__studentDBController.saveStudent(student)
+            self.__advisorDBController.saveAdvisor(student.getAdvisor())
 
         except Exception as e:
             # Input hatası olabilir
             print(f"Bir hata oluştu: {e}")
             raise
 
-    def getStudentRegistrationStatus(self,student : Student):
+    def getStudentRegistrationStatus(self, student: Student):
         registration : Registration = student.getRegistration()
         registrationStatus : int = registration.getRegistrationStatus()
 

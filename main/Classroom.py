@@ -5,7 +5,7 @@ class Classroom :
     __id : str
     __capacity : int
 
-    def __init__(self, id : str, capacity : int):
+    def __init__(self, id : str = "", capacity : int = 0):
         self.__id = id
         self.__capacity = capacity
 

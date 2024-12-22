@@ -1,16 +1,41 @@
 
+from typing import List
+
+
+from main.Department import Department
 
 class Course :
-    __id : str
-    __credit : int
-    __departments : []
-    __term : int
-    __prerequisiteCourses : []
-    __name : str
-    __weeklyCourseHours : int
+    __id: str
+    __credit: int
+    __departments: []  #
+    __term: int
+    __prerequisiteCourses:[]
+    __name: str
+    __weeklyCourseHours: int
 
-    def __init__(self):
-        pass
+    def __init__(self,id="",credit=0,departments=[],term=0,prerequisiteCourses=[],name="",weeklyCourseHours=0):
+        self.__id = id
+        self.__credit = credit
+        self.__term = term
+        self.__name = name
+        self.__weeklyCourseHours = weeklyCourseHours
+
+        if (len(prerequisiteCourses) != 0 and type(prerequisiteCourses[0]) == dict):
+            for i in range(len(prerequisiteCourses)):
+                prerequisiteCourses[i] = Course(**prerequisiteCourses[i])
+
+            self.__prerequisiteCourses = prerequisiteCourses
+        else:
+            self.__prerequisiteCourses = prerequisiteCourses
+
+        if (len(departments) != 0 and type(departments[0]) == dict):
+            for i in range(len(departments)):
+                departments[i] = Department(**departments[i])
+
+            self.__departments = departments
+        else:
+            self.__departments = departments
+
 
     def getId(self):
         return self.__id

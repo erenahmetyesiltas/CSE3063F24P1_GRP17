@@ -24,7 +24,7 @@ class LoginSystem:
     __departmentSchedulerDBController: DepartmentSchedulerDBController
     __adminDBController: AdminDBController
 
-    def __init__(self, studentDBController, advisorDBController, departmentSchedulerDBController, adminDBController):
+    def __init__(self, studentDBController = "", advisorDBController = "", departmentSchedulerDBController = "", adminDBController = ""):
         self.__studentDBController = studentDBController
         self.__advisorDBController = advisorDBController
         self.__departmentSchedulerDBController = departmentSchedulerDBController

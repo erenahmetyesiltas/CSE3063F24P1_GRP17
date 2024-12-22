@@ -6,6 +6,18 @@ class AdvisorDBController:
 
     __advisor : Advisor
 
+    def __init__(self):
+        pass
+
+    def saveAdvisor(self, advisor):
+        current_dir = Path(__file__).parent
+        advisorId = advisor.getId()
+        advisorJsonPath = "{}{}".format(advisorId, ".json")
+
+        relative_path = current_dir / "../database/advisors" / advisorJsonPath
+
+        with open(relative_path, "w") as json_file:
+            json.dump(advisor, json_file, indent=4)
     def loadAdvisor(self,advisorId):
 
         current_dir = Path(__file__).parent

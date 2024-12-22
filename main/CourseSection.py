@@ -2,11 +2,11 @@ from dataclasses import dataclass
 from tkinter import Listbox
 from typing import List
 
-import Classroom
-import Course
-import Lecturer
+from main.Classroom import Classroom
+from main.Course import Course
+from main.Lecturer import Lecturer
 from main.CourseTime import CourseTime
-from main.Student import Student
+import Student
 
 class CourseSection :
     __enrolledStudents : List[Student]
@@ -19,17 +19,48 @@ class CourseSection :
     __courseId : str
     __lecturer : Lecturer
 
-    def __init__(self, enrolledStudents : List[Student], classroom : Classroom, id : str, scheduledTimes : List[CourseTime],
-                 sectionNumber : int, course : Course, capacity : int, courseId : str, lecturer : Lecturer):
-        self.__enrolledStudents = enrolledStudents
-        self.__classroom = classroom
+    def __init__(self, enrolledStudents : List[Student] = [], classroom : Classroom = "", id : str = "", scheduledTimes : List[CourseTime] = [],
+                 sectionNumber : int = 0, course : Course = "", capacity : int = 0, courseId : str = "", lecturer : Lecturer = ""):
+
+        if (len(enrolledStudents) != 0 and type(enrolledStudents[0]) == dict) :
+            for i in range(len(enrolledStudents)) :
+                enrolledStudents[i] = Student(**enrolledStudents[i])
+
+            self.__enrolledStudents = enrolledStudents
+        else :
+            self.__enrolledStudents = enrolledStudents
+
+        if (type(classroom) == dict) :
+            self.__classroom = Classroom(**classroom)
+        else :
+            self.__classroom = classroom
+
         self.__id = id
-        self.__scheduledTimes = scheduledTimes
+
+        if (len(scheduledTimes) != 0 and type(scheduledTimes[0]) == dict) :
+            for i in range(len(scheduledTimes)):
+                scheduledTimes[i] = CourseTime(**scheduledTimes[i])
+
+            self.__scheduledTimes = scheduledTimes
+        else :
+            self.__scheduledTimes = scheduledTimes
+
         self.__sectionNumber = sectionNumber
-        self.__course = course
+
+        if (type(course) == dict) :
+            self.__course = Course(**course)
+        else :
+            self.__course = course
+
         self.__capacity = capacity
         self.__courseId = courseId
-        self.__lecturer = lecturer
+
+        if (type(lecturer) == dict) :
+            self.__lecturer = Lecturer(**lecturer)
+        else :
+            self.__lecturer = lecturer
+
+
 
     def toDict(self):
         return {
