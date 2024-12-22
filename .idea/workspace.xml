@@ -5,24 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75647eeb-1db9-4a08-a6f9-a09a28752173" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/database/admins/2121.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/registrations/r150111222.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/students/150111222.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/databaseController/AdminDBController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/Admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/DepartmentHead.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/students/150121017.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/students/150121017.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/databaseController/AdvisorDBController.py" beforeDir="false" afterPath="$PROJECT_DIR$/databaseController/AdvisorDBController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/databaseController/DepartmentSchedulerDBController.py" beforeDir="false" afterPath="$PROJECT_DIR$/databaseController/DepartmentSchedulerDBController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/databaseController/StudentDBController.py" beforeDir="false" afterPath="$PROJECT_DIR$/databaseController/StudentDBController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/advisors/999111.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/advisors/999111.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/registrations/r150121017.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/registrations/r150121017.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/databaseController/RegistrationDBController.py" beforeDir="false" afterPath="$PROJECT_DIR$/databaseController/RegistrationDBController.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/application.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/Advisor.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Advisor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/CourseRegistrationSimulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseRegistrationSimulation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/LoginSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/LoginSystem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/Registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Registration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/SingletonLogger.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/SingletonLogger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Student.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Student.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +50,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging iteration-3-eren",
+    "git-widget-placeholder": "iteration-3-eren",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/erena/Desktop/Py33/CSE3063F24P1_GRP17",
     "node.js.detected.package.eslint": "true",
