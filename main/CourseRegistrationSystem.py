@@ -1,10 +1,15 @@
-import string
+
 from typing import List
 
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.CourseDBController import CourseDBController
-from main import Course, Student, Registration,CourseSection,CourseTime
+
+from main.Course import Course
+from main.Student import Student
+from main.Registration import Registration
+from main.CourseSection import CourseSection
+from main.CourseTime import CourseTime
 
 
 
@@ -62,9 +67,9 @@ class CourseRegistrationSystem:
         appropriateCourseSections = self.__courseDBController.getAllCourseSections()
 
         for courseSection in appropriateCourseSections:
-            fullNameOfLecturer = courseSection.getLecturer()['firstName'] + " " + courseSection.getLecturer()['lastName']
+            fullNameOfLecturer = courseSection.getLecturer().getFirstName() + " " + courseSection.getLecturer().getLastName()
             print(
-                f"{courseSection.getCourse()['id']:<23}{courseSection.getSectionNumber():<24}{fullNameOfLecturer:<23}")
+                f"{courseSection.getCourse().getId():<23}{courseSection.getSectionNumber():<24}{fullNameOfLecturer:<23}")
 
 
     def findCourseSection(self,course: str ,section: str):
@@ -74,7 +79,7 @@ class CourseRegistrationSystem:
             print("section parameter is different than int")
 
         for courseSection in self.__courseDBController.getAllCourseSections():
-            if courseSection.getCourse()['id'] == course and courseSection.getSectionNumber() == sectionNumber:
+            if courseSection.getCourse().getId() == course and courseSection.getSectionNumber() == sectionNumber:
                 return courseSection
 
         return None
@@ -100,7 +105,7 @@ class CourseRegistrationSystem:
 
     def checkRegistrationTimeConflict(self,student: Student, newAddedCourseSection: CourseSection):
         registration: Registration = student.getRegistration()
-        if(registration.getCourseSections() == []):
+        if(registration.getCourseSections()== []):
             return False
         else:
             for eachCourseSection in registration.getCourseSections():
@@ -123,15 +128,14 @@ class CourseRegistrationSystem:
             # First, loadstudent's advisor & match it with student.advisor
 
             self.__advisorDBController.loadAdvisor(str(student.getAdvisorId()))
-            student['advisor'] = self.__advisorDBController.getAdvisor()
-            student.getAdvisor().addRegistration(registration)
+            student.setAdvisor(self.__advisorDBController.getAdvisor())
+            student.getAdvisor().getRegistrationIDs().append(registration.getId())
 
             #Save the registration and Advisor's registration.
 
             self.__studentDBController.setStudent(student)
-            self.__studentDBController.saveStudent(student.getId())
-            self.__studentDBController.saveStudentRegistration(student.getId())
-            self.__advisorDBController.saveAdvisor(str(student.getAdvisorId()))
+            self.__studentDBController.saveStudent(student)
+            self.__advisorDBController.saveAdvisor(student.getAdvisor())
 
         except Exception as e:
             # Input hatası olabilir

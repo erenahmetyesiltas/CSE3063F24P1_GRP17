@@ -1,5 +1,7 @@
 from main.Advisor import Advisor
 from main.Registration import Registration
+from main.Course import Course
+from main.Department import Department
 
 
 class Student:
@@ -16,28 +18,62 @@ class Student:
     __year: int
     __term: int
     __registrationId: str
+    __registration:Registration
     __transcript = None
 
-    def __init__(self, id, firstName, lastName, password, gpa, courses=None, advisorId=0,
+    def __init__(self, id = "", firstName = "", lastName = "", password = "", gpa = 0, courses=None, advisorId=0,
                  departments=None, departmentIds=None, startYear=0, year=0, term=0, registrationId="", registration=Registration(), transcript=None):
         self.__id = id
         self.__firstName = firstName
         self.__lastName = lastName
         self.__password = password
         self.__gpa = gpa
-        self.__courses = courses or []
+
+        if (len(courses) != 0 and type(courses[0]) == dict):
+            for i in range(len(courses)):
+                courses[i] = Course(**courses[i])
+
+            self.__courses = courses
+        else:
+             self.__courses = courses
+
+
         self.__advisorId = advisorId
-        self.__departments = departments or []
-        self.__departmentIds = departmentIds or []
+
+        self.__advisor = Advisor()
+
+        if (len(departments) != 0 and type(departments[0]) == dict):
+            for i in range(len(departments)):
+                departments[i] = Department(**departments[i])
+
+            self.__departments = departments
+        else:
+            self.__departments = departments
+
+        self.__departmentIds = departmentIds
         self.__startYear = startYear
         self.__year = year
         self.__term = term
-        self.__registration = registration
+
+        if (type(registration) == dict) :
+            self.__registration = Registration(**registration)
+        else:
+            self.__registration = registration
+
+
         self.__registrationId = registrationId
-        self.__transcript = transcript or {}
+
+        if (type(transcript) == dict) :
+            self.__transcript = transcript # will be turned into Transcript(**transcript) when Transcript object is done
+
+        else :
+            self.__transcript = transcript
 
     def getRegistration(self):
         return self.__registration
+
+    def setRegistration(self, registration):
+        self.__registration = registration
 
     def getTranscript(self):
         return self.__transcript
@@ -224,5 +260,10 @@ class Student:
     def getRegistrationId(self):
         return self.__registrationId
 
+    def getAdvisor(self):
+        return self.__advisor
+
+    def setAdvisor(self, advisor):
+        self.__advisor = advisor
     def setRegistrationId(self, registrationId):
         self.__registrationId = registrationId

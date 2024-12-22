@@ -1,12 +1,12 @@
-from LoginSystem import LoginSystem
+from main.LoginSystem import LoginSystem
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.CourseDBController import CourseDBController
 from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.RegistrationDBController import RegistrationDBController
 from databaseController.AdminDBController import AdminDBController
-from SingletonLogger import SingletonLogger
-from SingletonLogger import SingletonLogger
+from main.SingletonLogger import SingletonLogger
+from main.SingletonLogger import SingletonLogger
 from main.Classroom import Classroom
 from main.DepartmentScheduler import DepartmentScheduler
 
@@ -166,9 +166,6 @@ class CourseRegistrationSimulation:
             print("The courses inside your registration are:")
             for courseSection in student.getRegistration().getCourseSections():
                 print(f"{courseSection.getCourseId()} - {courseSection.getSectionNumber()}")
-
-            print("\n----------System is checking eligibility----------\n")
-            # Eligibility check implemented here
 
             requestChoice = input(
                 "Are you sure you want to send the registration request to your advisor? (y/n): ").strip()
