@@ -6,6 +6,7 @@ class StudentDBController:
 
     __student: Student
 
+
     def __init__(self):
         self.__student = None  # Initialize with None
 

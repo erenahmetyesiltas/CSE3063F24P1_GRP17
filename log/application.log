@@ -107,3 +107,162 @@
 2024-12-20 16:56:41,434 - INFO - Login admin
 2024-12-20 16:56:43,906 - INFO - Handling Admin Actions
 2024-12-20 16:56:45,170 - INFO - Handling add Department Schuler.
+2024-12-21 23:45:13,870 - INFO - Simulation started.
+2024-12-21 23:45:26,689 - INFO - Creating a new registration
+2024-12-21 23:45:26,690 - INFO - Creating registration for student: 150111222
+2024-12-21 23:45:26,690 - ERROR - An error occurred creating registration for student: 'CourseDBController' object has no attribute '_CourseDBController__courseSectionList'
+2024-12-21 23:48:28,258 - INFO - Simulation started.
+2024-12-21 23:49:10,411 - INFO - Creating a new registration
+2024-12-21 23:49:54,775 - INFO - Creating registration for student: 150111222
+2024-12-21 23:53:44,403 - INFO - Simulation started.
+2024-12-21 23:54:17,179 - INFO - Creating a new registration
+2024-12-21 23:54:17,179 - INFO - Creating registration for student: 150122011
+2024-12-21 23:54:17,180 - ERROR - An error occurred creating registration for student: 'CourseDBController' object has no attribute '_CourseDBController__courseSectionList'
+2024-12-21 23:55:34,464 - INFO - Simulation started.
+2024-12-21 23:57:22,508 - INFO - Creating a new registration
+2024-12-21 23:57:23,629 - INFO - Creating registration for student: 150122011
+2024-12-21 23:58:19,150 - INFO - Simulation started.
+2024-12-21 23:58:33,295 - INFO - Creating a new registration
+2024-12-21 23:58:33,295 - INFO - Creating registration for student: 150122011
+2024-12-21 23:58:33,309 - ERROR - An error occurred creating registration for student: cannot access local variable 'courseSections' where it is not associated with a value
+2024-12-22 00:00:33,891 - INFO - Simulation started.
+2024-12-22 00:00:45,388 - INFO - Creating a new registration
+2024-12-22 00:00:45,389 - INFO - Creating registration for student: 150122011
+2024-12-22 00:00:45,399 - ERROR - An error occurred creating registration for student: 'NoneType' object is not iterable
+2024-12-22 00:01:05,751 - INFO - Simulation started.
+2024-12-22 00:01:24,032 - INFO - Creating a new registration
+2024-12-22 00:01:25,353 - INFO - Creating registration for student: 150122011
+2024-12-22 00:01:58,792 - INFO - Simulation started.
+2024-12-22 00:02:22,101 - INFO - Creating a new registration
+2024-12-22 00:02:22,987 - INFO - Creating registration for student: 150122011
+2024-12-22 00:03:12,870 - INFO - Simulation started.
+2024-12-22 00:03:31,026 - INFO - Creating a new registration
+2024-12-22 00:03:32,195 - INFO - Creating registration for student: 150122011
+2024-12-22 00:05:09,364 - INFO - Simulation started.
+2024-12-22 00:05:21,545 - INFO - Creating a new registration
+2024-12-22 00:05:22,292 - INFO - Creating registration for student: 150122011
+2024-12-22 00:05:44,058 - INFO - Simulation started.
+2024-12-22 00:05:58,660 - INFO - Creating a new registration
+2024-12-22 00:05:59,451 - INFO - Creating registration for student: 150122011
+2024-12-22 00:06:56,392 - INFO - Simulation started.
+2024-12-22 00:07:09,090 - INFO - Creating a new registration
+2024-12-22 00:07:10,789 - INFO - Creating registration for student: 150122011
+2024-12-22 00:13:14,465 - INFO - Simulation started.
+2024-12-22 00:13:16,645 - ERROR - Unexpected error: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-22 00:13:16,645 - INFO - Simulation ended.
+2024-12-22 00:13:24,351 - INFO - Simulation started.
+2024-12-22 00:13:45,669 - INFO - Creating a new registration
+2024-12-22 00:14:00,808 - INFO - Creating registration for student: 150122011
+2024-12-22 00:17:17,785 - ERROR - An error occurred creating registration for student: 'dict' object has no attribute 'getId'
+2024-12-22 00:19:21,368 - INFO - Simulation started.
+2024-12-22 00:19:41,262 - INFO - Creating a new registration
+2024-12-22 00:19:44,261 - INFO - Creating registration for student: 150122011
+2024-12-22 00:24:43,955 - INFO - Simulation started.
+2024-12-22 00:25:00,349 - INFO - Creating a new registration
+2024-12-22 00:25:00,349 - INFO - Creating registration for student: 150122011
+2024-12-22 00:29:04,198 - ERROR - An error occurred creating registration for student: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-22 00:31:08,833 - INFO - Simulation started.
+2024-12-22 00:31:36,319 - INFO - Creating a new registration
+2024-12-22 00:31:36,319 - INFO - Creating registration for student: 150122011
+2024-12-22 00:33:17,957 - ERROR - An error occurred creating registration for student: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-22 00:33:28,959 - INFO - Simulation started.
+2024-12-22 00:33:42,643 - INFO - Creating a new registration
+2024-12-22 00:33:42,643 - INFO - Creating registration for student: 150122011
+2024-12-22 00:34:39,112 - ERROR - An error occurred creating registration for student: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-22 00:34:45,559 - INFO - Creating a new registration
+2024-12-22 00:34:45,559 - INFO - Creating registration for student: 150122011
+2024-12-22 00:37:07,153 - INFO - Simulation started.
+2024-12-22 00:37:24,499 - INFO - Creating a new registration
+2024-12-22 00:37:24,499 - INFO - Creating registration for student: 150122011
+2024-12-22 00:38:50,228 - ERROR - An error occurred creating registration for student: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-22 00:39:00,311 - INFO - Creating a new registration
+2024-12-22 00:39:00,311 - INFO - Creating registration for student: 150122011
+2024-12-22 00:41:15,375 - INFO - Simulation started.
+2024-12-22 00:41:30,879 - INFO - Creating a new registration
+2024-12-22 00:41:30,879 - INFO - Creating registration for student: 150122011
+2024-12-22 00:41:45,172 - ERROR - An error occurred creating registration for student: 'Student' object has no attribute 'getRegistration'
+2024-12-22 00:42:51,897 - INFO - Creating a new registration
+2024-12-22 00:42:51,897 - INFO - Creating registration for student: 150122011
+2024-12-22 00:43:03,802 - ERROR - An error occurred creating registration for student: 'Student' object has no attribute 'getRegistration'
+2024-12-22 00:43:42,876 - INFO - Simulation started.
+2024-12-22 00:43:55,694 - INFO - Creating a new registration
+2024-12-22 00:43:55,694 - INFO - Creating registration for student: 150122011
+2024-12-22 00:48:59,372 - INFO - Simulation started.
+2024-12-22 00:49:18,603 - INFO - Creating a new registration
+2024-12-22 00:49:18,603 - INFO - Creating registration for student: 150122011
+2024-12-22 00:54:07,370 - INFO - Simulation started.
+2024-12-22 00:54:22,054 - INFO - Creating a new registration
+2024-12-22 00:54:22,055 - INFO - Creating registration for student: 150122011
+2024-12-22 00:54:36,841 - ERROR - An error occurred creating registration for student: 'Student' object has no attribute 'getRegistration'
+2024-12-22 00:54:46,284 - INFO - Simulation started.
+2024-12-22 00:59:43,139 - ERROR - Unexpected error: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-22 00:59:43,139 - INFO - Simulation ended.
+2024-12-22 01:33:59,687 - INFO - Simulation started.
+2024-12-22 01:37:06,052 - INFO - Creating a new registration
+2024-12-22 01:37:06,052 - INFO - Creating registration for student: 150122011
+2024-12-22 01:37:16,316 - ERROR - An error occurred creating registration for student: 'Registration' object has no attribute '_Registration__courseSections'
+2024-12-22 01:38:05,924 - INFO - Simulation started.
+2024-12-22 01:38:24,766 - INFO - Creating a new registration
+2024-12-22 01:38:24,766 - INFO - Creating registration for student: 150122011
+2024-12-22 01:40:42,832 - ERROR - An error occurred creating registration for student: 'dict' object has no attribute 'getId'
+2024-12-22 01:46:31,393 - INFO - Simulation started.
+2024-12-22 01:46:48,163 - INFO - Creating a new registration
+2024-12-22 01:46:48,163 - INFO - Creating registration for student: 150122011
+2024-12-22 01:58:48,891 - INFO - Simulation started.
+2024-12-22 01:59:05,395 - INFO - Creating a new registration
+2024-12-22 01:59:05,395 - INFO - Creating registration for student: 150122011
+2024-12-22 02:01:23,589 - INFO - Simulation started.
+2024-12-22 02:01:26,433 - ERROR - Unexpected error: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-22 02:01:26,433 - INFO - Simulation ended.
+2024-12-22 02:01:34,218 - INFO - Simulation started.
+2024-12-22 02:01:52,774 - INFO - Creating a new registration
+2024-12-22 02:01:52,774 - INFO - Creating registration for student: 150122011
+2024-12-22 02:08:43,954 - INFO - Simulation started.
+2024-12-22 02:08:57,270 - INFO - Creating a new registration
+2024-12-22 02:08:57,270 - INFO - Creating registration for student: 150122011
+2024-12-22 02:19:21,452 - INFO - Simulation started.
+2024-12-22 02:19:38,965 - INFO - Creating a new registration
+2024-12-22 02:19:38,965 - INFO - Creating registration for student: 150122011
+2024-12-22 02:19:53,256 - ERROR - An error occurred creating registration for student: 'dict' object has no attribute 'getId'
+2024-12-22 02:27:45,292 - INFO - Simulation started.
+2024-12-22 02:28:06,463 - INFO - Creating a new registration
+2024-12-22 02:28:06,464 - INFO - Creating registration for student: 150122011
+2024-12-22 02:28:33,537 - ERROR - An error occurred creating registration for student: 'dict' object has no attribute 'getId'
+2024-12-22 02:32:34,012 - INFO - Simulation started.
+2024-12-22 02:32:52,661 - INFO - Creating a new registration
+2024-12-22 02:32:52,677 - INFO - Creating registration for student: 150122011
+2024-12-22 02:37:38,412 - INFO - Simulation started.
+2024-12-22 02:38:03,116 - INFO - Creating a new registration
+2024-12-22 02:38:03,116 - INFO - Creating registration for student: 150122011
+2024-12-22 02:39:30,172 - INFO - Simulation started.
+2024-12-22 02:39:43,783 - INFO - Creating a new registration
+2024-12-22 02:39:43,783 - INFO - Creating registration for student: 150122011
+2024-12-22 02:41:06,011 - INFO - Simulation started.
+2024-12-22 02:41:20,427 - INFO - Creating a new registration
+2024-12-22 02:41:20,427 - INFO - Creating registration for student: 150122011
+2024-12-22 02:42:23,479 - INFO - Simulation started.
+2024-12-22 02:42:40,636 - INFO - Creating a new registration
+2024-12-22 02:42:40,636 - INFO - Creating registration for student: 150122011
+2024-12-22 02:57:36,346 - INFO - Simulation started.
+2024-12-22 02:57:55,915 - INFO - Creating a new registration
+2024-12-22 02:57:55,915 - INFO - Creating registration for student: 150122011
+2024-12-22 03:01:48,755 - ERROR - An error occurred creating registration for student: can only concatenate str (not "int") to str
+2024-12-22 03:02:33,669 - INFO - Creating a new registration
+2024-12-22 03:02:42,371 - INFO - Creating registration for student: 150122011
+2024-12-22 03:08:22,421 - INFO - Simulation started.
+2024-12-22 03:08:46,925 - INFO - Creating a new registration
+2024-12-22 03:08:46,925 - INFO - Creating registration for student: 150122011
+2024-12-22 03:11:04,709 - ERROR - An error occurred creating registration for student: cannot access local variable 'advisorDBController' where it is not associated with a value
+2024-12-22 03:17:29,409 - INFO - Simulation started.
+2024-12-22 03:17:34,995 - ERROR - Unexpected error: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-22 03:17:34,995 - INFO - Simulation ended.
+2024-12-22 03:17:36,460 - INFO - Simulation started.
+2024-12-22 03:17:43,019 - ERROR - Unexpected error: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-22 03:17:43,019 - INFO - Simulation ended.
+2024-12-22 03:18:18,166 - INFO - Simulation started.
+2024-12-22 03:18:39,801 - INFO - Creating a new registration
+2024-12-22 03:18:39,802 - INFO - Creating registration for student: 150122011
+2024-12-22 03:19:26,449 - ERROR - An error occurred creating registration for student: 'Student' object has no attribute 'setAdvisor'
+2024-12-22 03:26:01,836 - INFO - Simulation started.
+2024-12-22 03:27:12,212 - ERROR - Unexpected error: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-22 03:27:12,212 - INFO - Simulation ended.

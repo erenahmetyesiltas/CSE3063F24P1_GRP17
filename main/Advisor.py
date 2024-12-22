@@ -1,8 +1,7 @@
 from contextlib import nullcontext
 from io import StringIO
 
-from main.Registration import Registration
-from main.Student import Student
+
 
 
 class Advisor:

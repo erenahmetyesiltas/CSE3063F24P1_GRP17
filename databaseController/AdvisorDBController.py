@@ -6,6 +6,9 @@ class AdvisorDBController:
 
     __advisor : Advisor
 
+    def __init__(self):
+        pass
+
     def loadAdvisor(self,advisorId):
 
         current_dir = Path(__file__).parent

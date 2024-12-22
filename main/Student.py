@@ -1,3 +1,7 @@
+from main.Advisor import Advisor
+from main.Registration import Registration
+
+
 class Student:
     __id: str
     __firstName: str
@@ -15,7 +19,7 @@ class Student:
     __transcript = None
 
     def __init__(self, id, firstName, lastName, password, gpa, courses=None, advisorId=0,
-                 departments=None, departmentIds=None, startYear=0, year=0, term=0, registrationId="", transcript=None):
+                 departments=None, departmentIds=None, startYear=0, year=0, term=0, registrationId="", registration=Registration(), transcript=None):
         self.__id = id
         self.__firstName = firstName
         self.__lastName = lastName
@@ -28,9 +32,12 @@ class Student:
         self.__startYear = startYear
         self.__year = year
         self.__term = term
+        self.__registration = registration
         self.__registrationId = registrationId
         self.__transcript = transcript or {}
 
+    def getRegistration(self):
+        return self.__registration
 
     def getTranscript(self):
         return self.__transcript
