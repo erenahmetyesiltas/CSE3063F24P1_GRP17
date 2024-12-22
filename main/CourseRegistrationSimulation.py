@@ -7,8 +7,10 @@ from databaseController.RegistrationDBController import RegistrationDBController
 from databaseController.AdminDBController import AdminDBController
 from SingletonLogger import SingletonLogger
 from SingletonLogger import SingletonLogger
+from main.Advisor import Advisor
 from main.Classroom import Classroom
 from main.DepartmentScheduler import DepartmentScheduler
+from main.Registration import Registration
 
 
 class CourseRegistrationSimulation:
@@ -236,48 +238,63 @@ class CourseRegistrationSimulation:
         try:
             self.__logger.info("Handling Registration Requests")
 
-            registrations = self.__registrationDBController.getRegistrationsOfAdvisor(advisor)
+            self.__registrationDBController.getRegistrationsOfAdvisor(advisor)
 
-            if len(registrations) == 0:
+            print(advisor.getRegistrations()[0].getid())
+
+            if len(advisor.getRegistrations()) == 0:
+                print()
                 print("There are no registrations for the advisor.")
             else:
-                print()
-
-                for i, registration in enumerate(registrations):
-                    print(f"Student-{i + 1}: {registration.getId()[1:]}")
-
-                    print("-----Course Sections-----")
-
-                    for j, course_section in enumerate(registration.getCourseSections()):
-                        print(f"Selected Course Section-{j + 1}")
-                        print(course_section.getId())
-
-                    print(f"The current status of this registration: {registration.getRegistrationStatus()}")
-                    print()
-
-                    print("In order to specify as not approved print 0")
-                    print("In order to specify as not checked yet 1")
-                    print("In order to specify as approved print 2")
-                    status = input("Print the status to change the state of the registration listed(0/1/2): ")
-
-                    while status not in ["0", "1", "2"]:
-                        status = input("Please enter a valid number (0/1/2): ")
-
-                    status = int(status)
-
-                    if status == 0:
-                        registration.setRegistrationStatus(status)
-                        registration.setCourseSections(None)
-                        self.registrationDBController.removeRegistrations(registration)
-                        self.registrationDBController.updateRegistrations(registration, status)  # Update status
-                    else:
-                        registration.setRegistrationStatus(status)
-                        self.registrationDBController.updateRegistrations(registration, status)
 
                 print()
+                print("--------------------Registrations--------------------")
+                print("Registration IDs----------|Status--------------------")
+                #print("r150121017----------------|Status")
+
+                for i in range(len(advisor.getRegistrations())):
+                    print(advisor.getRegistrations()[i].getid(),"              ",self.statusExplanation(advisor.getRegistrations()[i].getRegistrationStatus()))
+
+                print()
+
+                # state is the register is valid or is the advisor's register
+                isRegFound = False
+
+                selectedReg : str
+                registrationObj : Registration
+
+                while isRegFound == False:
+                    # Choosing a register
+                    print("Please choose a register: ", end="")
+                    selectedReg = input()
+
+                    for reg in advisor.getRegistrations():
+                        if reg.getid() == selectedReg:
+                            isRegFound = True
+                            registrationObj = reg
+                            break
+
+                    if not isRegFound:
+                        print("The entered register is not valid.")
+
+
+                advisor.handleRegistration(registrationObj)
+
 
         except Exception as e:
             self.__logger.error(f"Unexpected error during handleRegistrationRequests: {str(e)}")
+
+
+
+
+    def statusExplanation(self, status : int):
+        if status == 0:
+            return "It has not approved."
+        elif status == 1:
+            return "It has not checked yet."
+        elif status == 2:
+            return "It has approved."
+
 
     def loginDepartmentScheduler(self):
         try:
