@@ -13,6 +13,11 @@ class Department:
         self.__departmentName = departmentName
         self.__courseSectionIds = courseSectionIds
 
+    def to_dict(self):
+        return {
+            "departmentName": self.__departmentName
+        }
+    
     def getId(self):
         return self.__id
 

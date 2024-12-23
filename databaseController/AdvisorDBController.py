@@ -1,10 +1,24 @@
 from pathlib import Path
 from main.Advisor import Advisor
+from main.CustomEncoder import CustomEncoder
 import json
 
 class AdvisorDBController:
 
     __advisor : Advisor
+
+    def __init__(self):
+        pass
+
+    def saveAdvisor(self, advisor):
+        current_dir = Path(__file__).parent
+        advisorId = advisor.getId()
+        advisorJsonPath = "{}{}".format(advisorId, ".json")
+
+        relative_path = current_dir / "../database/advisors" / advisorJsonPath
+
+        with open(relative_path, "w") as json_file:
+            json.dump(advisor.to_dict(), json_file, indent=4)
 
     def loadAdvisor(self,advisorId):
 

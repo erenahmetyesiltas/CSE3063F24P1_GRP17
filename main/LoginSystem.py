@@ -4,15 +4,13 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
-from main.DepartmentScheduler import DepartmentScheduler
+from DepartmentScheduler import DepartmentScheduler
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.AdminDBController import AdminDBController
-from databaseController.DepartmentHeadDBController import DepartmentHeadDBController
-from main.Advisor import Advisor
-from main.Student import Student
-from main.Admin import Admin
-from main.DepartmentHead import DepartmentHead
+from Advisor import Advisor
+from Student import Student
+from Admin import Admin
 
 
 class LoginSystem:
@@ -60,10 +58,10 @@ class LoginSystem:
     
     def setAdmin(self, admin):
         self.__admin = admin
-    
+
     def getDepartmentHead(self):
         return self.__departmentHead
-    
+
     def setDepartmentHead(self, departmentHead):
         self.__departmentHead = departmentHead
 
@@ -141,7 +139,7 @@ class LoginSystem:
             self.__admin = None
             self.__adminDBController.setAdmin(None)
             return False
-    
+
     def authenticateDepartmentHead(self, departmentHeadId, password):
         if self.__departmentHeadDBController.loadDepartmentHead(departmentHeadId):
             self.__departmentHead = self.__departmentHeadDBController.getDepartmentHead()
@@ -154,4 +152,3 @@ class LoginSystem:
             self.__departmentHead = None
             self.__departmentHeadDBController.setDepartmentHead(None)
             return False
-        

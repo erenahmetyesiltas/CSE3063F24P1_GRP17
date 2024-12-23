@@ -1,17 +1,14 @@
-from LoginSystem import LoginSystem
+from main.LoginSystem import LoginSystem
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.CourseDBController import CourseDBController
 from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.RegistrationDBController import RegistrationDBController
 from databaseController.AdminDBController import AdminDBController
-from databaseController.DepartmentHeadDBController import DepartmentHeadDBController
 from SingletonLogger import SingletonLogger
 from SingletonLogger import SingletonLogger
-from main.Advisor import Advisor
-from main.Classroom import Classroom
-from main.DepartmentScheduler import DepartmentScheduler
-from main.Registration import Registration
+from Classroom import Classroom
+from DepartmentScheduler import DepartmentScheduler
 
 
 class CourseRegistrationSimulation:
@@ -107,7 +104,9 @@ class CourseRegistrationSimulation:
             if self.__loginSystem.authenticateStudentUser(student_id, password):
                 student = self.__loginSystem.getStudent()
                 if student is not None:
-                    print("Login successful!")
+                    print("Login successful!\n")
+                    self.__courseRegistrationSystem.getStudentRegistrationStatus(student)
+                    #self.__courseRegistrationSystem.
                     self.handleStudentActions(student)
                 else:
                     print("Login failed. No matching student found.")
@@ -137,10 +136,13 @@ class CourseRegistrationSimulation:
 
                 if user_choice == 1:
                     self.createRegistration(student)
+
                 elif user_choice == 2:
                     self.__courseRegistrationSystem.getStudentRegistrationStatus(student)
+
                 elif user_choice == 3:
                     student.printWeeklyScheduleAsTable(student)
+
                 elif user_choice == 4:
                     student.printTranscript()
                     break
@@ -157,12 +159,12 @@ class CourseRegistrationSimulation:
         try:
             self.__logger.info(f"Creating registration for student: {student.getId()}")
             # self.courseRegSystem.printSuitableCourses()
-            self.courseRegSystem.printSuitableCoursesRemake(student)
+            self.__courseRegistrationSystem.printSuitableCourses(student)
 
             while True:
                 addCourse = input("\nDo you want to add courses? (y/n): ").strip()
                 if addCourse.lower() == "y":
-                    self.courseRegSystem.readCourses(student)
+                    self.__courseRegistrationSystem.readCourses(student)
                 elif addCourse.lower() == "n":
                     break
                 else:
@@ -172,13 +174,10 @@ class CourseRegistrationSimulation:
             for courseSection in student.getRegistration().getCourseSections():
                 print(f"{courseSection.getCourseId()} - {courseSection.getSectionNumber()}")
 
-            print("\n----------System is checking eligibility----------\n")
-            # Eligibility check implemented here
-
             requestChoice = input(
                 "Are you sure you want to send the registration request to your advisor? (y/n): ").strip()
             if requestChoice.lower() == "y":
-                self.courseRegSystem.sendRegistrationToAdvisor(student.getRegistration(), student)
+                self.__courseRegistrationSystem.sendRegistrationToAdvisor(student.getRegistration(), student)
                 print("SUCCESS: The registration request has been sent to your advisor\n")
             else:
                 student.setRegistration(None)
@@ -524,9 +523,9 @@ class CourseRegistrationSimulation:
                 print()
                 print(f"{courseSection.getId()}'s classroom times are:")
                 for i, scheduledTime in enumerate(courseSection.getScheduledTimes()):
-                    print(f"{i + 1} ==> Day is: {scheduledTime["courseDay"]}")
-                    print(f"Start time: {scheduledTime["startTime"]}")
-                    print(f"End time: {scheduledTime["endTime"]}")
+                    print(f"{i + 1} ==> Day is: {scheduledTime['courseDay']}")
+                    print(f"Start time: {scheduledTime['startTime']}")
+                    print(f"End time: {scheduledTime['endTime']}")
 
                 if courseSection.getCourse()["weeklyCourseHours"] > len(courseSection.getScheduledTimes()):
                     print(len(courseSection.getScheduledTimes()), "/",
@@ -888,7 +887,7 @@ class CourseRegistrationSimulation:
             self.__logger.error(f"Unexpected error during handleAddDepartmentScheduler: {str(e)}")
 
         return departmentScheduler
-    
+
     def loginDepartmentHead(self):
         try:
             self.__logger.info("Login department head")
