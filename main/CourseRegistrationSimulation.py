@@ -99,7 +99,9 @@ class CourseRegistrationSimulation:
             if self.__loginSystem.authenticateStudentUser(student_id, password):
                 student = self.__loginSystem.getStudent()
                 if student is not None:
-                    print("Login successful!")
+                    print("Login successful!\n")
+                    self.__courseRegistrationSystem.getStudentRegistrationStatus(student)
+                    #self.__courseRegistrationSystem.
                     self.handleStudentActions(student)
                 else:
                     print("Login failed. No matching student found.")

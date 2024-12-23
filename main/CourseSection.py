@@ -18,9 +18,19 @@ class CourseSection :
     __capacity : int
     __courseId : str
     __lecturer : Lecturer
+    __courseWaitlist: List[Student]
 
     def __init__(self, enrolledStudents : List[Student] = [], classroom : Classroom = "", id : str = "", scheduledTimes : List[CourseTime] = [],
-                 sectionNumber : int = 0, course : Course = "", capacity : int = 0, courseId : str = "", lecturer : Lecturer = ""):
+             sectionNumber : int = 0, course : Course = "", capacity : int = 0, courseId : str = "", lecturer : Lecturer = "", courseWaitList : List[Student] = []):
+
+        if (len(courseWaitList) != 0 and type(courseWaitList[0]) == dict):
+            for i in range(len(courseWaitList)) :
+                courseWaitList[i] = Student(**courseWaitList[i])
+
+                self.__courseWaitlist = courseWaitList
+        else :
+            self.__courseWaitlist = courseWaitList
+
 
         if (len(enrolledStudents) != 0 and type(enrolledStudents[0]) == dict) :
             for i in range(len(enrolledStudents)) :
@@ -72,6 +82,7 @@ class CourseSection :
             "capacity": self.__capacity,
             "courseId": self.__courseId,
             #"lecturer": self.__lecturer
+            "courseWaitList" : self.__courseWaitlist
         }
 
 
@@ -86,8 +97,31 @@ class CourseSection :
             "course": self.__course,
             "capacity": self.__capacity,
             "courseId": self.__courseId,
-            "lecturer": self.__lecturer
+            "lecturer": self.__lecturer,
+            "courseWaitList": self.__courseWaitlist
         }
+    def getCourseWaitList(self):
+        return self.__courseWaitlist
+
+    def setCourseWaitList(self, courseWaitList):
+        self.__courseWaitlist = courseWaitList
+
+    def addStudentToWaitList(self, student : Student):
+        self.__courseWaitlist.append(student)
+
+    def removeStudentFromWaitList(self, student : Student):
+        for studentWillRemoved in self.__courseWaitlist:
+            if studentWillRemoved.getId() == student.getId():
+                self.__courseWaitlist.remove(studentWillRemoved)
+                print("NOTIFICATION: You've been removed from the waitlist of " + self.getId() + ". You are enrolled now.\n")
+
+    def checkIsStudentInWaitlist(self,student):
+        for studentInWaitlist in self.__courseWaitlist:
+            if studentInWaitlist.getId() == student.getId():
+                return True
+            else:
+                return False
+
 
     def getEnrolledStudents(self) :
         return self.__enrolledStudents

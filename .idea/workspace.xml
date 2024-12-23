@@ -6,37 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="75647eeb-1db9-4a08-a6f9-a09a28752173" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/databaseController/AdvisorDBController.py" beforeDir="false" afterPath="$PROJECT_DIR$/databaseController/AdvisorDBController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/databaseController/RegistrationDBController.py" beforeDir="false" afterPath="$PROJECT_DIR$/databaseController/RegistrationDBController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/databaseController/StudentDBController.py" beforeDir="false" afterPath="$PROJECT_DIR$/databaseController/StudentDBController.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/application.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Advisor.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Advisor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Classroom.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Classroom.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Course.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Course.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/CourseRegistrationSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseRegistrationSystem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/CourseSection.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseSection.py" afterDir="false" />
+    </list>
+    <list id="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" name="Changes by enesb" comment="">
+      <change beforePath="$PROJECT_DIR$/database/registrations/r150111222.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/registrations/r150111222.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/registrations/r150121017.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/registrations/r150121017.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/registrations/r150122011.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/registrations/r150122011.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/registrations/r150122075.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/registrations/r150122075.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/registrations/r150122507.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/registrations/r150122507.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/registrations/r150123823.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/registrations/r150123823.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/registrations/r150198001.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/registrations/r150198001.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/registrations/r150198002.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/registrations/r150198002.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/registrations/r150719046.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/registrations/r150719046.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/CourseRegistrationSimulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseRegistrationSimulation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/CourseRegistrationSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseRegistrationSystem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/CourseSection.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseSection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/CourseTime.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseTime.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/DataHandler.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Department.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Department.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/DepartmentScheduler.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/DepartmentScheduler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Lecturer.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Lecturer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/LoginSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/LoginSystem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Person.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Person.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Registration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Student.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Student.py" afterDir="false" />
-    </list>
-    <list id="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" name="Changes by enesb" comment="">
-      <change beforePath="$PROJECT_DIR$/databaseController/StudentDBController.py" beforeDir="false" afterPath="$PROJECT_DIR$/databaseController/StudentDBController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Advisor.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Advisor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/CourseRegistrationSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseRegistrationSystem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/CourseSection.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/CourseSection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/DepartmentScheduler.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/DepartmentScheduler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Registration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Staff.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Staff.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/Student.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/Student.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,85 +56,23 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/main/Student.py">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="4" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="18" end1="18" start2="20" end2="21" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="20" end1="21" start2="23" end2="24" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="27" end1="28" start2="30" end2="40" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="29" end1="31" start2="41" end2="53" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="34" end1="35" start2="56" end2="63" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="36" end1="37" start2="64" end2="70" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="40" end1="40" start2="73" end2="76" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="226" end1="226" start2="262" end2="267" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-      </ranges>
-    </file>
     <file path="$PROJECT_DIR$/main/CourseSection.py">
       <ranges>
-        <range start1="4" end1="7" start2="4" end2="7" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="8" end1="9" start2="8" end2="9" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="21" end1="25" start2="21" end2="37" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="26" end1="27" start2="38" end2="47" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="28" end1="29" start2="48" end2="54" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="31" end1="32" start2="56" end2="61" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="34" end1="34" start2="63" end2="64" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/main/Advisor.py">
-      <ranges>
-        <range start1="3" end1="3" start2="3" end2="6" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="16" end1="17" start2="19" end2="20" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="23" end1="25" start2="26" end2="42" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/main/Registration.py">
-      <ranges>
-        <range start1="0" end1="1" start2="0" end2="3" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="4" end1="4" start2="6" end2="9" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="6" end1="7" start2="11" end2="12" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="8" end1="9" start2="13" end2="22" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="11" end1="12" start2="24" end2="25" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="14" end1="16" start2="27" end2="29" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="20" end1="21" start2="33" end2="34" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="24" end1="25" start2="37" end2="38" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="28" end1="29" start2="41" end2="42" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="35" end1="36" start2="48" end2="49" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="42" end1="46" start2="55" end2="55" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/databaseController/StudentDBController.py">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="4" end1="4" start2="5" end2="7" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="30" end1="30" start2="33" end2="34" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="39" end1="40" start2="43" end2="44" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="42" end1="43" start2="46" end2="47" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="52" end1="53" start2="56" end2="57" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="54" end1="55" start2="58" end2="59" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="59" end1="60" start2="63" end2="64" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="61" end1="62" start2="65" end2="66" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="67" end1="67" start2="71" end2="92" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="68" end1="68" start2="93" end2="101" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/main/DepartmentScheduler.py">
-      <ranges>
-        <range start1="6" end1="7" start2="6" end2="7" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="8" end1="10" start2="8" end2="10" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="23" end1="24" start2="23" end2="24" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="29" end1="30" start2="29" end2="35" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
+        <range start1="20" end1="20" start2="20" end2="21" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
+        <range start1="22" end1="23" start2="23" end2="33" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
+        <range start1="74" end1="74" start2="84" end2="85" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
+        <range start1="88" end1="89" start2="99" end2="101" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
+        <range start1="90" end1="90" start2="102" end2="124" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/main/CourseRegistrationSystem.py">
       <ranges>
-        <range start1="0" end1="1" start2="0" end2="1" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="6" end1="7" start2="6" end2="12" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
-        <range start1="64" end1="65" start2="69" end2="70" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="66" end1="67" start2="71" end2="72" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="76" end1="77" start2="81" end2="82" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="102" end1="103" start2="107" end2="108" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="125" end1="127" start2="130" end2="132" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
-        <range start1="131" end1="134" start2="136" end2="138" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
+        <range start1="136" end1="137" start2="136" end2="136" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
+        <range start1="153" end1="154" start2="152" end2="153" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
+        <range start1="156" end1="157" start2="155" end2="156" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
+        <range start1="159" end1="160" start2="158" end2="159" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
+        <range start1="168" end1="170" start2="167" end2="183" changelist="83769d08-7cda-4afc-8e0e-9ecccc3efcc5" />
+        <range start1="172" end1="172" start2="185" end2="199" changelist="75647eeb-1db9-4a08-a6f9-a09a28752173" />
       </ranges>
     </file>
   </component>
@@ -174,7 +98,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "iteration-3-melisa",
+    "git-widget-placeholder": "iter3-waitlist",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/enesb/OneDrive/Belgeler/GitHub/CSE3063F24P1_GRP17",
     "node.js.detected.package.eslint": "true",
@@ -269,18 +193,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main/CourseRegistrationSystem.py</url>
-          <line>136</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/databaseController/StudentDBController.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -292,6 +204,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CourseRegistrationSimulation_py$CourseRegistrationSimulation.coverage" NAME="CourseRegistrationSimulation Coverage Results" MODIFIED="1734788037504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
-    <SUITE FILE_PATH="coverage/CourseRegistrationSimulation_py$Main.coverage" NAME="Main Coverage Results" MODIFIED="1734905493949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
+    <SUITE FILE_PATH="coverage/CourseRegistrationSimulation_py$Main.coverage" NAME="Main Coverage Results" MODIFIED="1734980486899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
   </component>
 </project>

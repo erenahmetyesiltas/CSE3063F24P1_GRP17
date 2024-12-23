@@ -134,7 +134,6 @@ class CourseRegistrationSystem:
             student.getAdvisor().getRegistrationIDs().append(registration.getId())
 
             #Save the registration and Advisor's registration.
-            print("aasldjasdas")
             self.__studentDBController.setStudent(student)
             self.__studentDBController.saveStudent(student)
             self.__studentDBController.saveStudentRegistration(student)
@@ -151,13 +150,13 @@ class CourseRegistrationSystem:
 
         if registrationStatus == 0:
             print(registration.getCourseSections())
-            print("WARNING : Your advisor has disapproved your registration, you have to create a new one and send it again\n")
+            print("NOTIFICATION : Your advisor has disapproved your registration, you have to create a new one and send it again\n")
 
         elif registrationStatus == 1:
-            print("WARNING : Your advisor has not yet checked your registration\n")
+            print("NOTIFICATION : Your advisor has not yet checked your registration\n")
 
         elif registrationStatus == 2:
-            print("SUCCESS : Your advisor has approved your registration, you will be enrolled to the courses you \n")
+            print("NOTIFICATION : Your advisor has approved your registration, you will be enrolled to the courses you \n")
             self.enrollStudent(registration.getCourseSections(), student)
 
 
@@ -166,8 +165,36 @@ class CourseRegistrationSystem:
         for courseSection in self.__allCourseSections:
             for enrollCourseSection in enrollCourseSections:
                 if enrollCourseSection.getCourseId() == courseSection.getCourseId():
-                    courseSection.getEnrolledStudents().add(student)
-                    enrollCourseSection.getEnrolledStudents().add(student)
+                    for studentIn in courseSection.getEnrolledStudents() :
+                        if (studentIn.getId() == student.getId()) :
+                            print("WARNING : Student has already been registered\n")
+                            return
+                        else:
+                            continue
+
+
+                    if (courseSection.getCapacity() <= len(courseSection.getEnrolledStudents())):
+                        courseSection.addStudentToWaitList(student)
+                        enrollCourseSection.addStudentToWaitList(student)
+                        print("NOTIFICATION : Course Section capacity is full. You are in the waitlist \n")
+
+                    else:
+                        courseSection.getEnrolledStudents().append(student)
+                        enrollCourseSection.getEnrolledStudents().append(student)
+
+
+    def waitlistCheck(self, enrollCourseSections: List[CourseSection], student: Student):
+        for courseSection in self.__allCourseSections:
+            for enrollCourseSection in enrollCourseSections:
+                if enrollCourseSection.getCourseId() == courseSection.getCourseId():
+                    if(enrollCourseSection.checkIsStudentInWaitlist(student)):
+                        if (enrollCourseSection.getCapacity() > len(enrollCourseSection.getEnrolledStudents())):
+                            enrollCourseSection.getEnrolledStudents().append(student)
+                            courseSection.getEnrolledStudents().append(student)
+                            courseSection.removeStudentFromWaitList(student)
+                            enrollCourseSection.removeStudentFromWaitList(student)
+                        else :
+                            print("NOTIFICATION: You are still in the waitlist of : " + enrollCourseSection.getCourseId() + "\n" )
 
 
     #def saveLastState(self): #throws IOException
