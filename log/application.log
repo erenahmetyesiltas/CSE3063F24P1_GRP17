@@ -575,3 +575,6 @@
 2024-12-23 09:33:30,281 - INFO - Simulation started.
 2024-12-23 09:33:42,404 - INFO - Creating a new registration
 2024-12-23 09:33:42,404 - INFO - Creating registration for student: 150122507
+2024-12-23 21:41:20,451 - INFO - Simulation started.
+2024-12-23 21:41:27,336 - ERROR - Unexpected error: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-23 21:41:27,336 - INFO - Simulation ended.
