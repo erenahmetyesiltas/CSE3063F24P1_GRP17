@@ -113,6 +113,49 @@ class Student:
         self.__gpa = total_points / total_credits if total_credits > 0 else 0.0
         return self.__gpa
 
+    def printWeeklyScheduleAsTable(self):
+        if not self.__registration or not self.__registration.getCourseSections():
+            print("No courses registered for this student.")
+            return
+
+        days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+        timeSlots = [
+            "08:00 - 09:00", "09:00 - 10:00",
+            "10:00 - 11:00", "11:00 - 12:00",
+            "12:00 - 13:00", "13:00 - 14:00",
+            "14:00 - 15:00", "15:00 - 16:00",
+            "16:00 - 17:00", "17:00 - 18:00"
+        ]
+
+        columnWidth = 25
+        scheduleTable = [["" for _ in days] for _ in timeSlots]
+
+        for section in self.__registration.getCourseSections():
+            for time in section.getScheduledTimes():
+                courseDay = time.getCourseDay()
+                startTime = str(time.getStartTime())[:5]
+                endTime = str(time.getEndTime())[:5]
+
+                startIndex = next((i for i, slot in enumerate(timeSlots) if slot.startswith(startTime)), -1)
+                endIndex = next((i for i, slot in enumerate(timeSlots) if slot.endswith(endTime)), -1)
+                dayIndex = next((j for j, day in enumerate(days) if day.lower() == courseDay.lower()), -1)
+
+                if startIndex != -1 and endIndex != -1 and dayIndex != -1:
+                    for i in range(startIndex, endIndex + 1):
+                        scheduleTable[i][dayIndex] = f"{section.getCourseId()} ({section.getClassroom().getId()})"
+
+        print(f"Weekly Schedule for Student ID: {self.__id}")
+        print(f"{'Time':<15}", end="")
+        for day in days:
+            print(f"| {day:<{columnWidth}}", end="")
+        print("\n" + "-" * (15 + (columnWidth + 3) * len(days)))
+
+        for i, slot in enumerate(timeSlots):
+            print(f"{slot:<15}", end="")
+            for j in range(len(days)):
+                print(f"| {scheduleTable[i][j]:<{columnWidth}}", end="")
+            print("\n" + "-" * (15 + (columnWidth + 3) * len(days)))
+
     def printTranscript(self):
         if not self.__transcript or "courseRecords" not in self.__transcript:
             print("Transcript is empty.")

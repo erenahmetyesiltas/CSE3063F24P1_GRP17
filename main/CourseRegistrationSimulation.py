@@ -134,7 +134,7 @@ class CourseRegistrationSimulation:
                     self.__courseRegistrationSystem.getStudentRegistrationStatus(student)
 
                 elif user_choice == 3:
-                    student.printWeeklyScheduleAsTable(student)
+                    student.printWeeklyScheduleAsTable()
 
                 elif user_choice == 4:
                     student.printTranscript()
