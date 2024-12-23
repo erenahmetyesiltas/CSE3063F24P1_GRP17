@@ -1,0 +1,41 @@
+{
+    "enrolledStudents": [],
+    "classroom": {
+        "id": "M2-Z11",
+        "capacity": 150
+    },
+    "id": "STAT2253-1",
+    "scheduledTimes": [
+        {
+            "startTime": "11:00:00",
+            "endTime": "11:50:00",
+            "courseDay": "Monday"
+        },
+        {
+            "startTime": "12:00:00",
+            "endTime": "12:50:00",
+            "courseDay": "Tuesday"
+        }
+    ],
+    "sectionNumber": 1,
+    "course": {
+        "id": "STAT2253",
+        "name": "Introduction to Probability and Statistics",
+        "credit": 5,
+        "departments": [],
+        "term": 4,
+        "prerequisiteCourses": [],
+        "weeklyCourseHours": 3
+    },
+    "capacity": "100",
+    "courseId": "STAT2253",
+    "lecturer": {
+        "id": "2000",
+        "password": "halil123",
+        "firstName": "Halil",
+        "lastName": "Demir",
+        "departmentIds": [
+            "CSE"
+        ]
+    }
+}

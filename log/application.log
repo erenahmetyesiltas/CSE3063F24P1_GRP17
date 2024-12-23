@@ -177,3 +177,86 @@
 2024-12-23 19:34:10,591 - INFO - Simulation started.
 2024-12-23 19:34:12,139 - INFO - Login department head
 2024-12-23 19:34:15,268 - INFO - Handling department Head actions
+2024-12-23 19:48:09,738 - INFO - Simulation started.
+2024-12-23 19:48:14,408 - INFO - Simulation started.
+2024-12-23 19:48:15,723 - INFO - Login department scheduler
+2024-12-23 19:48:18,011 - INFO - Handling Department Scheduler Actions
+2024-12-23 19:48:18,858 - INFO - Handling Course Section times
+2024-12-23 19:48:18,867 - ERROR - Unexpected error during handleCourseSectionTimesAndClassroom: Expecting value: line 1 column 1 (char 0)
+2024-12-23 19:50:27,051 - INFO - Simulation started.
+2024-12-23 19:50:29,059 - INFO - Login department scheduler
+2024-12-23 19:50:33,051 - INFO - Handling Department Scheduler Actions
+2024-12-23 19:50:33,739 - INFO - Handling Course Section times
+2024-12-23 19:50:35,739 - INFO - Handling Course Section Settings Menus
+2024-12-23 19:50:35,740 - ERROR - Error during handling Course Section Settings Menus: 'NoneType' object has no attribute 'getClassroom'
+2024-12-23 19:55:30,564 - INFO - Simulation started.
+2024-12-23 19:55:33,443 - INFO - Login department scheduler
+2024-12-23 19:55:39,604 - INFO - Handling Department Scheduler Actions
+2024-12-23 19:55:40,387 - INFO - Handling Course Section times
+2024-12-23 19:55:40,396 - ERROR - Unexpected error during handleCourseSectionTimesAndClassroom: Expecting value: line 1 column 1 (char 0)
+2024-12-23 19:56:20,182 - INFO - Simulation started.
+2024-12-23 19:56:22,275 - INFO - Login department scheduler
+2024-12-23 19:56:24,428 - INFO - Handling Department Scheduler Actions
+2024-12-23 19:56:25,180 - INFO - Handling Course Section times
+2024-12-23 19:56:30,235 - INFO - Handling Course Section Settings Menus
+2024-12-23 19:56:30,235 - ERROR - Error during handling Course Section Settings Menus: 'NoneType' object has no attribute 'getClassroom'
+2024-12-23 19:57:36,997 - INFO - Simulation started.
+2024-12-23 19:57:38,602 - INFO - Login department scheduler
+2024-12-23 19:57:41,740 - INFO - Handling Department Scheduler Actions
+2024-12-23 19:57:42,523 - INFO - Handling Course Section times
+2024-12-23 19:57:42,532 - ERROR - Unexpected error during handleCourseSectionTimesAndClassroom: Expecting value: line 1 column 1 (char 0)
+2024-12-23 19:58:56,492 - INFO - Simulation started.
+2024-12-23 19:58:57,587 - INFO - Login department scheduler
+2024-12-23 19:59:00,388 - INFO - Handling Department Scheduler Actions
+2024-12-23 19:59:01,099 - INFO - Handling Course Section times
+2024-12-23 19:59:01,107 - ERROR - Unexpected error during handleCourseSectionTimesAndClassroom: Expecting value: line 1 column 1 (char 0)
+2024-12-23 19:59:35,406 - INFO - Simulation started.
+2024-12-23 19:59:37,059 - INFO - Login department scheduler
+2024-12-23 19:59:39,844 - INFO - Handling Department Scheduler Actions
+2024-12-23 19:59:40,420 - INFO - Handling Course Section times
+2024-12-23 19:59:40,430 - ERROR - Unexpected error during handleCourseSectionTimesAndClassroom: Expecting value: line 1 column 1 (char 0)
+2024-12-23 19:59:49,964 - INFO - Simulation started.
+2024-12-23 19:59:51,404 - INFO - Login department scheduler
+2024-12-23 19:59:54,068 - INFO - Handling Department Scheduler Actions
+2024-12-23 19:59:54,764 - INFO - Handling Course Section times
+2024-12-23 19:59:59,115 - INFO - Handling Course Section Settings Menus
+2024-12-23 20:00:46,319 - INFO - Simulation started.
+2024-12-23 20:00:47,531 - INFO - Login department scheduler
+2024-12-23 20:00:50,211 - INFO - Handling Department Scheduler Actions
+2024-12-23 20:00:50,804 - INFO - Handling Course Section times
+2024-12-23 20:00:55,476 - INFO - Handling Course Section Settings Menus
+2024-12-23 20:01:03,511 - INFO - Simulation started.
+2024-12-23 20:01:04,635 - INFO - Login department head
+2024-12-23 20:01:07,765 - INFO - Handling department Head actions
+2024-12-23 20:01:40,798 - INFO - Simulation started.
+2024-12-23 20:01:42,628 - INFO - Login department scheduler
+2024-12-23 20:01:47,035 - INFO - Handling Department Scheduler Actions
+2024-12-23 20:01:47,763 - INFO - Handling Course Section times
+2024-12-23 20:01:54,483 - INFO - Handling Course Section Settings Menus
+2024-12-23 20:01:54,484 - ERROR - Error during handling Course Section Settings Menus: 'NoneType' object has no attribute 'getClassroom'
+2024-12-23 20:02:49,969 - INFO - Simulation started.
+2024-12-23 20:02:51,036 - INFO - Login department scheduler
+2024-12-23 20:02:53,445 - INFO - Handling Department Scheduler Actions
+2024-12-23 20:02:54,035 - INFO - Handling Course Section times
+2024-12-23 20:02:54,044 - ERROR - Unexpected error during handleCourseSectionTimesAndClassroom: Expecting value: line 1 column 1 (char 0)
+2024-12-23 20:04:16,859 - INFO - Simulation started.
+2024-12-23 20:04:19,044 - INFO - Login department scheduler
+2024-12-23 20:04:21,527 - INFO - Handling Department Scheduler Actions
+2024-12-23 20:04:22,148 - INFO - Handling Course Section times
+2024-12-23 20:04:25,475 - INFO - Handling Course Section Settings Menus
+2024-12-23 20:04:25,475 - ERROR - Error during handling Course Section Settings Menus: 'NoneType' object has no attribute 'getClassroom'
+2024-12-23 20:04:28,325 - INFO - Simulation started.
+2024-12-23 20:04:29,452 - INFO - Login department head
+2024-12-23 20:04:35,853 - ERROR - Unexpected error during login Department Head: Expecting value: line 1 column 1 (char 0)
+2024-12-23 20:05:22,180 - INFO - Login department head
+2024-12-23 20:05:48,916 - INFO - Simulation started.
+2024-12-23 20:05:52,428 - INFO - Login department head
+2024-12-23 20:05:55,444 - INFO - Handling department Head actions
+2024-12-23 20:06:17,269 - INFO - Simulation started.
+2024-12-23 20:06:18,548 - INFO - Login department head
+2024-12-23 20:06:24,156 - INFO - Handling department Head actions
+2024-12-23 20:06:43,961 - INFO - Simulation started.
+2024-12-23 20:06:45,259 - INFO - Login department scheduler
+2024-12-23 20:06:48,092 - INFO - Handling Department Scheduler Actions
+2024-12-23 20:06:48,875 - INFO - Handling Course Section times
+2024-12-23 20:06:54,204 - INFO - Handling Course Section Settings Menus

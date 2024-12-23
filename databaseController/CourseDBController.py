@@ -140,4 +140,4 @@ class CourseDBController:
         relative_path = current_dir / "../database/courseSections" / courseSectionJsonPath
         # Save Student JSON file.
         with open(relative_path, "w") as json_file:
-            json.dump(courseSection.toDict(), json_file, indent=4)
+            json.dump(courseSection.toDict(), json_file, indent=2)
