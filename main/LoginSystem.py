@@ -8,11 +8,9 @@ from main.DepartmentScheduler import DepartmentScheduler
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.AdminDBController import AdminDBController
-from databaseController.DepartmentHeadDBController import DepartmentHeadDBController
 from main.Advisor import Advisor
 from main.Student import Student
 from main.Admin import Admin
-from main.DepartmentHead import DepartmentHead
 
 
 class LoginSystem:
@@ -21,19 +19,16 @@ class LoginSystem:
     __student: Student
     __departmentScheduler: DepartmentScheduler
     __admin : Admin
-    __departmentHead : DepartmentHead
     __advisorDBController: AdvisorDBController
     __studentDBController: StudentDBController
     __departmentSchedulerDBController: DepartmentSchedulerDBController
     __adminDBController: AdminDBController
-    __departmentHeadDBController: DepartmentHeadDBController
 
-    def __init__(self, studentDBController, advisorDBController, departmentSchedulerDBController, adminDBController, departmentHeadDBController):
+    def __init__(self, studentDBController, advisorDBController, departmentSchedulerDBController, adminDBController):
         self.__studentDBController = studentDBController
         self.__advisorDBController = advisorDBController
         self.__departmentSchedulerDBController = departmentSchedulerDBController
         self.__adminDBController = adminDBController
-        self.__departmentHeadDBController = departmentHeadDBController
 
     # Getter and setter for Advisor
     def getAdvisor(self):
@@ -60,12 +55,6 @@ class LoginSystem:
     
     def setAdmin(self, admin):
         self.__admin = admin
-    
-    def getDepartmentHead(self):
-        return self.__departmentHead
-    
-    def setDepartmentHead(self, departmentHead):
-        self.__departmentHead = departmentHead
 
     # Getter and setter for AdvisorDBController
     def getAdvisorDBController(self):
@@ -140,18 +129,5 @@ class LoginSystem:
         else:
             self.__admin = None
             self.__adminDBController.setAdmin(None)
-            return False
-    
-    def authenticateDepartmentHead(self, departmentHeadId, password):
-        if self.__departmentHeadDBController.loadDepartmentHead(departmentHeadId):
-            self.__departmentHead = self.__departmentHeadDBController.getDepartmentHead()
-        else:
-            return False
-
-        if self.__departmentHead.getPassword() == password:
-            return True
-        else:
-            self.__departmentHead = None
-            self.__departmentHeadDBController.setDepartmentHead(None)
             return False
         

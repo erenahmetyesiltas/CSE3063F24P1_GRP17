@@ -1,15 +1,18 @@
-from typing import List
-from DepartmentScheduler import DepartmentScheduler
-from databaseController.CourseDBController import CourseDBController
+class DepartmentHead():
+    __id : str
+    __firstName : str
+    __lastName : str
+    __password : str
+    __departmentName : str
+    __departmentId : str
 
-class DepartmentHead(DepartmentScheduler):
+    def __init__(self, id: str, firstName: str, lastName: str, password: str, departmentName: str, departmentId: str):
+        self.__id = id
+        self.__firstName = firstName
+        self.__lastName = lastName
+        self.__password = password
+        self.__departmentName = departmentName
+        self.__departmentId = departmentId
 
-    def __init__(self, id: str, firstName: str, lastName: str, password: str, departmentId: str, courseSectionList: List):
-        super().__init__(id, firstName, lastName, password, departmentId, courseSectionList)
-
-    
-    def changeCourseSectionCapacity(self, courseSectionId, newCapacity):
-        courseDBController = CourseDBController()
-        courseSection = courseDBController.loadCourseSection(courseSectionId)
-        courseSection.setCapacity(newCapacity)
-        courseDBController.saveCourseSection(courseSection)
+    def changeCourseCapacity():
+        pass
