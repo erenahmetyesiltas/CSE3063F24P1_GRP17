@@ -99,13 +99,13 @@ class StudentDBController:
         relative_path = current_dir / "../database/students" / studentJsonPath
 
         with open(relative_path, "w") as json_file:
-            json.dump(student, json_file, cls=CustomEncoder, indent=4)
+            json.dump(student.to_dict(), json_file, indent=4)
     
     def saveStudentRegistration(self, student:Student):
         current_dir = Path(__file__).parent
         registration = student.getRegistration()
         registrationJsonPath = f"{registration.getId()}.json"
-        relative_path = current_dir / "../database/students" / registrationJsonPath
+        relative_path = current_dir / "../database/registrations" / registrationJsonPath
 
         with open(relative_path, "w") as json_file:
             json.dump(registration.to_dict(), json_file, indent=4)

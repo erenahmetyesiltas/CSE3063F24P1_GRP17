@@ -537,3 +537,41 @@
 2024-12-23 09:05:19,819 - INFO - Creating a new registration
 2024-12-23 09:05:19,819 - INFO - Creating registration for student: 150123823
 2024-12-23 09:05:28,401 - ERROR - An error occurred creating registration for student: 'NoneType' object has no attribute 'getCourseId'
+2024-12-23 09:07:57,675 - INFO - Simulation started.
+2024-12-23 09:07:58,621 - INFO - Handling advisor login
+2024-12-23 09:08:01,303 - INFO - Handling advisor actions
+2024-12-23 09:08:02,110 - INFO - Handling Registration Requests
+2024-12-23 09:08:27,611 - INFO - Simulation started.
+2024-12-23 09:08:32,439 - INFO - Creating a new registration
+2024-12-23 09:08:32,439 - INFO - Creating registration for student: 150123823
+2024-12-23 09:08:37,086 - ERROR - An error occurred creating registration for student: Object of type Course is not JSON serializable
+2024-12-23 09:11:01,967 - INFO - Simulation started.
+2024-12-23 09:11:07,185 - INFO - Creating a new registration
+2024-12-23 09:11:07,185 - INFO - Creating registration for student: 150123823
+2024-12-23 09:13:12,656 - INFO - Simulation started.
+2024-12-23 09:13:33,353 - INFO - Creating a new registration
+2024-12-23 09:13:33,353 - INFO - Creating registration for student: 150198001
+2024-12-23 09:16:16,707 - INFO - Simulation started.
+2024-12-23 09:16:22,168 - INFO - Creating a new registration
+2024-12-23 09:16:22,168 - INFO - Creating registration for student: 150123823
+2024-12-23 09:23:13,161 - INFO - Simulation started.
+2024-12-23 09:23:19,645 - INFO - Creating a new registration
+2024-12-23 09:23:19,645 - INFO - Creating registration for student: 150123823
+2024-12-23 09:26:38,605 - INFO - Simulation started.
+2024-12-23 09:26:44,063 - INFO - Creating a new registration
+2024-12-23 09:26:44,064 - INFO - Creating registration for student: 150123823
+2024-12-23 09:26:55,244 - INFO - Creating a new registration
+2024-12-23 09:26:55,244 - INFO - Creating registration for student: 150123823
+2024-12-23 09:27:02,938 - ERROR - An error occurred creating registration for student: 'NoneType' object has no attribute 'getCourseSections'
+2024-12-23 09:27:20,068 - INFO - Simulation started.
+2024-12-23 09:27:25,496 - INFO - Creating a new registration
+2024-12-23 09:27:25,496 - INFO - Creating registration for student: 150123823
+2024-12-23 09:30:24,200 - INFO - Simulation started.
+2024-12-23 09:30:55,231 - INFO - Creating a new registration
+2024-12-23 09:30:55,231 - INFO - Creating registration for student: 150122075
+2024-12-23 09:32:48,047 - INFO - Simulation started.
+2024-12-23 09:32:58,305 - INFO - Creating a new registration
+2024-12-23 09:32:58,305 - INFO - Creating registration for student: 150122507
+2024-12-23 09:33:30,281 - INFO - Simulation started.
+2024-12-23 09:33:42,404 - INFO - Creating a new registration
+2024-12-23 09:33:42,404 - INFO - Creating registration for student: 150122507

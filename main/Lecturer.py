@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+from typing import List
 from CustomEncoder import CustomEncoder
 
 class Lecturer :
@@ -7,7 +8,7 @@ class Lecturer :
     __firstName : str
     __lastName : str
     __password : str
-    __departmentIds : []
+    __departmentIds : List[int]
 
     def __init__(self, id = "", firstName = "", lastName = "" ,password = "", departmentIds = ""):
         self.__id = id

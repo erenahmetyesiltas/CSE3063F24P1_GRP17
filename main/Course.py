@@ -7,9 +7,9 @@ from main.Department import Department
 class Course :
     __id: str
     __credit: int
-    __departments: []  #
+    __departments: List[Department]  #
     __term: int
-    __prerequisiteCourses:[]
+    __prerequisiteCourses: List
     __name: str
     __weeklyCourseHours: int
 
@@ -41,9 +41,9 @@ class Course :
             "id": self.__id,
             "name": self.__name,
             "credit": self.__credit,
-            "departments": self.__departments,
+            "departments": [department.to_dict() if hasattr(department, "to_dict") else department for department in self.__departments] if self.__departments else [],
             "term": self.__term,
-            "prerequisiteCourses": self.__prerequisiteCourses,
+            "prerequisiteCourses": [prerequisiteCourse.to_dict() if hasattr(prerequisiteCourse, "to_dict") else prerequisiteCourse for prerequisiteCourse in self.__prerequisiteCourses] if self.__prerequisiteCourses else [],
             "weeklyCourseHours": self.__weeklyCourseHours
 
         }

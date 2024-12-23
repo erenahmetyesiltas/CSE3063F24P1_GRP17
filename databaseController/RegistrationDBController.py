@@ -62,6 +62,6 @@ class RegistrationDBController:
                     return False
 
             with open(relative_path, "w") as json_file:
-                json.dump(reg, json_file,cls=CustomEncoder, indent=4)
+                json.dump(reg.to_dict(), json_file, indent=4)
 
 

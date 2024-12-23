@@ -18,7 +18,7 @@ class AdvisorDBController:
         relative_path = current_dir / "../database/advisors" / advisorJsonPath
 
         with open(relative_path, "w") as json_file:
-            json.dump(advisor, json_file,cls=CustomEncoder, indent=4)
+            json.dump(advisor.to_dict(), json_file, indent=4)
 
     def loadAdvisor(self,advisorId):
 

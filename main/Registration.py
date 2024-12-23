@@ -1,11 +1,11 @@
 from typing import List
 
-import CourseSection
+#from CourseSection import CourseSection
 
 
 class Registration:
     __id : str
-    __courseSections : List[CourseSection]
+    __courseSections : List
     __registrationStatus : int
 
 
@@ -14,6 +14,7 @@ class Registration:
 
         if (len(courseSections) != 0 and type(courseSections[0]) == dict):
             for i in range(len(courseSections)):
+                from CourseSection import CourseSection
                 courseSections[i] = CourseSection(**courseSections[i])
 
             self.__courseSections = courseSections
@@ -35,6 +36,7 @@ class Registration:
         self.__id = id
 
     def addCourseSection(self,courseSectionAdded):
+        from CourseSection import CourseSection
         courseSectionAdded: CourseSection
         if(len(self.__courseSections) >= 5):
             print("WARNING ! : (Total course number exceeds 5" + courseSectionAdded.getCourse.getId()+ " - " + courseSectionAdded.getSectionNumber() + " cannot added to registration")
