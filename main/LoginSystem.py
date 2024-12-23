@@ -4,13 +4,13 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
-from main.DepartmentScheduler import DepartmentScheduler
+from DepartmentScheduler import DepartmentScheduler
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.AdminDBController import AdminDBController
-from main.Advisor import Advisor
-from main.Student import Student
-from main.Admin import Admin
+from Advisor import Advisor
+from Student import Student
+from Admin import Admin
 
 
 class LoginSystem:

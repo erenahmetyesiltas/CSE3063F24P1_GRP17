@@ -22,6 +22,12 @@ class Registration:
 
         self.__registrationStatus = registrationStatus
 
+    def to_dict(self):
+        return{
+            "id": self.__id,
+            "courseSections": [courseSection.to_dict() if hasattr(courseSection, "to_dict") else courseSection for courseSection in self.__courseSections] if self.__courseSections else [],
+            "registrationStatus": self.__registrationStatus
+        }
     def getId (self):
         return self.__id
 

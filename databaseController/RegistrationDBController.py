@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 from main import Advisor
 from main.Registration import Registration
+from main.CustomEncoder import CustomEncoder
 
 
 class RegistrationDBController:
@@ -61,6 +62,6 @@ class RegistrationDBController:
                     return False
 
             with open(relative_path, "w") as json_file:
-                json.dump(reg, json_file, indent=4)
+                json.dump(reg, json_file,cls=CustomEncoder, indent=4)
 
 

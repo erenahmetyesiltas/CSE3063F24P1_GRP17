@@ -1,4 +1,6 @@
-
+from pathlib import Path
+import json
+from CustomEncoder import CustomEncoder
 
 class Lecturer :
     __id : str
@@ -13,6 +15,18 @@ class Lecturer :
         self.__lastName = lastName
         self.__password = password
         self.__departmentIds = departmentIds
+
+    def to_dict(self):
+        """
+        Convert the object to a dictionary representation that is JSON-serializable.
+        """
+        return {
+            "id": self.__id,
+            "firstName": self.__firstName,
+            "lastName": self.__lastName,
+            "password": self.__password,
+            "departmentIds": self.__departmentIds,  # Assumes it's a list
+        }
 
     def getId(self):
         return self.__id

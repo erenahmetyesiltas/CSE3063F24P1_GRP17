@@ -4,18 +4,19 @@ from typing import List
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.CourseDBController import CourseDBController
+from databaseController.RegistrationDBController import RegistrationDBController
 
-from main.Course import Course
-from main.Student import Student
-from main.Registration import Registration
-from main.CourseSection import CourseSection
-from main.CourseTime import CourseTime
+from Course import Course
+from Student import Student
+from Registration import Registration
+from CourseSection import CourseSection
+from CourseTime import CourseTime
 
 
 
 class CourseRegistrationSystem:
 
-    def __init__(self, courseDBController=CourseDBController(), advisorDBController=AdvisorDBController(), studentDBController=StudentDBController()):
+    def __init__(self, courseDBController=CourseDBController(), advisorDBController=AdvisorDBController(), studentDBController=StudentDBController(), registrationDBController = RegistrationDBController()):
     #    self.setAllCourseSections(self.__dataHandler.getCourseSectionList())
         self.__allStudents = []
         self.__allAdvisors =[]
@@ -24,6 +25,7 @@ class CourseRegistrationSystem:
         self.__courseDBController = courseDBController
         self.__advisorDBController = advisorDBController
         self.__studentDBController = studentDBController
+        self.__registrationDBController = registrationDBController
 
 
     def getAllStudents(self):
@@ -132,14 +134,15 @@ class CourseRegistrationSystem:
             student.getAdvisor().getRegistrationIDs().append(registration.getId())
 
             #Save the registration and Advisor's registration.
-
+            print("aasldjasdas")
             self.__studentDBController.setStudent(student)
             self.__studentDBController.saveStudent(student)
+            self.__studentDBController.saveStudentRegistration(student)
             self.__advisorDBController.saveAdvisor(student.getAdvisor())
 
         except Exception as e:
             # Input hatası olabilir
-            print(f"Bir hata oluştu: {e}")
+            print(f"Bir hata oluştu burada: {e}")
             raise
 
     def getStudentRegistrationStatus(self, student: Student):

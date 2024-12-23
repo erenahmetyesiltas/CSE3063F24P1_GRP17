@@ -1,14 +1,14 @@
-from main.LoginSystem import LoginSystem
+from LoginSystem import LoginSystem
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.CourseDBController import CourseDBController
 from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.RegistrationDBController import RegistrationDBController
 from databaseController.AdminDBController import AdminDBController
-from main.SingletonLogger import SingletonLogger
-from main.SingletonLogger import SingletonLogger
-from main.Classroom import Classroom
-from main.DepartmentScheduler import DepartmentScheduler
+from SingletonLogger import SingletonLogger
+from SingletonLogger import SingletonLogger
+from Classroom import Classroom
+from DepartmentScheduler import DepartmentScheduler
 
 
 class CourseRegistrationSimulation:

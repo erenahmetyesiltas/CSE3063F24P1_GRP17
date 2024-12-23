@@ -21,6 +21,12 @@ class Classroom :
     def setCapacity(self, capacity : int):
         self.__capacity = capacity
 
+    def to_dict(self):
+        return {
+            "id": self.__id,
+            "capacity": self.__capacity
+        }
+    
     def toDict(self):
         return {
             "id": self.__id,

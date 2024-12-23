@@ -2,11 +2,11 @@ from dataclasses import dataclass
 from tkinter import Listbox
 from typing import List
 
-from main.Classroom import Classroom
-from main.Course import Course
-from main.Lecturer import Lecturer
-from main.CourseTime import CourseTime
-import Student
+from Classroom import Classroom
+from Course import Course
+from Lecturer import Lecturer
+from CourseTime import CourseTime
+from Student import Student
 
 class CourseSection :
     __enrolledStudents : List[Student]
@@ -60,6 +60,19 @@ class CourseSection :
         else :
             self.__lecturer = lecturer
 
+    def to_dict(self):
+        return {
+            "enrolledStudents": self.__enrolledStudents,
+            "classroom": self.__classroom.to_dict(),
+            "id": self.__id,
+            #"scheduledTimes": self.__scheduledTimes,
+            "scheduledTimes": [courseTime.toDict() for courseTime in self.__scheduledTimes],
+            "sectionNumber": self.__sectionNumber,
+            "course": self.__course.to_dict(),
+            "capacity": self.__capacity,
+            "courseId": self.__courseId,
+            #"lecturer": self.__lecturer
+        }
 
 
     def toDict(self):

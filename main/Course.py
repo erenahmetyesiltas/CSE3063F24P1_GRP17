@@ -36,7 +36,18 @@ class Course :
         else:
             self.__departments = departments
 
+    def to_dict(self):
+        return {
+            "id": self.__id,
+            "name": self.__name,
+            "credit": self.__credit,
+            "departments": self.__departments,
+            "term": self.__term,
+            "prerequisiteCourses": self.__prerequisiteCourses,
+            "weeklyCourseHours": self.__weeklyCourseHours
 
+        }
+    
     def getId(self):
         return self.__id
 

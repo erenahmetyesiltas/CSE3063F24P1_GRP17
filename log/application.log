@@ -427,3 +427,113 @@
 2024-12-23 01:11:43,810 - INFO - Creating a new registration
 2024-12-23 01:11:43,811 - INFO - Creating registration for student: 150122011
 2024-12-23 01:12:01,388 - ERROR - An error occurred creating registration for student: Object of type Student is not JSON serializable
+2024-12-23 07:37:42,240 - INFO - Simulation started.
+2024-12-23 07:38:06,978 - INFO - Creating a new registration
+2024-12-23 07:38:06,978 - INFO - Creating registration for student: 150123823
+2024-12-23 07:38:16,391 - ERROR - An error occurred creating registration for student: Object of type Student is not JSON serializable
+2024-12-23 07:41:27,738 - INFO - Simulation started.
+2024-12-23 07:41:55,135 - INFO - Creating a new registration
+2024-12-23 07:41:55,135 - INFO - Creating registration for student: 150123823
+2024-12-23 07:42:03,773 - ERROR - An error occurred creating registration for student: Object of type Course is not JSON serializable
+2024-12-23 07:44:04,806 - INFO - Simulation started.
+2024-12-23 07:44:10,322 - INFO - Creating a new registration
+2024-12-23 07:44:10,322 - INFO - Creating registration for student: 150123823
+2024-12-23 07:44:16,359 - ERROR - An error occurred creating registration for student: 'Course' object has no attribute 'id'
+2024-12-23 07:44:39,243 - INFO - Simulation started.
+2024-12-23 07:44:52,234 - INFO - Simulation started.
+2024-12-23 07:44:57,210 - INFO - Creating a new registration
+2024-12-23 07:44:57,210 - INFO - Creating registration for student: 150123823
+2024-12-23 07:45:02,465 - ERROR - An error occurred creating registration for student: Object of type Advisor is not JSON serializable
+2024-12-23 07:49:44,918 - INFO - Simulation started.
+2024-12-23 07:49:51,395 - INFO - Creating a new registration
+2024-12-23 07:49:51,395 - INFO - Creating registration for student: 150123823
+2024-12-23 07:49:58,488 - ERROR - An error occurred creating registration for student: Expecting value: line 1 column 1 (char 0)
+2024-12-23 07:50:52,768 - INFO - Simulation started.
+2024-12-23 07:50:58,262 - INFO - Creating a new registration
+2024-12-23 07:50:58,263 - INFO - Creating registration for student: 150123823
+2024-12-23 07:51:05,453 - ERROR - An error occurred creating registration for student: Expecting value: line 1 column 1 (char 0)
+2024-12-23 07:53:27,470 - INFO - Simulation started.
+2024-12-23 07:53:35,603 - INFO - Creating a new registration
+2024-12-23 07:53:35,603 - INFO - Creating registration for student: 150123823
+2024-12-23 07:53:41,553 - ERROR - An error occurred creating registration for student: Expecting value: line 1 column 1 (char 0)
+2024-12-23 07:54:56,890 - INFO - Simulation started.
+2024-12-23 07:55:14,964 - INFO - Creating a new registration
+2024-12-23 07:55:14,964 - INFO - Creating registration for student: 150123823
+2024-12-23 07:55:19,396 - ERROR - An error occurred creating registration for student: Expecting value: line 1 column 1 (char 0)
+2024-12-23 07:56:04,007 - INFO - Simulation started.
+2024-12-23 07:56:09,598 - INFO - Creating a new registration
+2024-12-23 07:56:09,599 - INFO - Creating registration for student: 150123823
+2024-12-23 07:56:16,139 - ERROR - An error occurred creating registration for student: Expecting value: line 1 column 1 (char 0)
+2024-12-23 07:56:44,724 - INFO - Simulation started.
+2024-12-23 07:56:55,681 - INFO - Creating a new registration
+2024-12-23 07:56:55,681 - INFO - Creating registration for student: 150121017
+2024-12-23 07:57:01,897 - ERROR - An error occurred creating registration for student: Expecting value: line 1 column 1 (char 0)
+2024-12-23 07:58:27,592 - INFO - Simulation started.
+2024-12-23 07:58:32,687 - INFO - Creating a new registration
+2024-12-23 07:58:32,688 - INFO - Creating registration for student: 150123823
+2024-12-23 07:59:34,053 - INFO - Simulation started.
+2024-12-23 08:00:42,293 - INFO - Simulation started.
+2024-12-23 08:02:19,779 - INFO - Creating a new registration
+2024-12-23 08:02:19,779 - INFO - Creating registration for student: 150121017
+2024-12-23 08:02:27,895 - ERROR - An error occurred creating registration for student: Advisor.__init__() got an unexpected keyword argument 'name'
+2024-12-23 08:04:05,430 - INFO - Simulation started.
+2024-12-23 08:06:14,072 - INFO - Simulation started.
+2024-12-23 08:06:19,408 - INFO - Creating a new registration
+2024-12-23 08:06:19,408 - INFO - Creating registration for student: 150123823
+2024-12-23 08:09:13,055 - INFO - Simulation started.
+2024-12-23 08:09:19,033 - INFO - Creating a new registration
+2024-12-23 08:09:19,033 - INFO - Creating registration for student: 150123823
+2024-12-23 08:09:28,169 - ERROR - An error occurred creating registration for student: Advisor.__init__() got an unexpected keyword argument 'registrationIDs'
+2024-12-23 08:10:14,304 - INFO - Simulation started.
+2024-12-23 08:10:19,653 - INFO - Creating a new registration
+2024-12-23 08:10:19,653 - INFO - Creating registration for student: 150123823
+2024-12-23 08:10:25,573 - ERROR - An error occurred creating registration for student: Object of type Department is not JSON serializable
+2024-12-23 08:13:58,991 - INFO - Simulation started.
+2024-12-23 08:14:04,417 - INFO - Creating a new registration
+2024-12-23 08:14:04,417 - INFO - Creating registration for student: 150123823
+2024-12-23 08:41:44,114 - INFO - Simulation started.
+2024-12-23 08:42:47,490 - INFO - Creating a new registration
+2024-12-23 08:42:47,490 - INFO - Creating registration for student: 150123823
+2024-12-23 08:42:54,906 - ERROR - An error occurred creating registration for student: 'Registration' object has no attribute 'to_dict'
+2024-12-23 08:44:51,062 - INFO - Simulation started.
+2024-12-23 08:44:57,273 - INFO - Creating a new registration
+2024-12-23 08:44:57,273 - INFO - Creating registration for student: 150123823
+2024-12-23 08:45:05,195 - ERROR - An error occurred creating registration for student: Object of type CourseSection is not JSON serializable
+2024-12-23 08:48:13,435 - INFO - Simulation started.
+2024-12-23 08:48:18,227 - INFO - Creating a new registration
+2024-12-23 08:48:18,227 - INFO - Creating registration for student: 150123823
+2024-12-23 08:48:25,594 - ERROR - An error occurred creating registration for student: Object of type Classroom is not JSON serializable
+2024-12-23 08:49:32,055 - INFO - Simulation started.
+2024-12-23 08:49:36,848 - INFO - Creating a new registration
+2024-12-23 08:49:36,848 - INFO - Creating registration for student: 150123823
+2024-12-23 08:49:43,035 - ERROR - An error occurred creating registration for student: Object of type Course is not JSON serializable
+2024-12-23 08:53:59,425 - INFO - Simulation started.
+2024-12-23 08:54:17,546 - INFO - Simulation started.
+2024-12-23 08:54:22,521 - INFO - Creating a new registration
+2024-12-23 08:54:22,521 - INFO - Creating registration for student: 150123823
+2024-12-23 08:54:32,072 - ERROR - An error occurred creating registration for student: Object of type Lecturer is not JSON serializable
+2024-12-23 08:55:41,379 - INFO - Creating a new registration
+2024-12-23 08:55:41,379 - INFO - Creating registration for student: 150123823
+2024-12-23 08:55:50,970 - ERROR - An error occurred creating registration for student: Object of type Lecturer is not JSON serializable
+2024-12-23 08:56:48,859 - INFO - Simulation started.
+2024-12-23 08:56:53,877 - INFO - Creating a new registration
+2024-12-23 08:56:53,877 - INFO - Creating registration for student: 150123823
+2024-12-23 08:57:14,229 - ERROR - An error occurred creating registration for student: Object of type Lecturer is not JSON serializable
+2024-12-23 08:59:36,272 - INFO - Simulation started.
+2024-12-23 08:59:41,274 - INFO - Creating a new registration
+2024-12-23 08:59:41,274 - INFO - Creating registration for student: 150123823
+2024-12-23 08:59:47,188 - ERROR - An error occurred creating registration for student: 'NoneType' object has no attribute 'getCourseId'
+2024-12-23 08:59:48,944 - INFO - Creating a new registration
+2024-12-23 08:59:48,944 - INFO - Creating registration for student: 150123823
+2024-12-23 08:59:53,329 - ERROR - An error occurred creating registration for student: Object of type Lecturer is not JSON serializable
+2024-12-23 09:01:29,246 - INFO - Simulation started.
+2024-12-23 09:01:34,847 - INFO - Creating a new registration
+2024-12-23 09:01:34,847 - INFO - Creating registration for student: 150123823
+2024-12-23 09:02:07,371 - INFO - Simulation started.
+2024-12-23 09:04:26,475 - INFO - Simulation started.
+2024-12-23 09:04:32,976 - INFO - Creating a new registration
+2024-12-23 09:04:32,976 - INFO - Creating registration for student: 150123823
+2024-12-23 09:05:03,907 - INFO - Simulation started.
+2024-12-23 09:05:19,819 - INFO - Creating a new registration
+2024-12-23 09:05:19,819 - INFO - Creating registration for student: 150123823
+2024-12-23 09:05:28,401 - ERROR - An error occurred creating registration for student: 'NoneType' object has no attribute 'getCourseId'

@@ -41,7 +41,15 @@ class Advisor:
         else :
             self.__registrations = registrations
 
-
+    def to_dict(self):
+        return {
+            "id": self.__id,
+            "firstName": self.__firstName,
+            "lastName": self.__lastName,
+            "password": self.__password,
+            "registrationsIDs": self.__registrationIDs,
+            "supervisedStudentsIDs": self.__supervisedStudentsIDs
+        }
 
     def getId(self):
         return self.__id

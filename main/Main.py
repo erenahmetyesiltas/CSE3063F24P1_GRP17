@@ -1,5 +1,5 @@
-from main.CourseRegistrationSimulation import CourseRegistrationSimulation
-from main.CourseRegistrationSystem import CourseRegistrationSystem
+from CourseRegistrationSimulation import CourseRegistrationSimulation
+from CourseRegistrationSystem import CourseRegistrationSystem
 from databaseController.CourseDBController import CourseDBController
 
 

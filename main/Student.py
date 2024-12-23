@@ -181,7 +181,23 @@ class Student:
         print(f"Total Credits: {self.__transcript.get('totalCredit', 0):<10}")
         print(f"Final GPA: {self.__transcript.get('GPA', 0.0):.2f}")
 
-
+    def to_dict(self):
+        return {
+            "id": self.__id,
+            "firstName": self.__firstName,
+            "lastName": self.__lastName,
+            "password": self.__password,
+            "gpa": self.__gpa,
+            "courses": [course.to_dict() if hasattr(course, "to_dict") else course for course in self.__courses] if self.__courses else [],
+            "advisorId": self.__advisorId,
+            "departmentIds": self.__departmentIds,
+            "startYear": self.__startYear,
+            "year": self.__year,
+            "term": self.__term,
+            "registrationId": self.__registrationId,
+            "departments": [department.to_dict() if hasattr(department, "to_dict") else department for department in self.__departments] if self.__departments else [],
+            "transcript": self.__transcript,
+        }
 
     # Existing methods remain unchanged...
 
