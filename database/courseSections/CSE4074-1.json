@@ -1,30 +1,46 @@
 {
-  "enrolledStudents": [],
-  "classroom": {
-    "id": "M2-Z11",
-    "capacity": 150
-  },
-  "id": "CSE4074-1",
-  "scheduledTimes": [
-
-  ],
-  "sectionNumber": 1,
-  "course": {
-    "id": "CSE4074",
-    "name": "Computer Networks",
-    "credit": 5,
-    "departments": [],
-    "term": 7,
-    "prerequisiteCourses": [],
-    "weeklyCourseHours": 3
-  },
-  "capacity": 150,
-  "courseId": "CSE4074",
-  "lecturer": {
-    "id": "2004",
-    "password": "kazım123",
-    "firstName": "Kazım",
-    "lastName": "Yılmaz",
-    "departmentIds": ["CSE"]
-  }
+    "enrolledStudents": [],
+    "classroom": {
+        "id": "M2-Z11",
+        "capacity": 150
+    },
+    "id": "CSE4074-1",
+    "scheduledTimes": [
+        {
+            "startTime": "00:00:00",
+            "endTime": "00:50:00",
+            "courseDay": "Wednesday"
+        },
+        {
+            "startTime": "01:00:00",
+            "endTime": "01:50:00",
+            "courseDay": "Wednesday"
+        },
+        {
+            "startTime": "02:00:00",
+            "endTime": "02:50:00",
+            "courseDay": "Wednesday"
+        }
+    ],
+    "sectionNumber": 1,
+    "course": {
+        "id": "CSE4074",
+        "name": "Computer Networks",
+        "credit": 5,
+        "departments": [],
+        "term": 7,
+        "prerequisiteCourses": [],
+        "weeklyCourseHours": 3
+    },
+    "capacity": 150,
+    "courseId": "CSE4074",
+    "lecturer": {
+        "id": "2004",
+        "password": "kaz\u0131m123",
+        "firstName": "Kaz\u0131m",
+        "lastName": "Y\u0131lmaz",
+        "departmentIds": [
+            "CSE"
+        ]
+    }
 }

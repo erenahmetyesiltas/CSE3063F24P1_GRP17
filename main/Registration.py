@@ -1,10 +1,17 @@
+from typing import List
+
+from main.CourseSection import CourseSection
+
+
 class Registration:
     __id : str
-    __courseSections:list
+    __courseSections: List[CourseSection]
     __registrationStatus : int
 
-    def __init__(self):
-        pass
+    def __init__(self, id: str, courseSections: List[CourseSection], registrationStatus: int):
+        self.__id = id
+        self.__courseSections = courseSections
+        self.__registrationStatus = registrationStatus
 
     def getid (self):
         return self.__id
@@ -36,10 +43,6 @@ class Registration:
             print("WARNING ! : " + courseSectionAdded.getCourseId() + " - " + courseSectionAdded.getSectionNumber() + " cannot added to registration")
             return False
 
-    def __init__(self):
-        self._course_sections = []
-        self._registration_status = 0
-
 
     def get_course_sections(self):
         return self._course_sections
@@ -54,8 +57,26 @@ class Registration:
 
 
     def get_registration_status(self):
-        return self._registration_status
-
+        return self.__registration_status
 
     def set_registration_status(self, status):
         self._registration_status = status
+
+    def getRegistrationStatus(self):
+        return self.__registrationStatus
+
+    def setRegistrationStatus(self, registrationStatus : int):
+        self.__registrationStatus = registrationStatus
+
+    def getCourseSections(self):
+        return self.__courseSections
+
+    def setCourseSections(self, courseSection : List[CourseSection]):
+        self.__courseSections = courseSection
+
+    def toDict(self):
+        return {
+            "id": self.__id,
+            "courseSections": self.__courseSections,
+            "registrationStatus": self.__registrationStatus
+        }
