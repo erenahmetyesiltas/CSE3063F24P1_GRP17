@@ -1,66 +1,44 @@
-from pathlib import Path
 import json
-from main import Advisor
+from pathlib import Path
+
+from main.Advisor import Advisor
 from main.Registration import Registration
 
 
 class RegistrationDBController:
-    __registration: Registration
 
-    def main(self, registration = ""):
-        self.__registration = registration
+    def main(self):
+        print()
 
-    def getRegistrationsOfAdvisor(self, advisor):
+    def getRegistrationsOfAdvisor(self, advisor : Advisor):
 
-        advisor.getRegistrations().clear()
+        # Find the registrations' json path
+        current_dir = Path(__file__).parent
 
-        for id in advisor.getRegistrationIDs() :
-            current_dir = Path(__file__).parent
+        # clear the list to begin the list get all the registrations
+        # it must be done to provide duplicate data
+        advisor.setRegistrations([])
 
-            regJsonPath = f"{id}.json"
-            relative_path = current_dir / "../database/registrations" / regJsonPath
+        for i in range(len(advisor.getRegistrationIDs())):
 
+            registrationJsonPath = "{}{}".format(advisor.getRegistrationIDs()[i], ".json")
+
+            relative_path = current_dir / "../database/registrations" / registrationJsonPath
+
+            registrationObj : Registration
+
+            # verify that is the file exist
             if not relative_path.is_file():
-                return False  # File not found
+                print("There is an error about registration path.")
+                return []
             else:
-                try:
-                    with open(relative_path, 'r', encoding='utf-8') as file:
-                        data = json.load(file)
-                        reg = Registration(**data)
-                        advisor.getRegistrations.append(reg)
-                except json.JSONDecodeError:
-                    print(f"Error decoding JSON for registration ID {id}")
-                    return False
-                except Exception as e:
-                    print(f"An unexpected error occurred: {e}")
-                    return False
-
-        return advisor.getRegistrations()
-
-    def updateRegistrations(self, registration : Registration, status : int):
-            id = registration.getId()
-
-            current_dir = Path(__file__).parent
-
-            regJsonPath = f"{id}.json"
-            relative_path = current_dir / "../database/registrations" / regJsonPath
-
-            if not relative_path.is_file():
-                return False  # File not found
-            else:
-                try:
-                    with open(relative_path, 'r', encoding='utf-8') as file:
-                        data = json.load(file)
-                        reg = Registration(**data)
-                        reg.setRegistrationStatus(status)
-                except json.JSONDecodeError:
-                    print(f"Error decoding JSON for registration ID {id}")
-                    return False
-                except Exception as e:
-                    print(f"An unexpected error occurred: {e}")
-                    return False
-
-            with open(relative_path, "w") as json_file:
-                json.dump(reg, json_file, indent=4)
 
 
+                # get the json file data
+                with open(relative_path, 'r', encoding='utf-8') as file:
+                    data = json.load(file)
+
+                # set the json data to registration type
+                registrationObj = Registration(**data)
+
+                advisor.getRegistrations().append(registrationObj)
