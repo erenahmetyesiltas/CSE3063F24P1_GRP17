@@ -107,6 +107,8 @@ class CourseDBController:
 
     def getAllCourseSections(self):
 
+        courseSections : List[CourseSection] = []
+
         # Find the course section json path
         current_dir = Path(__file__).parent
 
@@ -129,3 +131,16 @@ class CourseDBController:
                 print("Error json file course section")
 
         return courseSections
+    
+    def saveCourseSection(self, courseSection):
+        courseSectionId = courseSection.getId()
+
+        # Find the course section json path
+        current_dir = Path(__file__).parent
+
+        courseSectionJsonPath = "{}{}".format(courseSectionId, ".json")
+
+        relative_path = current_dir / "../database/courseSections" / courseSectionJsonPath
+        # Save Student JSON file.
+        with open(relative_path, "w") as json_file:
+            json.dump(courseSection.toDict(), json_file, indent=2)

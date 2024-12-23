@@ -1,13 +1,18 @@
 from typing import List
 
 #from CourseSection import CourseSection
+from main.CourseSection import CourseSection
 
 
 class Registration:
     __id : str
-    __courseSections : List
+    __courseSections: List[CourseSection]
     __registrationStatus : int
 
+    def __init__(self, id: str, courseSections: List[CourseSection], registrationStatus: int):
+        self.__id = id
+        self.__courseSections = courseSections
+        self.__registrationStatus = registrationStatus
 
     def __init__(self, id = "", courseSections = [], registrationStatus = 1):
         self.__id = id
@@ -80,3 +85,28 @@ class Registration:
 
     def setRegistrationStatus(self, status):
         self.__registrationStatus = status
+        
+    def get_registration_status(self):
+        return self.__registration_status
+
+    def set_registration_status(self, status):
+        self._registration_status = status
+
+    def getRegistrationStatus(self):
+        return self.__registrationStatus
+
+    def setRegistrationStatus(self, registrationStatus : int):
+        self.__registrationStatus = registrationStatus
+
+    def getCourseSections(self):
+        return self.__courseSections
+
+    def setCourseSections(self, courseSection : List[CourseSection]):
+        self.__courseSections = courseSection
+
+    def toDict(self):
+        return {
+            "id": self.__id,
+            "courseSections": self.__courseSections,
+            "registrationStatus": self.__registrationStatus
+        }
