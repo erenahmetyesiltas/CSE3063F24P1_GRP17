@@ -6,10 +6,10 @@ class CourseTime:
     __endTime : str
     __courseDay : str
 
-    def __init__(self, startTime : datetime = 0, endTime : datetime = 0, courseDay : str = 0):
-        self.__startTime = startTime
-        self.__endTime = endTime
-        self.__courseDay = courseDay
+    #def __init__(self, startTime : datetime, endTime : datetime, courseDay : str):
+    #    self.__startTime = startTime
+    #    self.__endTime = endTime
+    #    self.__courseDay = courseDay
 
 
     def getStartTime(self):

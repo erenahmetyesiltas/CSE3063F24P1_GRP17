@@ -1,6 +1,6 @@
 from typing import List
 
-
+from main.CourseSection import CourseSection
 
 
 class Department:
@@ -8,7 +8,7 @@ class Department:
     __departmentName : str
     __courseSectionIds : List[str]
 
-    def __init__(self, id="", departmentName="", courseSectionIds=[]):
+    def __init__(self, id : str, departmentName : str, courseSectionIds : List[str]):
         self.__id = id
         self.__departmentName = departmentName
         self.__courseSectionIds = courseSectionIds

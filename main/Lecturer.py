@@ -7,12 +7,8 @@ class Lecturer :
     __password : str
     __departmentIds : []
 
-    def __init__(self, id = "", firstName = "", lastName = "" ,password = "", departmentIds = ""):
-        self.__id = id
-        self.__firstName = firstName
-        self.__lastName = lastName
-        self.__password = password
-        self.__departmentIds = departmentIds
+    def __init__(self):
+        pass
 
     def getId(self):
         return self.__id

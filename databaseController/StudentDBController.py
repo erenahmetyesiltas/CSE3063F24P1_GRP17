@@ -1,14 +1,10 @@
 from pathlib import Path
 from main.Student import Student
-from main.Registration import Registration
 import json
-
-
 
 class StudentDBController:
 
     __student: Student
-
 
     def __init__(self):
         self.__student = None  # Initialize with None
@@ -31,7 +27,6 @@ class StudentDBController:
 
                 # Create a Student object using the JSON data
                 student = Student(**data)
-                self.loadStudentRegistration(student)
                 self.setStudent(student)
                 return True
             except json.JSONDecodeError:
@@ -41,10 +36,10 @@ class StudentDBController:
                 print(f"An unexpected error occurred: {e}")
                 return False
 
-    def createNewStudent(self, student : Student):
+    def createNewStudent(self, student):
         current_dir = Path(__file__).parent
 
-        studentJsonPath = "{}{}".format(student.getId(),".json")
+        studentJsonPath = "{}{}".format(student["id"],".json")
 
         relative_path = current_dir / "../database/students" / studentJsonPath
         
@@ -54,51 +49,22 @@ class StudentDBController:
 
         self.createNewRegisterForStudent(student)
         
-    def createNewRegisterForStudent(self, student : Student):
+    def createNewRegisterForStudent(self, student):
         current_dir = Path(__file__).parent
-        studentRegisterJsonPath = "{}{}".format(student.getRegistrationId(),".json")
+        studentRegisterJsonPath = "{}{}".format(student["registrationId"],".json")
 
         relative_path = current_dir / "../database/registrations" / studentRegisterJsonPath
 
         register = {
-                "id": student.getRegistrationId(),
+                "id": student["registrationId"],
                 "courseSections": [],
-                "registrationStatus": 1
+                "registrationStatus": 0
             }
 
         # Save Student Register JSON file.
         with open(relative_path, "w") as json_file:
             json.dump(register, json_file, indent=4)
 
-    def loadStudentRegistration(self, student : Student):
-        current_dir = Path(__file__).parent
-        id = "r" + student.getId()
-        regJsonPath = f"{id}.json"
-        relative_path = current_dir / "../database/registrations" / regJsonPath
-
-        if not relative_path.is_file():
-            return False  # File not found
-        else:
-            try:
-                with open(relative_path, 'r', encoding='utf-8') as file:
-                    data = json.load(file)
-                    reg = Registration(**data)
-                    student.setRegistration(reg)
-            except json.JSONDecodeError:
-                print(f"Error decoding JSON for registration ID {id}")
-                return False
-            except Exception as e:
-                print(f"An unexpected error occurred: {e}")
-                return False
-
-    def saveStudent(self, student : Student):
-        current_dir = Path(__file__).parent
-        studentId = student.getId()
-        studentJsonPath = f"{studentId}.json"
-        relative_path = current_dir / "../database/students" / studentJsonPath
-
-        with open(relative_path, "w") as json_file:
-            json.dump(student, json_file, indent=4)
 
     def getStudent(self):
         """

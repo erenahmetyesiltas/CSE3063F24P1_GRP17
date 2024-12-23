@@ -1,8 +1,7 @@
-from main.CourseRegistrationSimulation import CourseRegistrationSimulation
-from main.CourseRegistrationSystem import CourseRegistrationSystem
-from databaseController.CourseDBController import CourseDBController
+from CourseRegistrationSimulation import CourseRegistrationSimulation
+from CourseRegistrationSystem import CourseRegistrationSystem
 
 
-courseRegistrationSystem = CourseRegistrationSystem(courseDBController= CourseDBController())
+courseRegistrationSystem = CourseRegistrationSystem()
 CLI = CourseRegistrationSimulation(courseRegistrationSystem)
 CLI.run()

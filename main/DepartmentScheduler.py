@@ -4,10 +4,10 @@ from datetime import time, datetime
 from importlib.metadata import files
 from pathlib import Path
 
-#from databaseController import CourseDBController
+#from databaseController.CourseDBController import CourseDBController
 from main.Classroom import Classroom
-
-import CourseSection
+from main.Course import Course
+from main.CourseSection import CourseSection
 from main.CourseTime import CourseTime
 from main.Staff import Staff
 from typing import List
@@ -21,19 +21,13 @@ class DepartmentScheduler(Staff):
     __departmentId : str
     __courseSectionList : List[CourseSection]
 
-    def __init__(self, id: str = "", firstName: str = "", lastName: str = "", password: str = "", departmentId: str = "", courseSectionList: List[CourseSection] = []):
+    def __init__(self, id: str, firstName: str, lastName: str, password: str, departmentId: str, courseSectionList: List[CourseSection]):
         self.__id = id
         self.__firstName = firstName
         self.__lastName = lastName
         self.__password = password
         self.__departmentId = departmentId
-
-        if (len(courseSectionList) != 0 and type(courseSectionList) == dict) :
-            for i in range(len(courseSectionList)) :
-                courseSectionList[i] = CourseSection(**courseSectionList[i])
-        else :
-            self.__courseSectionList = courseSectionList
-
+        self.__courseSectionList = courseSectionList
 
     def getId(self):
         return self.__id
