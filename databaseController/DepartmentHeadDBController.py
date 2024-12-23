@@ -2,7 +2,6 @@ from main.DepartmentHead import DepartmentHead
 from pathlib import Path
 import json
 
-
 class DepartmentHeadDBController:
 
     __departmentHead : DepartmentHead

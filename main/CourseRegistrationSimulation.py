@@ -5,6 +5,7 @@ from databaseController.DepartmentSchedulerDBController import DepartmentSchedul
 from databaseController.StudentDBController import StudentDBController
 from databaseController.RegistrationDBController import RegistrationDBController
 from databaseController.AdminDBController import AdminDBController
+from databaseController.DepartmentHeadDBController import DepartmentHeadDBController
 from SingletonLogger import SingletonLogger
 from SingletonLogger import SingletonLogger
 from main.Advisor import Advisor
@@ -45,13 +46,15 @@ class CourseRegistrationSimulation:
         self.__advisorDBController = AdvisorDBController()
         self.__student_db_controller = StudentDBController()
         self.__departmentSchedulerDBController = DepartmentSchedulerDBController()
+        self.__departmentHeadDBController = DepartmentHeadDBController()
         self.__adminDBController = AdminDBController()
         self.__courseDBController = CourseDBController()
         self.__courseRegistrationSystem = courseRegSystem
         self.__loginSystem = LoginSystem(self.__student_db_controller,
                                          self.__advisorDBController,
                                          self.__departmentSchedulerDBController,
-                                         self.__adminDBController)
+                                         self.__adminDBController,
+                                         self.__departmentHeadDBController)
         self.attribute = 0
 
     def run(self):
@@ -63,7 +66,8 @@ class CourseRegistrationSimulation:
                 print("2- Student Login")
                 print("3- Department Scheduler Login")
                 print("4- Admin Login")
-                print("5- Log Out")
+                print("5- Department Head Login")
+                print("6- Log Out")
 
                 choice = input("Enter your choice: ")
 
@@ -83,6 +87,8 @@ class CourseRegistrationSimulation:
                 elif user_choice == 4:
                     self.loginAdmin()
                 elif user_choice == 5:
+                    self.loginDepartmentHead()
+                elif user_choice == 6:
                     self.logout()
                 else:
                     print("Invalid choice.")
@@ -882,6 +888,69 @@ class CourseRegistrationSimulation:
             self.__logger.error(f"Unexpected error during handleAddDepartmentScheduler: {str(e)}")
 
         return departmentScheduler
+    
+    def loginDepartmentHead(self):
+        try:
+            self.__logger.info("Login department head")
+
+            nickname = input("Enter your nickname: ").strip()
+            password = input("Enter your password: ").strip()
+
+            if self.__loginSystem.authenticateDepartmentHead(nickname, password):
+                if self.__loginSystem.getDepartmentHead() is not None:
+                    print("Login successful!")
+                    self.handleDepartmentHeadActions(self.__departmentHeadDBController.getDepartmentHead())
+            else:
+                print("Invalid nickname or password.")
+                print()
+
+        except IOError as e:
+            self.__logger.error(f"Unexpected error during login Department Head: {str(e)}")
+        except Exception as e:
+            self.__logger.error(f"Unexpected error during login Department Head: {str(e)}")
+
+    def handleDepartmentHeadActions(self, departmentHead):
+        try:
+            self.__logger.info("Handling department Head actions")
+            while True:
+                print()
+                print("----------ACTIONS----------")
+                print("1- Change Course Section Capacity")
+                print("2- Log out!")
+                print("Please choose an action: ", end="")
+
+                try:
+                    choice = int(input())
+
+                    while choice not in [1, 2]:
+                        print()
+                        print("Please enter a valid option: ", end="")
+                        choice = int(input())
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
+                    continue
+
+                if choice == 1:
+                    print("Select the Course Section Id that you want to change capacity")
+                    allCourseSections = self.__courseDBController.getAllCourseSections()
+                    for idx, courseSection in enumerate(allCourseSections):
+                        print(f"Course Section Name: {courseSection.getCourse()["name"]}|| Capacity: {courseSection.getCapacity()} ||Id: {courseSection.getId()}")
+                    courseSectionId = input("Enter the Course Section Id that you want to change capacity: ").strip()
+                    newCapacity = input("Enther the new capacity of selected Course Section: ").strip()
+                    departmentHead.changeCourseSectionCapacity(courseSectionId, newCapacity)
+                    print("Course Section Capacity succesfully has been changed.")
+
+                elif choice == 2:
+                    self.logout()
+                    break
+
+                continueChoice = input("Do you want to continue? (If not you will logout) (y/n): ").strip()
+                if continueChoice.lower() == "n":
+                    self.logout()
+                    break
+        except Exception as e:
+            self.__logger.error(f"Unexpected error during handleDepartmentHeadActions: {str(e)}")
+
 
     def logout(self):
         # Save the final state to JSON or database
