@@ -5,10 +5,12 @@ from databaseController.DepartmentSchedulerDBController import DepartmentSchedul
 from databaseController.StudentDBController import StudentDBController
 from databaseController.RegistrationDBController import RegistrationDBController
 from databaseController.AdminDBController import AdminDBController
+from databaseController.DepartmentHeadDBController import DepartmentHeadDBController
 from SingletonLogger import SingletonLogger
 from SingletonLogger import SingletonLogger
 from Classroom import Classroom
 from DepartmentScheduler import DepartmentScheduler
+from main.Registration import Registration
 
 
 class CourseRegistrationSimulation:

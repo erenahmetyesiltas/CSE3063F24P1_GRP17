@@ -2,7 +2,7 @@
 from typing import List
 
 
-from main.Department import Department
+import Department
 
 class Course :
     __id: str

@@ -5,9 +5,11 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from databaseController.DepartmentSchedulerDBController import DepartmentSchedulerDBController
 from DepartmentScheduler import DepartmentScheduler
+from DepartmentHead import DepartmentHead
 from databaseController.AdvisorDBController import AdvisorDBController
 from databaseController.StudentDBController import StudentDBController
 from databaseController.AdminDBController import AdminDBController
+from databaseController.DepartmentHeadDBController import DepartmentHeadDBController
 from Advisor import Advisor
 from Student import Student
 from Admin import Admin

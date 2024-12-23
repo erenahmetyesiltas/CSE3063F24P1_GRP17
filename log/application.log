@@ -579,3 +579,10 @@
 2024-12-23 21:51:58,274 - INFO - Simulation started.
 2024-12-23 21:59:49,923 - INFO - Simulation started.
 2024-12-23 22:01:27,309 - INFO - Simulation started.
+2024-12-24 01:11:36,797 - INFO - Simulation started.
+2024-12-24 01:15:55,742 - ERROR - Unexpected error: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-24 01:15:55,742 - INFO - Simulation ended.
+2024-12-24 01:16:15,131 - INFO - Simulation started.
+2024-12-24 01:16:43,991 - ERROR - Unexpected error: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-12-24 01:16:43,991 - INFO - Simulation ended.
+2024-12-24 01:17:31,181 - INFO - Simulation started.
