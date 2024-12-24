@@ -129,7 +129,7 @@ class CourseDBController:
 
         return courseSections
     
-    def saveCourseSection(self, courseSection):
+    def saveCourseSection(self, courseSection: CourseSection):
         courseSectionId = courseSection.getId()
 
         # Find the course section json path
