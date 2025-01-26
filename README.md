@@ -1,5 +1,5 @@
 # CSE3063F24P1_GRP17
-OOSD Term Project
+Object Oriented Software Design Term Project
 
 -Eren Ahmet Yeşiltaş "Team Leader",
 -İlker İslam Yetimoğlu,
