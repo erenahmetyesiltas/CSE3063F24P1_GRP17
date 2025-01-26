@@ -12,5 +12,5 @@ are group members of this project.
 The project is a Student Management System.
 It has 2 versions as Java and Python.
 
-Last Java version is in the branch called "iter2eren",
+Last Java version is in the branch called "iter2eren".
 Last Python version is in the branch called "iteration-3-python2".
